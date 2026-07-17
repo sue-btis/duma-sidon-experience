@@ -1,0 +1,13 @@
+{
+  "title": "Pet del agente",
+  "description": "Vista local de todos los estados y variantes de animación.",
+  "automatic": "Reproducción automática",
+  "manual": "Control manual",
+  "states": {
+    "idle": "En reposo",
+    "working": "Leyendo",
+    "waiting": "Esperando",
+    "success": "Éxito",
+    "error": "Error"
+  }
+}

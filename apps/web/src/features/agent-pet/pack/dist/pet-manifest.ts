@@ -1,0 +1,188 @@
+export const petManifest = {
+  "version": 1,
+  "pet": {
+    "name": "Ecosat Agent Pet",
+    "description": "The supplied green-and-black friendly mascot with a stable face, proportions, and three-segment body."
+  },
+  "canvas": {
+    "width": 256,
+    "height": 256,
+    "anchor": "bottom-center"
+  },
+  "processing": {
+    "interpolation": "flow",
+    "inbetweens": 1
+  },
+  "states": {
+    "idle": {
+      "variants": {
+        "breathe": {
+          "webp": "animations/idle--breathe.webp",
+          "spritesheet": "spritesheets/idle--breathe.png",
+          "framesDirectory": "frames/idle--breathe",
+          "frameWidth": 256,
+          "frameHeight": 256,
+          "frameCount": 16,
+          "spritesheetColumns": 8,
+          "spritesheetRows": 2,
+          "fps": 12,
+          "loop": true,
+          "weight": 70,
+          "next": null
+        },
+        "blink-look": {
+          "webp": "animations/idle--blink-look.webp",
+          "spritesheet": "spritesheets/idle--blink-look.png",
+          "framesDirectory": "frames/idle--blink-look",
+          "frameWidth": 256,
+          "frameHeight": 256,
+          "frameCount": 16,
+          "spritesheetColumns": 8,
+          "spritesheetRows": 2,
+          "fps": 12,
+          "loop": true,
+          "weight": 30,
+          "next": null
+        }
+      }
+    },
+    "working": {
+      "variants": {
+        "read": {
+          "webp": "animations/working--read.webp",
+          "spritesheet": "spritesheets/working--read.png",
+          "framesDirectory": "frames/working--read",
+          "frameWidth": 256,
+          "frameHeight": 256,
+          "frameCount": 16,
+          "spritesheetColumns": 8,
+          "spritesheetRows": 2,
+          "fps": 16,
+          "loop": true,
+          "weight": 65,
+          "next": null
+        },
+        "turn-page": {
+          "webp": "animations/working--turn-page.webp",
+          "spritesheet": "spritesheets/working--turn-page.png",
+          "framesDirectory": "frames/working--turn-page",
+          "frameWidth": 256,
+          "frameHeight": 256,
+          "frameCount": 16,
+          "spritesheetColumns": 8,
+          "spritesheetRows": 2,
+          "fps": 16,
+          "loop": true,
+          "weight": 35,
+          "next": null
+        }
+      }
+    },
+    "waiting": {
+      "variants": {
+        "patient": {
+          "webp": "animations/waiting--patient.webp",
+          "spritesheet": "spritesheets/waiting--patient.png",
+          "framesDirectory": "frames/waiting--patient",
+          "frameWidth": 256,
+          "frameHeight": 256,
+          "frameCount": 16,
+          "spritesheetColumns": 8,
+          "spritesheetRows": 2,
+          "fps": 12,
+          "loop": true,
+          "weight": 70,
+          "next": null
+        },
+        "attention": {
+          "webp": "animations/waiting--attention.webp",
+          "spritesheet": "spritesheets/waiting--attention.png",
+          "framesDirectory": "frames/waiting--attention",
+          "frameWidth": 256,
+          "frameHeight": 256,
+          "frameCount": 16,
+          "spritesheetColumns": 8,
+          "spritesheetRows": 2,
+          "fps": 12,
+          "loop": true,
+          "weight": 30,
+          "next": null
+        }
+      }
+    },
+    "success": {
+      "variants": {
+        "celebrate": {
+          "webp": "animations/success--celebrate.webp",
+          "spritesheet": "spritesheets/success--celebrate.png",
+          "framesDirectory": "frames/success--celebrate",
+          "frameWidth": 256,
+          "frameHeight": 256,
+          "frameCount": 15,
+          "spritesheetColumns": 8,
+          "spritesheetRows": 2,
+          "fps": 16,
+          "loop": false,
+          "weight": 100,
+          "next": "idle"
+        }
+      }
+    },
+    "error": {
+      "variants": {
+        "concern": {
+          "webp": "animations/error--concern.webp",
+          "spritesheet": "spritesheets/error--concern.png",
+          "framesDirectory": "frames/error--concern",
+          "frameWidth": 256,
+          "frameHeight": 256,
+          "frameCount": 15,
+          "spritesheetColumns": 8,
+          "spritesheetRows": 2,
+          "fps": 16,
+          "loop": false,
+          "weight": 100,
+          "next": "waiting"
+        }
+      }
+    }
+  },
+  "effects": {
+    "bob": {
+      "enabled": false,
+      "amplitude_px": 3,
+      "duration_ms": 2400
+    },
+    "shadow": {
+      "enabled": true
+    },
+    "orbits": [
+      {
+        "name": "near",
+        "radius_px": 42,
+        "duration_ms": 2300,
+        "size_px": 12,
+        "delay_ms": 0
+      },
+      {
+        "name": "middle",
+        "radius_px": 58,
+        "duration_ms": 3100,
+        "size_px": 10,
+        "delay_ms": -1050
+      },
+      {
+        "name": "far",
+        "radius_px": 72,
+        "duration_ms": 3900,
+        "size_px": 8,
+        "delay_ms": -2300
+      }
+    ],
+    "particles": {
+      "enabled_states": [
+        "success"
+      ]
+    }
+  }
+} as const;

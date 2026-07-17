@@ -1,0 +1,13 @@
+{
+  "title": "Agent pet",
+  "description": "Local preview of every animation state and variant.",
+  "automatic": "Automatic playback",
+  "manual": "Manual control",
+  "states": {
+    "idle": "Idle",
+    "working": "Reading",
+    "waiting": "Waiting",
+    "success": "Success",
+    "error": "Error"
+  }
+}

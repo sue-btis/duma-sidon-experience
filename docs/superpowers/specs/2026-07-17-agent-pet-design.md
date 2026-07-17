@@ -16,8 +16,8 @@ states and provide a local Next.js demo at `/es/pet/` and `/en/pet/`.
 - The public API is `<AgentPet state={state} variant="auto" size={192} />`.
 - No API, database, analytics, or new frontend dependency is added.
 - The supplied artwork is the canonical visual reference. Generated strips
-  must preserve its palette, proportions, face, three-segment body, and three
-  green orbiting spheres.
+  must preserve its palette, proportions, face, and three-segment body. Two
+  green orbiting spheres are rendered procedurally.
 
 ## States and variants
 
@@ -34,6 +34,18 @@ long-running `idle`, `working`, and `waiting` states. The generated body
 frames contain only the pet pose; orbital spheres, breathing, shadow, and
 state glow are procedural CSS effects. This keeps orbit paths fluid and avoids
 per-frame identity drift.
+
+## Orbit treatment
+
+The pet has exactly two teal orbiting spheres on one thin, visible elliptical
+path. The ellipse is slightly tilted to match the supplied visual reference
+and remains fixed around the character. The path and spheres use CSS layers:
+the body occludes the rear half naturally, while the front half renders above
+the body. A sphere must not remain visible when its path crosses behind the
+character. The two spheres use offset timing so they do not overlap.
+
+Reduced-motion mode keeps the ellipse visible and stops both spheres at
+readable positions.
 
 ## Runtime integration
 
@@ -75,6 +87,8 @@ application checks are `pnpm lint` and `pnpm build` from the repository root.
 - `idle`, `working`, and `waiting` each have two selectable variants.
 - The working animation visibly reads or turns a book page.
 - Orbits remain smooth independently of the body animation.
+- Exactly two spheres follow the visible oval path and are occluded behind the
+  character.
 - `/es/pet/` and `/en/pet/` render the demo and its state controls.
 - The component is usable from another React/Next project by copying the
   feature folder and its referenced assets.

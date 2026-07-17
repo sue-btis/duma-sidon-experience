@@ -7,12 +7,14 @@ type MessageModule = { default: AbstractIntlMessages };
 
 const modules: Record<Locale, Record<string, () => Promise<MessageModule>>> = {
   es: {
+    agentPet: () => import("./messages/es/agent-pet.json"),
     common: () => import("./messages/es/common.json"),
     navigation: () => import("./messages/es/navigation.json"),
     platform: () => import("./messages/es/platform.json"),
     "modules/shared": () => import("./messages/es/modules/shared.json"),
   },
   en: {
+    agentPet: () => import("./messages/en/agent-pet.json"),
     common: () => import("./messages/en/common.json"),
     navigation: () => import("./messages/en/navigation.json"),
     platform: () => import("./messages/en/platform.json"),

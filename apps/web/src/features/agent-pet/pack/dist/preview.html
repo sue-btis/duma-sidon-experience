@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ecosat Agent Pet animation preview</title>
+<style>
+body{font-family:system-ui,sans-serif;margin:0;padding:24px;background:#f4f5f7;color:#171717}
+header{max-width:1100px;margin:auto} .toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+button{padding:8px 12px;border:1px solid #bbb;border-radius:8px;background:white;cursor:pointer}
+main{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+article{background:white;border:1px solid #ddd;border-radius:14px;padding:16px;text-align:center}
+img{width:192px;height:192px;object-fit:contain;image-rendering:auto} h3{margin:0 0 8px;font-size:16px} p{color:#555;font-size:13px}
+</style>
+</head>
+<body>
+<header><h1>Ecosat Agent Pet</h1><p>Generated web-pet animation pack.</p><div class="toolbar"><button data-state="all">all</button><button data-state="idle">idle</button><button data-state="working">working</button><button data-state="waiting">waiting</button><button data-state="success">success</button><button data-state="error">error</button></div></header>
+<main><article data-card-state="idle"><h3>idle / breathe</h3><img src="animations/idle--breathe.webp" alt="idle breathe"><p>16 frames · 12 FPS · loop</p></article><article data-card-state="idle"><h3>idle / blink-look</h3><img src="animations/idle--blink-look.webp" alt="idle blink-look"><p>16 frames · 12 FPS · loop</p></article><article data-card-state="working"><h3>working / read</h3><img src="animations/working--read.webp" alt="working read"><p>16 frames · 16 FPS · loop</p></article><article data-card-state="working"><h3>working / turn-page</h3><img src="animations/working--turn-page.webp" alt="working turn-page"><p>16 frames · 16 FPS · loop</p></article><article data-card-state="waiting"><h3>waiting / patient</h3><img src="animations/waiting--patient.webp" alt="waiting patient"><p>16 frames · 12 FPS · loop</p></article><article data-card-state="waiting"><h3>waiting / attention</h3><img src="animations/waiting--attention.webp" alt="waiting attention"><p>16 frames · 12 FPS · loop</p></article><article data-card-state="success"><h3>success / celebrate</h3><img src="animations/success--celebrate.webp" alt="success celebrate"><p>15 frames · 16 FPS · one-shot</p></article><article data-card-state="error"><h3>error / concern</h3><img src="animations/error--concern.webp" alt="error concern"><p>15 frames · 16 FPS · one-shot</p></article></main>
+<script>
+document.querySelectorAll('button[data-state]').forEach(button=>button.addEventListener('click',()=>{
+ const state=button.dataset.state;
+ document.querySelectorAll('article[data-card-state]').forEach(card=>{card.style.display=state==='all'||card.dataset.cardState===state?'block':'none'});
+}));
+</script>
+</body>
+</html>

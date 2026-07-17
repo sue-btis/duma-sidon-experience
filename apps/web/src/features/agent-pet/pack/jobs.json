@@ -1,0 +1,118 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "canonical",
+      "kind": "canonical",
+      "status": "complete",
+      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\prompts\\canonical.md",
+      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\references\\canonical-pet.png",
+      "qa_note": "Character identity matches the supplied large reference; detached orbit elements are intentionally removed for CSS animation.",
+      "selected_source": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\references\\canonical-clean.png"
+    },
+    {
+      "id": "idle--breathe",
+      "kind": "animation-strip",
+      "state": "idle",
+      "variant": "breathe",
+      "status": "complete",
+      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\prompts\\idle--breathe.md",
+      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\references\\canonical-pet.png",
+      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\generated\\idle--breathe.png",
+      "keyframes": 8,
+      "qa_note": "Exactly eight stable nearby poses on a flat removable background.",
+      "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f71c1-36d2-77a0-9ae9-f16e423f681b\\call_RAj0i8LTRVQ0SNKiD9lv8g7P.png"
+    },
+    {
+      "id": "idle--blink-look",
+      "kind": "animation-strip",
+      "state": "idle",
+      "variant": "blink-look",
+      "status": "complete",
+      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\prompts\\idle--blink-look.md",
+      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\references\\canonical-pet.png",
+      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\generated\\idle--blink-look.png",
+      "keyframes": 8,
+      "qa_note": "Exactly eight stable poses with a readable glance and blink cycle.",
+      "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f71c1-36d2-77a0-9ae9-f16e423f681b\\call_gi391jkjnKVGwzyPJDFhU2aC.png"
+    },
+    {
+      "id": "working--read",
+      "kind": "animation-strip",
+      "state": "working",
+      "variant": "read",
+      "status": "complete",
+      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\prompts\\working--read.md",
+      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\references\\canonical-pet.png",
+      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\generated\\working--read.png",
+      "keyframes": 8,
+      "qa_note": "Exactly eight consistent reading poses with one stable open book.",
+      "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f71c1-36d2-77a0-9ae9-f16e423f681b\\call_HL0KPZwozgyQ9J6aISBe3DLS.png"
+    },
+    {
+      "id": "working--turn-page",
+      "kind": "animation-strip",
+      "state": "working",
+      "variant": "turn-page",
+      "status": "complete",
+      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\prompts\\working--turn-page.md",
+      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\references\\canonical-pet.png",
+      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\generated\\working--turn-page.png",
+      "keyframes": 8,
+      "qa_note": "Exactly eight consistent poses with one clearly animated page turn.",
+      "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f71c1-36d2-77a0-9ae9-f16e423f681b\\call_FSTTRAFKg3zLzWY7PYCD9zJ4.png"
+    },
+    {
+      "id": "waiting--patient",
+      "kind": "animation-strip",
+      "state": "waiting",
+      "variant": "patient",
+      "status": "complete",
+      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\prompts\\waiting--patient.md",
+      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\references\\canonical-pet.png",
+      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\generated\\waiting--patient.png",
+      "keyframes": 8,
+      "qa_note": "Exactly eight subtle waiting poses with a clear slow blink.",
+      "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f71c1-36d2-77a0-9ae9-f16e423f681b\\call_p4quSinUYqfGsvs8grXlVDDj.png"
+    },
+    {
+      "id": "waiting--attention",
+      "kind": "animation-strip",
+      "state": "waiting",
+      "variant": "attention",
+      "status": "complete",
+      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\prompts\\waiting--attention.md",
+      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\references\\canonical-pet.png",
+      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\generated\\waiting--attention.png",
+      "keyframes": 8,
+      "qa_note": "Exactly eight stable poses with a clear attentive lift and return.",
+      "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f71c1-36d2-77a0-9ae9-f16e423f681b\\call_sL9JcJVmWH3Tb3CJ8ghGLXfp.png"
+    },
+    {
+      "id": "success--celebrate",
+      "kind": "animation-strip",
+      "state": "success",
+      "variant": "celebrate",
+      "status": "complete",
+      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\prompts\\success--celebrate.md",
+      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\references\\canonical-pet.png",
+      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\generated\\success--celebrate.png",
+      "keyframes": 8,
+      "qa_note": "Exactly eight coherent poses with anticipation, joyful peak, landing, and controlled ending.",
+      "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f71c1-36d2-77a0-9ae9-f16e423f681b\\call_QOmbl8UlWVIAz062aLEkMrY0.png"
+    },
+    {
+      "id": "error--concern",
+      "kind": "animation-strip",
+      "state": "error",
+      "variant": "concern",
+      "status": "complete",
+      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\prompts\\error--concern.md",
+      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\references\\canonical-pet.png",
+      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\generated\\error--concern.png",
+      "keyframes": 8,
+      "qa_note": "Exactly eight coherent concern poses; disconnected emphasis marks were removed deterministically without changing the character.",
+      "selected_source": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\generated\\error--concern-clean.png"
+    }
+  ]
+}
