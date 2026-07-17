@@ -127,7 +127,7 @@ export const petManifest = {
     "orbits": [
       {
         "name": "leading",
-        "radius_x_px": 72,
+        "radius_x_px": 90,
         "radius_y_px": 30,
         "tilt_deg": -10,
         "duration_ms": 3600,
@@ -136,7 +136,7 @@ export const petManifest = {
       },
       {
         "name": "opposite",
-        "radius_x_px": 72,
+        "radius_x_px": 90,
         "radius_y_px": 30,
         "tilt_deg": -10,
         "duration_ms": 3600,
