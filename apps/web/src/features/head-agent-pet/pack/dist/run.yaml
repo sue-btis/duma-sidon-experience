@@ -1,0 +1,102 @@
+version: 1
+pet:
+  name: Ecosat Head Agent Pet
+  description: 'The detached round teal-and-black head of the supplied Ecosat mascot:
+    a thick teal circular rim, nearly black face, two tall white oval eyes without
+    pupils, and two small teal brow marks. No torso or body segments.'
+  reference: C:\Users\Josue Escobar\Documents\projects\duma-sidon-experience\apps\web\src\features\head-agent-pet\pack\references\canonical-pet.png
+  style: clean 2D illustrated mascot matching the supplied reference exactly, flat
+    removable background, no text
+canvas:
+  width: 256
+  height: 256
+  padding: 18
+  anchor: bottom-center
+background:
+  mode: auto
+  threshold: 34
+processing:
+  interpolation: flow
+  inbetweens: 1
+  spritesheet_columns: 8
+  webp_quality: 92
+runtime:
+  framework: react
+  default_size: 192
+  avoid_immediate_variant_repeat: true
+actions:
+  idle:
+    fps: 12
+    loop: true
+    next: null
+    variants:
+      breathe:
+        weight: 70
+        keyframes: 8
+        motion: Subtle hover and breathing cycle, calm face, and a seamless return
+          to the starting pose.
+      blink-look:
+        weight: 30
+        keyframes: 8
+        motion: Blink once, glance slightly to one side, then return smoothly to the
+          starting pose.
+  working:
+    fps: 16
+    loop: true
+    next: null
+    variants:
+      read:
+        weight: 65
+        keyframes: 8
+        motion: A small open dark green book floats below the head while the eyes
+          make focused reading movements and the head gently sways.
+      turn-page:
+        weight: 35
+        keyframes: 8
+        motion: A small open dark green book floats below the head, one page turns,
+          then the head settles back into focused reading for a seamless loop.
+  success:
+    fps: 16
+    loop: false
+    next: idle
+    variants:
+      celebrate:
+        weight: 100
+        keyframes: 8
+        motion: Compact joyful celebration with bright happy eyes, a small upward
+          bounce, and a controlled ending pose.
+  error:
+    fps: 16
+    loop: false
+    next: idle
+    variants:
+      concern:
+        weight: 100
+        keyframes: 8
+        motion: Brief concerned reaction with a restrained recoil and worried eyes,
+          without changing identity.
+effects:
+  bob:
+    enabled: false
+    amplitude_px: 3
+    duration_ms: 2400
+  shadow:
+    enabled: true
+  orbits:
+  - name: leading
+    radius_x_px: 72
+    radius_y_px: 30
+    tilt_deg: -10
+    duration_ms: 3600
+    size_px: 12
+    delay_ms: 0
+  - name: opposite
+    radius_x_px: 72
+    radius_y_px: 30
+    tilt_deg: -10
+    duration_ms: 3600
+    size_px: 10
+    delay_ms: -1800
+  particles:
+    enabled_states:
+    - success

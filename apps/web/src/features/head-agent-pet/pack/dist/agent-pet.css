@@ -1,0 +1,133 @@
+.agent-pet {
+  --pet-size: 192px;
+  --pet-accent: #00ad93;
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: var(--pet-size);
+  height: var(--pet-size);
+  isolation: isolate;
+}
+
+.agent-pet__body {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.agent-pet--working .agent-pet__body {
+  transform-origin: center bottom;
+  animation: agent-pet-reading 2400ms ease-in-out infinite;
+}
+
+.agent-pet__shadow {
+  position: absolute;
+  left: 22%;
+  right: 22%;
+  bottom: 6%;
+  height: 8%;
+  border-radius: 999px;
+  background: rgb(0 0 0 / 18%);
+  filter: blur(5px);
+  transform-origin: center;
+  animation: agent-pet-shadow 2400ms ease-in-out infinite;
+  z-index: 0;
+}
+
+.agent-pet__orbit-path {
+  --orbit-path-width: 144px;
+  --orbit-path-height: 60px;
+  --orbit-tilt: -10deg;
+  position: absolute;
+  left: 50%;
+  top: 54%;
+  width: var(--orbit-path-width);
+  height: var(--orbit-path-height);
+  border: 1px solid color-mix(in srgb, var(--pet-accent), transparent 34%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(var(--orbit-tilt));
+  z-index: 1;
+}
+
+.agent-pet__orbit {
+  --orbit-radius-x: 72px;
+  --orbit-scale-y: .4167;
+  --orbit-unscale-y: 2.4;
+  --orbit-tilt: -10deg;
+  --orbit-duration: 3600ms;
+  --orbit-size: 12px;
+  --orbit-delay: 0ms;
+  position: absolute;
+  left: 50%;
+  top: 54%;
+  width: calc(var(--orbit-radius-x) * 2);
+  height: calc(var(--orbit-radius-x) * 2);
+  transform: translate(-50%, -50%) rotate(var(--orbit-tilt)) scaleY(var(--orbit-scale-y));
+  animation: agent-pet-orbit-depth var(--orbit-duration) linear var(--orbit-delay) infinite;
+  z-index: 3;
+}
+
+.agent-pet__orbit::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--orbit-size);
+  height: var(--orbit-size);
+  border-radius: 999px;
+  background: var(--pet-accent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--pet-accent), transparent 20%);
+  transform: translate(-50%, -50%) translateX(var(--orbit-static-x)) scaleY(var(--orbit-unscale-y));
+  animation: agent-pet-orbit-motion var(--orbit-duration) linear var(--orbit-delay) infinite;
+}
+
+.agent-pet__particles { display: none; }
+.agent-pet--success .agent-pet__particles {
+  display: block;
+  position: absolute;
+  inset: 8%;
+  background:
+    radial-gradient(circle at 20% 30%, currentColor 0 2px, transparent 3px),
+    radial-gradient(circle at 80% 24%, currentColor 0 2px, transparent 3px),
+    radial-gradient(circle at 72% 74%, currentColor 0 2px, transparent 3px),
+    radial-gradient(circle at 28% 78%, currentColor 0 2px, transparent 3px);
+  animation: agent-pet-particles 900ms ease-out infinite;
+  z-index: 4;
+}
+
+@keyframes agent-pet-shadow {
+  0%, 100% { transform: scaleX(1); opacity: .7; }
+  50% { transform: scaleX(.88); opacity: .5; }
+}
+
+@keyframes agent-pet-orbit-motion {
+  from { transform: translate(-50%, -50%) rotate(0deg) translateX(var(--orbit-radius-x)) rotate(0deg) scaleY(var(--orbit-unscale-y)); }
+  to { transform: translate(-50%, -50%) rotate(360deg) translateX(var(--orbit-radius-x)) rotate(-360deg) scaleY(var(--orbit-unscale-y)); }
+}
+
+@keyframes agent-pet-reading {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-3px) rotate(1deg); }
+}
+
+@keyframes agent-pet-orbit-depth {
+  0%, 49.99% { z-index: 3; }
+  50%, 100% { z-index: 1; }
+}
+
+@keyframes agent-pet-particles {
+  from { transform: scale(.75); opacity: 0; }
+  40% { opacity: 1; }
+  to { transform: scale(1.1); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agent-pet--working .agent-pet__body,
+  .agent-pet__shadow,
+  .agent-pet__orbit,
+  .agent-pet__orbit::before,
+  .agent-pet__particles { animation: none; }
+}

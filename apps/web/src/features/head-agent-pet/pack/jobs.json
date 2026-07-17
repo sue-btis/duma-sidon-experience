@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "canonical",
+      "kind": "canonical",
+      "status": "complete",
+      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\prompts\\canonical.md",
+      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\references\\canonical-pet.png",
+      "qa_note": "Head-only canonical reference preserves the supplied teal rim, dark face, white eyes, and teal brow marks.",
+      "selected_source": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\references\\canonical-head.png"
+    },
+    {
+      "id": "idle--breathe",
+      "kind": "animation-strip",
+      "state": "idle",
+      "variant": "breathe",
+      "status": "complete",
+      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\prompts\\idle--breathe.md",
+      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\references\\canonical-pet.png",
+      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\generated\\idle--breathe.png",
+      "keyframes": 8,
+      "qa_note": "Eight coherent neutral head poses with tiny vertical movement.",
+      "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f724b-b0ac-7363-81e7-e4629fa01c1e\\exec-d116922c-c0fa-42df-9786-a1a598a1b5d0.png"
+    },
+    {
+      "id": "idle--blink-look",
+      "kind": "animation-strip",
+      "state": "idle",
+      "variant": "blink-look",
+      "status": "complete",
+      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\prompts\\idle--blink-look.md",
+      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\references\\canonical-pet.png",
+      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\generated\\idle--blink-look.png",
+      "keyframes": 8,
+      "qa_note": "Eight coherent poses with a readable blink and small glance.",
+      "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f724b-b0ac-7363-81e7-e4629fa01c1e\\exec-e1207900-a7b7-42d7-befc-07817720108d.png"
+    },
+    {
+      "id": "working--read",
+      "kind": "animation-strip",
+      "state": "working",
+      "variant": "read",
+      "status": "complete",
+      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\prompts\\working--read.md",
+      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\references\\canonical-pet.png",
+      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\generated\\working--read.png",
+      "keyframes": 8,
+      "qa_note": "Eight coherent reading poses with one stable floating dark green book.",
+      "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f724b-b0ac-7363-81e7-e4629fa01c1e\\exec-e954bcc1-8063-48ff-97e2-7aea9baa39d3.png"
+    },
+    {
+      "id": "working--turn-page",
+      "kind": "animation-strip",
+      "state": "working",
+      "variant": "turn-page",
+      "status": "complete",
+      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\prompts\\working--turn-page.md",
+      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\references\\canonical-pet.png",
+      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\generated\\working--turn-page.png",
+      "keyframes": 8,
+      "qa_note": "Eight coherent poses with one readable floating-book page turn.",
+      "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f724b-b0ac-7363-81e7-e4629fa01c1e\\exec-3e1de191-2ec0-445f-90fc-203430c10b87.png"
+    },
+    {
+      "id": "success--celebrate",
+      "kind": "animation-strip",
+      "state": "success",
+      "variant": "celebrate",
+      "status": "complete",
+      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\prompts\\success--celebrate.md",
+      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\references\\canonical-pet.png",
+      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\generated\\success--celebrate.png",
+      "keyframes": 8,
+      "qa_note": "Eight coherent joyful poses with a compact happy-eye celebration.",
+      "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f724b-b0ac-7363-81e7-e4629fa01c1e\\exec-65dfbcac-cbd4-4b5b-b045-abdce9d78422.png"
+    },
+    {
+      "id": "error--concern",
+      "kind": "animation-strip",
+      "state": "error",
+      "variant": "concern",
+      "status": "complete",
+      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\prompts\\error--concern.md",
+      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\references\\canonical-pet.png",
+      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\generated\\error--concern.png",
+      "keyframes": 8,
+      "qa_note": "Eight coherent poses with restrained worried eyes and brows.",
+      "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f724b-b0ac-7363-81e7-e4629fa01c1e\\exec-5b58b53e-60d8-4942-a057-a6ebd9ff8f38.png"
+    }
+  ]
+}

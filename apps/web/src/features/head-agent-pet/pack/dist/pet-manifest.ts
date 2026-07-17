@@ -1,0 +1,153 @@
+export const petManifest = {
+  "version": 1,
+  "pet": {
+    "name": "Ecosat Head Agent Pet",
+    "description": "The detached round teal-and-black head of the supplied Ecosat mascot: a thick teal circular rim, nearly black face, two tall white oval eyes without pupils, and two small teal brow marks. No torso or body segments."
+  },
+  "canvas": {
+    "width": 256,
+    "height": 256,
+    "anchor": "bottom-center"
+  },
+  "processing": {
+    "interpolation": "flow",
+    "inbetweens": 1
+  },
+  "states": {
+    "idle": {
+      "variants": {
+        "breathe": {
+          "webp": "animations/idle--breathe.webp",
+          "spritesheet": "spritesheets/idle--breathe.png",
+          "framesDirectory": "frames/idle--breathe",
+          "frameWidth": 256,
+          "frameHeight": 256,
+          "frameCount": 16,
+          "spritesheetColumns": 8,
+          "spritesheetRows": 2,
+          "fps": 12,
+          "loop": true,
+          "weight": 70,
+          "next": null
+        },
+        "blink-look": {
+          "webp": "animations/idle--blink-look.webp",
+          "spritesheet": "spritesheets/idle--blink-look.png",
+          "framesDirectory": "frames/idle--blink-look",
+          "frameWidth": 256,
+          "frameHeight": 256,
+          "frameCount": 16,
+          "spritesheetColumns": 8,
+          "spritesheetRows": 2,
+          "fps": 12,
+          "loop": true,
+          "weight": 30,
+          "next": null
+        }
+      }
+    },
+    "working": {
+      "variants": {
+        "read": {
+          "webp": "animations/working--read.webp",
+          "spritesheet": "spritesheets/working--read.png",
+          "framesDirectory": "frames/working--read",
+          "frameWidth": 256,
+          "frameHeight": 256,
+          "frameCount": 16,
+          "spritesheetColumns": 8,
+          "spritesheetRows": 2,
+          "fps": 16,
+          "loop": true,
+          "weight": 65,
+          "next": null
+        },
+        "turn-page": {
+          "webp": "animations/working--turn-page.webp",
+          "spritesheet": "spritesheets/working--turn-page.png",
+          "framesDirectory": "frames/working--turn-page",
+          "frameWidth": 256,
+          "frameHeight": 256,
+          "frameCount": 16,
+          "spritesheetColumns": 8,
+          "spritesheetRows": 2,
+          "fps": 16,
+          "loop": true,
+          "weight": 35,
+          "next": null
+        }
+      }
+    },
+    "success": {
+      "variants": {
+        "celebrate": {
+          "webp": "animations/success--celebrate.webp",
+          "spritesheet": "spritesheets/success--celebrate.png",
+          "framesDirectory": "frames/success--celebrate",
+          "frameWidth": 256,
+          "frameHeight": 256,
+          "frameCount": 15,
+          "spritesheetColumns": 8,
+          "spritesheetRows": 2,
+          "fps": 16,
+          "loop": false,
+          "weight": 100,
+          "next": "idle"
+        }
+      }
+    },
+    "error": {
+      "variants": {
+        "concern": {
+          "webp": "animations/error--concern.webp",
+          "spritesheet": "spritesheets/error--concern.png",
+          "framesDirectory": "frames/error--concern",
+          "frameWidth": 256,
+          "frameHeight": 256,
+          "frameCount": 15,
+          "spritesheetColumns": 8,
+          "spritesheetRows": 2,
+          "fps": 16,
+          "loop": false,
+          "weight": 100,
+          "next": "idle"
+        }
+      }
+    }
+  },
+  "effects": {
+    "bob": {
+      "enabled": false,
+      "amplitude_px": 3,
+      "duration_ms": 2400
+    },
+    "shadow": {
+      "enabled": true
+    },
+    "orbits": [
+      {
+        "name": "leading",
+        "radius_x_px": 72,
+        "radius_y_px": 30,
+        "tilt_deg": -10,
+        "duration_ms": 3600,
+        "size_px": 12,
+        "delay_ms": 0
+      },
+      {
+        "name": "opposite",
+        "radius_x_px": 72,
+        "radius_y_px": 30,
+        "tilt_deg": -10,
+        "duration_ms": 3600,
+        "size_px": 10,
+        "delay_ms": -1800
+      }
+    ],
+    "particles": {
+      "enabled_states": [
+        "success"
+      ]
+    }
+  }
+} as const;
