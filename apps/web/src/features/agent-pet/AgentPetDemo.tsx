@@ -7,6 +7,7 @@ import {
   AgentPet,
   type AgentPetState,
 } from "@/features/agent-pet/pack/dist/AgentPet";
+import { AgentPet as HeadAgentPet } from "@/features/head-agent-pet/pack/dist/AgentPet";
 
 const states = ["idle", "working", "success", "error"] as const;
 
@@ -42,14 +43,27 @@ export function AgentPetDemo({ labels }: Props) {
         <p className="mt-2 text-sm text-muted-foreground">{labels.description}</p>
       </div>
 
-      <div className="grid h-80 w-80 place-items-center rounded-3xl border bg-card text-[#00ad93] shadow-sm">
-        <AgentPet
-          label={`${labels.title}: ${labels.states[state]}`}
-          size={256}
-          state={state}
-          variant="auto"
-          variantIntervalMs={6000}
-        />
+      <div className="grid w-full gap-4 sm:grid-cols-2">
+        <div className="grid h-80 place-items-center rounded-3xl border bg-card text-[#00ad93] shadow-sm">
+          <AgentPet
+            label={`${labels.title}: ${labels.states[state]}`}
+            size={256}
+            state={state}
+            variant="auto"
+            variantIntervalMs={6000}
+          />
+        </div>
+
+        <div className="grid h-80 place-items-center rounded-3xl border bg-card text-[#00ad93] shadow-sm">
+          <HeadAgentPet
+            basePath="/head-pet"
+            label={`${labels.title}: ${labels.states[state]}`}
+            size={256}
+            state={state}
+            variant="auto"
+            variantIntervalMs={6000}
+          />
+        </div>
       </div>
 
       <p className="text-sm font-medium" aria-live="polite">
