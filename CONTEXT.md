@@ -1,12 +1,20 @@
-# Duma Sidon Experience
+# Ecosat Brand Presence
 
-The public brand presence for Duma Sidon Experience. It introduces the company's products and guides prospective customers to an eventual contact channel.
+The public brand presence for Ecosat. It introduces the company and its product families, then guides prospective customers to an eventual contact channel.
 
 ## Language
 
 **Product showcase**:
-The public presentation of all company products on the landing page.
+The public presentation of Ecosat's product families and, when defined, their products.
 _Avoid_: Catalog, storefront
+
+**Product family**:
+A named Ecosat offering that groups related products. Integra and Sidon are product families.
+_Avoid_: Product, brand
+
+**Ecosat**:
+The company and umbrella brand represented by this public site.
+_Avoid_: Ecosat product
 
 **Contact channel**:
 The external method through which a prospective customer initiates a conversation with the company.
