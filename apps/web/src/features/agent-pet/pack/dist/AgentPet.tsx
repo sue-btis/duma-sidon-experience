@@ -17,6 +17,16 @@ type Props = {
   label?: string;
 };
 
+type Orbit = {
+  name?: string;
+  radius_x_px?: number;
+  radius_y_px?: number;
+  tilt_deg?: number;
+  duration_ms?: number;
+  size_px?: number;
+  delay_ms?: number;
+};
+
 function weightedVariant(state: AgentPetState, previous?: string): string {
   const variants = petManifest.states[state].variants as Record<string, { weight: number }>;
   const entries = Object.entries(variants);
@@ -64,17 +74,20 @@ export function AgentPet({
   }, [state, selectedVariant]);
 
   const style = { "--pet-size": `${size}px` } as CSSProperties;
-  const orbits = (petManifest.effects?.orbits ?? []) as ReadonlyArray<{
-    name?: string;
-    radius_px?: number;
-    duration_ms?: number;
-    size_px?: number;
-    delay_ms?: number;
-  }>;
+  const orbits = (petManifest.effects?.orbits ?? []) as ReadonlyArray<Orbit>;
+  const path = orbits[0];
+  const pathStyle = path
+    ? {
+        "--orbit-path-width": `${(path.radius_x_px ?? 72) * 2}px`,
+        "--orbit-path-height": `${(path.radius_y_px ?? 30) * 2}px`,
+        "--orbit-tilt": `${path.tilt_deg ?? -10}deg`,
+      } as CSSProperties
+    : undefined;
 
   return (
     <div className={`agent-pet agent-pet--${state} ${className}`} style={style} role="img" aria-label={label ?? `${petManifest.pet.name}: ${state}`}>
       <span className="agent-pet__shadow" aria-hidden="true" />
+      {path && <span className="agent-pet__orbit-path" style={pathStyle} aria-hidden="true" />}
       {/* Animated WebP must remain unoptimized so playback is preserved. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img className="agent-pet__body" src={`${basePath}/${config.webp}`} alt="" draggable={false} />
@@ -83,10 +96,14 @@ export function AgentPet({
           className="agent-pet__orbit"
           key={`${orbit.name ?? "orbit"}-${index}`}
           style={{
-            "--orbit-radius": `${orbit.radius_px ?? 48}px`,
-            "--orbit-duration": `${orbit.duration_ms ?? 2400}ms`,
+            "--orbit-radius-x": `${orbit.radius_x_px ?? 72}px`,
+            "--orbit-scale-y": (orbit.radius_y_px ?? 30) / (orbit.radius_x_px ?? 72),
+            "--orbit-unscale-y": (orbit.radius_x_px ?? 72) / (orbit.radius_y_px ?? 30),
+            "--orbit-tilt": `${orbit.tilt_deg ?? -10}deg`,
+            "--orbit-duration": `${orbit.duration_ms ?? 3600}ms`,
             "--orbit-size": `${orbit.size_px ?? 12}px`,
             "--orbit-delay": `${orbit.delay_ms ?? 0}ms`,
+            "--orbit-static-x": `${index === 0 ? orbit.radius_x_px ?? 72 : -(orbit.radius_x_px ?? 72)}px`,
           } as CSSProperties}
           aria-hidden="true"
         />

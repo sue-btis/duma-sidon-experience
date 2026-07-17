@@ -17,5 +17,6 @@ Use `variant="auto"` to rotate the long-running state variants without an
 immediate repeat.
 
 When rebuilding the pack, run `clean_strips.py` before `build_pack.py`, then
-run `check_frames.py`. The first script repacks the eight detected poses into
-isolated cells; the check rejects edge bleed and anchor drift.
+run `check_frames.py` and `check_orbits.py`. The first script repacks the eight
+detected poses into isolated cells; the checks reject edge bleed, anchor drift,
+or an invalid two-sphere orbit contract.
