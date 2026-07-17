@@ -6,7 +6,6 @@
   "states": {
     "idle": "En reposo",
     "working": "Leyendo",
-    "waiting": "Esperando",
     "success": "Éxito",
     "error": "Error"
   }

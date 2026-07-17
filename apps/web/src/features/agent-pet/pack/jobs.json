@@ -63,32 +63,6 @@
       "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f71c1-36d2-77a0-9ae9-f16e423f681b\\call_FSTTRAFKg3zLzWY7PYCD9zJ4.png"
     },
     {
-      "id": "waiting--patient",
-      "kind": "animation-strip",
-      "state": "waiting",
-      "variant": "patient",
-      "status": "complete",
-      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\prompts\\waiting--patient.md",
-      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\references\\canonical-pet.png",
-      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\generated\\waiting--patient.png",
-      "keyframes": 8,
-      "qa_note": "Exactly eight subtle waiting poses with a clear slow blink.",
-      "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f71c1-36d2-77a0-9ae9-f16e423f681b\\call_p4quSinUYqfGsvs8grXlVDDj.png"
-    },
-    {
-      "id": "waiting--attention",
-      "kind": "animation-strip",
-      "state": "waiting",
-      "variant": "attention",
-      "status": "complete",
-      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\prompts\\waiting--attention.md",
-      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\references\\canonical-pet.png",
-      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\generated\\waiting--attention.png",
-      "keyframes": 8,
-      "qa_note": "Exactly eight stable poses with a clear attentive lift and return.",
-      "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f71c1-36d2-77a0-9ae9-f16e423f681b\\call_sL9JcJVmWH3Tb3CJ8ghGLXfp.png"
-    },
-    {
       "id": "success--celebrate",
       "kind": "animation-strip",
       "state": "success",

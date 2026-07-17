@@ -8,7 +8,7 @@ import {
   type AgentPetState,
 } from "@/features/agent-pet/pack/dist/AgentPet";
 
-const states = ["idle", "working", "waiting", "success", "error"] as const;
+const states = ["idle", "working", "success", "error"] as const;
 
 type Labels = Readonly<{
   title: string;

@@ -53,19 +53,6 @@ actions:
         weight: 35
         keyframes: 8
         motion: "Hold an open dark green book, lift and turn one page, then settle back into reading for a seamless loop."
-  waiting:
-    fps: 12
-    loop: true
-    next: null
-    variants:
-      patient:
-        weight: 70
-        keyframes: 8
-        motion: "Wait patiently with a slow blink and minimal side-to-side sway."
-      attention:
-        weight: 30
-        keyframes: 8
-        motion: "Briefly perk up with attentive eyes, then settle smoothly back into the initial pose."
   success:
     fps: 16
     loop: false
@@ -78,7 +65,7 @@ actions:
   error:
     fps: 16
     loop: false
-    next: "waiting"
+    next: "idle"
     variants:
       concern:
         weight: 100

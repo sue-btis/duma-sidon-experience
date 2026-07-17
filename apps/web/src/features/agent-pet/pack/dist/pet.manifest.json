@@ -78,38 +78,6 @@
         }
       }
     },
-    "waiting": {
-      "variants": {
-        "patient": {
-          "webp": "animations/waiting--patient.webp",
-          "spritesheet": "spritesheets/waiting--patient.png",
-          "framesDirectory": "frames/waiting--patient",
-          "frameWidth": 256,
-          "frameHeight": 256,
-          "frameCount": 16,
-          "spritesheetColumns": 8,
-          "spritesheetRows": 2,
-          "fps": 12,
-          "loop": true,
-          "weight": 70,
-          "next": null
-        },
-        "attention": {
-          "webp": "animations/waiting--attention.webp",
-          "spritesheet": "spritesheets/waiting--attention.png",
-          "framesDirectory": "frames/waiting--attention",
-          "frameWidth": 256,
-          "frameHeight": 256,
-          "frameCount": 16,
-          "spritesheetColumns": 8,
-          "spritesheetRows": 2,
-          "fps": 12,
-          "loop": true,
-          "weight": 30,
-          "next": null
-        }
-      }
-    },
     "success": {
       "variants": {
         "celebrate": {
@@ -142,7 +110,7 @@
           "fps": 16,
           "loop": false,
           "weight": 100,
-          "next": "waiting"
+          "next": "idle"
         }
       }
     }

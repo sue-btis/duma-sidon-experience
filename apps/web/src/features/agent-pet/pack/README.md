@@ -12,7 +12,7 @@ To migrate it:
    `public/pet/animations/`.
 3. Render `<AgentPet state="idle" variant="auto" size={192} />`.
 
-The component accepts `idle`, `working`, `waiting`, `success`, and `error`.
+The component accepts `idle`, `working`, `success`, and `error`.
 Use `variant="auto"` to rotate the long-running state variants without an
 immediate repeat.
 

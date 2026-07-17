@@ -22,7 +22,6 @@ export default async function PetPage({ params }: Props) {
           states: {
             idle: t("states.idle"),
             working: t("states.working"),
-            waiting: t("states.waiting"),
             success: t("states.success"),
             error: t("states.error"),
           },

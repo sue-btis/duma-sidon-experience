@@ -6,7 +6,6 @@
   "states": {
     "idle": "Idle",
     "working": "Reading",
-    "waiting": "Waiting",
     "success": "Success",
     "error": "Error"
   }
