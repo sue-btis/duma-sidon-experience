@@ -1,0 +1,13 @@
+{
+  "name": "ecosat-brand-presence",
+  "private": true,
+  "packageManager": "pnpm@11.5.0",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "build": "pnpm --filter web build",
+    "dev": "pnpm --filter web dev",
+    "lint": "pnpm --filter web lint"
+  }
+}

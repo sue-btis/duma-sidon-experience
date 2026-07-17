@@ -1,2 +1,21 @@
 .codex
 docs/legacy
+
+# Node.js / pnpm
+node_modules/
+.pnpm-store/
+
+# Build and test output
+apps/*/.next/
+apps/*/out/
+apps/*/coverage/
+*.tsbuildinfo
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Logs and operating-system files
+*.log
+.DS_Store
