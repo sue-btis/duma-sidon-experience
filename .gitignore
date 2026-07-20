@@ -20,3 +20,4 @@ apps/*/coverage/
 # Logs and operating-system files
 *.log
 .DS_Store
+docs/superpowers/
