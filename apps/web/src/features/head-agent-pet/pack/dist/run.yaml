@@ -14,7 +14,7 @@ canvas:
   anchor: bottom-center
 background:
   mode: auto
-  threshold: 34
+  threshold: 50
 processing:
   interpolation: flow
   inbetweens: 1

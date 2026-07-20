@@ -14,7 +14,7 @@ canvas:
   anchor: bottom-center
 background:
   mode: auto
-  threshold: 34
+  threshold: 50
 processing:
   interpolation: flow
   inbetweens: 1
@@ -38,8 +38,8 @@ actions:
       blink-look:
         weight: 30
         keyframes: 8
-        motion: Blink once, glance slightly to one side, then return smoothly to the
-          starting pose.
+        motion: Blink once in place, then return smoothly to the starting pose without
+          moving the head or eyes sideways.
   working:
     fps: 16
     loop: true

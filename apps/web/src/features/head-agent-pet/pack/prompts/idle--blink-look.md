@@ -6,7 +6,7 @@ Stable identity: The detached round teal-and-black head of the supplied Ecosat m
 Style: clean 2D illustrated mascot matching the supplied reference exactly, flat removable background, no text
 Logical state: idle
 Variant: blink-look
-Motion: Blink once, glance slightly to one side, then return smoothly to the starting pose.
+Motion: Blink once in place, then return smoothly to the starting pose without moving the head or eyes sideways.
 
 Generate one horizontal strip containing exactly 8 equal-width animation cells in left-to-right temporal order.
 
@@ -15,6 +15,7 @@ Hard requirements:
 - exactly one character in every cell
 - same camera, scale, silhouette, face, proportions, palette, costume, and accessories
 - change only the pose and expression needed for this motion
+- keep both eyes as solid white ovals with no pupils, irises, or dots
 - adjacent cells must be nearby poses suitable for local interpolation
 - full silhouette visible in every cell with consistent padding
 - transparent background when supported; otherwise one flat removable background color
