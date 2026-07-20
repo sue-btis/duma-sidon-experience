@@ -9,6 +9,7 @@ const modules: Record<Locale, Record<string, () => Promise<MessageModule>>> = {
   es: {
     agentPet: () => import("./messages/es/agent-pet.json"),
     common: () => import("./messages/es/common.json"),
+    home: () => import("./messages/es/home.json"),
     navigation: () => import("./messages/es/navigation.json"),
     platform: () => import("./messages/es/platform.json"),
     "modules/shared": () => import("./messages/es/modules/shared.json"),
@@ -16,6 +17,7 @@ const modules: Record<Locale, Record<string, () => Promise<MessageModule>>> = {
   en: {
     agentPet: () => import("./messages/en/agent-pet.json"),
     common: () => import("./messages/en/common.json"),
+    home: () => import("./messages/en/home.json"),
     navigation: () => import("./messages/en/navigation.json"),
     platform: () => import("./messages/en/platform.json"),
     "modules/shared": () => import("./messages/en/modules/shared.json"),
