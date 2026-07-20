@@ -12,11 +12,11 @@ import {
   Network,
   Palmtree,
   Plane,
-  ShieldCheck,
   Utensils,
 } from "lucide-react";
 
 import { HomeSceneController } from "./HomeSceneController";
+import { WorldCircuit } from "./WorldCircuit";
 import styles from "./home-experience.module.css";
 
 type Props = Readonly<{ locale: "es" | "en" }>;
@@ -41,7 +41,7 @@ const logoNames: Record<string, string> = {
 const partners = ["axis", "avigilon", "hanwha", "panduit", "exacq", "verkada", "softwarehouse", "hikvision", "hid"] as const;
 
 function Logo({ id }: Readonly<{ id: string }>) {
-  return <Image alt={logoNames[id]} className={styles.logoImage} height={80} src={`/home/logos/${id}.png`} unoptimized width={180} />;
+  return <Image alt={logoNames[id]} className={styles.logoImage} height={80} src={`/home/partners/${id}.png`} unoptimized width={180} />;
 }
 
 export async function HomeExperience({ locale }: Props) {
@@ -134,30 +134,11 @@ export async function HomeExperience({ locale }: Props) {
       <section className={`${styles.scene} ${styles.worldsScene}`} data-home-scene id="mundos">
         <div aria-hidden="true" className={styles.worldOrbits}><div /><div /></div>
         <div className={styles.sectionContent}>
-          <h2>{t("worldsTitle")}</h2>
-          <p className={styles.worldsLead}>{t("worldsLead")}</p>
-          <div className={styles.worlds}>
-            <article className={`${styles.worldPanel} ${styles.physical}`}>
-              <h3><span />{t("physicalTitle")}</h3>
-              <div className={styles.capabilities}>
-                {[[Camera, "cctv"], [KeyRound, "access"], [Network, "voiceData"], [AudioLines, "audioVideo"]].map(([Icon, key]) => {
-                  const CapabilityIcon = Icon as typeof Camera;
-                  return <div key={key as string}><CapabilityIcon aria-hidden="true" /><span>{t(`physical.${key}`)}</span></div>;
-                })}
-              </div>
-              <div className={styles.tags}><span>{t("systems")}</span><span>{t("integration")}</span><span>{t("infrastructure")}</span></div>
-            </article>
-            <div className={styles.connector} aria-hidden="true"><Image alt="" height={218} src="/brand/ecosat-horizontal.png" unoptimized width={403} /></div>
-            <article className={`${styles.worldPanel} ${styles.digital}`}>
-              <h3><span />{t("digitalTitle")}</h3>
-              <div className={styles.sidon}>{t("sidon")}</div>
-              <p>{t("digitalDescription")}</p>
-              <div className={styles.digitalCapabilities}>
-                <span>{t("visibility")}</span><span>{t("control")}</span><span>{t("intelligence")}</span>
-              </div>
-            </article>
-          </div>
-          <p className={styles.worldsClose}><ShieldCheck aria-hidden="true" />{t("worldsClose")}</p>
+          <WorldCircuit
+            close={t("worldsClose")}
+            lead={t("worldsLead")}
+            title={t("worldsTitle")}
+          />
         </div>
       </section>
     </main>
