@@ -1,20 +1,15 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import {
-  ArrowDown,
-  AudioLines,
   Building2,
-  Camera,
-  Cpu,
   Factory,
-  KeyRound,
   Landmark,
-  Network,
   Palmtree,
   Plane,
   Utensils,
 } from "lucide-react";
 
+import { CoreOpening } from "./CoreOpening";
 import { HomeSceneController } from "./HomeSceneController";
 import { MapExperience } from "./MapExperience";
 import { WorldCircuit } from "./WorldCircuit";
@@ -47,45 +42,16 @@ function Logo({ id }: Readonly<{ id: string }>) {
 
 export async function HomeExperience({ locale }: Props) {
   const t = await getTranslations({ locale, namespace: "home" });
-  const pillars = [
-    [Camera, "pillarSecurity"],
-    [KeyRound, "pillarAccess"],
-    [Network, "pillarNetworks"],
-    [AudioLines, "pillarAudio"],
-    [Cpu, "pillarIntelligence"],
-  ] as const;
 
   return (
     <main className={styles.home}>
       <HomeSceneController />
 
-      <section className={`${styles.scene} ${styles.cover}`} data-home-scene id="portada">
-        <div aria-hidden="true" className={styles.orbits}>
-          <div className={`${styles.orbit} ${styles.orbitOuter}`}>
-            <i className={`${styles.orbitNode} ${styles.outerNode}`} />
-          </div>
-          <div className={`${styles.orbit} ${styles.orbitInner}`}>
-            <i className={`${styles.orbitNode} ${styles.innerNode}`} />
-          </div>
-        </div>
-        <div className={styles.coverContent}>
-          <h1 className={styles.visuallyHidden}>{t("coverTitle")}</h1>
-          <Image alt="Ecosat" className={styles.ecosatLogo} height={218} priority src="/brand/ecosat-horizontal.png" unoptimized width={403} />
-          <p className={styles.lead}>{t("coverLead")}</p>
-          <div className={styles.pillars}>
-            {pillars.map(([Icon, key]) => (
-              <div className={styles.pillar} key={key}>
-                <Icon aria-hidden="true" />
-                <span>{t(key)}</span>
-              </div>
-            ))}
-          </div>
-          <a className={styles.startButton} href="#mapa">
-            {t("start")}
-            <ArrowDown aria-hidden="true" />
-          </a>
-        </div>
-      </section>
+      <CoreOpening
+        attributes={[t("attributeInfrastructure"), t("attributeTechnology"), t("attributeConnectivity"), t("attributeIntelligence"), t("attributeTrust")]}
+        statement={t("coverLead")}
+        title={t("coverTitle")}
+      />
 
       <MapExperience
         close={t("mapClose")}
