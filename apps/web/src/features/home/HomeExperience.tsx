@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 
 import { HomeSceneController } from "./HomeSceneController";
+import { MapExperience } from "./MapExperience";
 import { WorldCircuit } from "./WorldCircuit";
 import styles from "./home-experience.module.css";
 
@@ -86,29 +87,12 @@ export async function HomeExperience({ locale }: Props) {
         </div>
       </section>
 
-      <section className={`${styles.scene} ${styles.mapScene}`} data-home-scene id="mapa">
-        <div className={styles.sectionContent}>
-          <div className={styles.mapNarrative}>
-            <p>{t("mapOrigin")}</p>
-            <p>{t("mapMexico")}</p>
-            <p>{t("mapBorder")}</p>
-            <p>{t("mapCanada")}</p>
-            <p>{t("mapCentralAmerica")}</p>
-          </div>
-          <svg aria-hidden="true" className={styles.mapGraphic} viewBox="0 0 760 390">
-            <path d="M120 94 225 57l108 39 69-28 93 49 117 11 46 72-45 52-88 3-46 53-83-14-65 49-91-35-69 16-76-74 15-71-60-55Z" />
-            {[
-              [254, 151], [270, 141], [287, 154], [298, 168], [310, 149], [325, 163], [342, 180],
-              [360, 168], [381, 182], [399, 170], [421, 194], [443, 187], [462, 205], [479, 193],
-              [501, 215], [520, 203], [540, 228], [557, 218], [576, 237], [599, 229], [621, 245],
-              [226, 176], [238, 189], [252, 201], [266, 213], [278, 225], [290, 237], [303, 249],
-            ].map(([cx, cy]) => <circle cx={cx} cy={cy} key={`${cx}-${cy}`} r="4" />)}
-            <circle className={styles.hqDot} cx="246" cy="147" r="8" />
-            <text x="260" y="138">{t("mapHq")}</text>
-          </svg>
-          <p className={styles.mapClose}>{t("mapClose")}</p>
-        </div>
-      </section>
+      <MapExperience
+        close={t("mapClose")}
+        hq={t("mapHq")}
+        labels={[t("mapOrigin"), t("mapMexico"), t("mapBorder"), t("mapCanada"), t("mapCentralAmerica"), t("mapPresence")]}
+        reach={[t("mapReachOne"), t("mapReachMexico"), t("mapReachNorth"), t("mapReachTotal")]}
+      />
 
       <section className={`${styles.scene} ${styles.industryScene}`} data-home-scene id="industrias">
         <div className={styles.sectionContent}>

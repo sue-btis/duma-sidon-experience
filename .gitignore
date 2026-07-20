@@ -1,5 +1,7 @@
 .codex
-.superpowers/
+.superpowers/*
+docs/superpowers/
+docs/superpowers/*
 docs/legacy
 .impeccable/
 
@@ -21,4 +23,4 @@ apps/*/coverage/
 # Logs and operating-system files
 *.log
 .DS_Store
-docs/superpowers/
+
