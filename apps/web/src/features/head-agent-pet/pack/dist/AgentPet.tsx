@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { CSSProperties } from "react";
 import { petManifest } from "./pet-manifest";
 import "./agent-pet.css";
 
@@ -73,38 +72,21 @@ export function AgentPet({
 
   const orbits = (petManifest.effects?.orbits ?? []) as ReadonlyArray<Orbit>;
   const path = orbits[0];
-  const pathStyle = path
-    ? {
-        "--orbit-path-width": `${((path.radius_x_px ?? 72) * 2 / 192) * 100}%`,
-        "--orbit-path-height": `${((path.radius_y_px ?? 30) * 2 / 192) * 100}%`,
-        "--orbit-tilt": `${path.tilt_deg ?? -10}deg`,
-      } as CSSProperties
-    : undefined;
+  const centerY = 104;
+  const orbitPath = (orbit: Orbit) => {
+    const radiusX = orbit.radius_x_px ?? 72;
+    const radiusY = orbit.radius_y_px ?? 30;
+    return `M ${96 + radiusX} ${centerY} A ${radiusX} ${radiusY} ${orbit.tilt_deg ?? -10} 1 1 ${96 - radiusX} ${centerY} A ${radiusX} ${radiusY} ${orbit.tilt_deg ?? -10} 1 1 ${96 + radiusX} ${centerY}`;
+  };
 
   return (
     <div className={`agent-pet agent-pet--${state} ${className}`} role="img" aria-label={label ?? `${petManifest.pet.name}: ${state}`}>
       <span className="agent-pet__shadow" aria-hidden="true" />
-      {path && <span className="agent-pet__orbit-path" style={pathStyle} aria-hidden="true" />}
+      {path && <svg className="agent-pet__orbit-svg agent-pet__orbit-svg--back" viewBox="0 0 192 192" aria-hidden="true"><path d={orbitPath(path)} />{orbits.map((orbit, index) => <circle key={`${orbit.name ?? "orbit"}-${index}`} r={(orbit.size_px ?? 12) / 2}><animateMotion dur={`${orbit.duration_ms ?? 3600}ms`} begin={`${orbit.delay_ms ?? 0}ms`} repeatCount="indefinite" path={orbitPath(orbit)} /></circle>)}</svg>}
       {/* Animated WebP must remain unoptimized so playback is preserved. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img className="agent-pet__body" src={`${basePath}/${config.webp}`} alt="" draggable={false} />
-      {orbits.map((orbit, index) => (
-        <span
-          className="agent-pet__orbit"
-          key={`${orbit.name ?? "orbit"}-${index}`}
-          style={{
-            "--orbit-diameter": `${((orbit.radius_x_px ?? 72) * 2 / 192) * 100}%`,
-            "--orbit-scale-y": (orbit.radius_y_px ?? 30) / (orbit.radius_x_px ?? 72),
-            "--orbit-unscale-y": (orbit.radius_x_px ?? 72) / (orbit.radius_y_px ?? 30),
-            "--orbit-tilt": `${orbit.tilt_deg ?? -10}deg`,
-            "--orbit-duration": `${orbit.duration_ms ?? 3600}ms`,
-            "--orbit-size": `${((orbit.size_px ?? 12) / ((orbit.radius_x_px ?? 72) * 2)) * 100}%`,
-            "--orbit-delay": `${orbit.delay_ms ?? 0}ms`,
-            "--orbit-start": "0deg",
-          } as CSSProperties}
-          aria-hidden="true"
-        />
-      ))}
+      {path && <svg className="agent-pet__orbit-svg agent-pet__orbit-svg--front" viewBox="0 0 192 192" aria-hidden="true"><defs><clipPath id="head-pet-orbit-front"><rect y={centerY} width="192" height="88" /></clipPath></defs><path d={orbitPath(path)} clipPath="url(#head-pet-orbit-front)" />{orbits.map((orbit, index) => <g key={`${orbit.name ?? "orbit"}-${index}`} clipPath="url(#head-pet-orbit-front)"><circle r={(orbit.size_px ?? 12) / 2}><animateMotion dur={`${orbit.duration_ms ?? 3600}ms`} begin={`${orbit.delay_ms ?? 0}ms`} repeatCount="indefinite" path={orbitPath(orbit)} /></circle></g>)}</svg>}
       <span className="agent-pet__particles" aria-hidden="true" />
     </div>
   );

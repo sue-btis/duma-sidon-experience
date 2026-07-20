@@ -6,6 +6,7 @@
   width: 100%;
   height: 100%;
   aspect-ratio: 1;
+  overflow: hidden;
   isolation: isolate;
 }
 
@@ -17,6 +18,18 @@
   pointer-events: none;
   z-index: 2;
 }
+
+.agent-pet__orbit-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.agent-pet__orbit-svg path { fill: none; stroke: color-mix(in srgb, var(--pet-accent), transparent 34%); stroke-width: 1; }
+.agent-pet__orbit-svg circle { fill: var(--pet-accent); filter: drop-shadow(0 0 6px color-mix(in srgb, var(--pet-accent), transparent 20%)); }
+.agent-pet__orbit-svg--back { z-index: 1; }
+.agent-pet__orbit-svg--front { z-index: 3; }
 
 .agent-pet--working .agent-pet__body {
   transform-origin: center bottom;
@@ -44,8 +57,8 @@
   position: absolute;
   left: 50%;
   top: 54%;
-  width: var(--orbit-path-width);
-  height: var(--orbit-path-height);
+  width: min(var(--orbit-path-width), 100%);
+  height: min(var(--orbit-path-height), 100%);
   border: 1px solid color-mix(in srgb, var(--pet-accent), transparent 34%);
   border-radius: 50%;
   transform: translate(-50%, -50%) rotate(var(--orbit-tilt));
@@ -63,7 +76,7 @@
   position: absolute;
   left: 50%;
   top: 54%;
-  width: var(--orbit-diameter);
+  width: min(var(--orbit-diameter), 100%);
   aspect-ratio: 1;
   animation:
     agent-pet-orbit-motion var(--orbit-duration) linear var(--orbit-delay) infinite,
@@ -104,8 +117,8 @@
 }
 
 @keyframes agent-pet-orbit-motion {
-  from { transform: translate(-50%, -50%) rotate(var(--orbit-tilt)) scaleY(var(--orbit-scale-y)) rotate(var(--orbit-start)); }
-  to { transform: translate(-50%, -50%) rotate(var(--orbit-tilt)) scaleY(var(--orbit-scale-y)) rotate(calc(var(--orbit-start) + 360deg)); }
+  from { transform: translate(-50%, -50%) rotate(var(--orbit-tilt)) rotate(var(--orbit-start)) scaleY(var(--orbit-scale-y)); }
+  to { transform: translate(-50%, -50%) rotate(var(--orbit-tilt)) rotate(calc(var(--orbit-start) + 360deg)) scaleY(var(--orbit-scale-y)); }
 }
 
 @keyframes agent-pet-reading {
