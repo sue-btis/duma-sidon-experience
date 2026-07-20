@@ -118,7 +118,7 @@ export async function HomeExperience({ locale }: Props) {
               <article className={styles.industry} key={name}>
                 <h3><Icon aria-hidden="true" />{t(`industry.${name}`)}</h3>
                 <div className={styles.industryLogos}>
-                  {logos.map((logo) => <div className={styles.logoBox} key={logo}><Logo id={logo} /></div>)}
+                  {logos.map((logo) => <Logo id={logo} key={logo} />)}
                 </div>
               </article>
             ))}

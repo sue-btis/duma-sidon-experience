@@ -18,7 +18,7 @@ export function HomeSceneController() {
 
     let isNavigating = false;
     const canPageScenes = () =>
-      window.matchMedia("(min-width: 701px) and (prefers-reduced-motion: no-preference)").matches;
+      window.matchMedia("(min-width: 1001px) and (prefers-reduced-motion: no-preference)").matches;
     const onWheel = (event: WheelEvent) => {
       if (!canPageScenes() || !event.deltaY) return;
 
