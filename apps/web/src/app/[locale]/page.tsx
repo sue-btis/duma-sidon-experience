@@ -1,6 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 
-import { EcosatNavbar } from "@/features/landing/EcosatNavbar";
+import { EcosatNavbar } from "@/components/layout/EcosatNavbar";
 
 type Props = Readonly<{
   params: Promise<{ locale: "es" | "en" }>;
