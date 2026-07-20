@@ -1,6 +1,7 @@
 .codex
 .superpowers/
 docs/legacy
+.impeccable/
 
 # Node.js / pnpm
 node_modules/

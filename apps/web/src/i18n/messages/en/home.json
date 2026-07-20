@@ -1,4 +1,5 @@
 {
+  "coverTitle": "Ecosat: connecting worlds. Driving decisions.",
   "coverLead": "We unite the physical world with the digital one.",
   "pillarSecurity": "Security",
   "pillarAccess": "Access",
@@ -11,16 +12,10 @@
   "mapBorder": "We crossed the border.",
   "mapCanada": "We reached Canada.",
   "mapCentralAmerica": "And Central America.",
+  "mapHq": "Chihuahua · HQ",
   "mapClose": "We connect people, spaces, and technology to transform operations and create value.",
   "industriesTitle": "Industries that trust Ecosat.",
-  "industry": {
-    "industrial": "Industrial and manufacturing",
-    "food": "Food",
-    "retail": "Retail and QSR",
-    "tourism": "Tourism and hospitality",
-    "aerospace": "Aerospace",
-    "government": "Government and binational"
-  },
+  "industry": { "industrial": "Industrial and manufacturing", "food": "Food", "retail": "Retail and QSR", "tourism": "Tourism and hospitality", "aerospace": "Aerospace", "government": "Government and binational" },
   "partnersTitle": "Supported by leading technology partners",
   "industriesClose": "We work with the best to offer solutions without limits.",
   "worldsTitle": "Ecosat lives in two worlds.",

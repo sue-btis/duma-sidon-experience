@@ -1,4 +1,5 @@
 {
+  "coverTitle": "Ecosat: conectamos mundos. Impulsamos decisiones.",
   "coverLead": "Unimos el mundo físico con el digital.",
   "pillarSecurity": "Seguridad",
   "pillarAccess": "Acceso",
@@ -11,16 +12,10 @@
   "mapBorder": "Cruzamos la frontera.",
   "mapCanada": "Llegamos hasta Canadá.",
   "mapCentralAmerica": "Y hasta Centroamérica.",
+  "mapHq": "Chihuahua · sede",
   "mapClose": "Conectamos personas, espacios y tecnología para transformar operaciones y crear valor.",
   "industriesTitle": "Industrias que confían en Ecosat.",
-  "industry": {
-    "industrial": "Industrial y manufactura",
-    "food": "Alimentos",
-    "retail": "Retail y QSR",
-    "tourism": "Turismo y hospitalidad",
-    "aerospace": "Aeroespacial",
-    "government": "Gobierno y binacional"
-  },
+  "industry": { "industrial": "Industrial y manufactura", "food": "Alimentos", "retail": "Retail y QSR", "tourism": "Turismo y hospitalidad", "aerospace": "Aeroespacial", "government": "Gobierno y binacional" },
   "partnersTitle": "Con el respaldo de los mejores socios tecnológicos",
   "industriesClose": "Trabajamos con los mejores para ofrecer soluciones sin límites.",
   "worldsTitle": "Ecosat vive en dos mundos.",

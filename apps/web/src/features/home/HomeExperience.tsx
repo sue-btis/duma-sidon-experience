@@ -22,11 +22,7 @@ import styles from "./home-experience.module.css";
 type Props = Readonly<{ locale: "es" | "en" }>;
 
 const industries = [
-  {
-    icon: Factory,
-    name: "industrial",
-    logos: ["emerson", "ternium", "milwaukee", "chamberlain"],
-  },
+  { icon: Factory, name: "industrial", logos: ["emerson", "ternium", "milwaukee", "chamberlain"] },
   { icon: Utensils, name: "food", logos: ["bafar", "sunrise"] },
   { icon: Building2, name: "retail", logos: ["mcdonalds", "carls"] },
   { icon: Palmtree, name: "tourism", logos: ["xcaret"] },
@@ -35,51 +31,17 @@ const industries = [
 ] as const;
 
 const logoNames: Record<string, string> = {
-  emerson: "Emerson",
-  ternium: "Ternium",
-  milwaukee: "Milwaukee",
-  chamberlain: "Chamberlain",
-  bafar: "Grupo Bafar",
-  sunrise: "Sunrise Confections",
-  mcdonalds: "McDonald's",
-  carls: "Carl's Jr.",
-  xcaret: "Grupo Xcaret",
-  cessna: "Cessna and Beechcraft",
-  ibwc: "IBWC and CILA",
-  axis: "Axis Communications",
-  avigilon: "Avigilon",
-  hanwha: "Hanwha Vision",
-  panduit: "Panduit",
-  exacq: "exacq Technologies",
-  verkada: "Verkada",
-  softwarehouse: "Software House",
-  hikvision: "Hikvision",
-  hid: "HID",
+  emerson: "Emerson", ternium: "Ternium", milwaukee: "Milwaukee", chamberlain: "Chamberlain",
+  bafar: "Grupo Bafar", sunrise: "Sunrise Confections", mcdonalds: "McDonald's", carls: "Carl's Jr.",
+  xcaret: "Grupo Xcaret", cessna: "Cessna and Beechcraft", ibwc: "IBWC and CILA",
+  axis: "Axis Communications", avigilon: "Avigilon", hanwha: "Hanwha Vision", panduit: "Panduit",
+  exacq: "exacq Technologies", verkada: "Verkada", softwarehouse: "Software House", hikvision: "Hikvision", hid: "HID",
 };
 
-const partners = [
-  "axis",
-  "avigilon",
-  "hanwha",
-  "panduit",
-  "exacq",
-  "verkada",
-  "softwarehouse",
-  "hikvision",
-  "hid",
-] as const;
+const partners = ["axis", "avigilon", "hanwha", "panduit", "exacq", "verkada", "softwarehouse", "hikvision", "hid"] as const;
 
 function Logo({ id }: Readonly<{ id: string }>) {
-  return (
-    <Image
-      alt={logoNames[id]}
-      className={styles.logoImage}
-      height={80}
-      src={`/home/logos/${id}.png`}
-      unoptimized
-      width={180}
-    />
-  );
+  return <Image alt={logoNames[id]} className={styles.logoImage} height={80} src={`/home/logos/${id}.png`} unoptimized width={180} />;
 }
 
 export async function HomeExperience({ locale }: Props) {
@@ -106,15 +68,8 @@ export async function HomeExperience({ locale }: Props) {
           </div>
         </div>
         <div className={styles.coverContent}>
-          <Image
-            alt="Ecosat"
-            className={styles.ecosatLogo}
-            height={218}
-            priority
-            src="/brand/ecosat-horizontal.png"
-            unoptimized
-            width={403}
-          />
+          <h1 className={styles.visuallyHidden}>{t("coverTitle")}</h1>
+          <Image alt="Ecosat" className={styles.ecosatLogo} height={218} priority src="/brand/ecosat-horizontal.png" unoptimized width={403} />
           <p className={styles.lead}>{t("coverLead")}</p>
           <div className={styles.pillars}>
             {pillars.map(([Icon, key]) => (
@@ -149,7 +104,7 @@ export async function HomeExperience({ locale }: Props) {
               [226, 176], [238, 189], [252, 201], [266, 213], [278, 225], [290, 237], [303, 249],
             ].map(([cx, cy]) => <circle cx={cx} cy={cy} key={`${cx}-${cy}`} r="4" />)}
             <circle className={styles.hqDot} cx="246" cy="147" r="8" />
-            <text x="260" y="138">Chihuahua · HQ</text>
+            <text x="260" y="138">{t("mapHq")}</text>
           </svg>
           <p className={styles.mapClose}>{t("mapClose")}</p>
         </div>
@@ -159,17 +114,14 @@ export async function HomeExperience({ locale }: Props) {
         <div className={styles.sectionContent}>
           <h2>{t("industriesTitle")}</h2>
           <div className={styles.industryGrid}>
-            {industries.map((industry) => {
-              const Icon = industry.icon;
-              return (
-                <article className={styles.industry} key={industry.name}>
-                  <h3><Icon aria-hidden="true" />{t(`industry.${industry.name}`)}</h3>
-                  <div className={styles.industryLogos}>
-                    {industry.logos.map((logo) => <div className={styles.logoBox} key={logo}><Logo id={logo} /></div>)}
-                  </div>
-                </article>
-              );
-            })}
+            {industries.map(({ icon: Icon, logos, name }) => (
+              <article className={styles.industry} key={name}>
+                <h3><Icon aria-hidden="true" />{t(`industry.${name}`)}</h3>
+                <div className={styles.industryLogos}>
+                  {logos.map((logo) => <div className={styles.logoBox} key={logo}><Logo id={logo} /></div>)}
+                </div>
+              </article>
+            ))}
           </div>
           <h3 className={styles.partnerTitle}>{t("partnersTitle")}</h3>
           <div className={styles.partners}>
