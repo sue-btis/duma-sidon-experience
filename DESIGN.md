@@ -32,20 +32,22 @@ The conflict rule is:
 
 Ecosat is the central corporate connector between the physical and digital worlds.
 
+The Ecosat home page and other company-level ecosystem surfaces use Ecosat as the dominant brand, including its blue primary color. Mentioning or introducing Integración and Sidón on those surfaces does not switch the surface identity.
+
 - **Integración** is the physical world. Its identity is purple.
 - **Sidón** is the digital world. Its identity is green.
 - **Duma** appears only inside Sidón as its intelligence layer.
 
-A surface has one dominant brand. Ecosat may connect or endorse the two worlds without recoloring or visually absorbing them.
+A surface has one dominant brand. Dedicated Integración routes, scenes, and controls use the Integración purple system; dedicated Sidón routes, scenes, and controls use the Sidón green system. Ecosat may connect or endorse the two worlds without recoloring or visually absorbing them.
 
 ### Color system
 
 | Brand | Primary | Deep / structural | Use |
 |---|---:|---:|---|
-| Ecosat | `#00ADEF` | `#2B328C` | Corporate connector, Ecosat scenes, and Ecosat-specific transition accents |
-| Integración | `#765CA4` | `#3B2B50` | Physical-world scenes and Integración de sistemas |
+| Ecosat | `#00ADEF` | `#2B328C` | Corporate home, company-level ecosystem scenes, connector, and Ecosat-specific transition accents |
+| Integración | `#765CA4` | `#3B2B50` | Dedicated Integración product routes, scenes, and controls |
 | Integración support | `#565069` | `#6B6C8D` | Supporting labels, lines, and secondary surfaces |
-| Sidón | `#00A887` | `#0D553F` | Digital-world scenes, controls, and Sidón structure |
+| Sidón | `#00A887` | `#0D553F` | Dedicated Sidón product routes, scenes, controls, and Sidón structure |
 | Duma | `#2ECC71` | `#0D5C3A` | Intelligence-specific moments within Sidón only |
 | Duma support | `#B8F0D8` | `#E5FFF5` | Soft intelligence accents, highlights, and controlled glow surfaces |
 

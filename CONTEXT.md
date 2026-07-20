@@ -16,6 +16,9 @@ _Avoid_: Product, brand
 The company and umbrella brand represented by this public site.
 _Avoid_: Ecosat product
 
+**Brand context**:
+The Ecosat home page and other company-level ecosystem surfaces use Ecosat blue as the dominant identity. Integración purple and Sidón green identify their dedicated product routes, scenes, and controls; mentioning either product on an Ecosat surface does not change that surface's brand color.
+
 **Contact channel**:
 The external method through which a prospective customer initiates a conversation with the company.
 _Avoid_: Lead form, checkout
