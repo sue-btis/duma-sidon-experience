@@ -74,8 +74,8 @@ export function AgentPet({
   const path = orbits[0];
   const centerY = 104;
   const orbitPath = (orbit: Orbit) => {
-    const radiusX = orbit.radius_x_px ?? 72;
-    const radiusY = orbit.radius_y_px ?? 30;
+    const radiusX = Math.min(orbit.radius_x_px ?? 72, 96 - (orbit.size_px ?? 12) / 2);
+    const radiusY = Math.min(orbit.radius_y_px ?? 30, 88 - (orbit.size_px ?? 12) / 2);
     return `M ${96 + radiusX} ${centerY} A ${radiusX} ${radiusY} ${orbit.tilt_deg ?? -10} 1 1 ${96 - radiusX} ${centerY} A ${radiusX} ${radiusY} ${orbit.tilt_deg ?? -10} 1 1 ${96 + radiusX} ${centerY}`;
   };
 

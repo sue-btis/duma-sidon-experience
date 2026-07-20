@@ -24,6 +24,7 @@ type Props = Readonly<{ labels: Labels }>;
 export function AgentPetDemo({ labels }: Props) {
   const [state, setState] = useState<AgentPetState>("idle");
   const [automatic, setAutomatic] = useState(true);
+  const [containerSize, setContainerSize] = useState(256);
 
   useEffect(() => {
     if (!automatic) return;
@@ -45,7 +46,7 @@ export function AgentPetDemo({ labels }: Props) {
 
       <div className="grid w-full gap-4 sm:grid-cols-2">
         <div className="grid h-80 place-items-center rounded-3xl border bg-card text-[#00ad93] shadow-sm">
-          <div className="size-64">
+          <div style={{ width: containerSize, height: containerSize }}>
             <AgentPet
               label={`${labels.title}: ${labels.states[state]}`}
               state={state}
@@ -56,7 +57,7 @@ export function AgentPetDemo({ labels }: Props) {
         </div>
 
         <div className="grid h-80 place-items-center rounded-3xl border bg-card text-[#00ad93] shadow-sm">
-          <div className="size-64">
+          <div style={{ width: containerSize, height: containerSize }}>
             <HeadAgentPet
               basePath="/head-pet"
               label={`${labels.title}: ${labels.states[state]}`}
@@ -71,6 +72,20 @@ export function AgentPetDemo({ labels }: Props) {
       <p className="text-sm font-medium" aria-live="polite">
         {labels.states[state]}
       </p>
+
+      <label className="flex w-full max-w-xs items-center gap-3 text-sm font-medium">
+        <span>{containerSize}px</span>
+        <input
+          aria-label="Pet container size"
+          className="w-full accent-primary"
+          max="288"
+          min="96"
+          onChange={(event) => setContainerSize(Number(event.target.value))}
+          step="8"
+          type="range"
+          value={containerSize}
+        />
+      </label>
 
       <div className="flex flex-wrap justify-center gap-2">
         {states.map((candidate) => (
