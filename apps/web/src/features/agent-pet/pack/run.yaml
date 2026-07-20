@@ -30,27 +30,17 @@ actions:
     next: null
     variants:
       breathe:
-        weight: 70
+        weight: 100
         keyframes: 8
         motion: Subtle breathing cycle with a tiny body rise and fall, calm expression,
           and a seamless return to the starting pose.
-      blink-look:
-        weight: 30
-        keyframes: 8
-        motion: Blink once, glance slightly to one side, then return smoothly to the
-          starting pose.
   working:
     fps: 16
     loop: true
     next: null
     variants:
-      read:
-        weight: 65
-        keyframes: 8
-        motion: Hold an open dark green book and read it with small focused eye movements
-          and a gentle rhythmic sway.
       turn-page:
-        weight: 35
+        weight: 100
         keyframes: 8
         motion: Hold an open dark green book, lift and turn one page, then settle
           back into reading for a seamless loop.

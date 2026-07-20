@@ -27,41 +27,13 @@
           "spritesheetRows": 2,
           "fps": 12,
           "loop": true,
-          "weight": 70,
-          "next": null
-        },
-        "blink-look": {
-          "webp": "animations/idle--blink-look.webp",
-          "spritesheet": "spritesheets/idle--blink-look.png",
-          "framesDirectory": "frames/idle--blink-look",
-          "frameWidth": 256,
-          "frameHeight": 256,
-          "frameCount": 16,
-          "spritesheetColumns": 8,
-          "spritesheetRows": 2,
-          "fps": 12,
-          "loop": true,
-          "weight": 30,
+          "weight": 100,
           "next": null
         }
       }
     },
     "working": {
       "variants": {
-        "read": {
-          "webp": "animations/working--read.webp",
-          "spritesheet": "spritesheets/working--read.png",
-          "framesDirectory": "frames/working--read",
-          "frameWidth": 256,
-          "frameHeight": 256,
-          "frameCount": 16,
-          "spritesheetColumns": 8,
-          "spritesheetRows": 2,
-          "fps": 16,
-          "loop": true,
-          "weight": 65,
-          "next": null
-        },
         "turn-page": {
           "webp": "animations/working--turn-page.webp",
           "spritesheet": "spritesheets/working--turn-page.png",
@@ -73,7 +45,7 @@
           "spritesheetRows": 2,
           "fps": 16,
           "loop": true,
-          "weight": 35,
+          "weight": 100,
           "next": null
         }
       }

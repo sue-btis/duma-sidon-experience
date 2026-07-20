@@ -24,32 +24,6 @@
       "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f71c1-36d2-77a0-9ae9-f16e423f681b\\call_RAj0i8LTRVQ0SNKiD9lv8g7P.png"
     },
     {
-      "id": "idle--blink-look",
-      "kind": "animation-strip",
-      "state": "idle",
-      "variant": "blink-look",
-      "status": "complete",
-      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\prompts\\idle--blink-look.md",
-      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\references\\canonical-pet.png",
-      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\generated\\idle--blink-look.png",
-      "keyframes": 8,
-      "qa_note": "Exactly eight stable poses with a readable glance and blink cycle.",
-      "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f71c1-36d2-77a0-9ae9-f16e423f681b\\call_gi391jkjnKVGwzyPJDFhU2aC.png"
-    },
-    {
-      "id": "working--read",
-      "kind": "animation-strip",
-      "state": "working",
-      "variant": "read",
-      "status": "complete",
-      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\prompts\\working--read.md",
-      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\references\\canonical-pet.png",
-      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\agent-pet\\pack\\generated\\working--read.png",
-      "keyframes": 8,
-      "qa_note": "Exactly eight consistent reading poses with one stable open book.",
-      "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f71c1-36d2-77a0-9ae9-f16e423f681b\\call_HL0KPZwozgyQ9J6aISBe3DLS.png"
-    },
-    {
       "id": "working--turn-page",
       "kind": "animation-strip",
       "state": "working",

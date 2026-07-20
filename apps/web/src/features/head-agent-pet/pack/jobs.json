@@ -24,32 +24,6 @@
       "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f724b-b0ac-7363-81e7-e4629fa01c1e\\exec-d116922c-c0fa-42df-9786-a1a598a1b5d0.png"
     },
     {
-      "id": "idle--blink-look",
-      "kind": "animation-strip",
-      "state": "idle",
-      "variant": "blink-look",
-      "status": "complete",
-      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\prompts\\idle--blink-look.md",
-      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\references\\canonical-pet.png",
-      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\generated\\idle--blink-look.png",
-      "keyframes": 8,
-      "qa_note": "Eight coherent poses with a readable blink and small glance.",
-      "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f724b-b0ac-7363-81e7-e4629fa01c1e\\exec-e1207900-a7b7-42d7-befc-07817720108d.png"
-    },
-    {
-      "id": "working--read",
-      "kind": "animation-strip",
-      "state": "working",
-      "variant": "read",
-      "status": "complete",
-      "prompt": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\prompts\\working--read.md",
-      "canonical_reference": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\references\\canonical-pet.png",
-      "selected_output": "C:\\Users\\Josue Escobar\\Documents\\projects\\duma-sidon-experience\\apps\\web\\src\\features\\head-agent-pet\\pack\\generated\\working--read.png",
-      "keyframes": 8,
-      "qa_note": "Eight coherent reading poses with one stable floating dark green book.",
-      "selected_source": "C:\\Users\\Josue Escobar\\.codex\\generated_images\\019f724b-b0ac-7363-81e7-e4629fa01c1e\\exec-e954bcc1-8063-48ff-97e2-7aea9baa39d3.png"
-    },
-    {
       "id": "working--turn-page",
       "kind": "animation-strip",
       "state": "working",
