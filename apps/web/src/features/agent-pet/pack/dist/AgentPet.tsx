@@ -10,7 +10,6 @@ export type AgentPetState = keyof typeof petManifest.states;
 type Props = {
   state: AgentPetState;
   variant?: "auto" | string;
-  size?: number;
   basePath?: string;
   variantIntervalMs?: number;
   className?: string;
@@ -43,7 +42,6 @@ function weightedVariant(state: AgentPetState, previous?: string): string {
 export function AgentPet({
   state,
   variant = "auto",
-  size = 192,
   basePath = "/pet",
   variantIntervalMs = 6000,
   className = "",
@@ -73,19 +71,18 @@ export function AgentPet({
     return variants[selectedVariant] ?? Object.values(variants)[0];
   }, [state, selectedVariant]);
 
-  const style = { "--pet-size": `${size}px` } as CSSProperties;
   const orbits = (petManifest.effects?.orbits ?? []) as ReadonlyArray<Orbit>;
   const path = orbits[0];
   const pathStyle = path
     ? {
-        "--orbit-path-width": `${(path.radius_x_px ?? 72) * 2}px`,
-        "--orbit-path-height": `${(path.radius_y_px ?? 30) * 2}px`,
+        "--orbit-path-width": `${((path.radius_x_px ?? 72) * 2 / 192) * 100}%`,
+        "--orbit-path-height": `${((path.radius_y_px ?? 30) * 2 / 192) * 100}%`,
         "--orbit-tilt": `${path.tilt_deg ?? -10}deg`,
       } as CSSProperties
     : undefined;
 
   return (
-    <div className={`agent-pet agent-pet--${state} ${className}`} style={style} role="img" aria-label={label ?? `${petManifest.pet.name}: ${state}`}>
+    <div className={`agent-pet agent-pet--${state} ${className}`} role="img" aria-label={label ?? `${petManifest.pet.name}: ${state}`}>
       <span className="agent-pet__shadow" aria-hidden="true" />
       {path && <span className="agent-pet__orbit-path" style={pathStyle} aria-hidden="true" />}
       {/* Animated WebP must remain unoptimized so playback is preserved. */}
@@ -96,14 +93,14 @@ export function AgentPet({
           className="agent-pet__orbit"
           key={`${orbit.name ?? "orbit"}-${index}`}
           style={{
-            "--orbit-radius-x": `${orbit.radius_x_px ?? 72}px`,
+            "--orbit-diameter": `${((orbit.radius_x_px ?? 72) * 2 / 192) * 100}%`,
             "--orbit-scale-y": (orbit.radius_y_px ?? 30) / (orbit.radius_x_px ?? 72),
             "--orbit-unscale-y": (orbit.radius_x_px ?? 72) / (orbit.radius_y_px ?? 30),
             "--orbit-tilt": `${orbit.tilt_deg ?? -10}deg`,
             "--orbit-duration": `${orbit.duration_ms ?? 3600}ms`,
-            "--orbit-size": `${orbit.size_px ?? 12}px`,
+            "--orbit-size": `${((orbit.size_px ?? 12) / ((orbit.radius_x_px ?? 72) * 2)) * 100}%`,
             "--orbit-delay": `${orbit.delay_ms ?? 0}ms`,
-            "--orbit-static-x": `${index === 0 ? orbit.radius_x_px ?? 72 : -(orbit.radius_x_px ?? 72)}px`,
+            "--orbit-start": "0deg",
           } as CSSProperties}
           aria-hidden="true"
         />

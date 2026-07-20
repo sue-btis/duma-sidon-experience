@@ -1,11 +1,11 @@
 .agent-pet {
-  --pet-size: 192px;
   --pet-accent: #00ad93;
   position: relative;
   display: inline-grid;
   place-items: center;
-  width: var(--pet-size);
-  height: var(--pet-size);
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
   isolation: isolate;
 }
 
@@ -53,35 +53,35 @@
 }
 
 .agent-pet__orbit {
-  --orbit-radius-x: 72px;
+  --orbit-diameter: 75%;
   --orbit-scale-y: .4167;
   --orbit-unscale-y: 2.4;
   --orbit-tilt: -10deg;
   --orbit-duration: 3600ms;
-  --orbit-size: 12px;
+  --orbit-size: 6.25%;
   --orbit-delay: 0ms;
   position: absolute;
   left: 50%;
   top: 54%;
-  width: calc(var(--orbit-radius-x) * 2);
-  height: calc(var(--orbit-radius-x) * 2);
-  transform: translate(-50%, -50%) rotate(var(--orbit-tilt)) scaleY(var(--orbit-scale-y));
-  animation: agent-pet-orbit-depth var(--orbit-duration) linear var(--orbit-delay) infinite;
+  width: var(--orbit-diameter);
+  aspect-ratio: 1;
+  animation:
+    agent-pet-orbit-motion var(--orbit-duration) linear var(--orbit-delay) infinite,
+    agent-pet-orbit-depth var(--orbit-duration) linear var(--orbit-delay) infinite;
   z-index: 3;
 }
 
 .agent-pet__orbit::before {
   content: "";
   position: absolute;
-  left: 50%;
+  left: 100%;
   top: 50%;
   width: var(--orbit-size);
-  height: var(--orbit-size);
+  aspect-ratio: 1;
   border-radius: 999px;
   background: var(--pet-accent);
   box-shadow: 0 0 12px color-mix(in srgb, var(--pet-accent), transparent 20%);
-  transform: translate(-50%, -50%) translateX(var(--orbit-static-x)) scaleY(var(--orbit-unscale-y));
-  animation: agent-pet-orbit-motion var(--orbit-duration) linear var(--orbit-delay) infinite;
+  transform: translate(-50%, -50%) scaleY(var(--orbit-unscale-y));
 }
 
 .agent-pet__particles { display: none; }
@@ -104,8 +104,8 @@
 }
 
 @keyframes agent-pet-orbit-motion {
-  from { transform: translate(-50%, -50%) rotate(0deg) translateX(var(--orbit-radius-x)) rotate(0deg) scaleY(var(--orbit-unscale-y)); }
-  to { transform: translate(-50%, -50%) rotate(360deg) translateX(var(--orbit-radius-x)) rotate(-360deg) scaleY(var(--orbit-unscale-y)); }
+  from { transform: translate(-50%, -50%) rotate(var(--orbit-tilt)) scaleY(var(--orbit-scale-y)) rotate(var(--orbit-start)); }
+  to { transform: translate(-50%, -50%) rotate(var(--orbit-tilt)) scaleY(var(--orbit-scale-y)) rotate(calc(var(--orbit-start) + 360deg)); }
 }
 
 @keyframes agent-pet-reading {
@@ -128,6 +128,5 @@
   .agent-pet--working .agent-pet__body,
   .agent-pet__shadow,
   .agent-pet__orbit,
-  .agent-pet__orbit::before,
   .agent-pet__particles { animation: none; }
 }

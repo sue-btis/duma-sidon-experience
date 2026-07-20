@@ -45,24 +45,26 @@ export function AgentPetDemo({ labels }: Props) {
 
       <div className="grid w-full gap-4 sm:grid-cols-2">
         <div className="grid h-80 place-items-center rounded-3xl border bg-card text-[#00ad93] shadow-sm">
-          <AgentPet
-            label={`${labels.title}: ${labels.states[state]}`}
-            size={256}
-            state={state}
-            variant="auto"
-            variantIntervalMs={6000}
-          />
+          <div className="size-64">
+            <AgentPet
+              label={`${labels.title}: ${labels.states[state]}`}
+              state={state}
+              variant="auto"
+              variantIntervalMs={6000}
+            />
+          </div>
         </div>
 
         <div className="grid h-80 place-items-center rounded-3xl border bg-card text-[#00ad93] shadow-sm">
-          <HeadAgentPet
-            basePath="/head-pet"
-            label={`${labels.title}: ${labels.states[state]}`}
-            size={256}
-            state={state}
-            variant="auto"
-            variantIntervalMs={6000}
-          />
+          <div className="size-64">
+            <HeadAgentPet
+              basePath="/head-pet"
+              label={`${labels.title}: ${labels.states[state]}`}
+              state={state}
+              variant="auto"
+              variantIntervalMs={6000}
+            />
+          </div>
         </div>
       </div>
 

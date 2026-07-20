@@ -99,20 +99,20 @@
     "orbits": [
       {
         "name": "leading",
-        "radius_x_px": 72,
-        "radius_y_px": 30,
+      "radius_x_px": 100,
+      "radius_y_px": 42,
         "tilt_deg": -10,
         "duration_ms": 3600,
-        "size_px": 12,
+      "size_px": 10,
         "delay_ms": 0
       },
       {
         "name": "opposite",
-        "radius_x_px": 72,
-        "radius_y_px": 30,
+      "radius_x_px": 100,
+      "radius_y_px": 42,
         "tilt_deg": -10,
         "duration_ms": 3600,
-        "size_px": 10,
+      "size_px": 8,
         "delay_ms": -1800
       }
     ],
