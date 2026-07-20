@@ -2,6 +2,8 @@ import { setRequestLocale } from "next-intl/server";
 
 import { EcosatNavbar } from "@/components/layout/EcosatNavbar";
 import { HomeExperience } from "@/features/home/HomeExperience";
+import { OpeningNavbar } from "@/features/home/OpeningNavbar";
+import { getTranslations } from "next-intl/server";
 
 type Props = Readonly<{
   params: Promise<{ locale: "es" | "en" }>;
@@ -10,12 +12,13 @@ type Props = Readonly<{
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const home = await getTranslations({ locale, namespace: "home" });
 
   return (
     <div className="bg-background">
-      <div className="fixed inset-x-0 top-0 z-10 px-4 pt-5 sm:px-6">
+      <OpeningNavbar openLabel={home("openNavigation")}>
         <EcosatNavbar locale={locale} />
-      </div>
+      </OpeningNavbar>
       <HomeExperience locale={locale} />
     </div>
   );

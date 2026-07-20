@@ -28,9 +28,9 @@
 .mapSticky { position: sticky; top: 0; height: 100svh; display: grid; place-items: center; padding: clamp(5rem, 13svh, 7rem) 1.25rem 1rem; overflow: hidden; }
 .mapSticky::before { content: ""; position: absolute; left: 50%; top: 52%; width: min(45rem, 90vw); aspect-ratio: 1; border-radius: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle, color-mix(in srgb, var(--ecosat) 10%, transparent), transparent 65%); pointer-events: none; }
 .mapContent { position: relative; width: min(100%, 44rem); max-height: 100%; display: grid; justify-items: center; align-content: center; gap: .25rem; text-align: center; }
-.mapNarrative { min-height: 1.25em; color: var(--ecosat-deep); font-family: var(--font-brand); font-size: clamp(1.45rem, 4.5svh, 2.25rem); font-weight: 800; line-height: 1.15; }
+.mapNarrative { position: relative; z-index: 1; min-height: 1.25em; color: var(--ecosat-deep); font-family: var(--font-brand); font-size: clamp(1.45rem, 4.5svh, 2.25rem); font-weight: 800; line-height: 1.15; }
 .mapNarrative p, .mapReach { margin: 0; }
-.mapReach { min-height: 1.2em; color: var(--ink-soft); font-size: .75rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+.mapReach { position: relative; z-index: 1; min-height: 1.2em; color: var(--ink-soft); font-size: .75rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
 .mapGraphic { display: block; width: min(100%, 38.75rem); height: auto; max-height: min(50svh, 24rem); overflow: visible; }
 .mapGraphic :global(.dm) { fill: #cbd6e2; opacity: 0; transform: scale(.35); transform-box: fill-box; transform-origin: center; transition: opacity .45s ease, transform .45s cubic-bezier(.22, 1, .36, 1), fill .45s ease; }
 .mapGraphic.mapSeed :global(.dm) { opacity: calc(.4 * var(--f, 1)); transform: none; }
