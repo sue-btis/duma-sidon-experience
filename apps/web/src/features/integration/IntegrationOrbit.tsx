@@ -135,7 +135,7 @@ export function IntegrationOrbit({ ariaLabel, instructions, nextLabel, previousL
       const paused = pause.documentHidden || pause.focus || pause.hover || pause.offscreen;
 
       if (!paused && !pointerRef.current.dragging && time - lastInteractionRef.current > AUTOPLAY_DELAY) {
-        targetRotationRef.current += deltaTime * 0.000055;
+        targetRotationRef.current += deltaTime * 0.000100;
       }
 
       if (!paused && !pointerRef.current.dragging) {
@@ -236,7 +236,7 @@ export function IntegrationOrbit({ ariaLabel, instructions, nextLabel, previousL
       onMouseEnter={() => { pauseRef.current.hover = true; }}
       onMouseLeave={() => {
         pauseRef.current.hover = false;
-        noteInteraction();
+        lastInteractionRef.current = 0;
       }}
       onPointerCancel={handlePointerEnd}
       onPointerDown={handlePointerDown}

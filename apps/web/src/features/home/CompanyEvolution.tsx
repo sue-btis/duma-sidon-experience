@@ -5,10 +5,17 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import styles from "./company-evolution.module.css";
 
 const phases = [
-  { image: "/home/company-evolution/phase-1.jpg", title: "Lorem ipsum dolor sit amet.", label: "Lorem ipsum", tags: ["Lorem", "Ipsum", "Dolor"] },
-  { image: "/home/company-evolution/phase-2.png", title: "Consectetur adipiscing elit.", label: "Consectetur", tags: ["Amet", "Elit", "Vitae"] },
-  { image: "/home/company-evolution/phase-3.png", title: "Sed do eiusmod tempor.", label: "Eiusmod", tags: ["Tempor", "Incididunt", "Labore"] },
-  { image: "/home/company-evolution/phase-4.png", title: "Ut enim ad minim veniam.", label: "Veniam", tags: ["Minim", "Veniam", "Aliquam"] },
+  { image: "/home/company-evolution/phase-1.jpg", title: "Lorem ipsum dolor sit amet." },
+  { image: "/home/company-evolution/phase-2.png", title: "Consectetur adipiscing elit." },
+  { image: "/home/company-evolution/phase-3.png", title: "Sed do eiusmod tempor." },
+  { image: "/home/company-evolution/phase-4.png", title: "Ut enim ad minim veniam." },
+] as const;
+
+const cameras = [
+  { x: 720, y: 1580, zoom: 0.63 },
+  { x: 2050, y: 780, zoom: 0.68 },
+  { x: 3350, y: 1450, zoom: 0.55 },
+  { x: 3960, y: 610, zoom: 0.62 },
 ] as const;
 
 export function CompanyEvolution() {
@@ -43,11 +50,12 @@ export function CompanyEvolution() {
   };
 
   const phase = phases[active];
+  const camera = cameras[active];
 
   return (
     <section aria-label="Company evolution" className={styles.journey} ref={journeyRef}>
       <div className={styles.viewport}>
-        <div className={styles.world} style={{ "--active": active } as CSSProperties}>
+        <div className={styles.world} style={{ "--active": active, "--x": `${camera.x * camera.zoom}px`, "--y": `${camera.y * camera.zoom}px`, "--zoom": camera.zoom } as CSSProperties}>
           <svg aria-hidden="true" className={styles.route} viewBox="0 0 4200 2200">
             <path d="M 700 1700 C 1160 1700, 1420 770, 2050 900 S 2920 1730, 3380 1400 S 3840 650, 3990 750" />
             <path className={styles.routeProgress} d="M 700 1700 C 1160 1700, 1420 770, 2050 900 S 2920 1730, 3380 1400 S 3840 650, 3990 750" pathLength="1" style={{ "--progress": active / (phases.length - 1) } as CSSProperties} />
@@ -56,21 +64,17 @@ export function CompanyEvolution() {
             <button aria-current={index === active ? "step" : undefined} aria-label={`Go to phase ${index + 1}`} className={`${styles.station} ${styles[`station${index + 1}`]} ${index === active ? styles.active : ""}`} key={item.image} onClick={() => goTo(index)} type="button">
               <img alt="" src={item.image} />
               <span className={styles.dot} />
-              <span className={styles.stationLabel}>{String(index + 1).padStart(2, "0")} · {item.label}</span>
             </button>
           ))}
         </div>
 
         <div className={styles.hud}>
-          <div className={styles.topbar}><span className={styles.brandMark} aria-hidden="true" /><span>Ecosat</span><span className={styles.status}>Company evolution · scroll to explore</span></div>
           <article className={styles.story} aria-live="polite">
-            <div className={styles.storyIndex}><span>Chapter {String(active + 1).padStart(2, "0")}</span><span>{phase.label}</span></div>
             <h2>{phase.title}</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <div className={styles.tags}>{phase.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
           </article>
           <nav aria-label="Company evolution phases" className={styles.stepNav}>{phases.map((item, index) => <button aria-current={index === active ? "step" : undefined} className={index === active ? styles.active : ""} key={item.image} onClick={() => goTo(index)} type="button">{String(index + 1).padStart(2, "0")}</button>)}</nav>
-          <div aria-hidden="true" className={styles.progress}><span>Journey</span><div><i style={{ width: `${(active / (phases.length - 1)) * 100}%` }} /><b style={{ left: `${(active / (phases.length - 1)) * 100}%` }} /></div><span>Scroll to progress</span></div>
+          <div aria-hidden="true" className={styles.progress}><div><i style={{ width: `${(active / (phases.length - 1)) * 100}%` }} /><b style={{ left: `${(active / (phases.length - 1)) * 100}%` }} /></div></div>
         </div>
       </div>
     </section>
