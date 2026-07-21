@@ -84,3 +84,13 @@
 .worldAction { min-height: 2.75rem; display: grid; place-items: center; margin-top: .6rem; font-size: .82rem; font-weight: 800; opacity: .78; transition: opacity .2s ease; }
 .worldCircuit { grid-template-rows: minmax(17rem, auto) 16rem auto; min-height: 42rem; }
 @media (max-width: 700px) { .worldCircuit { grid-template-rows: none; min-height: 0; padding: 0; }.worldCircuit::before { content: ""; position: absolute; z-index: -1; left: 50%; top: 9rem; bottom: 4.5rem; width: 2px; background: var(--ecosat); transform: translateX(-50%); }.worldNode { width: min(100%, 24rem); }.worldDescription { max-width: 20rem; }.circuitClose { position: relative; z-index: 1; }.circuitLines { display: none; } }
+.worldsScene { padding-top: 5.25rem; padding-bottom: 2rem; }
+.worldCircuit { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto; grid-template-areas: "integration sidon"; gap: 2rem; min-height: 23rem; margin-top: 1.5rem; }
+.circuitLines { inset: 0; height: 100%; }
+.ecosatNode { position: absolute; left: 50%; top: 14.5rem; z-index: 2; transform: translate(-50%, -50%); }
+@media (max-width: 700px) { .worldsScene { padding-top: 6.5rem; padding-bottom: 4rem; }.worldCircuit { grid-template-columns: 1fr; grid-template-rows: none; grid-template-areas: "ecosat" "integration" "sidon"; gap: 1.5rem; min-height: 0; }.ecosatNode { position: static; transform: none; }.worldCircuit::before { top: 9rem; bottom: 0; }.circuitLines { display: none; } }
+.worldCircuit { min-height: 22rem; padding-bottom: 3.75rem; }
+.worldMark { width: min(100%, 10rem); min-height: 10rem; padding: 1rem; }
+.ecosatNode { width: min(100%, 11.5rem); top: 12.25rem; padding: 1.15rem; }
+.circuitClose { position: absolute; left: 50%; bottom: -4rem; z-index: 2; transform: translateX(-50%); }
+@media (max-width: 700px) { .worldCircuit { min-height: 0; padding-bottom: 0; }.worldMark { min-height: 10rem; }.ecosatNode { width: 12rem; padding: 1.75rem; }.circuitClose { position: static; transform: none; }.worldCircuit::before { bottom: 4.5rem; } }
