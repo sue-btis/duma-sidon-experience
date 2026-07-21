@@ -1,15 +1,19 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ShieldCheck } from "lucide-react";
 
 import styles from "./home-experience.module.css";
 
 type Props = Readonly<{
   close: string;
+  integration: Readonly<{ action: string; description: string; label: string }>;
   lead: string;
+  locale: "es" | "en";
+  sidon: Readonly<{ action: string; description: string; label: string }>;
   title: string;
 }>;
 
-export function WorldCircuit({ close, lead, title }: Props) {
+export function WorldCircuit({ close, integration, lead, locale, sidon, title }: Props) {
   return (
     <>
       <h2>{title}</h2>
@@ -27,8 +31,9 @@ export function WorldCircuit({ close, lead, title }: Props) {
             </mask>
           </defs>
           <g mask="url(#circuitLineGaps)">
-            <path d="M395 440 C310 440 290 180 167 180 M605 440 C690 440 710 180 833 180 M500 590 L500 790" />
-            <path d="M167 250 V720 Q167 860 307 860 H360 M833 250 V720 Q833 860 693 860 H640" />
+            <path className={styles.integrationLine} d="M395 440 C310 440 290 180 167 180" />
+            <path className={styles.sidonLine} d="M605 440 C690 440 710 180 833 180" />
+            <path className={styles.connectorLine} d="M500 590 L500 790" />
           </g>
           <circle className={styles.flowDot} r="7">
             <animateMotion dur="8s" path="M395 440 C310 440 290 180 167 180" repeatCount="indefinite" />
@@ -37,27 +42,27 @@ export function WorldCircuit({ close, lead, title }: Props) {
             <animateMotion dur="8s" path="M605 440 C690 440 710 180 833 180" repeatCount="indefinite" />
           </circle>
           <circle className={styles.flowDot} r="7">
-            <animateMotion begin="-2s" dur="8s" path="M167 250 V720 Q167 860 307 860 H360" repeatCount="indefinite" />
-          </circle>
-          <circle className={styles.flowDot} r="7">
-            <animateMotion begin="-2s" dur="8s" path="M833 250 V720 Q833 860 693 860 H640" repeatCount="indefinite" />
-          </circle>
-          <circle className={styles.flowDot} r="7">
             <animateMotion begin="-1s" dur="8s" path="M500 860 L500 590" repeatCount="indefinite" />
           </circle>
         </svg>
 
-        <div className={`${styles.worldNode} ${styles.integrationNode}`}>
-          <div className={styles.worldMark}><Image alt="Integración" height={104} src="/home/worlds/integracion.png" unoptimized width={104} /></div>
-        </div>
+        <Link className={`${styles.worldNode} ${styles.integrationNode}`} href={`/${locale}/integracion/`}>
+          <div className={styles.worldMark}><Image alt="" height={104} src="/home/worlds/integracion.png" unoptimized width={104} /></div>
+          <span className={styles.worldLabel}>{integration.label}</span>
+          <span className={styles.worldDescription}>{integration.description}</span>
+          <span className={styles.worldAction}>{integration.action}</span>
+        </Link>
 
         <div className={styles.ecosatNode}>
           <Image alt="Ecosat" height={174} src="/home/worlds/ecosat.png" unoptimized width={174} />
         </div>
 
-        <div className={`${styles.worldNode} ${styles.sidonNode}`}>
-          <div className={styles.worldMark}><Image alt="Sidón" height={104} src="/home/worlds/sidon.png" unoptimized width={104} /></div>
-        </div>
+        <Link className={`${styles.worldNode} ${styles.sidonNode}`} href={`/${locale}/sidon/`}>
+          <div className={styles.worldMark}><Image alt="" height={104} src="/home/worlds/sidon.png" unoptimized width={104} /></div>
+          <span className={styles.worldLabel}>{sidon.label}</span>
+          <span className={styles.worldDescription}>{sidon.description}</span>
+          <span className={styles.worldAction}>{sidon.action}</span>
+        </Link>
 
         <p className={styles.circuitClose}><ShieldCheck aria-hidden="true" />{close}</p>
       </div>

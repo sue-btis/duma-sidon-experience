@@ -32,6 +32,9 @@
   "worldsTitle": "Ecosat lives in two worlds.",
   "worldsLead": "Infrastructure that sees, hears, and protects your operation connects with intelligence that turns information into decisions.",
   "physicalTitle": "Special systems",
+  "physicalWorld": "Physical world",
+  "integrationDescription": "Infrastructure, systems, and connectivity for your operation.",
+  "integrationAction": "Explore the physical world",
   "physical": {
     "cctv": "CCTV and video surveillance",
     "access": "Access control",
@@ -44,6 +47,7 @@
   "digitalTitle": "Digital world",
   "sidon": "SIDÓN",
   "digitalDescription": "The intelligence that turns infrastructure into decisions.",
+  "sidonAction": "Explore the digital world",
   "visibility": "Visibility",
   "control": "Control",
   "intelligence": "Intelligence",

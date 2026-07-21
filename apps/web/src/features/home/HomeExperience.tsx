@@ -110,7 +110,18 @@ export async function HomeExperience({ locale }: Props) {
         <div className={styles.sectionContent}>
           <WorldCircuit
             close={t("worldsClose")}
+            integration={{
+              action: t("integrationAction"),
+              description: t("integrationDescription"),
+              label: t("physicalWorld"),
+            }}
             lead={t("worldsLead")}
+            locale={locale}
+            sidon={{
+              action: t("sidonAction"),
+              description: t("digitalDescription"),
+              label: t("digitalTitle"),
+            }}
             title={t("worldsTitle")}
           />
         </div>

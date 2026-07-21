@@ -1,4 +1,8 @@
 {
+  "primary": "Primary navigation",
+  "home": "Home",
+  "integracion": "Integration",
+  "sidon": "Sidón",
   "language": "Language",
   "es": "ES",
   "en": "EN"

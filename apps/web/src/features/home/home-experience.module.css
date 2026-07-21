@@ -69,3 +69,18 @@
 .worldMark { position: relative; width: min(100%, 12rem); min-height: 12rem; display: grid; place-items: center; margin: 0 auto; padding: 1.25rem; border: 1.5px solid color-mix(in srgb, var(--ecosat) 55%, var(--surface)); border-radius: 50%; background: color-mix(in srgb, var(--surface) 94%, var(--ecosat)); }.worldMark img { position: relative; z-index: 1; width: min(7rem, 85%); height: auto; max-height: 7rem; object-fit: contain; }.integrationNode .worldMark { border-color: color-mix(in srgb, var(--integration) 65%, var(--surface)); }.sidonNode .worldMark { border-color: color-mix(in srgb, var(--sidon) 65%, var(--surface)); }.flowDot { fill: var(--ecosat); stroke: var(--surface); stroke-width: 4; }
 @media (max-width: 700px) { .worldMark { min-height: 10rem; } }
 @media (prefers-reduced-motion: reduce) { .flowDot { display: none; } }
+
+.integrationLine { stroke: var(--integration); }
+.sidonLine { stroke: var(--sidon); }
+.connectorLine { stroke: var(--ecosat); }
+.worldNode { display: grid; justify-items: center; color: var(--ink); text-decoration: none; }
+.worldNode:hover .worldMark, .worldNode:focus-visible .worldMark { transform: translateY(-.3rem); }
+.worldNode:hover .worldAction, .worldNode:focus-visible .worldAction { opacity: 1; }
+.worldMark { transition: transform .25s cubic-bezier(.22, 1, .36, 1), border-color .25s ease; }
+.worldLabel { margin-top: .8rem; color: var(--ecosat-deep); font-family: var(--font-brand); font-size: 1rem; font-weight: 800; }
+.integrationNode .worldLabel, .integrationNode .worldAction { color: var(--integration-deep); }
+.sidonNode .worldLabel, .sidonNode .worldAction { color: var(--sidon-deep); }
+.worldDescription { max-width: 17rem; margin-top: .35rem; color: var(--ink-soft); font-size: .88rem; line-height: 1.5; text-align: center; }
+.worldAction { min-height: 2.75rem; display: grid; place-items: center; margin-top: .6rem; font-size: .82rem; font-weight: 800; opacity: .78; transition: opacity .2s ease; }
+.worldCircuit { grid-template-rows: minmax(17rem, auto) 16rem auto; min-height: 42rem; }
+@media (max-width: 700px) { .worldCircuit { grid-template-rows: none; min-height: 0; padding: 0; }.worldCircuit::before { content: ""; position: absolute; z-index: -1; left: 50%; top: 9rem; bottom: 4.5rem; width: 2px; background: var(--ecosat); transform: translateX(-50%); }.worldNode { width: min(100%, 24rem); }.worldDescription { max-width: 20rem; }.circuitClose { position: relative; z-index: 1; }.circuitLines { display: none; } }
