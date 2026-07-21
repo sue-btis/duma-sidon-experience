@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 
 import { CoreOpening } from "./CoreOpening";
+import { CompanyEvolution } from "./CompanyEvolution";
 import { HomeSceneController } from "./HomeSceneController";
 import { MapExperience } from "./MapExperience";
 import { WorldCircuit } from "./WorldCircuit";
@@ -69,6 +70,8 @@ export async function HomeExperience({ locale }: Props) {
         statement={t("coverLead")}
         title={t("coverTitle")}
       />
+
+      <CompanyEvolution />
 
       <MapExperience
         close={t("mapClose")}
