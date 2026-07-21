@@ -17,5 +17,63 @@
   "returnToIntegration": "Volver a Integración",
   "siblings": "Otras soluciones de Integración",
   "conversationTitle": "Conversemos sobre tu proyecto",
-  "conversationCopy": "Podemos comenzar con una solución conocida, varias soluciones o una necesidad que requiera orientación."
+  "conversationCopy": "Podemos comenzar con una solución conocida, varias soluciones o una necesidad que requiera orientación.",
+  "definition": "Definición",
+  "outcomes": "Resultados principales",
+  "pillars": "Pilares de valor",
+  "applications": "Aplicaciones",
+  "capabilities": "Capacidades",
+  "scope": "Alcance",
+  "projectCriteria": "Criterios del proyecto",
+  "solution": {
+    "cctv": {
+      "definition": "CCTV supervisa espacios críticos, fortalece la seguridad y aporta evidencia visual para tomar mejores decisiones operativas.",
+      "emphasis": ["Supervisión", "Protección", "Evidencia", "Control"],
+      "applications": ["Puntos de acceso y salida", "Perímetros", "Áreas operativas", "Recepción", "Almacenes", "Estacionamientos", "Zonas críticas o restringidas"],
+      "details": ["Vigilancia en vivo", "Grabación y revisión de evidencia", "Cobertura interior y exterior", "Supervisión centralizada", "Detección o alertamiento según el proyecto", "Analítica de video opcional", "Escalabilidad para uno o varios sitios"],
+      "note": "La conversación técnica considera requisitos de cobertura, grabación, plataformas de gestión de video, red, almacenamiento y analítica específica del proyecto. No todas las capacidades aplican a todos los proyectos."
+    },
+    "climatizacion-refrigeracion": {
+      "definition": "Sistemas, equipos e infraestructura mantienen las condiciones ambientales y térmicas que requiere cada espacio, proceso u operación.",
+      "emphasis": ["Confort", "Estabilidad", "Protección", "Eficiencia", "Continuidad"],
+      "applications": ["Oficinas", "Espacios comerciales y de servicio", "Restaurantes y cocinas", "Espacios industriales", "Almacenes", "Productos o materiales sensibles", "Cuartos técnicos", "Operaciones multisede", "Espacios con ventilación o extracción específica"],
+      "details": ["Aire acondicionado", "Sistemas HVAC", "Minisplits", "Refrigeración", "Ventilación y extracción", "Distribución y manejo de aire", "Controles e infraestructura asociada", "Mantenimiento, servicio correctivo y soporte técnico"],
+      "note": "Las capacidades pueden ser comunes, opcionales, dependientes del sitio o evaluadas por separado. El servicio considera diagnóstico, diseño, implementación, puesta en marcha, mantenimiento preventivo, respuesta correctiva y continuidad operativa."
+    },
+    "incendios": {
+      "definition": "La detección, el alertamiento, la supresión, la infraestructura y el mantenimiento protegen a las personas, los activos y la continuidad operativa antes y durante un evento.",
+      "emphasis": ["Prevención", "Detección", "Alertamiento", "Respuesta", "Continuidad"],
+      "applications": ["Entornos corporativos", "Comerciales", "Restaurantes", "Industriales", "Almacenes", "Áreas técnicas", "Activos críticos", "Estacionamientos", "Áreas comunes", "Operaciones multisede", "Entornos de riesgo específico"],
+      "details": ["Evaluación de riesgo e infraestructura", "Detección", "Alarmas y notificación", "Supresión y sistemas hidráulicos adecuados al proyecto", "Dispositivos y controles", "Instalación, pruebas y puesta en marcha", "Modernización, mantenimiento, servicio correctivo y soporte técnico"],
+      "note": "La protección es un sistema coordinado, no alarmas o extintores aislados. El alcance distingue detección y alarma, supresión, infraestructura hidráulica, equipo complementario y evaluación especializada según el sitio."
+    },
+    "accesos": {
+      "definition": "Dispositivos, credenciales, permisos e infraestructura física regulan la entrada y el movimiento dentro de una operación.",
+      "emphasis": ["Protección", "Autorización", "Flujo", "Visibilidad", "Continuidad"],
+      "applications": ["Puertas principales e interiores", "Áreas restringidas y técnicas", "Almacenes", "Oficinas", "Instalaciones industriales", "Controles peatonales", "Acceso vehicular y estacionamientos", "Elevadores cuando aplica", "Operaciones de uno o varios edificios o sitios"],
+      "details": ["Lectores y credenciales", "PIN o biometría adecuada al proyecto", "Cerraduras electrónicas", "Controladores y sensores", "Torniquetes y barreras vehiculares", "Elevadores cuando aplica", "Infraestructura de energía y comunicación", "Niveles y horarios de acceso", "Instalación, pruebas, modernización y servicio"],
+      "note": "La solución equilibra protección y uso cotidiano. Los métodos de acceso, dispositivos físicos, biometría e integraciones se definen según el sitio y no todos aplican a cada proyecto."
+    },
+    "bms": {
+      "definition": "Equipos de campo, sensores, controladores, comunicaciones, supervisión y control forman una arquitectura coordinada de gestión de edificios.",
+      "emphasis": ["Supervisión", "Automatización", "Coordinación", "Respuesta", "Continuidad"],
+      "applications": ["Corporativos", "Comerciales", "Hospitalidad", "Industriales", "Restaurantes", "Multisede", "Distribución", "Áreas técnicas", "Campus", "Modernización y expansión de edificios existentes"],
+      "details": ["Evaluación de infraestructura", "Arquitectura de control", "Dispositivos de campo y controladores", "Comunicaciones de sistemas de edificio", "Interfaces, horarios y lógica", "Alarmas", "HVAC, iluminación, electricidad, bombas, medidores y sistemas compatibles", "Puesta en marcha, modernización, servicio y soporte"],
+      "note": "BMS es automatización física e infraestructura de control de edificios, no una plataforma de inteligencia genérica. La incorporación de cada sistema depende de infraestructura, protocolos, controladores y compatibilidad técnica."
+    },
+    "voz-y-datos": {
+      "definition": "El cableado, las canalizaciones, los puntos de conexión y la infraestructura de distribución sostienen las comunicaciones de una operación.",
+      "emphasis": ["Conectividad", "Organización", "Confiabilidad", "Escalabilidad", "Continuidad"],
+      "applications": ["Oficinas", "Espacios comerciales", "Restaurantes", "Instalaciones industriales", "Almacenes", "Cuartos de telecomunicaciones", "Áreas técnicas", "Centros de operación", "Espacios de colaboración", "Edificios de varios niveles", "Construcción, renovación, expansión y operaciones multisede"],
+      "details": ["Evaluación", "Cableado estructurado de cobre y fibra", "Troncales y canalizaciones", "Puntos de voz y datos", "Componentes de distribución, racks y cuartos de telecomunicaciones", "Etiquetado, pruebas, certificación y documentación", "Infraestructura de soporte para inalámbrico, telefonía, seguridad y sistemas de edificio", "Modernización y servicio"],
+      "note": "La infraestructura física se distingue del equipo activo, inalámbrico, telefonía, componentes de fabricante y diseño especializado. El desempeño final depende de infraestructura, equipo activo, configuración, servicios y condiciones de operación."
+    },
+    "audio-y-video": {
+      "definition": "Los sistemas de visualización, sonido, colaboración, conectividad y control habilitan la comunicación en espacios físicos.",
+      "emphasis": ["Claridad", "Colaboración", "Simplicidad", "Adaptabilidad", "Continuidad"],
+      "applications": ["Salas de reunión y capacitación", "Espacios de colaboración", "Auditorios", "Salas multipropósito", "Recepciones", "Espacios ejecutivos y comerciales", "Salas de control aprobadas", "Hospitalidad", "Espacios de comunicación digital", "Implementaciones multisala o multisede"],
+      "details": ["Diseño audiovisual", "Pantallas y proyección", "Audio profesional, micrófonos y bocinas", "Cámaras, videoconferencia y compartición de contenido", "Distribución de señal y controles", "Integración con plataformas compatibles", "Racks y cableado AV", "Señalización digital aprobada, videowalls, coordinación acústica, programación, puesta en marcha, modernización, estandarización y servicio"],
+      "note": "La solución responde al espacio, usuarios, contenido, claridad de audio, dispositivos o plataformas compatibles y uso diario. La infraestructura central, plataformas opcionales, señalización, acústica e ingeniería especializada se definen según el proyecto."
+    }
+  }
 }
