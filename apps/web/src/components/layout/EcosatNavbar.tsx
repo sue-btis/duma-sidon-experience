@@ -5,12 +5,13 @@ import { getTranslations } from "next-intl/server";
 type Props = Readonly<{
   locale: "es" | "en";
   page?: "home" | "integracion" | "sidon";
+  path?: string;
 }>;
 
-export async function EcosatNavbar({ locale, page = "home" }: Props) {
+export async function EcosatNavbar({ locale, page = "home", path }: Props) {
   const common = await getTranslations("common");
   const navigation = await getTranslations("navigation");
-  const pagePath = page === "home" ? "/" : `/${page}/`;
+  const pagePath = path ?? (page === "home" ? "/" : `/${page}/`);
 
   return (
     <header className="mx-auto flex min-h-[72px] w-full max-w-7xl items-center gap-3 rounded-xl border bg-card px-4 sm:gap-5 sm:px-7">

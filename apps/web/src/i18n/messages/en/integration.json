@@ -1,0 +1,21 @@
+{
+  "label": "Integration",
+  "headline": "Operations take shape in the physical world.",
+  "lead": "We design and implement infrastructure, security, and systems that protect, communicate, control, and optimize each space. From one specific need to a complete project, every solution adapts to the reality of the operation.",
+  "solutions": "Integration solutions",
+  "solutionAction": "Explore solution",
+  "cctv": "CCTV",
+  "climate": "Climate Control and Refrigeration",
+  "fire": "Fire Protection",
+  "access": "Access Control",
+  "bms": "BMS",
+  "voiceData": "Voice and Data",
+  "audioVideo": "Audio and Video",
+  "projectTitle": "One specific solution or a complete project",
+  "projectCopy": "Every project starts with a different need. We can address a specific requirement through one solution or coordinate several disciplines when operations require a broader scope. Ecosat defines, implements, and maintains only the infrastructure and systems the project actually needs.",
+  "conversation": "Let’s talk about your project",
+  "returnToIntegration": "Back to Integration",
+  "siblings": "Other Integration solutions",
+  "conversationTitle": "Let’s talk about your project",
+  "conversationCopy": "We can start with a known solution, several solutions, or a need that requires guidance."
+}

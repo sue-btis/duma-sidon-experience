@@ -1,6 +1,7 @@
 import { setRequestLocale } from "next-intl/server";
 
 import { EcosatNavbar } from "@/components/layout/EcosatNavbar";
+import { IntegrationExperience } from "@/features/integration/IntegrationExperience";
 
 type Props = Readonly<{
   params: Promise<{ locale: "es" | "en" }>;
@@ -13,7 +14,7 @@ export default async function IntegrationPage({ params }: Props) {
   return (
     <div className="bg-background">
       <EcosatNavbar locale={locale} page="integracion" />
-      <main />
+      <IntegrationExperience locale={locale} />
     </div>
   );
 }
