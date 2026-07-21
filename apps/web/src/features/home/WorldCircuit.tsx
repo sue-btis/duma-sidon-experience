@@ -18,13 +18,25 @@ export function WorldCircuit({ close, lead, title }: Props) {
         <svg aria-hidden="true" className={styles.circuitLines} preserveAspectRatio="none" viewBox="0 0 1000 1000">
           <path d="M395 440 C310 440 290 180 167 180 M605 440 C690 440 710 180 833 180 M500 590 L500 790" />
           <path d="M167 250 V720 Q167 860 307 860 H360 M833 250 V720 Q833 860 693 860 H640" />
+          <circle className={styles.flowDot} r="7">
+            <animateMotion dur="8s" path="M395 440 C310 440 290 180 167 180" repeatCount="indefinite" />
+          </circle>
+          <circle className={styles.flowDot} r="7">
+            <animateMotion dur="8s" path="M605 440 C690 440 710 180 833 180" repeatCount="indefinite" />
+          </circle>
+          <circle className={styles.flowDot} r="7">
+            <animateMotion begin="-2s" dur="8s" path="M167 250 V720 Q167 860 307 860 H360" repeatCount="indefinite" />
+          </circle>
+          <circle className={styles.flowDot} r="7">
+            <animateMotion begin="-6s" dur="8s" path="M833 250 V720 Q833 860 693 860 H640" repeatCount="indefinite" />
+          </circle>
+          <circle className={styles.flowDot} r="7">
+            <animateMotion begin="-1s" dur="8s" path="M500 860 L500 590" repeatCount="indefinite" />
+          </circle>
         </svg>
-        <i aria-hidden="true" className={`${styles.routeDot} ${styles.routeDotOne}`} />
-        <i aria-hidden="true" className={`${styles.routeDot} ${styles.routeDotTwo}`} />
-        <i aria-hidden="true" className={`${styles.routeDot} ${styles.routeDotThree}`} />
 
         <div className={`${styles.worldNode} ${styles.integrationNode}`}>
-          <div className={styles.worldButton}><Image alt="Integracion" height={104} src="/home/worlds/integracion.png" unoptimized width={104} /></div>
+          <div className={styles.worldMark}><Image alt="Integración" height={104} src="/home/worlds/integracion.png" unoptimized width={104} /></div>
         </div>
 
         <div className={styles.ecosatNode}>
@@ -32,7 +44,7 @@ export function WorldCircuit({ close, lead, title }: Props) {
         </div>
 
         <div className={`${styles.worldNode} ${styles.sidonNode}`}>
-          <div className={styles.worldButton}><Image alt="Sidon" height={104} src="/home/worlds/sidon.png" unoptimized width={104} /></div>
+          <div className={styles.worldMark}><Image alt="Sidón" height={104} src="/home/worlds/sidon.png" unoptimized width={104} /></div>
         </div>
 
         <p className={styles.circuitClose}><ShieldCheck aria-hidden="true" />{close}</p>
