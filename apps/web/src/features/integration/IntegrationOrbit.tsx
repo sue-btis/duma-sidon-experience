@@ -248,7 +248,6 @@ export function IntegrationOrbit({ ariaLabel, instructions, nextLabel, previousL
       tabIndex={0}
     >
       <p className={styles.srOnly} id="integration-orbit-instructions">{instructions}</p>
-      <div aria-hidden="true" className={styles.orbitWash} />
       <div className={styles.orbitTrack}>
         {solutions.map((solution, index) => (
           <OrbitLink
