@@ -4,8 +4,8 @@
 | Field | Value |
 |---|---|
 | Repository root(s) | `sue-btis/duma-sidon-experience` (active application root: `apps/web`) |
-| Planned base commit(s) | `ce34b9d6e2a52ebfe7cdb38083e8b3236bc8d9c7` on `master`; local working-tree state is unknown and must be verified before any write-capable work |
-| Frozen spec | `05-spec-company-evolution-codex-implementation-brief.md` — **status not verified as Approved** because the document contains no approval/frozen-status marker. Plan-local `REQ-*`, `AC-*`, and `TST-*` labels below map existing clauses only; they do not add requirements. |
+| Baseline | No fixed commit SHA, branch, or isolated worktree is required. Record `git status --short` before each write-capable workstream and stop only for an overlapping write set. |
+| Frozen spec | `05-frozen-spec-company-evolution-codex-implementation-brief.md` — **Approved for implementation on 2026-07-21**. Plan-local `REQ-*`, `AC-*`, and `TST-*` labels below map existing clauses only; they do not add requirements. |
 | Focused audit | `01-audit-company-evolution-focused-audit.md` |
 
 ## 2. Rules for Codex
@@ -19,10 +19,10 @@
 ## 3. Recommended Execution Strategy
 Choose one:
 
-- Do not implement yet
+- Execute after Gate 0 preflight
 
 Reason:
-The supplied specification cannot be verified as `Approved for implementation`, the audited local working-tree state is unknown, and five implementation-affecting decisions remain unresolved: canonical bare-route behavior, approval to add GSAP/ScrollTrigger, test framework selection, approved Spanish copy, and the final CTA destination. Gate 0 is not allowed to make these decisions. Parallelization is therefore unsafe, and even sequential implementation would risk encoding unapproved behavior. After the spec is explicitly marked Approved, the decisions are recorded, and the base commit/local changes are revalidated, regenerate this plan. The expected post-approval topology is isolated worktrees for provably disjoint stage-visual files, with all orchestration, CSS, package, lockfile, i18n-registry, test-configuration, and Nginx changes remaining single-owner integration work.
+The specification is approved and its implementation-affecting decisions are recorded in the frozen spec. Execute two user-managed implementations in one shared working tree. Before each writes, record `git status --short` and stop only if another change overlaps its exact write set. Keep orchestration, CSS, package, lockfile, i18n-registry, test configuration, and Nginx changes single-owner integration work.
 
 ## 4. Dependency Graph
 
@@ -31,7 +31,7 @@ The supplied specification cannot be verified as `Approved for implementation`, 
 |---|---|---|---|
 | D-001 | Explicit `Approved for implementation` status on the frozen specification | The first planning instruction requires verified approval; no write-capable work may rely on an unapproved brief | All implementation and Gate 0 work |
 | D-002 | Record decisions for bare `/mocks/company-evolution/`, GSAP dependency, unit/E2E test stack, Spanish copy, and CTA destination | Each decision changes owned files, acceptance behavior, dependencies, or user-facing content; Gate 0 may not decide them | Exact workstream write sets, commands, and acceptance mapping |
-| D-003 | Revalidate repository root, `master` base SHA, and local working-tree overlap | The audit used an immutable remote snapshot and cannot prove a clean local tree; worktrees and ownership must branch from a known baseline | Worktree creation and safe diff attribution |
+| D-003 | Revalidate repository root and local working-tree overlap | Shared-tree implementations need a current overlap check before writing, but do not require a fixed commit, branch, or worktree | Safe diff attribution |
 | D-004 | Frozen stage contract: eight IDs, indices, progress windows, shared visual props, and progress helper signatures | Stage visuals, progress rail, localized content, tests, and central orchestration must consume one consistent contract | Independent stage-visual work and deterministic stage tests |
 | D-005 | Approved dependency/test manifest changes and regenerated lockfile | GSAP imports and any selected unit/E2E tests cannot install or run before manifest and lockfile synchronization | Animation work, automated tests, Docker frozen install |
 | D-006 | Static localized page composition and all semantic stage content | The frozen sequence requires static readability before animation and accessibility cannot be verified against absent content | Sticky orchestration, reduced-motion equivalence, content/browser tests |
@@ -41,7 +41,7 @@ The supplied specification cannot be verified as `Approved for implementation`, 
 ### Artificial Dependencies Removable by Gate 0
 | ID | Current Coupling | Frozen Contract Artifact That Removes It | Unlocked Workstreams |
 |---|---|---|---|
-| A-001 | Eight stage-visual implementers would otherwise wait for the orchestration component to define IDs and props | Frozen `EvolutionStageId`, stage index/progress table, and a common stage-visual props interface copied directly from the approved spec | Separate stage-visual files in isolated worktrees |
+| A-001 | Eight stage-visual implementers would otherwise wait for the orchestration component to define IDs and props | Frozen `EvolutionStageId`, stage index/progress table, and a common stage-visual props interface copied directly from the approved spec | Separate stage-visual files with disjoint write sets |
 | A-002 | Route/localization work would otherwise wait for animated components to settle their content shape | Frozen localized content interface and exact translation-key manifest derived from the approved hero, eight stages, summary, rail labels, and CTA clauses | Locale JSON creation and thin server-route composition |
 | A-003 | Pure helper tests would otherwise wait for the sticky UI | Frozen progress test-input table containing the eight specified global-progress-to-active-stage examples | Progress-helper implementation and unit-test authoring |
 
@@ -50,10 +50,10 @@ The supplied specification cannot be verified as `Approved for implementation`, 
 ### Required?
 No
 
-Gate 0 is disabled in the current state because approval and implementation-affecting decisions are missing. A Gate 0 owner cannot lawfully materialize contracts from an unapproved source or choose the missing route, dependency, testing, copy, or CTA behavior. After decision closure, the regenerated plan may make Gate 0 optional if isolated stage-visual work remains beneficial; otherwise a single sequential contract owner should create the frozen types and helpers in Wave 1.
+Gate 0 is no longer blocked. Approval and implementation-affecting decisions are recorded in the frozen spec. It remains read-only because the current plan assigns contract materialization to Wave 1.
 
 ### Goal
-No files may be materialized in the current state. Verify approval, decisions, and baseline without modifying the repository.
+Verify the approved decisions and current working-tree state before Wave 1 begins.
 
 ### Contract Artifacts
 None.
@@ -79,41 +79,37 @@ None.
 - Any package manifest, lockfile, translation file, route, feature file, test file, generated output, Docker file, or Nginx configuration.
 
 ### Steps
-1. Confirm the specification contains an explicit `Approved for implementation` status and immutable source identifier or commit reference.
-2. Record the approved decisions for bare-route delivery, GSAP, test tools, Spanish content, and CTA destination.
-3. From the repository root, record `git rev-parse --show-toplevel`, `git branch --show-current`, `git rev-parse HEAD`, `git status --short`, and scoped diffs for every proposed write path.
-4. Compare the live repository conventions and dependency state with the audit; report drift rather than adapting the plan silently.
-5. Regenerate this plan with exact approved test-config paths, commands, worktree branches, and write sets.
+1. Confirm the specification contains the recorded approval and decisions for locale routes, GSAP, Vitest, Spanish content, and CTA.
+2. From the repository root, record `git rev-parse --show-toplevel`, `git status --short`, and scoped diffs for every proposed write path.
+3. Compare the live repository conventions and dependency state with the audit; report drift rather than adapting the plan silently.
+4. Keep exact write sets and test-config paths current; do not require a fixed branch, commit, or worktree.
 
 ### Checks
 - `git rev-parse --show-toplevel`
-- `git branch --show-current`
-- `git rev-parse HEAD`
 - `git status --short`
 - `git diff -- apps/web/src/app/[locale]/mocks/company-evolution apps/web/src/features/company-evolution apps/web/src/i18n/messages.ts apps/web/src/i18n/messages/en/company-evolution.json apps/web/src/i18n/messages/es/company-evolution.json apps/web/package.json pnpm-lock.yaml apps/web/nginx.conf`
 - Manual inspection that the approved spec records all five decisions.
 
 ### Acceptance Criteria
-- Exact pass condition: the specification is explicitly Approved, all five decisions are recorded, the repository root and base SHA are confirmed, and no unowned user change overlaps a proposed write set.
+- Exact pass condition: the specification is explicitly Approved, all five decisions are recorded, the repository root is confirmed, and no unowned user change overlaps a proposed write set.
 
 ### Stop Conditions
-- The specification remains unapproved or lacks an immutable approved revision.
+- The specification remains unapproved.
 - Any required decision remains missing or contradictory.
-- `HEAD` differs from the planned base commit without a new audit or plan refresh.
 - Local changes overlap any planned file or directory.
 - Repository conventions differ materially from the focused audit.
 
 ## 6. Ownership Map
 | Agent / Workstream | Mode | Repository | Assigned REQ IDs | May Read | May Edit | Integration-Reserved | Must Not Edit | Depends On | Output Evidence |
 |---|---|---|---|---|---|---|---|---|---|
-| Preflight Verifier | read-only verification | `sue-btis/duma-sidon-experience` | REQ-001–REQ-017 (read-only traceability) | Spec, audit, Git metadata, all proposed write paths, `AGENTS.md` files, manifests, i18n, Nginx | None | All proposed write paths | Entire repository | D-001, D-002, D-003 | Approval record, decision record, base SHA, branch, `git status --short`, overlap report |
-| Contract and Progress Owner | planned write-capable; **blocked** | `sue-btis/duma-sidon-experience` | REQ-003, REQ-004, REQ-015 | Approved spec; audit; existing home motion precedents; global tokens; TypeScript config | `apps/web/src/features/company-evolution/types/evolution.ts`; `apps/web/src/features/company-evolution/data/evolution-stages.ts`; `apps/web/src/features/company-evolution/lib/stage-progress.ts`; `apps/web/src/features/company-evolution/lib/stage-progress.test.ts` | `apps/web/package.json`; `pnpm-lock.yaml`; test configuration; central experience; CSS; i18n registry | All other paths, especially `apps/web/src/features/home/**`, globals, layout, routing, Nginx | D-001–D-005 | Contract diff, progress-window table, helper test results |
-| Static Page and Localization Owner | planned write-capable; **blocked** | `sue-btis/duma-sidon-experience` | REQ-001, REQ-002, REQ-012, REQ-013, REQ-014, REQ-017 | Approved copy/CTA decision; locale route precedents; button component; design tokens; contract files | `apps/web/src/app/[locale]/mocks/company-evolution/page.tsx`; `apps/web/src/features/company-evolution/components/CompanyEvolutionHero.tsx`; `apps/web/src/features/company-evolution/components/IntegratedCapabilities.tsx`; `apps/web/src/features/company-evolution/components/CompanyEvolutionCta.tsx`; `apps/web/src/i18n/messages/en/company-evolution.json`; `apps/web/src/i18n/messages/es/company-evolution.json` | `apps/web/src/i18n/messages.ts`; `apps/web/src/features/company-evolution/components/CompanyEvolutionExperience.tsx`; package/lockfile; Nginx; test configuration | Existing locale/layout/routing files; global CSS; home feature; unrelated translations | D-001–D-006 | Both locale JSONs, thin page diff, static DOM/content evidence |
-| Stage Visuals A Owner | planned write-capable; **blocked** | `sue-btis/duma-sidon-experience` | REQ-005, REQ-006 | Frozen stage contract; CSS tokens; SVG precedents; stage clauses 1–4 | `apps/web/src/features/company-evolution/components/stages/RadioVisual.tsx`; `apps/web/src/features/company-evolution/components/stages/AntennaVisual.tsx`; `apps/web/src/features/company-evolution/components/stages/NetworkVisual.tsx`; `apps/web/src/features/company-evolution/components/stages/CctvVisual.tsx` | Common props, central orchestration, CSS Module, manifests, tests | All other stage files and all shared/integration files | D-001–D-005, A-001 | Four isolated SVG component diffs and component-level inspection evidence |
-| Stage Visuals B Owner | planned write-capable; **blocked** | `sue-btis/duma-sidon-experience` | REQ-005, REQ-006, REQ-007 | Frozen stage contract; CSS tokens; SVG precedents; stage clauses 5–8 | `apps/web/src/features/company-evolution/components/stages/AccessControlVisual.tsx`; `apps/web/src/features/company-evolution/components/stages/FireDetectionVisual.tsx`; `apps/web/src/features/company-evolution/components/stages/SoftwareVisual.tsx`; `apps/web/src/features/company-evolution/components/stages/IndustrialVisual.tsx` | Common props, central orchestration, CSS Module, manifests, tests | All other stage files and all shared/integration files | D-001–D-005, A-001 | Four isolated SVG component diffs and final-scene visual inventory |
+| Preflight Verifier | read-only verification | `sue-btis/duma-sidon-experience` | REQ-001–REQ-017 (read-only traceability) | Spec, audit, Git metadata, all proposed write paths, `AGENTS.md` files, manifests, i18n, Nginx | None | All proposed write paths | Entire repository | D-001, D-002, D-003 | Approval record, decision record, `git status --short`, overlap report |
+| Contract and Progress Owner | planned write-capable | `sue-btis/duma-sidon-experience` | REQ-003, REQ-004, REQ-015 | Approved spec; audit; existing home motion precedents; global tokens; TypeScript config | `apps/web/src/features/company-evolution/types/evolution.ts`; `apps/web/src/features/company-evolution/data/evolution-stages.ts`; `apps/web/src/features/company-evolution/lib/stage-progress.ts`; `apps/web/src/features/company-evolution/lib/stage-progress.test.ts` | `apps/web/package.json`; `pnpm-lock.yaml`; test configuration; central experience; CSS; i18n registry | All other paths, especially `apps/web/src/features/home/**`, globals, layout, routing, Nginx | D-001–D-005 | Contract diff, progress-window table, helper test results |
+| Static Page and Localization Owner | planned write-capable | `sue-btis/duma-sidon-experience` | REQ-001, REQ-002, REQ-012, REQ-013, REQ-014, REQ-017 | Approved copy/CTA decision; locale route precedents; button component; design tokens; contract files | `apps/web/src/app/[locale]/mocks/company-evolution/page.tsx`; `apps/web/src/features/company-evolution/components/CompanyEvolutionHero.tsx`; `apps/web/src/features/company-evolution/components/IntegratedCapabilities.tsx`; `apps/web/src/features/company-evolution/components/CompanyEvolutionCta.tsx`; `apps/web/src/i18n/messages/en/company-evolution.json`; `apps/web/src/i18n/messages/es/company-evolution.json` | `apps/web/src/i18n/messages.ts`; `apps/web/src/features/company-evolution/components/CompanyEvolutionExperience.tsx`; package/lockfile; Nginx; test configuration | Existing locale/layout/routing files; global CSS; home feature; unrelated translations | D-001–D-006 | Both locale JSONs, thin page diff, static DOM/content evidence |
+| Stage Visuals A Owner | planned write-capable in the shared working tree after contract freeze | `sue-btis/duma-sidon-experience` | REQ-005, REQ-006 | Frozen stage contract; CSS tokens; SVG precedents; stage clauses 1–4 | `apps/web/src/features/company-evolution/components/stages/RadioVisual.tsx`; `apps/web/src/features/company-evolution/components/stages/AntennaVisual.tsx`; `apps/web/src/features/company-evolution/components/stages/NetworkVisual.tsx`; `apps/web/src/features/company-evolution/components/stages/CctvVisual.tsx` | Common props, central orchestration, CSS Module, manifests, tests | All other stage files and all shared/integration files | D-001–D-005, A-001 | Four SVG component diffs and component-level inspection evidence |
+| Stage Visuals B Owner | planned write-capable in the shared working tree after contract freeze | `sue-btis/duma-sidon-experience` | REQ-005, REQ-006, REQ-007 | Frozen stage contract; CSS tokens; SVG precedents; stage clauses 5–8 | `apps/web/src/features/company-evolution/components/stages/AccessControlVisual.tsx`; `apps/web/src/features/company-evolution/components/stages/FireDetectionVisual.tsx`; `apps/web/src/features/company-evolution/components/stages/SoftwareVisual.tsx`; `apps/web/src/features/company-evolution/components/stages/IndustrialVisual.tsx` | Common props, central orchestration, CSS Module, manifests, tests | All other stage files and all shared/integration files | D-001–D-005, A-001 | Four SVG component diffs and final-scene visual inventory |
 | Experience Orchestration Owner | planned write-capable; **blocked** | `sue-btis/duma-sidon-experience` | REQ-002, REQ-004, REQ-005, REQ-007, REQ-008, REQ-009, REQ-010, REQ-011, REQ-014, REQ-017 | All approved feature contracts and stage visuals; motion/CSS precedents; globals; accessibility clauses | `apps/web/src/features/company-evolution/components/CompanyEvolutionExperience.tsx`; `apps/web/src/features/company-evolution/components/EvolutionViewport.tsx`; `apps/web/src/features/company-evolution/components/EvolutionPath.tsx`; `apps/web/src/features/company-evolution/components/EvolutionSignal.tsx`; `apps/web/src/features/company-evolution/components/EvolutionStageContent.tsx`; `apps/web/src/features/company-evolution/components/EvolutionStageVisual.tsx`; `apps/web/src/features/company-evolution/components/EvolutionProgressRail.tsx`; `apps/web/src/features/company-evolution/components/EvolutionBackground.tsx`; `apps/web/src/features/company-evolution/components/ReducedMotionExperience.tsx`; `apps/web/src/features/company-evolution/hooks/useEvolutionTimeline.ts`; `apps/web/src/features/company-evolution/hooks/useReducedMotion.ts`; `apps/web/src/features/company-evolution/hooks/useElementVisibility.ts`; `apps/web/src/features/company-evolution/company-evolution.module.css` | Package/lockfile; i18n registry; route; locale JSONs; test configuration; Nginx | Home feature, global CSS, layout, routing, next config, unrelated files | D-001–D-007 | Central diff, one-progress-source trace, cleanup evidence, responsive/reduced-motion inspection |
-| Test Author / Independent Verifier | planned read-only until test decision; **blocked** | `sue-btis/duma-sidon-experience` | REQ-015 | Approved test decision; complete combined feature; acceptance clauses; manifests | None in current plan. Exact test/config write paths require regenerated plan after test-stack approval. | All test configuration, package/lockfile, application files | Entire repository in current plan | D-001–D-008 | Requirement-to-test report, command outputs, browser matrix, console/hydration report |
-| Integration Owner — Main Codex Thread | planned integration; **blocked** | `sue-btis/duma-sidon-experience` | REQ-001–REQ-017 | All workstream diffs and repository contracts | Only after regenerated approval plan: `apps/web/src/i18n/messages.ts`; `apps/web/package.json`; `pnpm-lock.yaml`; approved test config/project files; `apps/web/nginx.conf` if bare-route redirect is approved; conflict-resolution edits inside already-owned feature files after consulting owner | Same files | Unrelated files; security headers; global layout/routing; home feature; generated build output | D-001–D-008 | Actual diff inspection, ownership audit, combined command outputs, final requirement matrix |
+| Test Author / Independent Verifier | planned read-only verification | `sue-btis/duma-sidon-experience` | REQ-015 | Approved Vitest decision; complete combined feature; acceptance clauses; manifests | None. Vitest uses its default configuration; Agent A owns `apps/web/src/features/company-evolution/lib/stage-progress.test.ts`. | All test configuration, package/lockfile, application files | Entire repository | D-001–D-008 | Requirement-to-test report, command outputs, browser matrix, console/hydration report |
+| Integration Owner — Main Codex Thread | planned integration | `sue-btis/duma-sidon-experience` | REQ-001–REQ-017 | All workstream diffs and repository contracts | `apps/web/src/i18n/messages.ts`; `apps/web/package.json`; `pnpm-lock.yaml`; no test-config file is required; `apps/web/nginx.conf` must not change because the bare route is unsupported; conflict-resolution edits inside already-owned feature files after consulting owner | Same files | Unrelated files; security headers; global layout/routing; home feature; generated build output | D-001–D-008 | Actual diff inspection, ownership audit, combined command outputs, final requirement matrix |
 
 ## 7. Generated, Migration, Project, and Lockfile Ownership
 | File / Pattern | Owner | When It May Change | Validation |
@@ -136,7 +132,7 @@ None.
 | Prerequisite | Required Before | Validation Command | If Missing |
 |---|---|---|---|
 | Approved spec and five decision records | Wave 1 | Manual immutable-source inspection | Stop; do not create files |
-| Confirmed repository root, branch, base SHA, and non-overlapping local tree | Wave 1 | `git rev-parse --show-toplevel && git branch --show-current && git rev-parse HEAD && git status --short` | Stop and report stale/overlapping baseline |
+| Confirmed repository root and non-overlapping local tree | Wave 1 | `git rev-parse --show-toplevel && git status --short` | Stop and report overlapping write set |
 | Node.js `24.x`, Corepack, pnpm `11.5.0` | First install or build check, not preflight | `node --version && corepack --version && pnpm --version` | Mark verification blocked; do not substitute package managers |
 | Registry access and synchronized approved manifest/lockfile | Dependency install | `pnpm install --frozen-lockfile` | Stop package-dependent work; report exact failure |
 | Approved unit-test framework | Test-authoring workstream | Approved framework version/command from regenerated plan | Stop test edits; do not invent a framework |
@@ -158,7 +154,7 @@ None.
   4. Export only the minimal frozen contract required by consumers.
 - **Checks:**
   - `pnpm --filter web exec tsc --noEmit`
-  - `NOT DEFINED — stop and regenerate the plan after unit-test-stack approval; target file: apps/web/src/features/company-evolution/lib/stage-progress.test.ts`
+  - `pnpm --filter web exec vitest run src/features/company-evolution/lib/stage-progress.test.ts`
 - **Required evidence:**
   - Diff showing exact stage windows and no localized copy embedded in animation code unless the approved contract explicitly requires it.
   - Test output for `0.02`, `0.18`, `0.31`, `0.44`, `0.57`, `0.70`, `0.83`, and `0.95` mappings.
@@ -228,7 +224,7 @@ None.
   - `pnpm install --frozen-lockfile`
   - `pnpm lint`
   - `pnpm --filter web exec tsc --noEmit`
-  - `NOT DEFINED — stop and regenerate after unit-test-stack approval`
+  - `pnpm --filter web exec vitest run src/features/company-evolution/lib/stage-progress.test.ts`
   - `pnpm build`
   - Manual both-locale static and reduced-motion inspection
 - **Completion criteria:** REQ-001/002/003/009/010/012/013/014/015/016/017 mapped to AC-001/002/009/010/013/014/015 and TST-001/002/003/004/007/008/009; no Wave 2 work begins until all pass
@@ -252,7 +248,7 @@ None.
 ### Workstreams
 
 #### Agent D — Stage Visuals 1–4
-- **Mode:** planned write-capable in isolated worktree after contract freeze
+- **Mode:** planned write-capable in the shared working tree after contract freeze
 - **Repository:** `sue-btis/duma-sidon-experience`
 - **Assigned requirements:** REQ-005, REQ-006
 - **May read:** approved stage contract; CSS token interface; spec stage clauses 1–4; SVG precedents
@@ -277,7 +273,7 @@ None.
   - Visual behavior would add a separate progress controller or external asset.
 
 #### Agent E — Stage Visuals 5–8 and Integrated Final Scene
-- **Mode:** planned write-capable in isolated worktree after contract freeze
+- **Mode:** planned write-capable in the shared working tree after contract freeze
 - **Repository:** `sue-btis/duma-sidon-experience`
 - **Assigned requirements:** REQ-005, REQ-006, REQ-007
 - **May read:** approved stage contract; CSS token interface; spec stage clauses 5–8; SVG precedents
@@ -361,8 +357,8 @@ None.
   - `pnpm install --frozen-lockfile`
   - `pnpm lint`
   - `pnpm --filter web exec tsc --noEmit`
-  - `NOT DEFINED — stop and regenerate after unit-test-stack approval`
-  - `NOT DEFINED — stop and regenerate after E2E-stack approval`
+  - `pnpm --filter web exec vitest run src/features/company-evolution/lib/stage-progress.test.ts`
+  - Manual browser verification at `1440×900`, `1024×768`, and `390×844`, including reduced motion
   - `pnpm build`
   - `docker build --file apps/web/Dockerfile --tag ecosat-web:local .`
   - `docker run --rm -d --name ecosat-web-local -p 8080:8080 ecosat-web:local`
@@ -371,10 +367,10 @@ None.
   - `curl -I http://localhost:8080/en/mocks/company-evolution/`
   - `docker rm -f ecosat-web-local`
 - **Completion criteria:** REQ-001–REQ-017 and AC-001–AC-015 have passing TST-001–TST-010 evidence; actual diff contains only owned/approved paths; no console errors, hydration warnings, horizontal overflow, clipped content, orphaned animation, remote assets, external 3D dependency, or unrelated refactor
-- **Stop conditions:** any unapproved decision or dependency; manifest/lockfile drift; Nginx security-header changes; failed combined command; missing browser evidence; unowned conflict resolution; local/base drift
+- **Stop conditions:** any unapproved decision or dependency; manifest/lockfile drift; Nginx security-header changes; failed combined command; missing browser evidence; unowned conflict resolution; overlapping local changes
 
 ## 9. Single-Agent Fallback Order
-1. Verify explicit approval, decision closure, base SHA, branch, and local overlap; stop immediately if any precondition fails.
+1. Verify explicit approval, decision closure, and local overlap; stop immediately if an exact write set overlaps.
 2. Sequentially implement the frozen stage contract, progress helpers, and approved unit tests.
 3. Add approved dependencies/scripts through the manifest and regenerate the lockfile once.
 4. Implement English/Spanish messages, static hero/summary/CTA, and the thin localized route; register the namespace.
@@ -386,12 +382,12 @@ None.
 10. Inspect the full diff, run all combined checks, and produce the expected execution report.
 
 Reason:
-This order preserves every true dependency, avoids pretending unavailable subagents exist, keeps shared hotspots under one owner, and ensures static content/accessibility are proven before animation. It is the required fallback when isolated worktrees, exact contract boundaries, or approved test tooling are unavailable.
+This order preserves every true dependency, keeps shared hotspots under one owner, and ensures static content/accessibility are proven before animation. It is the required fallback when exact contract boundaries or approved test tooling are unavailable.
 
 ## 10. Requirement Execution Matrix
 | Requirement ID | Gate / Wave | Implementation Owner | Integration Owner | Acceptance IDs | Test IDs |
 |---|---|---|---|---|---|
-| REQ-001 — Locale routes plus approved bare-route behavior | Blocked preflight; Wave 1/2 after approval | Static Page Owner; Integration Owner for Nginx | Main Codex Thread | AC-001, AC-013, AC-015 | TST-001, TST-009, TST-010 |
+| REQ-001 — Locale routes without a bare route | Wave 1/2 | Static Page Owner | Main Codex Thread | AC-001, AC-013, AC-015 | TST-001, TST-009, TST-010 |
 | REQ-002 — Four-area semantic page structure and thin server route | Wave 1 | Static Page Owner; Experience Owner | Main Codex Thread | AC-002, AC-009, AC-013, AC-015 | TST-002, TST-004, TST-008, TST-009 |
 | REQ-003 — Eight-stage frozen model and ordered content | Wave 1 | Contract Owner; Static Page Owner | Main Codex Thread | AC-002, AC-005, AC-006 | TST-002, TST-003 |
 | REQ-004 — One normalized progress source and one main ScrollTrigger | Wave 2 | Experience Orchestration Owner | Main Codex Thread | AC-004, AC-011, AC-012, AC-014 | TST-003, TST-006, TST-008 |
@@ -416,10 +412,10 @@ This order preserves every true dependency, avoids pretending unavailable subage
 | `pnpm install --frozen-lockfile` | REQ-016; AC-014 | Node 24.x, Corepack, pnpm 11.5.0, registry | Successful frozen-install log |
 | `pnpm lint` | REQ-010, REQ-014, REQ-017; AC-013–AC-015 | Installed dependencies | Exit code and full lint summary |
 | `pnpm --filter web exec tsc --noEmit` | REQ-003–REQ-016; AC-014 | Installed dependencies | Exit code and TypeScript output |
-| `NOT DEFINED — stop and regenerate after unit-test-stack approval` | REQ-003, REQ-004, REQ-015; TST-003 | Approved unit-test stack | Test report with eight mapping examples and helper boundaries |
-| `NOT DEFINED — stop and regenerate after test-stack approval` | REQ-001, REQ-002, REQ-003, REQ-012, REQ-013; TST-001, TST-002 | Approved test stack | Both locale routes and all eight titles passing |
-| `NOT DEFINED — stop and regenerate after test-stack approval` | REQ-009, REQ-010; TST-004 | Approved browser/component stack | All stages visible; no sticky trap; equivalent content |
-| `NOT DEFINED — stop and regenerate after E2E-stack approval` at `1440×900`, `1024×768`, `390×844` | REQ-005–REQ-011, REQ-015; TST-005, TST-006 | Approved E2E stack and browser binaries | Screenshots/traces; zero overflow/clipping/overlap/hidden CTA; zero console/hydration/animation errors |
+| `pnpm --filter web exec vitest run src/features/company-evolution/lib/stage-progress.test.ts` | REQ-003, REQ-004, REQ-015; TST-003 | Vitest default configuration | Test report with eight mapping examples and helper boundaries |
+| Manual static DOM inspection of `/es/mocks/company-evolution/` and `/en/mocks/company-evolution/` | REQ-001, REQ-002, REQ-003, REQ-012, REQ-013; TST-001, TST-002 | Browser | Both locale routes and all eight titles visible |
+| Manual reduced-motion inspection | REQ-009, REQ-010; TST-004 | Browser with reduced-motion emulation | All stages visible; no sticky trap; equivalent content |
+| Manual browser inspection at `1440×900`, `1024×768`, and `390×844` | REQ-005–REQ-011, REQ-015; TST-005, TST-006 | Browser DevTools | Screenshots/traces; zero overflow/clipping/overlap/hidden CTA; zero console/hydration/animation errors |
 | Manual forward/reverse scroll, resize, route navigation, reduced-motion, and React performance inspection | REQ-004, REQ-008, REQ-009, REQ-011; AC-004, AC-007, AC-008, AC-011, AC-012 | Browser DevTools | Inspection notes, performance trace, cleanup evidence |
 | `pnpm build` | REQ-001, REQ-012, REQ-014, REQ-016; AC-001, AC-013, AC-014 | Installed dependencies | Successful Next static-export log; generated locale paths |
 | `docker build --file apps/web/Dockerfile --tag ecosat-web:local .` | REQ-001, REQ-014, REQ-016; TST-010 | Docker | Successful frozen-build/image log |
@@ -433,7 +429,7 @@ This order preserves every true dependency, avoids pretending unavailable subage
 - An agent must write outside its ownership set.
 - Two write-capable workstreams collide on a non-integration-owned file.
 - A generated file, migration, project file, or lockfile lacks an owner.
-- The planned base commit or relevant files changed enough to make the plan stale.
+- Relevant files changed in a way that overlaps an assigned write set.
 - Existing user changes overlap the selected write set.
 - A required security, tenant, permission, compatibility, or contract behavior is ambiguous.
 

@@ -2,11 +2,12 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import {
   Building2,
+  CookingPot,
   Factory,
+  Hotel,
   Landmark,
-  Palmtree,
-  Plane,
-  Utensils,
+  Store,
+  Truck,
 } from "lucide-react";
 
 import { CoreOpening } from "./CoreOpening";
@@ -18,12 +19,13 @@ import styles from "./home-experience.module.css";
 type Props = Readonly<{ locale: "es" | "en" }>;
 
 const industries = [
-  { icon: Factory, name: "industrial", logos: ["emerson", "ternium", "milwaukee", "chamberlain"] },
-  { icon: Utensils, name: "food", logos: ["bafar", "sunrise"] },
-  { icon: Building2, name: "retail", logos: ["mcdonalds", "carls"] },
-  { icon: Palmtree, name: "tourism", logos: ["xcaret"] },
-  { icon: Plane, name: "aerospace", logos: ["cessna"] },
-  { icon: Landmark, name: "government", logos: ["ibwc"] },
+  { icon: Store, name: "retail" },
+  { icon: CookingPot, name: "foodService" },
+  { icon: Factory, name: "industrial" },
+  { icon: Landmark, name: "financial" },
+  { icon: Building2, name: "commercial" },
+  { icon: Truck, name: "logistics" },
+  { icon: Hotel, name: "hospitality" },
 ] as const;
 
 const logoNames: Record<string, string> = {
@@ -35,9 +37,24 @@ const logoNames: Record<string, string> = {
 };
 
 const partners = ["axis", "avigilon", "hanwha", "panduit", "exacq", "verkada", "softwarehouse", "hikvision", "hid"] as const;
+const clients = ["xcaret", "ternium", "bafar", "emerson", "chamberlain", "mcdonalds", "carls", "milwaukee", "cessna", "ibwc", "sunrise"] as const;
 
 function Logo({ id }: Readonly<{ id: string }>) {
   return <Image alt={logoNames[id]} className={styles.logoImage} height={80} src={`/home/partners/${id}.png`} unoptimized width={180} />;
+}
+
+function LogoBand({ ids, label, reverse = false }: Readonly<{ ids: readonly string[]; label: string; reverse?: boolean }>) {
+  return (
+    <div aria-label={label} className={`${styles.logoBand} ${reverse ? styles.logoBandReverse : ""}`} tabIndex={0}>
+      <div className={styles.logoTrack}>
+        {[...ids, ...ids].map((logo, index) => (
+          <div aria-hidden={index >= ids.length || undefined} className={styles.logoTile} key={`${logo}-${index}`}>
+            <Logo id={logo} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export async function HomeExperience({ locale }: Props) {
@@ -62,22 +79,29 @@ export async function HomeExperience({ locale }: Props) {
 
       <section className={`${styles.scene} ${styles.industryScene}`} data-home-scene id="industrias">
         <div className={styles.sectionContent}>
-          <h2>{t("industriesTitle")}</h2>
+          <header className={styles.industryIntro}>
+            <h2>{t("industriesTitle")}</h2>
+            <p>{t("industriesLead")}</p>
+          </header>
           <div className={styles.industryGrid}>
-            {industries.map(({ icon: Icon, logos, name }) => (
+            {industries.map(({ icon: Icon, name }) => (
               <article className={styles.industry} key={name}>
                 <h3><Icon aria-hidden="true" />{t(`industry.${name}`)}</h3>
-                <div className={styles.industryLogos}>
-                  {logos.map((logo) => <Logo id={logo} key={logo} />)}
-                </div>
               </article>
             ))}
           </div>
-          <h3 className={styles.partnerTitle}>{t("partnersTitle")}</h3>
-          <div className={styles.partners}>
-            {partners.map((logo) => <div className={styles.partnerLogo} key={logo}><Logo id={logo} /></div>)}
+          <div className={styles.proofColumns}>
+            <section className={styles.proofLayer}>
+              <h3>{t("clientsTitle")}</h3>
+              <p>{t("clientsLead")}</p>
+              <LogoBand ids={clients} label={t("clientsBandLabel")} />
+            </section>
+            <section className={`${styles.proofLayer} ${styles.partnerLayer}`}>
+              <h3>{t("partnersTitle")}</h3>
+              <p>{t("partnersLead")}</p>
+              <LogoBand ids={partners} label={t("partnersBandLabel")} reverse />
+            </section>
           </div>
-          <p className={styles.close}>{t("industriesClose")}</p>
         </div>
       </section>
 

@@ -1,5 +1,20 @@
 # Codex Implementation Brief: Company Evolution Experience
 
+## Implementation approval and recorded decisions
+
+**Status:** Approved for implementation on 2026-07-21 by the project owner.
+
+The following decisions are part of this frozen brief and take precedence over
+conflicting recommended or example wording below:
+
+| Topic | Approved decision |
+|---|---|
+| Supported routes | Support only `/es/mocks/company-evolution/` and `/en/mocks/company-evolution/`. Do not implement `/mocks/company-evolution/` or add a redirect for it. |
+| Animation dependency | Add `gsap` and use `ScrollTrigger` for the single scroll-progress controller. |
+| Automated tests | Use Vitest only for pure stage-progress helpers. Perform motion and reduced-motion verification manually in a browser. |
+| Spanish content | Translate the frozen English content directly, preserving the eight capability names and technical meaning without adding marketing claims. |
+| CTA | Use “Explore our solutions” with a clearly marked `href="#"` placeholder until a real destination exists. |
+
 Implement a polished interactive mock page that presents the company’s technological evolution:
 
 **Radio → Antennas → Networks and Communications → CCTV → Access Control → Fire Detection → Software Solutions → Industrial Systems**
