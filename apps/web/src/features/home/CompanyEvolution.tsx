@@ -21,6 +21,7 @@ const cameras = [
 export function CompanyEvolution() {
   const journeyRef = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const journey = journeyRef.current;
@@ -28,8 +29,12 @@ export function CompanyEvolution() {
 
     const update = () => {
       const range = journey.offsetHeight - window.innerHeight;
-      const progress = range > 0 ? Math.min(1, Math.max(0, -journey.getBoundingClientRect().top / range)) : 0;
-      setActive(Math.min(phases.length - 1, Math.round(progress * (phases.length - 1))));
+      const nextProgress = range > 0 ? Math.min(1, Math.max(0, -journey.getBoundingClientRect().top / range)) : 0;
+      setProgress((current) => current === nextProgress ? current : nextProgress);
+      setActive((current) => {
+        const nextActive = Math.min(phases.length - 1, Math.round(nextProgress * (phases.length - 1)));
+        return current === nextActive ? current : nextActive;
+      });
     };
 
     update();
@@ -50,15 +55,25 @@ export function CompanyEvolution() {
   };
 
   const phase = phases[active];
-  const camera = cameras[active];
+  const cameraPosition = progress * (cameras.length - 1);
+  const fromIndex = Math.min(cameras.length - 2, Math.floor(cameraPosition));
+  const toIndex = Math.min(cameras.length - 1, fromIndex + 1);
+  const cameraProgress = cameraPosition - fromIndex;
+  const fromCamera = cameras[fromIndex];
+  const toCamera = cameras[toIndex];
+  const camera = {
+    x: fromCamera.x + (toCamera.x - fromCamera.x) * cameraProgress,
+    y: fromCamera.y + (toCamera.y - fromCamera.y) * cameraProgress,
+    zoom: fromCamera.zoom + (toCamera.zoom - fromCamera.zoom) * cameraProgress,
+  };
 
   return (
     <section aria-label="Company evolution" className={styles.journey} ref={journeyRef}>
       <div className={styles.viewport}>
-        <div className={styles.world} style={{ "--active": active, "--x": `${camera.x * camera.zoom}px`, "--y": `${camera.y * camera.zoom}px`, "--zoom": camera.zoom } as CSSProperties}>
+        <div className={styles.world} style={{ "--x": `${camera.x * camera.zoom}px`, "--y": `${camera.y * camera.zoom}px`, "--zoom": camera.zoom } as CSSProperties}>
           <svg aria-hidden="true" className={styles.route} viewBox="0 0 4200 2200">
             <path d="M 700 1700 C 1160 1700, 1420 770, 2050 900 S 2920 1730, 3380 1400 S 3840 650, 3990 750" />
-            <path className={styles.routeProgress} d="M 700 1700 C 1160 1700, 1420 770, 2050 900 S 2920 1730, 3380 1400 S 3840 650, 3990 750" pathLength="1" style={{ "--progress": active / (phases.length - 1) } as CSSProperties} />
+            <path className={styles.routeProgress} d="M 700 1700 C 1160 1700, 1420 770, 2050 900 S 2920 1730, 3380 1400 S 3840 650, 3990 750" pathLength="1" style={{ "--progress": progress } as CSSProperties} />
           </svg>
           {phases.map((item, index) => (
             <button aria-current={index === active ? "step" : undefined} aria-label={`Go to phase ${index + 1}`} className={`${styles.station} ${styles[`station${index + 1}`]} ${index === active ? styles.active : ""}`} key={item.image} onClick={() => goTo(index)} type="button">
@@ -74,7 +89,7 @@ export function CompanyEvolution() {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           </article>
           <nav aria-label="Company evolution phases" className={styles.stepNav}>{phases.map((item, index) => <button aria-current={index === active ? "step" : undefined} className={index === active ? styles.active : ""} key={item.image} onClick={() => goTo(index)} type="button">{String(index + 1).padStart(2, "0")}</button>)}</nav>
-          <div aria-hidden="true" className={styles.progress}><div><i style={{ width: `${(active / (phases.length - 1)) * 100}%` }} /><b style={{ left: `${(active / (phases.length - 1)) * 100}%` }} /></div></div>
+          <div aria-hidden="true" className={styles.progress}><div><i style={{ width: `${progress * 100}%` }} /><b style={{ left: `${progress * 100}%` }} /></div></div>
         </div>
       </div>
     </section>

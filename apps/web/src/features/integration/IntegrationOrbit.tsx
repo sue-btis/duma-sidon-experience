@@ -91,7 +91,8 @@ export function IntegrationOrbit({ ariaLabel, instructions, nextLabel, previousL
 
   function handlePointerEnd(event: ReactPointerEvent<HTMLElement>) {
     pointerRef.current.dragging = false;
-    noteInteraction();
+    if (pointerRef.current.moved) lastInteractionRef.current = 0;
+    else noteInteraction();
     if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
   }
 
@@ -135,7 +136,7 @@ export function IntegrationOrbit({ ariaLabel, instructions, nextLabel, previousL
       const paused = pause.documentHidden || pause.focus || pause.hover || pause.offscreen;
 
       if (!paused && !pointerRef.current.dragging && time - lastInteractionRef.current > AUTOPLAY_DELAY) {
-        targetRotationRef.current += deltaTime * 0.000100;
+        targetRotationRef.current -= deltaTime * 0.000100;
       }
 
       if (!paused && !pointerRef.current.dragging) {
@@ -256,9 +257,12 @@ export function IntegrationOrbit({ ariaLabel, instructions, nextLabel, previousL
             key={solution.slug}
             node={solution.slug}
             onClick={(event) => {
-              if (pointerRef.current.moved || index !== activeIndexRef.current) {
+              if (pointerRef.current.moved) {
                 event.preventDefault();
                 pointerRef.current.moved = false;
+                lastInteractionRef.current = 0;
+              } else if (index !== activeIndexRef.current) {
+                event.preventDefault();
                 rotateTo(index);
               }
             }}
