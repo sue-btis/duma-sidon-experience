@@ -11,7 +11,9 @@ export default async function IntegrationConversationPage({ params }: Props) {
 
   return (
     <div className="bg-background">
-      <EcosatNavbar locale={locale} page="integracion" path="/integracion/conversemos/" />
+      <div className="px-4 pt-5 sm:px-6">
+        <EcosatNavbar locale={locale} page="integracion" path="/integracion/conversemos/" />
+      </div>
       <IntegrationConversation locale={locale} />
     </div>
   );

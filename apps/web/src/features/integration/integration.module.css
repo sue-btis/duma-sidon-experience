@@ -1,13 +1,13 @@
 .page {
-  margin: 0 auto;
-  max-width: 80rem;
-  padding: clamp(2rem, 5vw, 5rem) clamp(1rem, 4vw, 3rem) 5rem;
+  overflow: hidden;
+  padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 3rem) 5rem;
 }
 
 .intro,
 .solutionHero,
 .conversation {
-  max-width: 68rem;
+  margin: 0 auto;
+  max-width: 76rem;
 }
 
 .worldLabel {
@@ -21,7 +21,7 @@
 .solutionHero h1,
 .conversation h1 {
   color: var(--integration-deep);
-  font-size: clamp(2.6rem, 7vw, 5.5rem);
+  font-size: clamp(2.8rem, 6.2vw, 6rem);
   letter-spacing: -0.035em;
   line-height: 0.98;
   margin: 0;
@@ -45,72 +45,99 @@
   font-weight: 700;
   gap: 0.5rem;
   margin-top: 2rem;
-  min-height: 2.75rem;
+  min-height: 3rem;
   text-decoration: none;
 }
 
 .primaryLink {
   background: var(--integration);
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.65rem 1.1rem;
 }
 
 .primaryLink:hover { background: var(--integration-deep); }
 
+.intro { align-items: center; display: grid; min-height: min(46rem, calc(100svh - 6rem)); padding: clamp(4rem, 10vw, 8rem) 0; }
+.introCopy { max-width: 44rem; }
+.intro .lead { max-width: 37rem; }
+.introMeta { color: var(--integration-deep); font-size: .9rem; font-weight: 650; margin: 1.5rem 0 0; }
+
+.catalog, .projectBand, .ctaPanel { margin-left: auto; margin-right: auto; max-width: 76rem; }
 .catalog { margin-top: clamp(4rem, 10vw, 8rem); }
 .catalog h2, .projectBand h2, .siblings h2 { color: var(--integration-deep); font-size: clamp(1.6rem, 3vw, 2.5rem); margin: 0; }
+.sectionHeading { align-items: end; display: grid; gap: 2rem; grid-template-columns: minmax(0, .9fr) minmax(16rem, .7fr); margin-bottom: 2.5rem; }
+.sectionHeading p:last-child { color: var(--ink-soft); line-height: 1.65; margin: 0; max-width: 40ch; }
 
 .solutionList {
   display: grid;
-  gap: 0.75rem;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   list-style: none;
   margin: 2rem 0 0;
   padding: 0;
 }
+.solutionList > li { grid-column: span 4; min-width: 0; }
 
 .solutionLink {
-  align-items: center;
   border: 1px solid var(--line);
   color: var(--ink);
-  display: grid;
-  gap: 0.75rem;
-  grid-template-columns: 4rem 1fr auto;
-  min-height: 7.5rem;
-  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 17rem;
+  padding: 1.35rem;
   text-decoration: none;
   transition: border-color 180ms ease-out, color 180ms ease-out, transform 180ms ease-out;
 }
-
-.solutionLink:hover { border-color: var(--integration); color: var(--integration-deep); transform: translateY(-2px); }
-.solutionLink img { height: auto; max-width: 4rem; }
+.solutionList > li:nth-child(1), .solutionList > li:nth-child(7) { grid-column: span 6; }
+.solutionLink:hover { border-color: var(--integration); color: var(--integration-deep); transform: translateY(-3px); }
+.solutionTop { align-items: flex-start; color: var(--ink-soft); display: flex; font-size: .75rem; font-weight: 700; justify-content: space-between; letter-spacing: .12em; }
+.solutionTop img { height: auto; max-width: 4.25rem; }
+.solutionLink h3 { color: var(--integration-deep); font-size: clamp(1.35rem, 2vw, 1.75rem); letter-spacing: -.025em; line-height: 1.1; margin: 2.25rem 0 .5rem; }
+.solutionLink p { color: var(--ink-soft); line-height: 1.55; margin: 0; max-width: 38ch; }
+.solutionAction { align-items: center; color: var(--integration-deep); display: inline-flex; font-size: .9rem; font-weight: 700; gap: .45rem; margin-top: 1.25rem; }
+.solutionLink:hover .solutionAction svg { transform: translateX(3px); }
+.solutionAction svg { transition: transform 180ms ease-out; }
 
 .orbitShell { isolation: isolate; position: relative; }
-.orbit { height: auto; left: 50%; opacity: .28; overflow: visible; pointer-events: none; position: absolute; top: 51%; transform: translate(-50%, -50%); width: min(76rem, 96vw); z-index: -1; }
-.orbit ellipse { fill: none; stroke: var(--integration); stroke-width: .45; }
-.orbit circle { fill: var(--surface); stroke: var(--integration); stroke-width: .7; transition: fill 180ms ease-out, r 180ms ease-out; }
-.orbit .activeOrbitNode { fill: var(--integration-deep); r: 4; }
-.orbitShell:has([data-node="cctv"]:is(:hover, :focus-visible, :active)) .orbit [data-node="cctv"],
-.orbitShell:has([data-node="climatizacion-refrigeracion"]:is(:hover, :focus-visible, :active)) .orbit [data-node="climatizacion-refrigeracion"],
-.orbitShell:has([data-node="incendios"]:is(:hover, :focus-visible, :active)) .orbit [data-node="incendios"],
-.orbitShell:has([data-node="accesos"]:is(:hover, :focus-visible, :active)) .orbit [data-node="accesos"],
-.orbitShell:has([data-node="bms"]:is(:hover, :focus-visible, :active)) .orbit [data-node="bms"],
-.orbitShell:has([data-node="voz-y-datos"]:is(:hover, :focus-visible, :active)) .orbit [data-node="voz-y-datos"],
-.orbitShell:has([data-node="audio-y-video"]:is(:hover, :focus-visible, :active)) .orbit [data-node="audio-y-video"] { fill: var(--integration-deep); r: 4; }
+.orbitStage { display: grid; height: min(38rem, 52vw); min-height: 26rem; place-items: center; pointer-events: none; position: absolute; right: max(0px, calc((100% - 76rem) / 2)); top: clamp(3rem, 6vw, 8rem); width: min(42rem, 52vw); z-index: -1; }
+.orbit { height: auto; opacity: .65; overflow: visible; transform: rotate(-12deg); width: 100%; }
+.orbit ellipse { fill: none; stroke: var(--integration); stroke-width: .24; }
+.solutionOrbit { height: auto; left: 50%; opacity: .28; overflow: visible; pointer-events: none; position: absolute; top: 51%; transform: translate(-50%, -50%); width: min(76rem, 96vw); z-index: -1; }
+.solutionOrbit ellipse { fill: none; stroke: var(--integration); stroke-width: .45; }
+.solutionOrbit circle { fill: var(--surface); stroke: var(--integration); stroke-width: .7; }
+.solutionOrbit .activeOrbitNode { fill: var(--integration-deep); r: 4; }
+.orbitCore { align-items: center; background: var(--integration); border-radius: 50%; box-shadow: 0 10px 24px rgb(59 43 80 / .18); color: white; display: flex; font-size: clamp(.85rem, 1.5vw, 1.1rem); font-weight: 700; height: clamp(7rem, 11vw, 10rem); justify-content: center; position: absolute; text-align: center; width: clamp(7rem, 11vw, 10rem); }
+.orbitNode { align-items: center; background: var(--surface); border: 1px solid color-mix(in srgb, var(--integration) 38%, var(--surface)); border-radius: 50%; display: flex; height: 3.6rem; justify-content: center; left: var(--node-left); position: absolute; top: var(--node-top); transform: translate(-50%, -50%); transition: background 180ms ease-out, border-color 180ms ease-out, transform 180ms ease-out; width: 3.6rem; }
+.orbitNode img { height: auto; width: 2.5rem; }
+.orbitNode span { background: var(--surface); border: 1px solid var(--line); color: var(--integration-deep); font-size: .72rem; font-weight: 700; left: 50%; opacity: 0; padding: .4rem .55rem; position: absolute; top: calc(100% + .5rem); transform: translateX(-50%); transition: opacity 180ms ease-out; white-space: nowrap; }
+.orbitShell:has([data-node="cctv"]:is(:hover, :focus-visible)) .orbitNode[data-node="cctv"], .orbitShell:has([data-node="climatizacion-refrigeracion"]:is(:hover, :focus-visible)) .orbitNode[data-node="climatizacion-refrigeracion"], .orbitShell:has([data-node="incendios"]:is(:hover, :focus-visible)) .orbitNode[data-node="incendios"], .orbitShell:has([data-node="accesos"]:is(:hover, :focus-visible)) .orbitNode[data-node="accesos"], .orbitShell:has([data-node="bms"]:is(:hover, :focus-visible)) .orbitNode[data-node="bms"], .orbitShell:has([data-node="voz-y-datos"]:is(:hover, :focus-visible)) .orbitNode[data-node="voz-y-datos"], .orbitShell:has([data-node="audio-y-video"]:is(:hover, :focus-visible)) .orbitNode[data-node="audio-y-video"] { background: var(--surface-alt); border-color: var(--integration-deep); transform: translate(-50%, -50%) scale(1.14); }
+.orbitShell:has([data-node="cctv"]:is(:hover, :focus-visible)) .orbitNode[data-node="cctv"] span, .orbitShell:has([data-node="climatizacion-refrigeracion"]:is(:hover, :focus-visible)) .orbitNode[data-node="climatizacion-refrigeracion"] span, .orbitShell:has([data-node="incendios"]:is(:hover, :focus-visible)) .orbitNode[data-node="incendios"] span, .orbitShell:has([data-node="accesos"]:is(:hover, :focus-visible)) .orbitNode[data-node="accesos"] span, .orbitShell:has([data-node="bms"]:is(:hover, :focus-visible)) .orbitNode[data-node="bms"] span, .orbitShell:has([data-node="voz-y-datos"]:is(:hover, :focus-visible)) .orbitNode[data-node="voz-y-datos"] span, .orbitShell:has([data-node="audio-y-video"]:is(:hover, :focus-visible)) .orbitNode[data-node="audio-y-video"] span { opacity: 1; }
 
 .projectBand {
   align-items: start;
-  border-top: 2px solid var(--integration);
+  background: var(--surface-alt);
   display: grid;
-  gap: 2rem;
-  grid-template-columns: minmax(7rem, 0.35fr) 1fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  grid-template-columns: minmax(15rem, .8fr) 1.2fr;
   margin-top: clamp(4rem, 10vw, 8rem);
-  padding-top: 2rem;
+  padding: clamp(2rem, 5vw, 4rem);
 }
+.scopeExamples { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
+.scopeExample { background: var(--surface); border: 1px solid var(--line); flex: 1 1 13rem; padding: 1rem; }
+.scopeExample strong { color: var(--integration-deep); display: block; font-size: .85rem; margin-bottom: .9rem; }
+.scopeExample span { display: flex; gap: .4rem; }
+.scopeExample i { background: var(--line); border-radius: 50%; display: block; height: .6rem; width: .6rem; }
+.scopeExample .activeScopeNode { background: var(--integration); }
 
-.projectNode { display: flex; gap: 0.65rem; padding-top: 0.4rem; }
-.projectNode span { background: var(--integration); border-radius: 50%; display: block; height: 1rem; width: 1rem; }
-.projectNode span:first-child { background: var(--integration-deep); }
+.ctaPanel { align-items: end; background: var(--integration-deep); color: white; display: flex; gap: 2rem; justify-content: space-between; margin-top: clamp(4rem, 10vw, 8rem); overflow: hidden; padding: clamp(2rem, 6vw, 5rem); position: relative; }
+.ctaPanel::before { border: 1px solid rgb(255 255 255 / .28); border-radius: 50%; content: ""; height: 19rem; position: absolute; right: -5rem; top: -11rem; transform: rotate(-18deg); width: 34rem; }
+.ctaPanel > * { position: relative; }
+.ctaPanel h2 { font-size: clamp(2.2rem, 5vw, 4.7rem); letter-spacing: -.04em; line-height: .98; margin: .65rem 0 1rem; max-width: 12ch; }
+.ctaPanel p:not(.worldLabel) { color: rgb(255 255 255 / .82); line-height: 1.65; margin: 0; max-width: 44ch; }
+.ctaPanel .worldLabel { color: white; margin-bottom: 0; }
+.ctaLink { align-items: center; background: white; color: var(--integration-deep); display: inline-flex; flex: none; font-weight: 750; gap: .5rem; min-height: 3rem; padding: .65rem 1.1rem; text-decoration: none; }
+.ctaLink:hover { background: var(--surface-alt); }
 
 .solutionHero { min-height: min(42rem, calc(100vh - 6rem)); padding-top: clamp(2rem, 8vw, 7rem); }
 .solutionHero .backLink { margin: 0 0 3rem; }
@@ -137,8 +164,13 @@
 .conversation { min-height: min(32rem, calc(100vh - 6rem)); padding-top: clamp(2rem, 10vw, 9rem); }
 
 @media (max-width: 40rem) {
-  .projectBand { grid-template-columns: 1fr; }
-  .projectNode { order: 2; }
+  .intro { min-height: auto; padding-top: 4rem; }
+  .orbitStage { opacity: .24; right: -6rem; top: 1rem; width: 28rem; }
+  .sectionHeading, .projectBand { grid-template-columns: 1fr; }
+  .solutionList { grid-template-columns: 1fr; }
+  .solutionList li, .solutionList li:nth-child(1), .solutionList li:nth-child(7) { grid-column: auto; }
+  .solutionLink { min-height: 15rem; }
+  .ctaPanel { align-items: start; flex-direction: column; }
 }
 
 @media (prefers-reduced-motion: reduce) { .solutionLink { transition: none; } }

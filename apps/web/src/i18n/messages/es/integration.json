@@ -4,6 +4,13 @@
   "lead": "Diseñamos e implementamos infraestructura, seguridad y sistemas que protegen, comunican, controlan y optimizan cada espacio. Desde una necesidad puntual hasta un proyecto integral, cada solución se adapta a la realidad de la operación.",
   "solutions": "Soluciones de Integración",
   "solutionAction": "Explorar solución",
+  "introMeta": "Una solución o varias disciplinas coordinadas.",
+  "catalogLabel": "Siete disciplinas",
+  "catalogCopy": "Cada solución puede responder a una necesidad puntual o coordinarse con otras cuando el proyecto lo requiere.",
+  "scopeLabel": "Alcance adaptable",
+  "specificNeed": "Necesidad específica",
+  "broaderProject": "Proyecto de mayor alcance",
+  "ctaLabel": "Tu operación, su alcance real",
   "cctv": "CCTV",
   "climate": "Climatización y Refrigeración",
   "fire": "Protección contra Incendios",
@@ -25,6 +32,15 @@
   "capabilities": "Capacidades",
   "scope": "Alcance",
   "projectCriteria": "Criterios del proyecto",
+  "summary": {
+    "cctv": "Visibilidad, evidencia y supervisión para proteger activos, personas y operación.",
+    "climatizacion-refrigeracion": "Control térmico, confort y conservación para espacios y procesos críticos.",
+    "incendios": "Detección, alerta y respuesta para reducir riesgos y proteger continuidad.",
+    "accesos": "Identidad, autorización y trazabilidad para controlar quién entra y cuándo.",
+    "bms": "Supervisión central para operar edificios con mayor eficiencia.",
+    "voz-y-datos": "Infraestructura de comunicación estable, escalable y preparada para crecer.",
+    "audio-y-video": "Sistemas claros para comunicar, colaborar y presentar en espacios físicos."
+  },
   "solution": {
     "cctv": {
       "definition": "CCTV supervisa espacios críticos, fortalece la seguridad y aporta evidencia visual para tomar mejores decisiones operativas.",

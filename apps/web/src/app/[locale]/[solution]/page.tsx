@@ -22,7 +22,9 @@ export default async function SolutionPage({ params }: Props) {
 
   return (
     <div className="bg-background">
-      <EcosatNavbar locale={locale} page="integracion" path={`/${solution}/`} />
+      <div className="px-4 pt-5 sm:px-6">
+        <EcosatNavbar locale={locale} page="integracion" path={`/${solution}/`} />
+      </div>
       <IntegrationExperience locale={locale} solution={solution} />
     </div>
   );

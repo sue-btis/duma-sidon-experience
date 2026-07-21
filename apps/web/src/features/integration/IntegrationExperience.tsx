@@ -36,37 +36,51 @@ export async function IntegrationExperience({ locale, solution }: Props) {
 
   return (
     <main className={styles.page}>
-      <section className={styles.intro}>
-        <p className={styles.worldLabel}>{t("label")}</p>
-        <h1>{t("headline")}</h1>
-        <p className={styles.lead}>{t("lead")}</p>
-        <OrbitLink className={styles.primaryLink} href={`/${locale}/integracion/conversemos/?source_path=%2Fintegracion&world=integracion&interest=proyecto-integracion`}>
-          {t("conversation")}<ArrowRight aria-hidden="true" size={18} />
-        </OrbitLink>
-      </section>
-      <section aria-labelledby="integration-solutions" className={styles.catalog}>
-          <h2 id="integration-solutions">{t("solutions")}</h2>
+      <IntegrationOrbit labels={Object.fromEntries(solutions.map((item) => [item.slug, t(item.key)]))}>
+        <section className={styles.intro}>
+          <div className={styles.introCopy}>
+            <p className={styles.worldLabel}>{t("label")}</p>
+            <h1>{t("headline")}</h1>
+            <p className={styles.lead}>{t("lead")}</p>
+            <OrbitLink className={styles.primaryLink} href={`/${locale}/integracion/conversemos/?source_path=%2Fintegracion&world=integracion&interest=proyecto-integracion`}>
+              {t("conversation")}<ArrowRight aria-hidden="true" size={18} />
+            </OrbitLink>
+            <p className={styles.introMeta}>{t("introMeta")}</p>
+          </div>
+        </section>
+        <section aria-labelledby="integration-solutions" className={styles.catalog}>
+          <div className={styles.sectionHeading}>
+            <div><p className={styles.worldLabel}>{t("catalogLabel")}</p><h2 id="integration-solutions">{t("solutions")}</h2></div>
+            <p>{t("catalogCopy")}</p>
+          </div>
           <ul className={styles.solutionList}>
             {solutions.map((item) => (
               <li key={item.slug}>
                 <OrbitLink className={styles.solutionLink} href={`/${locale}/${item.slug}/`} node={item.slug}>
-                  <Image alt="" height={84} src={item.icon} unoptimized width={84} />
-                  <span>{t(item.key)}</span>
-                  <ArrowRight aria-hidden="true" size={18} />
+                  <div className={styles.solutionTop}><span>{String(solutions.indexOf(item) + 1).padStart(2, "0")}</span><Image alt="" height={84} src={item.icon} unoptimized width={84} /></div>
+                  <div><h3>{t(item.key)}</h3><p>{t(`summary.${item.slug}`)}</p><span className={styles.solutionAction}>{t("solutionAction")}<ArrowRight aria-hidden="true" size={16} /></span></div>
                 </OrbitLink>
               </li>
             ))}
           </ul>
         </section>
-      <section className={styles.projectBand}>
-        <div className={styles.projectNode} aria-hidden="true"><span /><span /><span /></div>
-        <div>
-          <h2>{t("projectTitle")}</h2>
-          <p>{t("projectCopy")}</p>
-        </div>
-      </section>
+        <section className={styles.projectBand}>
+          <div><p className={styles.worldLabel}>{t("scopeLabel")}</p><h2>{t("projectTitle")}</h2></div>
+          <div><p>{t("projectCopy")}</p><div className={styles.scopeExamples}><ScopeExample title={t("specificNeed")} activeNodes={[2]} /><ScopeExample title={t("broaderProject")} activeNodes={[0, 2, 3, 6]} /></div></div>
+        </section>
+        <section className={styles.ctaPanel} aria-labelledby="integration-cta">
+          <div><p className={styles.worldLabel}>{t("ctaLabel")}</p><h2 id="integration-cta">{t("conversationTitle")}</h2><p>{t("conversationCopy")}</p></div>
+          <OrbitLink className={styles.ctaLink} href={`/${locale}/integracion/conversemos/?source_path=%2Fintegracion&world=integracion&interest=proyecto-integracion`}>
+            {t("conversation")}<ArrowRight aria-hidden="true" size={18} />
+          </OrbitLink>
+        </section>
+      </IntegrationOrbit>
     </main>
   );
+}
+
+function ScopeExample({ activeNodes, title }: Readonly<{ activeNodes: number[]; title: string }>) {
+  return <div className={styles.scopeExample}><strong>{title}</strong><span aria-hidden="true">{Array.from({ length: 7 }, (_, index) => <i className={activeNodes.includes(index) ? styles.activeScopeNode : undefined} key={index} />)}</span></div>;
 }
 
 type NavigatorProps = Readonly<{
