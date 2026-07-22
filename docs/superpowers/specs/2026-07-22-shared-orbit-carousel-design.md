@@ -14,7 +14,15 @@ Extract the existing Integración orbit controller into one shared client compon
 - the vertical item navigator and bottom previous/current/next navigator;
 - an equivalent non-animated list when reduced motion is requested.
 
-Integración and Sidón remain feature owners of their item data, card markup, text, and CSS. They pass labels, card content, and their existing styles into the shared controller. Theme colors remain feature-local CSS tokens; no new theme configuration is introduced.
+Integración and Sidón become thin data adapters. The shared component renders the cards, vertical item navigator, bottom previous/current/next navigator, and reduced-motion list.
+
+Its inputs are deliberately limited to:
+
+- `id` and accessible labels for the carousel and controls;
+- `items`, each with `id`, `icon`, `title`, `description`, and `href`;
+- `accentColor` and `deepColor` for each brand's card and control states.
+
+The component applies those colors through local CSS custom properties. No slots, render callbacks, separate card variants, or feature-specific carousel CSS are needed: both product pages use the same card hierarchy and behavior.
 
 ## Boundaries
 
