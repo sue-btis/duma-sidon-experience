@@ -52,6 +52,7 @@ export async function IntegrationExperience({ locale, solution }: Props) {
         <OrbitCarousel
           accentColor="var(--integration)"
           ariaLabel={t("solutions")}
+          brandIcon="/home/worlds/integracion.png"
           deepColor="var(--integration-deep)"
           id="integration-orbit"
           instructions={t("orbitInstructions")}

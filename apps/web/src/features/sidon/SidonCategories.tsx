@@ -19,6 +19,7 @@ export function SidonCategories({ categories, exploreLabel, instructions, locale
     <OrbitCarousel
       accentColor="var(--sidon)"
       ariaLabel={instructions}
+      brandIcon="/home/worlds/sidon.png"
       deepColor="var(--sidon-deep)"
       id="sidon-categories"
       instructions={instructions}
@@ -26,10 +27,12 @@ export function SidonCategories({ categories, exploreLabel, instructions, locale
         const content = categories[category.slug];
         return {
           action: exploreLabel.replace("{category}", content.name),
-          description: `${modulesLabel}: ${category.modules.map((module) => content.modules[module].name).join(" · ")}`,
+          decorativeColor: category.decorativeColor,
           href: `/${locale}/${category.slug}/`,
           icon: category.icon,
           id: category.slug,
+          modules: category.modules.map((module) => ({ icon: module.icon, name: content.modules[module.key].name })),
+          modulesLabel,
           title: content.name,
         };
       })}

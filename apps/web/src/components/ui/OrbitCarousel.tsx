@@ -17,16 +17,20 @@ import styles from "./orbit-carousel.module.css";
 
 export type OrbitCarouselItem = Readonly<{
   action: string;
-  description: string;
+  decorativeColor?: string;
+  description?: string;
   href: string;
   icon: string;
   id: string;
+  modules?: readonly Readonly<{ icon: string; name: string }>[];
+  modulesLabel?: string;
   title: string;
 }>;
 
 type Props = Readonly<{
   accentColor: string;
   ariaLabel: string;
+  brandIcon: string;
   deepColor: string;
   id: string;
   instructions: string;
@@ -37,7 +41,15 @@ type Props = Readonly<{
 
 const AUTOPLAY_DELAY = 1100;
 
-export function OrbitCarousel({ accentColor, ariaLabel, deepColor, id, instructions, items, nextLabel, previousLabel }: Props) {
+function SupportingContent({ item }: Readonly<{ item: OrbitCarouselItem }>) {
+  if (item.modules?.length) {
+    return <span className={styles.modules}><span className={styles.modulesLabel}>{item.modulesLabel}</span><span className={styles.moduleList}>{item.modules.map((module) => <span className={styles.module} key={module.name}><Image alt="" height={32} src={module.icon} unoptimized width={32} /><span>{module.name}</span></span>)}</span></span>;
+  }
+
+  return item.description ? <span className={styles.description}>{item.description}</span> : null;
+}
+
+export function OrbitCarousel({ accentColor, ariaLabel, brandIcon, deepColor, id, instructions, items, nextLabel, previousLabel }: Props) {
   const sceneRef = useRef<HTMLElement>(null);
   const cardRefs = useRef<Array<HTMLAnchorElement | null>>([]);
   const clockRef = useRef(0);
@@ -267,10 +279,12 @@ export function OrbitCarousel({ accentColor, ariaLabel, deepColor, id, instructi
               }
             }}
             ref={(element) => { cardRefs.current[index] = element; }}
+            style={{ "--card-decorative": item.decorativeColor ?? accentColor } as CSSProperties}
             tabIndex={index === 0 ? 0 : -1}
           >
-            <span className={styles.cardTop}><span>{String(index + 1).padStart(2, "0")}</span><Image alt="" height={84} src={item.icon} unoptimized width={84} /></span>
-            <span><strong>{item.title}</strong><span className={styles.description}>{item.description}</span><span className={styles.action}>{item.action}<ArrowRight aria-hidden="true" size={16} /></span></span>
+            <span className={styles.cardTop}><Image alt="" className={styles.brandIcon} height={44} src={brandIcon} unoptimized width={44} /><span className={styles.cardNumber}>{String(index + 1).padStart(2, "0")}</span></span>
+            <span className={styles.cardBody}><span className={styles.cardIcon}><Image alt="" height={84} src={item.icon} unoptimized width={84} /></span><strong>{item.title}</strong></span>
+            <span className={styles.cardFooter}><SupportingContent item={item} /><span className={styles.action}>{item.action}<ArrowRight aria-hidden="true" size={16} /></span></span>
           </Link>
         ))}
       </div>
@@ -282,7 +296,7 @@ export function OrbitCarousel({ accentColor, ariaLabel, deepColor, id, instructi
         <p aria-atomic="true" aria-live="polite"><span>{String(activeIndex + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}</span>{activeItem.title}</p>
         <button aria-label={nextLabel} onClick={() => rotateBy(1)} type="button"><ArrowRight aria-hidden="true" size={18} /></button>
       </div>
-      <ul className={styles.reducedList}>{items.map((item) => <li key={item.id}><Link href={item.href}><Image alt="" height={48} src={item.icon} unoptimized width={48} /><span><strong>{item.title}</strong><span>{item.description}</span></span><ArrowRight aria-hidden="true" size={16} /></Link></li>)}</ul>
+      <ul className={styles.reducedList}>{items.map((item) => <li key={item.id}><Link href={item.href}><Image alt="" height={48} src={item.icon} unoptimized width={48} /><span><strong>{item.title}</strong><SupportingContent item={item} /></span><ArrowRight aria-hidden="true" size={16} /></Link></li>)}</ul>
     </section>
   );
 }
