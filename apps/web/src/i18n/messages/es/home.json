@@ -19,6 +19,18 @@
   "mapReachTotal": "15 ciudades",
   "mapHq": "Chihuahua · sede",
   "mapClose": "Conectamos personas, espacios y tecnología para transformar operaciones y crear valor.",
+  "evolution": {
+    "ariaLabel": "Evolución de Ecosat",
+    "navigationLabel": "Etapas de evolución de Ecosat",
+    "origin": { "label": "Chihuahua Matriz", "headline": "Donde todo comenzó.", "location": "Chihuahua, México", "body": "Nuestra primera base marcó el inicio de una trayectoria construida alrededor de la conectividad, la tecnología y la confianza de nuestros clientes." },
+    "timeline": { "headline": "Una historia de evolución constante.", "body": "Cada etapa refleja la capacidad de Ecosat para adaptarse, crecer e integrar nuevas tecnologías a las necesidades de operación." },
+    "radio": { "label": "Radiocomunicaciones", "headline": "El inicio de nuestra conexión.", "body": "Soluciones de comunicación confiable para mantener operaciones conectadas." },
+    "telecom": { "label": "Telecomunicaciones y conectividad", "headline": "Infraestructura para operaciones conectadas.", "body": "Construimos redes y soluciones capaces de comunicar espacios, equipos y personas." },
+    "integration": { "label": "Integración tecnológica", "headline": "Sistemas que trabajan como uno.", "body": "Integramos tecnología, seguridad e infraestructura dentro de entornos operativos conectados." },
+    "solutions": { "label": "Soluciones integrales", "headline": "Tecnología conectada para operaciones completas.", "body": "Diseñamos ecosistemas que integran infraestructura, información y control para generar mayor valor operativo." },
+    "expansion": { "headline": "Una presencia que sigue creciendo.", "body": "Nuestra evolución nos permite acompañar operaciones en nuevas regiones y mercados." },
+    "presence": { "label": "Expansión Ecosat", "headline": "Donde está tu operación, está Ecosat.", "body": "Nuestra presencia conecta infraestructura, tecnología y equipos en distintas regiones de México y Norteamérica." }
+  },
   "industriesTitle": "La confianza se gana dentro de la operación.",
   "industriesLead": "Ecosat conecta la tecnología con la forma en que realmente funciona cada operación.",
   "industry": { "retail": "Retail", "foodService": "Restaurantes y servicio de alimentos", "industrial": "Industrial y manufactura", "financial": "Banca y servicios financieros", "commercial": "Espacios corporativos y comerciales", "logistics": "Logística y distribución", "hospitality": "Hospitalidad" },

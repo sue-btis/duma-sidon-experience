@@ -13,7 +13,7 @@ export default async function IntegrationPage({ params }: Props) {
 
   return (
     <div className="bg-background">
-      <div className="px-4 pt-5 sm:px-6">
+      <div className="fixed inset-x-0 top-0 z-10 px-4 pt-5 sm:px-6">
         <EcosatNavbar locale={locale} page="integracion" />
       </div>
       <IntegrationExperience locale={locale} />

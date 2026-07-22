@@ -36,10 +36,14 @@ export async function IntegrationExperience({ locale, solution }: Props) {
   }
 
   return (
-    <main className={styles.page}>
-      <section aria-labelledby="integration-title" className={styles.intro}>
+    <main className={`${styles.page} ${styles.integrationLanding}`}>
+      <section aria-labelledby="integration-title" className={`${styles.scene} ${styles.intro}`}>
+        <div aria-hidden="true" className={styles.introOrbits}>
+          <div className={`${styles.introOrbit} ${styles.introOrbitOuter}`}><i /></div>
+          <div className={`${styles.introOrbit} ${styles.introOrbitCentral}`}><i /></div>
+        </div>
         <div className={styles.introCopy}>
-          <p className={styles.worldLabel}>{t("label")}</p>
+          <Image alt="" className={styles.introLabel} height={104} src="/home/worlds/integracion.png" unoptimized width={104} />
           <h1 id="integration-title">{t("headline")}</h1>
           <p className={styles.lead}>{t("lead")}</p>
           <OrbitLink className={styles.primaryLink} href={`/${locale}/integracion/conversemos/?source_path=%2Fintegracion&world=integracion&interest=proyecto-integracion`}>
@@ -47,6 +51,8 @@ export async function IntegrationExperience({ locale, solution }: Props) {
           </OrbitLink>
           <p className={styles.introMeta}>{t("introMeta")}</p>
         </div>
+      </section>
+      <section aria-label={t("solutions")} className={`${styles.scene} ${styles.carouselScene}`}>
         <IntegrationOrbit
           ariaLabel={t("solutions")}
           instructions={t("orbitInstructions")}
@@ -62,11 +68,11 @@ export async function IntegrationExperience({ locale, solution }: Props) {
           }))}
         />
       </section>
-      <section className={styles.projectBand}>
+      <section className={`${styles.scene} ${styles.projectBand}`}>
         <div><p className={styles.worldLabel}>{t("scopeLabel")}</p><h2>{t("projectTitle")}</h2></div>
         <div><p>{t("projectCopy")}</p><div className={styles.scopeExamples}><ScopeExample title={t("specificNeed")} activeNodes={[2]} /><ScopeExample title={t("broaderProject")} activeNodes={[0, 2, 3, 6]} /></div></div>
       </section>
-      <section className={styles.ctaPanel} aria-labelledby="integration-cta">
+      <section className={`${styles.scene} ${styles.ctaPanel}`} aria-labelledby="integration-cta">
         <div><p className={styles.worldLabel}>{t("ctaLabel")}</p><h2 id="integration-cta">{t("conversationTitle")}</h2><p>{t("conversationCopy")}</p></div>
         <OrbitLink className={styles.ctaLink} href={`/${locale}/integracion/conversemos/?source_path=%2Fintegracion&world=integracion&interest=proyecto-integracion`}>
           {t("conversation")}<ArrowRight aria-hidden="true" size={18} />

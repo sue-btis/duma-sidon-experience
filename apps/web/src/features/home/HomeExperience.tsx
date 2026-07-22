@@ -13,7 +13,6 @@ import {
 import { CoreOpening } from "./CoreOpening";
 import { CompanyEvolution } from "./CompanyEvolution";
 import { HomeSceneController } from "./HomeSceneController";
-import { MapExperience } from "./MapExperience";
 import { WorldCircuit } from "./WorldCircuit";
 import styles from "./home-experience.module.css";
 
@@ -71,13 +70,19 @@ export async function HomeExperience({ locale }: Props) {
         title={t("coverTitle")}
       />
 
-      <CompanyEvolution />
-
-      <MapExperience
-        close={t("mapClose")}
-        hq={t("mapHq")}
-        labels={[t("mapOrigin"), t("mapMexico"), t("mapBorder"), t("mapCanada"), t("mapCentralAmerica"), t("mapPresence")]}
-        reach={[t("mapReachOne"), t("mapReachMexico"), t("mapReachNorth"), t("mapReachTotal")]}
+      <CompanyEvolution
+        ariaLabel={t("evolution.ariaLabel")}
+        navigationLabel={t("evolution.navigationLabel")}
+        steps={[
+          { body: t("evolution.origin.body"), headline: t("evolution.origin.headline"), kind: "map", label: t("evolution.origin.label"), location: t("evolution.origin.location") },
+          { body: t("evolution.timeline.body"), headline: t("evolution.timeline.headline"), kind: "transition" },
+          { body: t("evolution.radio.body"), headline: t("evolution.radio.headline"), kind: "phase", label: t("evolution.radio.label") },
+          { body: t("evolution.telecom.body"), headline: t("evolution.telecom.headline"), kind: "phase", label: t("evolution.telecom.label") },
+          { body: t("evolution.integration.body"), headline: t("evolution.integration.headline"), kind: "phase", label: t("evolution.integration.label") },
+          { body: t("evolution.solutions.body"), headline: t("evolution.solutions.headline"), kind: "phase", label: t("evolution.solutions.label") },
+          { body: t("evolution.expansion.body"), headline: t("evolution.expansion.headline"), kind: "transition" },
+          { body: t("evolution.presence.body"), headline: t("evolution.presence.headline"), kind: "map", label: t("evolution.presence.label") },
+        ]}
       />
 
       <section className={`${styles.scene} ${styles.industryScene}`} data-home-scene id="industrias">

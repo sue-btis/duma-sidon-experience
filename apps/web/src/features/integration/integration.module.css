@@ -1,7 +1,9 @@
 .page {
-  overflow: hidden;
+  overflow: clip;
   padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 3rem) 5rem;
 }
+
+.scene { min-height: 100svh; position: relative; }
 
 .intro,
 .solutionHero,
@@ -57,10 +59,31 @@
 
 .primaryLink:hover { background: var(--integration-deep); }
 
-.intro { isolation: isolate; margin-left: auto; margin-right: auto; max-width: 96rem; padding: clamp(4rem, 8vw, 7rem) 0; position: relative; }
-.introCopy { max-width: 44rem; position: relative; }
-.intro .lead { max-width: 37rem; }
+.intro { align-items: center; display: grid; isolation: isolate; justify-items: center; margin-left: auto; margin-right: auto; max-width: 96rem; padding: 7rem 1.25rem 4rem; position: relative; }
+.introCopy { align-items: center; display: flex; flex-direction: column; max-width: 44rem; position: relative; text-align: center; }
+.introLabel { height: auto; margin-bottom: 1rem; width: min(8rem, 38vw); }
+.intro h1 { font-size: clamp(2.4rem, 3.8vw, 4rem); }
+.intro .lead { margin-left: auto; margin-right: auto; max-width: 37rem; }
 .introMeta { color: var(--integration-deep); font-size: .9rem; font-weight: 650; margin: 1.5rem 0 0; }
+
+.introOrbits { inset: 0; overflow: hidden; pointer-events: none; position: absolute; z-index: -1; }
+.introOrbit { aspect-ratio: 1.2; border: 1px solid; border-radius: 50%; left: 50%; position: absolute; top: 50%; transform: translate(-50%, -50%) rotate(-17deg); }
+.introOrbit i { aspect-ratio: 1; border-radius: 50%; display: block; position: absolute; width: .55rem; }
+.introOrbitOuter { border-color: color-mix(in srgb, var(--integration) 22%, transparent); width: min(78.75vw, 49.5rem); }
+.introOrbitOuter i { background: color-mix(in srgb, var(--integration) 65%, var(--surface)); left: calc(50% - .275rem); top: -.275rem; }
+.introOrbitCentral { border-color: color-mix(in srgb, var(--integration) 54%, transparent); width: min(57vw, 34.5rem); }
+.introOrbitCentral i { background: var(--integration); left: calc(88.42% - .275rem); top: calc(82% - .275rem); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .introOrbitOuter { animation: introOrbitClockwise 52s linear infinite; }
+  .introOrbitCentral { animation: introOrbitCounterclockwise 78s linear infinite; }
+}
+
+@keyframes introOrbitClockwise { to { transform: translate(-50%, -50%) rotate(343deg); } }
+@keyframes introOrbitCounterclockwise { to { transform: translate(-50%, -50%) rotate(-377deg); } }
+
+.carouselScene { align-items: center; display: grid; margin: 0 auto; max-width: 96rem; padding: 7rem 0 4rem; }
+.carouselScene .integrationOrbit { margin-top: 0; }
 
 .orbitShell { isolation: isolate; position: relative; }
 .solutionOrbit { height: auto; left: 50%; opacity: .28; overflow: visible; pointer-events: none; position: absolute; top: 51%; transform: translate(-50%, -50%); width: min(76rem, 96vw); z-index: -1; }
@@ -91,11 +114,12 @@
 
 .projectBand {
   align-items: start;
+  align-content: center;
   background: var(--surface-alt);
   display: grid;
   gap: clamp(2rem, 6vw, 5rem);
   grid-template-columns: minmax(15rem, .8fr) 1.2fr;
-  margin-top: clamp(4rem, 10vw, 8rem);
+  margin-top: clamp(2.5rem, 6vw, 4.5rem);
   padding: clamp(2rem, 5vw, 4rem);
 }
 .scopeExamples { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
@@ -105,7 +129,7 @@
 .scopeExample i { background: var(--line); border-radius: 50%; display: block; height: .6rem; width: .6rem; }
 .scopeExample .activeScopeNode { background: var(--integration); }
 
-.ctaPanel { align-items: end; background: var(--integration-deep); color: white; display: flex; gap: 2rem; justify-content: space-between; margin-top: clamp(4rem, 10vw, 8rem); overflow: hidden; padding: clamp(2rem, 6vw, 5rem); position: relative; }
+.ctaPanel { align-items: center; background: var(--integration-deep); color: white; display: flex; gap: 2rem; justify-content: space-between; margin-top: clamp(2.5rem, 6vw, 4.5rem); overflow: hidden; padding: clamp(2rem, 6vw, 5rem); position: relative; }
 .ctaPanel::before { border: 1px solid rgb(255 255 255 / .28); border-radius: 50%; content: ""; height: 19rem; position: absolute; right: -5rem; top: -11rem; transform: rotate(-18deg); width: 34rem; }
 .ctaPanel > * { position: relative; }
 .ctaPanel h2 { font-size: clamp(2.2rem, 5vw, 4.7rem); letter-spacing: -.04em; line-height: .98; margin: .65rem 0 1rem; max-width: 12ch; }
@@ -139,9 +163,10 @@
 .conversation { min-height: min(32rem, calc(100vh - 6rem)); padding-top: clamp(2rem, 10vw, 9rem); }
 
 @media (max-width: 40rem) {
+  .scene { min-height: auto; }
   .intro { padding-top: 3.5rem; }
   .introCopy { max-width: 100%; }
-  .intro h1 { font-size: clamp(2.7rem, 13vw, 4.5rem); max-width: 10ch; }
+  .intro h1 { font-size: clamp(2.15rem, 9vw, 3.2rem); max-width: 10ch; }
   .intro .lead { font-size: 1rem; line-height: 1.55; max-width: 34ch; }
   .integrationOrbit { block-size: clamp(22rem, 105vw, 29rem); }
   .orbitCard { height: clamp(14.5rem, 64vw, 17rem); padding: 1rem; width: clamp(10.5rem, 48vw, 12.5rem); }
@@ -153,6 +178,11 @@
   .orbitHud p { max-width: 11rem; }
   .ctaPanel { align-items: start; flex-direction: column; }
   .projectBand { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 1001px) and (prefers-reduced-motion: no-preference) {
+  :global(html):has(.integrationLanding) { scroll-snap-type: y mandatory; }
+  .scene { scroll-snap-align: start; scroll-snap-stop: always; }
 }
 
 @media (prefers-reduced-motion: reduce) {

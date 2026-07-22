@@ -19,6 +19,18 @@
   "mapReachTotal": "15 cities",
   "mapHq": "Chihuahua · HQ",
   "mapClose": "We connect people, spaces, and technology to transform operations and create value.",
+  "evolution": {
+    "ariaLabel": "Ecosat evolution",
+    "navigationLabel": "Ecosat evolution stages",
+    "origin": { "label": "Chihuahua Headquarters", "headline": "Where it all began.", "location": "Chihuahua, Mexico", "body": "Our first location marked the beginning of a journey built around connectivity, technology, and the trust of our customers." },
+    "timeline": { "headline": "A story of continuous evolution.", "body": "Each stage reflects Ecosat’s ability to adapt, grow, and integrate new technologies around operational needs." },
+    "radio": { "label": "Radio communications", "headline": "Where our connection began.", "body": "Reliable communication solutions built to keep operations connected." },
+    "telecom": { "label": "Telecommunications and connectivity", "headline": "Infrastructure for connected operations.", "body": "We build networks and solutions that connect spaces, systems, and people." },
+    "integration": { "label": "Technology integration", "headline": "Systems working as one.", "body": "We integrate technology, security, and infrastructure into connected operational environments." },
+    "solutions": { "label": "Comprehensive solutions", "headline": "Connected technology for complete operations.", "body": "We design ecosystems that integrate infrastructure, information, and control to create greater operational value." },
+    "expansion": { "headline": "A growing presence.", "body": "Our evolution allows us to support operations across new regions and markets." },
+    "presence": { "label": "Ecosat expansion", "headline": "Where your operation is, Ecosat is there.", "body": "Our presence connects infrastructure, technology, and teams across different regions of Mexico and North America." }
+  },
   "industriesTitle": "Trust is earned inside the operation.",
   "industriesLead": "Ecosat connects technology to how each operation actually runs.",
   "industry": { "retail": "Retail", "foodService": "Restaurants & Food Service", "industrial": "Industrial & Manufacturing", "financial": "Banking & Financial Services", "commercial": "Corporate & Commercial Spaces", "logistics": "Logistics & Distribution", "hospitality": "Hospitality" },
