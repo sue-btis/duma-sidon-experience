@@ -282,6 +282,27 @@ export function IntegrationOrbit({ ariaLabel, instructions, nextLabel, previousL
         ))}
       </div>
 
+      <nav aria-label={ariaLabel} className={styles.orbitNavigator}>
+        <ol>
+          {solutions.map((solution, index) => {
+            const distance = Math.min(3, Math.abs(index - activeIndex));
+
+            return (
+              <li key={solution.slug}>
+                <button
+                  aria-current={index === activeIndex ? "true" : undefined}
+                  data-distance={distance}
+                  onClick={() => rotateTo(index)}
+                  type="button"
+                >
+                  {solution.title}
+                </button>
+              </li>
+            );
+          })}
+        </ol>
+      </nav>
+
       <div className={styles.orbitHud}>
         <button aria-label={previousLabel} onClick={() => rotateBy(-1)} type="button"><ArrowLeft aria-hidden="true" size={18} /></button>
         <p aria-atomic="true" aria-live="polite"><span>{String(activeIndex + 1).padStart(2, "0")} / {String(solutions.length).padStart(2, "0")}</span>{activeSolution.title}</p>

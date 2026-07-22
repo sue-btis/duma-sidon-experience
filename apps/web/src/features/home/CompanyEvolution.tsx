@@ -21,9 +21,9 @@ const cameras = [
 
 export type CompanyEvolutionStep = Readonly<{ label?: string; headline: string; body: string; location?: string; kind: "map" | "phase" | "transition" }>;
 
-type Props = Readonly<{ ariaLabel: string; navigationLabel: string; steps: readonly CompanyEvolutionStep[] }>;
+type Props = Readonly<{ ariaLabel: string; steps: readonly CompanyEvolutionStep[] }>;
 
-export function CompanyEvolution({ ariaLabel, navigationLabel, steps }: Props) {
+export function CompanyEvolution({ ariaLabel, steps }: Props) {
   const journeyRef = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -101,8 +101,6 @@ export function CompanyEvolution({ ariaLabel, navigationLabel, steps }: Props) {
             {current.location && <p className={styles.location}>{current.location}</p>}
             <p className={styles.storyBody}>{current.body}</p>
           </article>
-          <nav aria-label={navigationLabel} className={styles.stepNav}>{steps.map((step, index) => <button aria-current={index === active ? "step" : undefined} aria-label={step.headline} className={index === active ? styles.active : ""} key={step.headline} onClick={() => goTo(index)} type="button">{String(index + 1).padStart(2, "0")}</button>)}</nav>
-          <div aria-hidden="true" className={styles.progress}><div><i style={{ width: `${progress * 100}%` }} /><b style={{ left: `${progress * 100}%` }} /></div></div>
         </div>
       </div>
     </section>

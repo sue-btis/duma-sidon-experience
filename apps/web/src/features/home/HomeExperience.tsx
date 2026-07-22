@@ -72,7 +72,6 @@ export async function HomeExperience({ locale }: Props) {
 
       <CompanyEvolution
         ariaLabel={t("evolution.ariaLabel")}
-        navigationLabel={t("evolution.navigationLabel")}
         steps={[
           { body: t("evolution.origin.body"), headline: t("evolution.origin.headline"), kind: "map", label: t("evolution.origin.label"), location: t("evolution.origin.location") },
           { body: t("evolution.timeline.body"), headline: t("evolution.timeline.headline"), kind: "transition" },

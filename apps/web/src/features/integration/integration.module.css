@@ -82,7 +82,7 @@
 @keyframes introOrbitClockwise { to { transform: translate(-50%, -50%) rotate(343deg); } }
 @keyframes introOrbitCounterclockwise { to { transform: translate(-50%, -50%) rotate(-377deg); } }
 
-.carouselScene { align-items: center; display: grid; margin: 0 auto; max-width: 96rem; padding: 7rem 0 4rem; }
+.carouselScene { align-items: center; display: grid; margin: 0 auto; max-width: 96rem; padding: 7rem 0 8rem; }
 .carouselScene .integrationOrbit { margin-top: 0; }
 
 .orbitShell { isolation: isolate; position: relative; }
@@ -93,7 +93,7 @@
 
 .integrationOrbit { block-size: clamp(25rem, 44vw, 36rem); cursor: grab; margin-top: clamp(2rem, 5vw, 4rem); outline-offset: -3px; perspective: 1350px; position: relative; touch-action: pan-y; user-select: none; width: 100%; }
 .integrationOrbit:active { cursor: grabbing; }
-.orbitTrack { inset: 0; position: absolute; transform-style: preserve-3d; }
+.orbitTrack { bottom: 0; left: clamp(6.5rem, 15vw, 12rem); position: absolute; right: 0; top: 0; transform: scale(.76); transform-origin: center; transform-style: preserve-3d; }
 .orbitCard { background: var(--surface); border: 1px solid color-mix(in srgb, var(--integration) 26%, var(--line)); color: var(--ink); display: flex; flex-direction: column; height: clamp(18rem, 24vw, 23rem); justify-content: space-between; left: 50%; padding: clamp(1.15rem, 1.8vw, 1.6rem); position: absolute; text-decoration: none; top: 50%; transform-style: preserve-3d; transition: background 180ms ease-out, border-color 180ms ease-out; width: clamp(13.5rem, 18vw, 18rem); will-change: filter, opacity, transform; }
 .orbitCard:hover, .orbitCard[data-active="true"] { background: color-mix(in srgb, var(--surface) 96%, var(--integration)); border-color: var(--integration); }
 .orbitCardTop { align-items: flex-start; color: var(--ink-soft); display: flex; font-size: .75rem; font-weight: 750; justify-content: space-between; letter-spacing: .12em; }
@@ -101,7 +101,14 @@
 .orbitCard strong { color: var(--integration-deep); display: block; font-size: clamp(1.35rem, 1.9vw, 1.8rem); letter-spacing: -.025em; line-height: 1.1; text-wrap: balance; }
 .orbitSummary { color: var(--ink-soft); display: block; font-size: clamp(.88rem, 1.05vw, 1rem); line-height: 1.5; margin-top: .6rem; }
 .orbitAction { align-items: center; color: var(--integration-deep); display: inline-flex; font-size: .86rem; font-weight: 750; gap: .4rem; margin-top: 1rem; }
-.orbitHud { align-items: center; bottom: clamp(1.25rem, 3vw, 2.5rem); display: flex; gap: .55rem; position: absolute; right: clamp(1rem, 9vw, 8rem); z-index: 1300; }
+.orbitNavigator { left: clamp(1rem, 5vw, 5rem); position: absolute; top: 50%; transform: translateY(-50%); z-index: 1200; }
+.orbitNavigator ol { display: grid; gap: .3rem; list-style: none; margin: 0; padding: 0; }
+.orbitNavigator button { background: none; border: 0; color: var(--integration-deep); cursor: pointer; font-size: clamp(.75rem, 1.1vw, 1rem); font-weight: 500; padding: .2rem 0; text-align: left; transition: opacity 180ms ease-out, font-size 180ms ease-out, font-weight 180ms ease-out; }
+.orbitNavigator button[data-distance="1"] { opacity: .68; }
+.orbitNavigator button[data-distance="2"] { opacity: .42; }
+.orbitNavigator button[data-distance="3"] { opacity: .2; }
+.orbitNavigator button[aria-current="true"] { font-size: clamp(.95rem, 1.45vw, 1.25rem); font-weight: 750; opacity: 1; }
+.orbitHud { align-items: center; bottom: clamp(-4.25rem, -4vw, -3.5rem); display: flex; gap: .55rem; position: absolute; right: clamp(1rem, 9vw, 8rem); z-index: 1300; }
 .orbitHud button { align-items: center; background: var(--surface); border: 1px solid color-mix(in srgb, var(--integration) 42%, var(--line)); color: var(--integration-deep); cursor: pointer; display: inline-flex; height: 2.75rem; justify-content: center; padding: 0; width: 2.75rem; }
 .orbitHud button:hover { background: var(--surface-alt); border-color: var(--integration); }
 .orbitHud p { align-items: center; background: var(--surface); border: 1px solid var(--line); color: var(--integration-deep); display: flex; font-size: .82rem; font-weight: 750; gap: .65rem; margin: 0; min-height: 2.75rem; padding: .55rem .8rem; }
@@ -174,7 +181,13 @@
   .orbitSummary { font-size: .78rem; line-height: 1.4; }
   .orbitAction { font-size: .76rem; margin-top: .7rem; }
   .orbitCardTop img { width: 3.25rem; }
-  .orbitHud { bottom: 1rem; right: 1rem; }
+  .carouselScene { padding-bottom: 6.5rem; }
+  .orbitNavigator { left: 1rem; top: 1rem; transform: none; }
+  .orbitNavigator ol { gap: .15rem; }
+  .orbitNavigator button { font-size: .7rem; padding: .1rem 0; }
+  .orbitNavigator button[aria-current="true"] { font-size: .9rem; }
+  .orbitTrack { inset: 0; transform: none; }
+  .orbitHud { bottom: -4rem; right: 1rem; }
   .orbitHud p { max-width: 11rem; }
   .ctaPanel { align-items: start; flex-direction: column; }
   .projectBand { grid-template-columns: 1fr; }
@@ -187,7 +200,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .integrationOrbit { block-size: auto; cursor: default; margin-top: 2rem; outline-offset: 3px; perspective: none; touch-action: auto; }
-  .orbitTrack, .orbitHud { display: none; }
+  .orbitTrack, .orbitNavigator, .orbitHud { display: none; }
   .reducedOrbitList { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); list-style: none; margin: 0; padding: 0; }
   .reducedOrbitList a { align-items: center; background: var(--surface); border: 1px solid var(--line); color: var(--integration-deep); display: flex; gap: .8rem; min-height: 5.5rem; padding: .8rem; text-decoration: none; }
   .reducedOrbitList img { flex: 0 0 auto; height: auto; width: 3rem; }
