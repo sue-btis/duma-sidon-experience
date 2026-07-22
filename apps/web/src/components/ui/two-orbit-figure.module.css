@@ -1,0 +1,10 @@
+.figure { inset: 0; overflow: hidden; pointer-events: none; position: absolute; }
+.orbit { aspect-ratio: 1.2; border: 1px solid; border-radius: 50%; left: 50%; position: absolute; top: 50%; transform: translate(-50%, -50%) rotate(-17deg); }
+.orbit i { aspect-ratio: 1; border-radius: 50%; display: block; position: absolute; width: .55rem; }
+.outer { border-color: color-mix(in srgb, var(--two-orbit-outer) 22%, transparent); width: min(78.75vw, 49.5rem); }
+.outer i { background: var(--two-node-outer); left: calc(50% - .275rem); top: -.275rem; }
+.inner { border-color: color-mix(in srgb, var(--two-orbit-inner) 54%, transparent); width: min(57vw, 34.5rem); }
+.inner i { background: var(--two-node-inner); left: calc(88.42% - .275rem); top: calc(82% - .275rem); }
+@media (prefers-reduced-motion: no-preference) { .outer { animation: twoOrbitClockwise 52s linear infinite; }.inner { animation: twoOrbitCounterclockwise 78s linear infinite; } }
+@keyframes twoOrbitClockwise { to { transform: translate(-50%, -50%) rotate(343deg); } }
+@keyframes twoOrbitCounterclockwise { to { transform: translate(-50%, -50%) rotate(-377deg); } }
