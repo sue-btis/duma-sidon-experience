@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { TwoOrbitFigure } from "@/components/ui/TwoOrbitFigure";
-import { MicroletterLogoCloud, MicroletterPlanetCloud } from "./CloudPreviews";
+import { MicroletterPlanetCloud } from "./CloudPreviews";
 
 import styles from "./home-experience.module.css";
 
@@ -16,11 +16,14 @@ export function CoreOpening({ attributes, statement, title }: Props) {
     <section className={styles.openingScene} data-home-scene id="portada">
       <div className={styles.openingSticky}>
         <TwoOrbitFigure className={styles.orbits} nodeColors={["var(--sidon)", "var(--integration)"]} orbitColors={["var(--ecosat-deep)", "var(--ecosat)"]} />
-        <div aria-hidden="true" className={styles.openingCloudLogo}>
-          <MicroletterLogoCloud glow size="clamp(9rem, 17vw, 15rem)" />
+        <div aria-hidden="true" className={styles.openingCloudIntegration}>
+          <MicroletterPlanetCloud interactive={false} maxFps={24} size="clamp(15rem, 28.5vw, 25.5rem)" tone="purple" />
+        </div>
+        <div aria-hidden="true" className={styles.openingCloudEcosat}>
+          <MicroletterPlanetCloud interactive={false} maxFps={24} size="clamp(19.8rem, 39.6vw, 32.4rem)" />
         </div>
         <div aria-hidden="true" className={styles.openingCloudPlanet}>
-          <MicroletterPlanetCloud interactive={false} maxFps={24} size="clamp(10rem, 19vw, 17rem)" />
+          <MicroletterPlanetCloud interactive={false} maxFps={24} size="clamp(15rem, 28.5vw, 25.5rem)" tone="green" />
         </div>
         <div className={styles.coverContent}>
           <h1 className={styles.visuallyHidden}>{title}</h1>

@@ -13,10 +13,10 @@ import {
 } from "../../../../../docs/legacy/3d cloud/microletterPlanet(1)";
 
 type LogoProps = Readonly<MicroletterLogoOptions & { size: string }>;
-type PlanetProps = Readonly<MicroletterPlanetOptions & { size: string }>;
+type PlanetProps = Readonly<MicroletterPlanetOptions & { size: string; tone?: "blue" | "purple" | "green" }>;
 
 type LogoStyle = CSSProperties & { "--microletter-logo-size"?: string };
-type PlanetStyle = CSSProperties & { "--microletter-planet-size"?: string };
+type PlanetStyle = CSSProperties & { "--microletter-planet-size"?: string; "--microletter-planet-filter"?: string };
 
 export function MicroletterLogoCloud({
   density,
@@ -60,6 +60,7 @@ export function MicroletterPlanetCloud({
   maxFps,
   rotationSpeed,
   size,
+  tone = "blue",
 }: PlanetProps) {
   const planetRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -79,7 +80,10 @@ export function MicroletterPlanetCloud({
     }).destroy;
   }, [centerClearance, glyphSet, interactive, maxFps, rotationSpeed]);
 
-  const style: PlanetStyle = { "--microletter-planet-size": size };
+  const style: PlanetStyle = {
+    "--microletter-planet-size": size,
+    "--microletter-planet-filter": tone === "purple" ? "hue-rotate(55deg)" : tone === "green" ? "hue-rotate(-55deg)" : "none",
+  };
 
   return (
     <div className={styles.planetRoot} style={style}>
