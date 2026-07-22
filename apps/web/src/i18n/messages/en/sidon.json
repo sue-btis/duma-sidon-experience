@@ -1,0 +1,62 @@
+{
+  "eyebrow": "DIGITAL WORLD",
+  "headline": "Operations become intelligence.",
+  "lead": "Sidón connects what people do, what systems detect, and what the operation needs to understand.",
+  "introMeta": "A connected solution for understanding and improving daily operations.",
+  "categoriesTitle": "Five areas. One connected operation.",
+  "categoriesLead": "Each category addresses a distinct operational need. Together, they create a shared view of the operation while allowing each project to use only the modules it needs.",
+  "modules": "MODULES",
+  "whatItSolves": "What does it solve?",
+  "explore": "Explore {category}",
+  "categoryInstructions": "Five-category Sidón carousel. Use the arrow keys or buttons to change categories. Activate a card to view its modules.",
+  "previousCategory": "View previous category",
+  "nextCategory": "View next category",
+  "connectedTitle": "Each module addresses a specific need. Sidón connects them within one operation.",
+  "connectedLead": "A project can begin with one module, one category, or a combination designed around its operational reality.",
+  "dumaEyebrow": "INTELLIGENCE WITHIN SIDÓN",
+  "dumaTitle": "Meet Duma AI",
+  "dumaLead": "Duma AI is Sidón’s intelligence layer. It connects information across its modules to explain what is happening, prioritize what matters, recommend actions, and support better decisions.",
+  "dumaStatement": "Sidón connects the operation. Duma AI understands it.",
+  "dumaAction": "Meet Duma AI",
+  "dumaActionLabel": "Meet Duma AI, Sidón’s intelligence layer",
+  "conversationTitle": "Talk to us about your operation",
+  "conversationLead": "We can begin with one module, one category, Duma AI, or an operational need that does not yet have a name.",
+  "conversationAction": "Talk to us about your operation",
+  "categories": {
+    "mantenimiento-seguridad": {
+      "name": "Maintenance and Safety",
+      "headline": "Keep assets available. Keep incidents under control.",
+      "intro": "Mantiz keeps maintenance work organized and traceable. Talos structures incident management and ensures every case receives the attention required for resolution.",
+      "solves": "It brings structure to two essential operational responsibilities: keeping assets available and ensuring every incident receives attention, follow-up, and a documented resolution.",
+      "modules": { "mantiz": { "name": "Mantiz", "description": "Organizes preventive and corrective maintenance with asset records, work orders, assigned responsibility, service history, and field execution.", "href": "/mantiz/" }, "talos": { "name": "Talos", "description": "Manages incidents with reporting, containment, cause analysis, corrective actions, evidence, and escalation based on severity.", "href": "/talos/" } }
+    },
+    "auditorias": {
+      "name": "Audits",
+      "headline": "Execution should be verifiable.",
+      "intro": "Verifies standards, detects deviations, and preserves reliable operational evidence.",
+      "solves": "Shows whether an activity, condition, or round was completed correctly and preserves evidence for follow-up.",
+      "modules": { "smartAudits": { "name": "Smart Audits", "description": "Photo-based audits with capture validation and Duma-assisted analysis.", "href": "/smart-audits/" }, "argos": { "name": "Argos", "description": "Duma analyzes live video to detect configured conditions and preserve evidence.", "href": "/argos/" }, "nodIa": { "name": "NOD-IA", "description": "Uses AI to detect product gaps across shelves, displays, refrigerators, and other merchandising spaces.", "href": "/nod-ia/" }, "rondines": { "name": "Rondines", "description": "Verifies security rounds with QR codes, geolocation, and photo evidence.", "href": "/rondines/" } }
+    },
+    "personas": {
+      "name": "People",
+      "headline": "People cared for. Teams prepared.",
+      "intro": "Supports each person’s wellbeing and prepares them to participate in the operation with confidence.",
+      "solves": "People cannot do their best work without the care they need and the preparation their role requires.",
+      "modules": { "wellness": { "name": "Wellness", "description": "Organizes and manages medical appointments and occupational medical records to support each person’s wellbeing with privacy and continuity.", "href": "/wellness/" }, "byblos": { "name": "Byblos", "description": "Delivers training and certifications through interactive, game-like experiences tailored to each role.", "href": "/byblos/" } }
+    },
+    "acceso": {
+      "name": "Access",
+      "headline": "The right person. The right access.",
+      "intro": "Organizes and validates access for visitors, employees, contractors, suppliers, and vehicles.",
+      "solves": "A door does not control access on its own. The operation needs to know who may enter, confirm that all requirements are met, and preserve evidence of every entry.",
+      "modules": { "axessOne": { "name": "AxessOne", "description": "Unifies preregistration, document validation, permissions, and access control for people and vehicles.", "href": "/axessone/" } }
+    },
+    "monitoreo": {
+      "name": "Monitoring",
+      "headline": "See what matters. Act in time.",
+      "intro": "Monitors assets, processes, and conditions with continuous data, alerts, and connected action.",
+      "solves": "When conditions change unnoticed, the operation reacts too late.",
+      "modules": { "sense": { "name": "Sense", "description": "Monitors variables, generates alerts, and enables action across connected equipment.", "href": "/sense/" }, "polar": { "name": "Polar", "description": "Monitors and certifies transport conditions through temperature, location, and door-status records.", "href": "/polar/" }, "industrial": { "name": "Industrial", "description": "An OEE platform that connects PLCs, meters, equipment, and process variables to measure availability, performance, and quality.", "href": "/industrial/" } }
+    }
+  }
+}

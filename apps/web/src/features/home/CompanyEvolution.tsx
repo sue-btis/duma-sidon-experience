@@ -22,9 +22,9 @@ const cameras = [
 
 export type CompanyEvolutionStep = Readonly<{ label?: string; headline: string; body: string; location?: string; kind: "map" | "phase" | "transition" }>;
 
-type Props = Readonly<{ ariaLabel: string; steps: readonly CompanyEvolutionStep[] }>;
+type Props = Readonly<{ ariaLabel: string; navigationLabel: string; steps: readonly CompanyEvolutionStep[] }>;
 
-export function CompanyEvolution({ ariaLabel, steps }: Props) {
+export function CompanyEvolution({ ariaLabel, navigationLabel, steps }: Props) {
   const journeyRef = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -101,6 +101,29 @@ export function CompanyEvolution({ ariaLabel, steps }: Props) {
             <p className={styles.storyBody}>{current.body}</p>
           </article>
         </div>
+        <nav aria-label={navigationLabel} className={styles.journeyNavigation}>
+          <ol>
+            {steps.map((step, index) => {
+              const label = step.label ?? step.headline;
+              const isActive = active === index;
+
+              return (
+                <li key={step.headline}>
+                  <button
+                    aria-current={isActive ? "step" : undefined}
+                    aria-label={label}
+                    className={isActive ? styles.journeyStepActive : undefined}
+                    onClick={() => goTo(index)}
+                    type="button"
+                  >
+                    <span aria-hidden="true">{index + 1}</span>
+                    <span>{label}</span>
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
+        </nav>
       </div>
     </section>
   );

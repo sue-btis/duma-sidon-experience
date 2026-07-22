@@ -1,0 +1,62 @@
+{
+  "eyebrow": "MUNDO DIGITAL",
+  "headline": "La operación se convierte en inteligencia.",
+  "lead": "Sidón conecta lo que hacen las personas, lo que detectan los sistemas y lo que la operación necesita entender.",
+  "introMeta": "Una solución conectada para entender y mejorar la operación diaria.",
+  "categoriesTitle": "Cinco áreas. Una sola operación conectada.",
+  "categoriesLead": "Cada categoría responde a una necesidad operativa distinta. Juntas construyen una visión común y permiten incorporar únicamente los módulos que cada proyecto necesita.",
+  "modules": "MÓDULOS",
+  "whatItSolves": "¿Qué resuelve?",
+  "explore": "Explorar {category}",
+  "categoryInstructions": "Carrusel de cinco categorías de Sidón. Usa las flechas o los botones para cambiar de categoría. Activa una tarjeta para ver sus módulos.",
+  "previousCategory": "Ver categoría anterior",
+  "nextCategory": "Ver categoría siguiente",
+  "connectedTitle": "Cada módulo responde a una necesidad. Sidón los conecta dentro de una misma operación.",
+  "connectedLead": "Un proyecto puede comenzar con un módulo, una categoría o una combinación diseñada para su realidad operativa.",
+  "dumaEyebrow": "INTELIGENCIA DENTRO DE SIDÓN",
+  "dumaTitle": "Conoce Duma AI",
+  "dumaLead": "Duma AI es la capa de inteligencia de Sidón. Conecta la información de sus módulos para explicar qué ocurre, priorizar lo importante, recomendar acciones y apoyar mejores decisiones.",
+  "dumaStatement": "Sidón conecta la operación. Duma AI la entiende.",
+  "dumaAction": "Conoce Duma AI",
+  "dumaActionLabel": "Conocer Duma AI, la capa de inteligencia de Sidón",
+  "conversationTitle": "Conversemos sobre tu operación",
+  "conversationLead": "Podemos comenzar con un módulo, una categoría, Duma AI o una necesidad operativa que todavía no tenga nombre.",
+  "conversationAction": "Conversemos sobre tu operación",
+  "categories": {
+    "mantenimiento-seguridad": {
+      "name": "Mantenimiento y Seguridad",
+      "headline": "Activos disponibles. Incidentes bajo control.",
+      "intro": "Mantiz mantiene el trabajo de mantenimiento ordenado y trazable. Talos estructura la atención de incidentes y asegura que cada caso reciba seguimiento hasta su resolución.",
+      "solves": "Da estructura a dos responsabilidades esenciales de la operación: mantener los activos disponibles y asegurar que cada incidente reciba atención, seguimiento y una resolución documentada.",
+      "modules": { "mantiz": { "name": "Mantiz", "description": "Organiza el mantenimiento preventivo y correctivo con activos, órdenes de trabajo, responsables, historial y ejecución en campo.", "href": "/mantiz/" }, "talos": { "name": "Talos", "description": "Gestiona incidentes con reporte, contención, análisis de causa, acciones correctivas, evidencia y escalamiento según su severidad.", "href": "/talos/" } }
+    },
+    "auditorias": {
+      "name": "Auditorías",
+      "headline": "Lo que se ejecuta debe poder comprobarse.",
+      "intro": "Verifica estándares, detecta desviaciones y conserva evidencia confiable de la operación.",
+      "solves": "Hace visible si una actividad, condición o recorrido se ejecutó correctamente y conserva evidencia para darle seguimiento.",
+      "modules": { "smartAudits": { "name": "Smart Audits", "description": "Auditorías fotográficas con validación de captura y análisis asistido por Duma.", "href": "/smart-audits/" }, "argos": { "name": "Argos", "description": "Duma analiza video en tiempo real para detectar condiciones configuradas y conservar evidencia.", "href": "/argos/" }, "nodIa": { "name": "NOD-IA", "description": "Usa IA para detectar faltantes de producto en anaqueles, vitrinas, refrigeradores y otros espacios de exhibición.", "href": "/nod-ia/" }, "rondines": { "name": "Rondines", "description": "Valida recorridos de seguridad con códigos QR, geolocalización y evidencia fotográfica.", "href": "/rondines/" } }
+    },
+    "personas": {
+      "name": "Personas",
+      "headline": "Personas cuidadas. Equipos preparados.",
+      "intro": "Cuida el bienestar de cada persona y fortalece su preparación para participar con confianza en la operación.",
+      "solves": "Las personas no pueden dar lo mejor de sí sin la atención que necesitan y la preparación que su rol exige.",
+      "modules": { "wellness": { "name": "Wellness", "description": "Organiza y gestiona citas y expedientes médicos laborales para acompañar el bienestar de cada persona con privacidad y continuidad.", "href": "/wellness/" }, "byblos": { "name": "Byblos", "description": "Ofrece capacitación y certificaciones mediante juegos y retos interactivos adaptados a cada rol.", "href": "/byblos/" } }
+    },
+    "acceso": {
+      "name": "Acceso",
+      "headline": "La persona correcta. El acceso correcto.",
+      "intro": "Organiza y valida el ingreso de visitantes, colaboradores, contratistas, proveedores y vehículos.",
+      "solves": "Una puerta no controla el acceso por sí sola. La operación necesita saber quién puede ingresar, comprobar que cumple las condiciones requeridas y conservar evidencia de cada entrada.",
+      "modules": { "axessOne": { "name": "AxessOne", "description": "Unifica registro previo, validación documental, permisos y control de acceso para personas y vehículos.", "href": "/axessone/" } }
+    },
+    "monitoreo": {
+      "name": "Monitoreo",
+      "headline": "Ve lo que importa. Actúa a tiempo.",
+      "intro": "Supervisa activos, procesos y condiciones con datos continuos, alertas y acción conectada.",
+      "solves": "Cuando una condición cambia y nadie la ve, la operación reacciona tarde.",
+      "modules": { "sense": { "name": "Sense", "description": "Monitorea variables, genera alertas y permite actuar sobre equipos conectados.", "href": "/sense/" }, "polar": { "name": "Polar", "description": "Supervisa y certifica las condiciones de transporte mediante temperatura, ubicación y estado de puertas.", "href": "/polar/" }, "industrial": { "name": "Industrial", "description": "Plataforma OEE que integra PLCs, medidores, equipos y variables de proceso para medir disponibilidad, rendimiento y calidad.", "href": "/industrial/" } }
+    }
+  }
+}
