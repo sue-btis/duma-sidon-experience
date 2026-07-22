@@ -100,13 +100,11 @@ export async function HomeExperience({ locale }: Props) {
           </div>
           <div className={styles.proofColumns}>
             <section className={styles.proofLayer}>
-              <h3>{t("clientsTitle")}</h3>
-              <p>{t("clientsLead")}</p>
+              <h3>{t.rich("clientsTitle", { strong: (chunks) => <strong>{chunks}</strong> })}</h3>
               <LogoBand ids={clients} label={t("clientsBandLabel")} />
             </section>
             <section className={`${styles.proofLayer} ${styles.partnerLayer}`}>
-              <h3>{t("partnersTitle")}</h3>
-              <p>{t("partnersLead")}</p>
+              <h3>{t.rich("partnersTitle", { strong: (chunks) => <strong>{chunks}</strong> })}</h3>
               <LogoBand ids={partners} label={t("partnersBandLabel")} reverse />
             </section>
           </div>

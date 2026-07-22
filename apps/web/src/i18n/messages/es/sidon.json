@@ -7,7 +7,7 @@
   "categoriesLead": "Cada categoría responde a una necesidad operativa distinta. Juntas construyen una visión común y permiten incorporar únicamente los módulos que cada proyecto necesita.",
   "modules": "MÓDULOS",
   "whatItSolves": "¿Qué resuelve?",
-  "explore": "Explorar {category}",
+  "explore": "Explorar",
   "categoryInstructions": "Carrusel de cinco categorías de Sidón. Usa las flechas o los botones para cambiar de categoría. Activa una tarjeta para ver sus módulos.",
   "previousCategory": "Ver categoría anterior",
   "nextCategory": "Ver categoría siguiente",

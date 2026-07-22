@@ -7,7 +7,7 @@
   "categoriesLead": "Each category addresses a distinct operational need. Together, they create a shared view of the operation while allowing each project to use only the modules it needs.",
   "modules": "MODULES",
   "whatItSolves": "What does it solve?",
-  "explore": "Explore {category}",
+  "explore": "Explore",
   "categoryInstructions": "Five-category Sidón carousel. Use the arrow keys or buttons to change categories. Activate a card to view its modules.",
   "previousCategory": "View previous category",
   "nextCategory": "View next category",

@@ -69,11 +69,10 @@ export async function IntegrationExperience({ locale, solution }: Props) {
           }))}
         />
       </section>
-      <section className={`${styles.scene} ${styles.projectBand}`}>
-        <div><p className={styles.worldLabel}>{t("scopeLabel")}</p><h2>{t("projectTitle")}</h2></div>
-        <div>
+      <section aria-labelledby="integration-conversation" className={`${styles.scene} ${styles.projectBand}`}>
+        <div className={styles.projectTitle}><p className={styles.worldLabel}>{t("scopeLabel")}</p><h2 id="integration-conversation">{t("projectTitle")}</h2></div>
+        <div className={styles.projectContent}>
           <p>{t("projectCopy")}</p>
-          <div className={styles.scopeExamples}><ScopeExample title={t("specificNeed")} activeNodes={[2]} /><ScopeExample title={t("broaderProject")} activeNodes={[0, 2, 3, 6]} /></div>
           <OrbitLink className={`${styles.primaryLink} ${styles.projectConversationLink}`} href={`/${locale}/integracion/conversemos/?source_path=%2Fintegracion&world=integracion&interest=proyecto-integracion`}>
             {t("conversation")}<ArrowRight aria-hidden="true" size={18} />
           </OrbitLink>
@@ -93,10 +92,6 @@ function SolutionOrbit({ activeNode, children }: Readonly<{ activeNode: Solution
       {children}
     </div>
   );
-}
-
-function ScopeExample({ activeNodes, title }: Readonly<{ activeNodes: number[]; title: string }>) {
-  return <div className={styles.scopeExample}><strong>{title}</strong><span aria-hidden="true">{Array.from({ length: 7 }, (_, index) => <i className={activeNodes.includes(index) ? styles.activeScopeNode : undefined} key={index} />)}</span></div>;
 }
 
 type NavigatorProps = Readonly<{

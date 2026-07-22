@@ -26,7 +26,7 @@ export function SidonCategories({ categories, exploreLabel, instructions, locale
       items={sidonCategories.map((category) => {
         const content = categories[category.slug];
         return {
-          action: exploreLabel.replace("{category}", content.name),
+          action: exploreLabel,
           decorativeColor: category.decorativeColor,
           href: `/${locale}/${category.slug}/`,
           icon: category.icon,
