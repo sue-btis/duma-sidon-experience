@@ -18,6 +18,9 @@
 @keyframes openingResolve { from { opacity: 0; transform: translateY(.75rem); } to { opacity: 1; transform: none; } }
 @keyframes pillarReveal { from { opacity: 0; transform: translateY(.75rem); } }
 .orbits, .worldOrbits { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.openingCloudLogo, .openingCloudPlanet { position: absolute; z-index: 0; top: 50%; pointer-events: none; }
+.openingCloudLogo { left: clamp(1.5rem, 9vw, 10rem); transform: translateY(-50%); }
+.openingCloudPlanet { right: clamp(1.5rem, 8vw, 9rem); transform: translateY(-50%); }
 .mapScene { height: 340svh; position: relative; background: var(--surface-alt); }
 .mapSticky { position: sticky; top: 0; height: 100svh; display: grid; place-items: center; padding: clamp(5rem, 13svh, 7rem) 1.25rem 1rem; overflow: hidden; }
 .mapSticky::before { content: ""; position: absolute; left: 50%; top: 52%; width: min(45rem, 90vw); aspect-ratio: 1; border-radius: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle, color-mix(in srgb, var(--ecosat) 10%, transparent), transparent 65%); pointer-events: none; }
@@ -67,4 +70,5 @@
 .circuitClose { grid-area: close; width: min(100%, 42rem); display: inline-flex; align-items: center; justify-content: center; gap: .55rem; margin: 0 auto; padding: 1rem 1.25rem; border: 1px solid var(--ecosat); border-radius: 1rem; background: var(--surface); color: var(--ecosat-deep); font-weight: 700; }.circuitClose svg { flex: 0 0 auto; color: var(--sidon); }
 @media (max-width: 700px) { .worldsScene { padding-top: 6.5rem; }.worldCircuit { grid-template-columns: 1fr; grid-template-areas: "ecosat" "integration" "sidon" "close"; gap: 1.5rem; }.circuitLines { display: none; }.worldNode { width: min(100%, 24rem); margin: 0 auto; }.ecosatNode { width: 12rem; margin: 0 auto; }.worldDescription { max-width: 20rem; } }
 @media (prefers-reduced-motion: reduce) { .flowDot { display: none; } }
+@media (max-width: 700px) { .openingCloudLogo, .openingCloudPlanet { display: none; } }
 @media (min-width: 901px) { .industryGrid { width: min(100%, 58rem); margin-inline: auto; }.industry { min-height: 6.25rem; }.industry h3 { gap: .45rem; font-size: .9rem; }.industry h3 svg { width: 1.4rem; } }

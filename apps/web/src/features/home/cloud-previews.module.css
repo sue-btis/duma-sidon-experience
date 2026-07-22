@@ -1,0 +1,11 @@
+.logo, .planetRoot { position: relative; display: block; aspect-ratio: 1; }
+.logo { width: var(--microletter-logo-size); }
+.planetRoot { display: grid; width: var(--microletter-planet-size); place-items: center; isolation: isolate; }
+.canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.ambient { position: absolute; z-index: -2; width: 145%; aspect-ratio: 1; border-radius: 50%; pointer-events: none; background: radial-gradient(circle, rgb(14 165 233 / 12%), rgb(34 211 238 / 5.5%) 38%, transparent 70%); filter: blur(24px); animation: breathe 7s ease-in-out infinite alternate; }
+.planet { position: relative; width: 100%; aspect-ratio: 1; border-radius: 50%; perspective: 1200px; touch-action: pan-y; will-change: transform; }
+.ring { position: absolute; z-index: -1; width: 118%; height: 34%; border: 1px solid rgb(14 165 233 / 10%); border-radius: 50%; pointer-events: none; transform: rotate(-11deg); }
+.ring::before { position: absolute; inset: -6px; border: 1px solid transparent; border-top: 1.5px solid rgb(34 211 238 / 32%); border-radius: inherit; animation: ringRotate 10s linear infinite; content: ""; }
+@keyframes breathe { from { opacity: .75; transform: scale(.97); } to { opacity: 1; transform: scale(1.04); } }
+@keyframes ringRotate { to { transform: rotate(1turn); } }
+@media (prefers-reduced-motion: reduce) { .ambient, .ring::before { animation-duration: .001ms; animation-iteration-count: 1; } }
