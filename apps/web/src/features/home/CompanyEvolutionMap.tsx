@@ -1,11 +1,21 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import type { Map as MapLibreMap, Marker } from "maplibre-gl";
+import type { GeoJSONSource, Map as MapLibreMap, Marker } from "maplibre-gl";
 
 import styles from "./company-evolution.module.css";
 
 type Location = Readonly<{ coordinates: [number, number]; label?: string }>;
+type Position = readonly [number, number];
+type Polygon = readonly (readonly Position[])[];
+type Countries = Readonly<{
+  features: readonly Readonly<{
+    geometry: Readonly<{ coordinates: Polygon; type: "Polygon" }> | Readonly<{ coordinates: readonly Polygon[]; type: "MultiPolygon" }>;
+    properties?: Readonly<Record<string, unknown>>;
+    type: "Feature";
+  }>[];
+  type: "FeatureCollection";
+}>;
 
 const LOCATIONS: readonly Location[] = [
   { coordinates: [-106.08889, 28.63528], label: "Chihuahua" },
@@ -29,12 +39,48 @@ const CHIHUAHUA_CITY = LOCATIONS[0].coordinates;
 const OPENING_END = 2 / 7;
 const CLOSING_START = 6 / 7;
 
-type Camera = Readonly<{ center: [number, number]; zoom: number }>;
+type Camera = Readonly<{ bearing: number; center: [number, number]; pitch: number; zoom: number }>;
 
-const continent: Camera = { center: [-95, 25], zoom: 3.7 };
-const mexico: Camera = { center: [-102.5, 24], zoom: 3.85 };
-const chihuahua: Camera = { center: [-106.15, 28.65], zoom: 5.45 };
-const city: Camera = { center: CHIHUAHUA_CITY, zoom: 7.1 };
+const continent: Camera = { bearing: 0, center: [-95, 18], pitch: 40, zoom: 4.3 };
+const mexico = continent;
+const chihuahua: Camera = { bearing: 0, center: [-106.15, 28.65], pitch: 44, zoom: 5.45 };
+const city: Camera = { bearing: 0, center: CHIHUAHUA_CITY, pitch: 46, zoom: 7.1 };
+const MIN_LANDMASS_BOUNDS_AREA = 2;
+
+function boundsArea(polygon: Polygon) {
+  let maximumLatitude = -Infinity;
+  let maximumLongitude = -Infinity;
+  let minimumLatitude = Infinity;
+  let minimumLongitude = Infinity;
+
+  for (const ring of polygon) {
+    for (const [longitude, latitude] of ring) {
+      maximumLatitude = Math.max(maximumLatitude, latitude);
+      maximumLongitude = Math.max(maximumLongitude, longitude);
+      minimumLatitude = Math.min(minimumLatitude, latitude);
+      minimumLongitude = Math.min(minimumLongitude, longitude);
+    }
+  }
+
+  return (maximumLongitude - minimumLongitude) * (maximumLatitude - minimumLatitude);
+}
+
+export function removeSmallIslands(countries: Countries): Countries {
+  return {
+    ...countries,
+    features: countries.features.map((feature) => {
+      if (feature.geometry.type !== "MultiPolygon") return feature;
+
+      return {
+        ...feature,
+        geometry: {
+          ...feature.geometry,
+          coordinates: feature.geometry.coordinates.filter((polygon) => boundsArea(polygon) >= MIN_LANDMASS_BOUNDS_AREA),
+        },
+      };
+    }),
+  };
+}
 
 function clamp(value: number) {
   return Math.min(1, Math.max(0, value));
@@ -46,6 +92,8 @@ function interpolate(from: Camera, to: Camera, progress: number): Camera {
       from.center[0] + (to.center[0] - from.center[0]) * progress,
       from.center[1] + (to.center[1] - from.center[1]) * progress,
     ],
+    bearing: from.bearing + (to.bearing - from.bearing) * progress,
+    pitch: from.pitch + (to.pitch - from.pitch) * progress,
     zoom: from.zoom + (to.zoom - from.zoom) * progress,
   };
 }
@@ -95,7 +143,7 @@ export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ prog
         keyboard: false,
         pitchWithRotate: false,
         scrollZoom: false,
-        style: { version: 8, sources: {}, layers: [{ id: "water", type: "background", paint: { "background-color": "#f5f8f7" } }] },
+        style: { version: 8, sources: {}, layers: [{ id: "water", type: "background", paint: { "background-color": "#9cabb5" } }] },
         touchPitch: false,
         touchZoomRotate: false,
         ...continent,
@@ -105,17 +153,54 @@ export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ prog
       map.once("load", () => {
         const loadedMap = map;
         if (!loadedMap || disposed) return;
+        loadedMap.setLight({ anchor: "viewport", color: "#ffffff", intensity: 0.48, position: [1.2, 210, 35] });
         loadedMap.addSource("countries", { type: "geojson", data: "/home/company-evolution/map-data/americas.geojson" });
-        loadedMap.addLayer({ id: "countries-fill", source: "countries", type: "fill", paint: { "fill-color": "#d9e0e5", "fill-opacity": 0.86 } });
-        loadedMap.addLayer({ id: "mexico-fill", source: "countries", type: "fill", filter: ["==", ["get", "id"], "MEX"], paint: { "fill-color": "#b9acd0", "fill-opacity": 0 } });
-        loadedMap.addLayer({ id: "countries-line", source: "countries", type: "line", paint: { "line-color": "#93a2af", "line-opacity": 0.78, "line-width": 0.8 } });
+        void fetch("/home/company-evolution/map-data/americas.geojson")
+          .then((response) => response.ok ? response.json() : Promise.reject(new Error("Unable to load map data")))
+          .then((countries: Countries) => {
+            const source = loadedMap.getSource("countries") as GeoJSONSource | undefined;
+            if (!disposed && source) source.setData(removeSmallIslands(countries));
+          })
+          .catch(() => {});
+        loadedMap.addLayer({
+          id: "countries-shadow",
+          source: "countries",
+          type: "fill",
+          paint: {
+            "fill-antialias": true,
+            "fill-color": "#526675",
+            "fill-opacity": 0.16,
+            "fill-translate": [6, 10],
+            "fill-translate-anchor": "viewport",
+          },
+        });
+        loadedMap.addLayer({
+          id: "countries-model",
+          source: "countries",
+          type: "fill-extrusion",
+          paint: {
+            "fill-extrusion-color": "#fbfcfc",
+            "fill-extrusion-height": 90000,
+            "fill-extrusion-opacity": 0.8,
+            "fill-extrusion-vertical-gradient": true,
+          },
+        });
+        loadedMap.addLayer({ id: "countries-line", source: "countries", type: "line", paint: { "line-color": "#d1d9dd", "line-opacity": 0.9, "line-width": 0.85 } });
         loadedMap.addSource("mexico-states", { type: "geojson", data: "/home/company-evolution/map-data/mexico-states.geojson" });
-        loadedMap.addLayer({ id: "mexico-states-line", source: "mexico-states", type: "line", paint: { "line-color": "#93a2af", "line-opacity": 0.58, "line-width": 0.65 } });
+        loadedMap.addLayer({ id: "mexico-states-line", source: "mexico-states", type: "line", paint: { "line-color": "#b8c4ca98", "line-opacity": 0.78, "line-width": 0.65 } });
         loadedMap.addSource("us-states", { type: "geojson", data: "/home/company-evolution/map-data/us-states.geojson" });
-        loadedMap.addLayer({ id: "us-states-line", source: "us-states", type: "line", paint: { "line-color": "#93a2af", "line-opacity": 0.58, "line-width": 0.65 } });
+        loadedMap.addLayer({ id: "us-states-line", source: "us-states", type: "line", paint: { "line-color": "#b8c4ca98", "line-opacity": 0.78, "line-width": 0.65 } });
         loadedMap.addSource("chihuahua", { type: "geojson", data: "/home/company-evolution/map-data/chihuahua.geojson" });
-        loadedMap.addLayer({ id: "chihuahua-fill", source: "chihuahua", type: "fill", paint: { "fill-color": "#765ca4", "fill-opacity": 0 } });
-        loadedMap.addLayer({ id: "chihuahua-line", source: "chihuahua", type: "line", paint: { "line-color": "#3b2b50", "line-opacity": 0, "line-width": 2 } });
+        loadedMap.addLayer({
+          id: "chihuahua-highlight",
+          source: "chihuahua",
+          type: "fill",
+          paint: {
+            "fill-color": "#00adef",
+            "fill-opacity": 0,
+          },
+        });
+        loadedMap.addLayer({ id: "chihuahua-line", source: "chihuahua", type: "line", paint: { "line-color": "#2b328c", "line-opacity": 0, "line-width": 2 } });
 
         markersRef.current = LOCATIONS.map((location) => {
           const marker = document.createElement("div");
@@ -146,8 +231,7 @@ export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ prog
     if (!map || !map.isStyleLoaded()) return;
     const { camera, stateOpacity } = cameraFor(progress);
     map.jumpTo(camera);
-    map.setPaintProperty("mexico-fill", "fill-opacity", Math.max(0.18, stateOpacity * 0.45));
-    map.setPaintProperty("chihuahua-fill", "fill-opacity", stateOpacity * 0.5);
+    map.setPaintProperty("chihuahua-highlight", "fill-opacity", stateOpacity * 0.82);
     map.setPaintProperty("chihuahua-line", "line-opacity", stateOpacity);
     markersRef.current.forEach((marker, index) => {
       const shouldShow = Boolean(LOCATIONS[index].label) || showLocations;
@@ -157,7 +241,6 @@ export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ prog
 
   return (
     <div aria-hidden="true" className={`${styles.mapCanvas} ${showLocations ? styles.mapLocationsVisible : ""}`} ref={containerRef}>
-      <p className={styles.mapCredit}>Datos cartográficos: Natural Earth · INEGI y U.S. Census vía geoBoundaries</p>
     </div>
   );
 }

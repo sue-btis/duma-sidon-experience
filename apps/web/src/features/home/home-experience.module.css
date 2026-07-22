@@ -1,19 +1,22 @@
 .home { overflow: clip; }
 .scene { isolation: isolate; min-height: 100svh; position: relative; display: grid; align-items: center; padding: 7rem 1.25rem 4rem; }
-.openingScene { height: 420svh; position: relative; background: linear-gradient(180deg, var(--surface) 54%, var(--surface-alt)); }
-.openingSticky { height: 100svh; position: sticky; top: 0; display: grid; align-items: center; overflow: hidden; padding: 7rem 1.25rem 4rem; text-align: center; }
+.openingScene { height: 100svh; position: relative; background: linear-gradient(180deg, var(--surface) 54%, var(--surface-alt)); }
+.openingSticky { height: 100svh; position: sticky; top: 0; display: grid; align-items: center; overflow: hidden; padding: clamp(5.5rem, 13svh, 7rem) 1.25rem clamp(1.5rem, 6svh, 4rem); text-align: center; }
 .coverContent, .sectionContent { width: min(100%, 70rem); min-width: 0; margin: 0 auto; position: relative; z-index: 1; }
 .coverContent { display: flex; flex-direction: column; align-items: center; }
 .visuallyHidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 .ecosatLogo { width: min(18rem, 72vw); height: auto; animation: openingResolve .8s ease-out both; }
-.lead { margin-top: 1.5rem; color: var(--ink-soft); font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; animation: openingResolve .8s .3s ease-out both; }
-.pillars { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; max-width: 44rem; margin: 2.5rem 0 0; padding: 0; list-style: none; }
-.pillar { width: 7.75rem; min-height: 4rem; display: grid; place-items: center; border: 1px solid var(--line); border-radius: .875rem; background: var(--surface); color: var(--ecosat-deep); font-size: .69rem; font-weight: 700; letter-spacing: .08em; opacity: 0; text-transform: uppercase; transform: translateY(.75rem); transition: opacity .3s ease, transform .3s ease; }
-.pillar[data-revealed="true"] { opacity: 1; transform: none; }
-.openingScene[data-complete="true"] .pillars { opacity: .55; transform: translateY(1rem); transition: opacity .35s ease, transform .35s ease; }
-.openingScene[data-complete="true"] .ecosatLogo { transform: scale(.76); }
+.lead { margin-top: clamp(.75rem, 2.5svh, 1.5rem); color: var(--ink-soft); font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; animation: openingResolve .8s .3s ease-out both; }
+.pillars { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; max-width: 44rem; margin: clamp(1.25rem, 4svh, 2.5rem) 0 0; padding: 0; list-style: none; }
+.pillar { width: 7.75rem; min-height: clamp(3.25rem, 8svh, 4rem); display: grid; place-items: center; border: 1px solid var(--line); border-radius: .875rem; background: var(--surface); color: var(--ecosat-deep); font-size: .69rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.pillar:nth-child(1) { animation: pillarReveal .35s .65s backwards; }
+.pillar:nth-child(2) { animation: pillarReveal .35s .78s backwards; }
+.pillar:nth-child(3) { animation: pillarReveal .35s .91s backwards; }
+.pillar:nth-child(4) { animation: pillarReveal .35s 1.04s backwards; }
+.pillar:nth-child(5) { animation: pillarReveal .35s 1.17s backwards; }
 .partnerTitle { font-size: .69rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 @keyframes openingResolve { from { opacity: 0; transform: translateY(.75rem); } to { opacity: 1; transform: none; } }
+@keyframes pillarReveal { from { opacity: 0; transform: translateY(.75rem); } }
 .orbits, .worldOrbits { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .mapScene { height: 340svh; position: relative; background: var(--surface-alt); }
 .mapSticky { position: sticky; top: 0; height: 100svh; display: grid; place-items: center; padding: clamp(5rem, 13svh, 7rem) 1.25rem 1rem; overflow: hidden; }
@@ -50,7 +53,7 @@
 .worldsScene { background: var(--surface-alt); text-align: center; }.worldsScene::before { content: ""; position: absolute; left: 50%; top: 52%; width: min(45rem, 90vw); aspect-ratio: 1; border-radius: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle, color-mix(in srgb, var(--ecosat) 10%, transparent), transparent 65%); pointer-events: none; }.worldsScene h2 { color: var(--ecosat-deep); font-size: clamp(1.7rem, 2.2vw, 2rem); font-weight: 800; letter-spacing: -.025em; text-wrap: balance; }.worldsLead { margin-top: .75rem; }.worldOrbits div { position: absolute; left: 50%; top: 52%; width: min(84vw, 55rem); aspect-ratio: 1.9; border: 1px solid color-mix(in srgb, var(--ecosat) 14%, transparent); border-radius: 50%; transform: translate(-50%, -50%) rotate(-14deg); }.worldOrbits div:last-child { width: min(61vw, 39rem); border-color: color-mix(in srgb, var(--sidon) 17%, transparent); }
 @media (max-width: 900px) { .industryGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); }.industry { min-height: 4.5rem; padding: .6rem .7rem; }.industry h3 { flex-direction: row; font-size: .77rem; } }@media (max-width: 700px) { .scene { padding-top: 6.5rem; }.mapSticky { padding-top: 5.5rem; }.mapGraphic { max-height: 46svh; }.industryGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .4rem; }.proofColumns { grid-template-columns: 1fr; gap: 2.5rem; margin-top: 2.5rem; }.partnerLayer { border-top: 0; padding-top: 0; }.logoTile { width: 8.5rem; min-height: 4rem; } }
 @media (min-width: 1001px) and (prefers-reduced-motion: no-preference) { :global(html):has(.home) { scroll-snap-type: y mandatory; }.openingScene, .scene, .mapScene { scroll-snap-align: start; scroll-snap-stop: always; } }
-@media (prefers-reduced-motion: reduce) { .mapGraphic :global(.hq .halo), .mapGraphic :global(.ring), .logoTrack { animation: none; }.mapGraphic :global(.dm), .mapGraphic :global(.city), .mapGraphic :global(.hq), .startButton { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .mapGraphic :global(.hq .halo), .mapGraphic :global(.ring), .logoTrack, .pillar { animation: none; }.mapGraphic :global(.dm), .mapGraphic :global(.city), .mapGraphic :global(.hq), .startButton { transition: none; } }
 .worldsScene { padding-top: 5.25rem; padding-bottom: 4rem; }
 .worldCircuit { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(10rem, 12rem) minmax(0, 1fr); grid-template-areas: "integration ecosat sidon" "close close close"; align-items: center; gap: 2rem clamp(1.5rem, 4vw, 4rem); margin: 1.5rem auto 0; }
 .circuitLines { position: absolute; z-index: -1; inset: 0; width: 100%; height: 100%; overflow: visible; fill: none; stroke-width: 2; stroke-linecap: round; }
