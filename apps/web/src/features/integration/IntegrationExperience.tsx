@@ -63,6 +63,7 @@ export async function IntegrationExperience({ locale, solution }: Props) {
             description: t(`summary.${item.slug}`),
             href: `/${locale}/${item.slug}/`,
             icon: item.icon,
+            iconScale: item.iconScale,
             id: item.slug,
             title: t(item.key),
           }))}

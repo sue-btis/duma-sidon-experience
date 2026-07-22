@@ -22,6 +22,7 @@ export type OrbitCarouselItem = Readonly<{
   href: string;
   icon: string;
   id: string;
+  iconScale?: number;
   modules?: readonly Readonly<{ icon: string; name: string }>[];
   modulesLabel?: string;
   title: string;
@@ -279,11 +280,11 @@ export function OrbitCarousel({ accentColor, ariaLabel, brandIcon, deepColor, id
               }
             }}
             ref={(element) => { cardRefs.current[index] = element; }}
-            style={{ "--card-decorative": item.decorativeColor ?? accentColor } as CSSProperties}
+            style={{ "--card-decorative": item.decorativeColor ?? accentColor, "--card-icon-scale": item.iconScale ?? 1 } as CSSProperties}
             tabIndex={index === 0 ? 0 : -1}
           >
             <span className={styles.cardTop}><Image alt="" className={styles.brandIcon} height={44} src={brandIcon} unoptimized width={44} /><span className={styles.cardNumber}>{String(index + 1).padStart(2, "0")}</span></span>
-            <span className={styles.cardBody}><span className={styles.cardIcon}><Image alt="" height={84} src={item.icon} unoptimized width={84} /></span><strong>{item.title}</strong></span>
+            <span className={styles.cardBody}><strong>{item.title}</strong><span className={styles.cardIcon}><Image alt="" height={84} src={item.icon} unoptimized width={84} /></span></span>
             <span className={styles.cardFooter}><SupportingContent item={item} /><span className={styles.action}>{item.action}<ArrowRight aria-hidden="true" size={16} /></span></span>
           </Link>
         ))}

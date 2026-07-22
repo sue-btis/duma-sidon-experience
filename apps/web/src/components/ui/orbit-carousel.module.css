@@ -1,17 +1,17 @@
 .carousel { block-size: clamp(25rem, 44vw, 36rem); cursor: grab; outline-offset: -3px; perspective: 1350px; position: relative; touch-action: pan-y; user-select: none; width: 100%; }
 .carousel:active { cursor: grabbing; }
 .track { bottom: 0; left: clamp(6.5rem, 15vw, 12rem); position: absolute; right: 0; top: 0; transform: scale(.76); transform-origin: center; transform-style: preserve-3d; }
-.card { background: color-mix(in srgb, var(--surface) 92%, var(--orbit-accent)); border: 2px solid color-mix(in srgb, var(--orbit-accent) 68%, var(--line)); border-radius: clamp(2.5rem, 4vw, 3.5rem); color: var(--ink); display: flex; flex-direction: column; height: clamp(18rem, 24vw, 23rem); justify-content: space-between; left: 50%; overflow: hidden; padding: clamp(1.15rem, 1.8vw, 1.6rem); position: absolute; text-decoration: none; top: 50%; transform-style: preserve-3d; transition: background 180ms ease-out, border-color 180ms ease-out; width: clamp(13.5rem, 18vw, 18rem); will-change: filter, opacity, transform; }
+.card { background: color-mix(in srgb, var(--surface) 92%, var(--orbit-accent)); border: 2px solid color-mix(in srgb, var(--orbit-accent) 68%, var(--line)); border-radius: clamp(2.5rem, 4vw, 3.5rem); color: var(--ink); display: flex; flex-direction: column; height: clamp(20.5rem, 27vw, 27rem); left: 50%; overflow: hidden; padding: clamp(1.15rem, 1.8vw, 1.6rem); position: absolute; text-decoration: none; top: 50%; transform-style: preserve-3d; transition: background 180ms ease-out, border-color 180ms ease-out; width: clamp(15rem, 21vw, 21rem); will-change: filter, opacity, transform; }
 .card::after { background: color-mix(in srgb, var(--card-decorative) 38%, transparent); border-radius: 75% 0 0; bottom: -.8rem; content: ""; height: 30%; position: absolute; right: -.7rem; transform: rotate(-12deg); width: 40%; }
 .card:hover, .card[data-active="true"] { background: color-mix(in srgb, var(--surface) 96%, var(--orbit-accent)); border-color: var(--orbit-accent); }
 .cardTop { align-items: flex-start; display: flex; justify-content: space-between; position: relative; z-index: 1; }
-.brandIcon { height: auto; object-fit: contain; width: clamp(2.1rem, 3.3vw, 2.75rem); }
-.cardNumber { align-items: center; border: 1.5px solid var(--orbit-accent); border-radius: 50%; color: var(--orbit-deep); display: inline-flex; font-size: clamp(.8rem, 1.1vw, 1rem); font-weight: 750; height: clamp(2.5rem, 3.3vw, 3.1rem); justify-content: center; letter-spacing: .08em; width: clamp(2.5rem, 3.3vw, 3.1rem); }
-.cardBody { align-items: center; display: grid; gap: .7rem; justify-items: center; position: relative; text-align: center; z-index: 1; }
+.brandIcon { block-size: clamp(2.5rem, 3.3vw, 3.1rem); inline-size: clamp(2.5rem, 3.3vw, 3.1rem); object-fit: contain; }
+.cardNumber { align-items: center; block-size: clamp(2.5rem, 3.3vw, 3.1rem); border: 1.5px solid var(--orbit-accent); border-radius: 50%; color: var(--orbit-deep); display: inline-flex; font-size: clamp(.8rem, 1.1vw, 1rem); font-weight: 750; inline-size: clamp(2.5rem, 3.3vw, 3.1rem); justify-content: center; letter-spacing: .08em; }
+.cardBody { align-items: center; display: grid; gap: .45rem; justify-items: center; margin-top: clamp(.5rem, .7vw, .75rem); position: relative; text-align: center; z-index: 1; }
 .cardIcon { align-items: center; display: flex; height: clamp(5.25rem, 7vw, 6.25rem); justify-content: center; position: relative; width: clamp(5.25rem, 7vw, 6.25rem); }
-.cardIcon img { height: 100%; object-fit: contain; width: 100%; }
+.cardIcon img { height: 100%; object-fit: contain; transform: scale(var(--card-icon-scale)); width: 100%; }
 .card strong { color: var(--orbit-deep); display: block; font-size: clamp(1.35rem, 1.9vw, 1.8rem); letter-spacing: -.025em; line-height: 1.1; text-wrap: balance; }
-.cardFooter { border-top: 1px solid color-mix(in srgb, var(--orbit-accent) 42%, var(--line)); display: grid; gap: .7rem; padding-top: .75rem; position: relative; z-index: 1; }
+.cardFooter { border-top: 1px solid color-mix(in srgb, var(--orbit-accent) 42%, var(--line)); display: grid; gap: .7rem; margin-top: auto; padding-top: .75rem; position: relative; z-index: 1; }
 .description { -webkit-box-orient: vertical; -webkit-line-clamp: 2; color: var(--ink-soft); display: -webkit-box; font-size: clamp(.82rem, .95vw, .94rem); line-height: 1.4; overflow: hidden; }
 .modules { display: grid; gap: .35rem; }
 .modulesLabel { color: var(--ink-soft); font-size: .58rem; font-weight: 750; letter-spacing: .1em; }
@@ -40,9 +40,9 @@
   .card strong { font-size: clamp(1.05rem, 5vw, 1.3rem); }
   .cardBody { gap: .45rem; }
   .card { border-radius: 2.5rem; }
-  .brandIcon { width: 1.9rem; }
-  .cardNumber { font-size: .72rem; height: 2rem; width: 2rem; }
-  .cardIcon { height: 4.1rem; width: 4.1rem; }
+  .brandIcon { block-size: 2rem; inline-size: 2rem; }
+  .cardNumber { block-size: 2rem; font-size: .72rem; inline-size: 2rem; }
+  .cardIcon { height: 3.75rem; width: 3.75rem; }
   .description { font-size: .72rem; line-height: 1.3; }
   .modulesLabel { font-size: .5rem; }
   .module { font-size: .48rem; }
