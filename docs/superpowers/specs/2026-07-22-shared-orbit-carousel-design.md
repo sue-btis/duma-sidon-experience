@@ -19,7 +19,7 @@ Integración and Sidón become thin data adapters. The shared component renders 
 Its inputs are deliberately limited to:
 
 - `id` and accessible labels for the carousel and controls;
-- `items`, each with `id`, `icon`, `title`, `description`, and `href`;
+- `items`, each with `id`, `icon`, `title`, `description`, `action`, and `href`;
 - `accentColor` and `deepColor` for each brand's card and control states.
 
 The component applies those colors through local CSS custom properties. No slots, render callbacks, separate card variants, or feature-specific carousel CSS are needed: both product pages use the same card hierarchy and behavior.
