@@ -3,7 +3,8 @@ import { ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { type ReactNode } from "react";
 
-import { IntegrationOrbit } from "./IntegrationOrbit";
+import { OrbitCarousel } from "@/components/ui/OrbitCarousel";
+
 import { OrbitLink } from "./OrbitLink";
 import { solutions, type SolutionSlug } from "./solutions";
 import styles from "./integration.module.css";
@@ -50,17 +51,20 @@ export async function IntegrationExperience({ locale, solution }: Props) {
         </div>
       </section>
       <section aria-label={t("solutions")} className={`${styles.scene} ${styles.carouselScene}`}>
-        <IntegrationOrbit
+        <OrbitCarousel
+          accentColor="var(--integration)"
           ariaLabel={t("solutions")}
+          deepColor="var(--integration-deep)"
+          id="integration-orbit"
           instructions={t("orbitInstructions")}
           nextLabel={t("orbitNext")}
           previousLabel={t("orbitPrevious")}
-          solutions={solutions.map((item) => ({
+          items={solutions.map((item) => ({
             action: t("solutionAction"),
+            description: t(`summary.${item.slug}`),
             href: `/${locale}/${item.slug}/`,
             icon: item.icon,
-            slug: item.slug,
-            summary: t(`summary.${item.slug}`),
+            id: item.slug,
             title: t(item.key),
           }))}
         />

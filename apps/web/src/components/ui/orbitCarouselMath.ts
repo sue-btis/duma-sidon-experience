@@ -1,16 +1,8 @@
 const FULL_TURN = Math.PI * 2;
 
-export type OrbitDimensions = Readonly<{
-  radiusX: number;
-  radiusZ: number;
-}>;
+export type OrbitDimensions = Readonly<{ radiusX: number; radiusZ: number }>;
 
-export function getOrbitCardLayout(
-  index: number,
-  count: number,
-  rotation: number,
-  { radiusX, radiusZ }: OrbitDimensions,
-) {
+export function getOrbitCardLayout(index: number, count: number, rotation: number, { radiusX, radiusZ }: OrbitDimensions) {
   const angle = index * (FULL_TURN / count) + rotation;
   const z = Math.cos(angle) * radiusZ;
   const depth = (z + radiusZ) / (radiusZ * 2);
@@ -35,7 +27,6 @@ export function getNearestFrontIndex(rotation: number, count: number) {
 
   for (let index = 0; index < count; index += 1) {
     const depth = Math.cos(index * (FULL_TURN / count) + rotation);
-
     if (depth > nearestDepth) {
       nearestDepth = depth;
       nearestIndex = index;
