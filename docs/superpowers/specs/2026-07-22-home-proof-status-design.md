@@ -6,8 +6,7 @@ Clarify the distinction between the two existing horizontal logo bands in the ho
 
 ## Design
 
-- Add a compact textual status label above each existing heading: `CLIENTE` for customer logos and `SOCIO TECNOLÓGICO` for technology-partner logos.
-- Pair each label with a small solid Ecosat-blue dot. The text, not color alone, conveys the status.
+- Replace the Spanish client heading with `Clientes que confían en Ecosat para operaciones que no pueden detenerse.` The partners heading remains `Socios tecnológicos`.
 - Insert a single 1px vertical divider between the columns on desktop.
 - At the existing mobile breakpoint, switch the divider to a horizontal rule between the stacked groups.
 
