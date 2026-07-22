@@ -67,13 +67,13 @@ export async function IntegrationExperience({ locale, solution }: Props) {
       </section>
       <section className={`${styles.scene} ${styles.projectBand}`}>
         <div><p className={styles.worldLabel}>{t("scopeLabel")}</p><h2>{t("projectTitle")}</h2></div>
-        <div><p>{t("projectCopy")}</p><div className={styles.scopeExamples}><ScopeExample title={t("specificNeed")} activeNodes={[2]} /><ScopeExample title={t("broaderProject")} activeNodes={[0, 2, 3, 6]} /></div></div>
-      </section>
-      <section className={`${styles.scene} ${styles.ctaPanel}`} aria-labelledby="integration-cta">
-        <div><p className={styles.worldLabel}>{t("ctaLabel")}</p><h2 id="integration-cta">{t("conversationTitle")}</h2><p>{t("conversationCopy")}</p></div>
-        <OrbitLink className={styles.ctaLink} href={`/${locale}/integracion/conversemos/?source_path=%2Fintegracion&world=integracion&interest=proyecto-integracion`}>
-          {t("conversation")}<ArrowRight aria-hidden="true" size={18} />
-        </OrbitLink>
+        <div>
+          <p>{t("projectCopy")}</p>
+          <div className={styles.scopeExamples}><ScopeExample title={t("specificNeed")} activeNodes={[2]} /><ScopeExample title={t("broaderProject")} activeNodes={[0, 2, 3, 6]} /></div>
+          <OrbitLink className={`${styles.primaryLink} ${styles.projectConversationLink}`} href={`/${locale}/integracion/conversemos/?source_path=%2Fintegracion&world=integracion&interest=proyecto-integracion`}>
+            {t("conversation")}<ArrowRight aria-hidden="true" size={18} />
+          </OrbitLink>
+        </div>
       </section>
     </main>
   );

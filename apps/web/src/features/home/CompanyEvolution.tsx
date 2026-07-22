@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Image from "next/image";
 
+import { CompanyEvolutionMap } from "./CompanyEvolutionMap";
 import styles from "./company-evolution.module.css";
 
 const phases = [
@@ -71,15 +72,13 @@ export function CompanyEvolution({ ariaLabel, steps }: Props) {
     zoom: fromCamera.zoom + (toCamera.zoom - fromCamera.zoom) * cameraProgress,
   };
   const current = steps[active];
-  const isMap = current.kind === "map";
-  const mapImage = active === 0 ? "/home/company-evolution/mapa1.png" : "/home/company-evolution/mapa2.png";
-  const mapScale = active === 0 ? 1 + Math.min(1, progress * (steps.length - 1)) * 0.8 : 1;
+  const isMap = active <= 1 || active >= steps.length - 2;
 
   return (
     <section aria-label={ariaLabel} className={styles.journey} ref={journeyRef}>
       <div className={styles.viewport}>
-        <div className={`${styles.mapStage} ${isMap ? styles.mapVisible : ""} ${active === 0 ? styles.mapOrigin : styles.mapExpansion}`}>
-          <Image alt="" className={styles.mapImage} fill priority={active === 0} sizes="100vw" src={mapImage} style={{ "--map-scale": mapScale } as CSSProperties} unoptimized />
+        <div className={`${styles.mapStage} ${isMap ? styles.mapVisible : ""}`}>
+          <CompanyEvolutionMap progress={progress} showLocations={active === steps.length - 1} />
         </div>
         <div className={styles.world} style={{ "--x": `${camera.x * camera.zoom}px`, "--y": `${camera.y * camera.zoom}px`, "--zoom": camera.zoom } as CSSProperties}>
           <svg aria-hidden="true" className={styles.route} viewBox="0 0 4200 2200">

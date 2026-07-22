@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import "maplibre-gl/dist/maplibre-gl.css";
 
 import "@/app/globals.css";
 import { routing } from "@/i18n/routing";

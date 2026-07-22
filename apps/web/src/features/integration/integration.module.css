@@ -116,7 +116,7 @@
 .reducedOrbitList { display: none; }
 .srOnly { clip: rect(0, 0, 0, 0); clip-path: inset(50%); height: 1px; overflow: hidden; position: absolute; white-space: nowrap; width: 1px; }
 
-.projectBand, .ctaPanel { margin-left: auto; margin-right: auto; max-width: 76rem; }
+.projectBand { margin-left: auto; margin-right: auto; max-width: 76rem; }
 .projectBand h2, .siblings h2 { color: var(--integration-deep); font-size: clamp(1.6rem, 3vw, 2.5rem); margin: 0; }
 
 .projectBand {
@@ -124,26 +124,18 @@
   align-content: center;
   background: var(--surface-alt);
   display: grid;
-  gap: clamp(2rem, 6vw, 5rem);
-  grid-template-columns: minmax(15rem, .8fr) 1.2fr;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  grid-template-columns: minmax(16rem, .75fr) minmax(0, 1.25fr);
   margin-top: clamp(2.5rem, 6vw, 4.5rem);
   padding: clamp(2rem, 5vw, 4rem);
 }
-.scopeExamples { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
-.scopeExample { background: var(--surface); border: 1px solid var(--line); flex: 1 1 13rem; padding: 1rem; }
+.scopeExamples { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem; }
+.scopeExample { background: var(--surface); border: 1px solid var(--line); display: flex; flex: 1 1 13rem; flex-direction: column; justify-content: space-between; min-height: 6rem; padding: 1.125rem; }
 .scopeExample strong { color: var(--integration-deep); display: block; font-size: .85rem; margin-bottom: .9rem; }
 .scopeExample span { display: flex; gap: .4rem; }
 .scopeExample i { background: var(--line); border-radius: 50%; display: block; height: .6rem; width: .6rem; }
 .scopeExample .activeScopeNode { background: var(--integration); }
-
-.ctaPanel { align-items: center; background: var(--integration-deep); color: white; display: flex; gap: 2rem; justify-content: space-between; margin-top: clamp(2.5rem, 6vw, 4.5rem); overflow: hidden; padding: clamp(2rem, 6vw, 5rem); position: relative; }
-.ctaPanel::before { border: 1px solid rgb(255 255 255 / .28); border-radius: 50%; content: ""; height: 19rem; position: absolute; right: -5rem; top: -11rem; transform: rotate(-18deg); width: 34rem; }
-.ctaPanel > * { position: relative; }
-.ctaPanel h2 { font-size: clamp(2.2rem, 5vw, 4.7rem); letter-spacing: -.04em; line-height: .98; margin: .65rem 0 1rem; max-width: 12ch; }
-.ctaPanel p:not(.worldLabel) { color: rgb(255 255 255 / .82); line-height: 1.65; margin: 0; max-width: 44ch; }
-.ctaPanel .worldLabel { color: white; margin-bottom: 0; }
-.ctaLink { align-items: center; background: white; color: var(--integration-deep); display: inline-flex; flex: none; font-weight: 750; gap: .5rem; min-height: 3rem; padding: .65rem 1.1rem; text-decoration: none; }
-.ctaLink:hover { background: var(--surface-alt); }
+.projectConversationLink { margin-top: clamp(2rem, 4vw, 3rem); }
 
 .solutionHero { min-height: min(42rem, calc(100vh - 6rem)); padding-top: clamp(2rem, 8vw, 7rem); }
 .solutionHero .backLink { margin: 0 0 3rem; }
@@ -189,7 +181,6 @@
   .orbitTrack { inset: 0; transform: none; }
   .orbitHud { bottom: -4rem; right: 1rem; }
   .orbitHud p { max-width: 11rem; }
-  .ctaPanel { align-items: start; flex-direction: column; }
   .projectBand { grid-template-columns: 1fr; }
 }
 
