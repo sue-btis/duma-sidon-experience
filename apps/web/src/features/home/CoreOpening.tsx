@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
+import { TwoOrbitFigure } from "@/components/ui/TwoOrbitFigure";
+
 import styles from "./home-experience.module.css";
 
 type Props = Readonly<{
@@ -66,10 +68,7 @@ export function CoreOpening({ attributes, statement, title }: Props) {
   return (
     <section className={styles.openingScene} data-complete={complete} data-home-scene id="portada" ref={sectionRef}>
       <div className={styles.openingSticky}>
-        <div aria-hidden="true" className={styles.orbits}>
-          <div className={`${styles.orbit} ${styles.orbitOuter}`}><i className={`${styles.orbitNode} ${styles.outerNode}`} /></div>
-          <div className={`${styles.orbit} ${styles.orbitInner}`}><i className={`${styles.orbitNode} ${styles.innerNode}`} /></div>
-        </div>
+        <TwoOrbitFigure className={styles.orbits} nodeColors={["var(--sidon)", "var(--integration)"]} orbitColors={["var(--ecosat-deep)", "var(--ecosat)"]} />
         <div className={styles.coverContent}>
           <h1 className={styles.visuallyHidden}>{title}</h1>
           <Image alt="Ecosat" className={styles.ecosatLogo} height={218} priority src="/brand/ecosat-horizontal.png" unoptimized width={403} />

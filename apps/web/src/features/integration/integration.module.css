@@ -66,21 +66,7 @@
 .intro .lead { margin-left: auto; margin-right: auto; max-width: 37rem; }
 .introMeta { color: var(--integration-deep); font-size: .9rem; font-weight: 650; margin: 1.5rem 0 0; }
 
-.introOrbits { inset: 0; overflow: hidden; pointer-events: none; position: absolute; z-index: -1; }
-.introOrbit { aspect-ratio: 1.2; border: 1px solid; border-radius: 50%; left: 50%; position: absolute; top: 50%; transform: translate(-50%, -50%) rotate(-17deg); }
-.introOrbit i { aspect-ratio: 1; border-radius: 50%; display: block; position: absolute; width: .55rem; }
-.introOrbitOuter { border-color: color-mix(in srgb, var(--integration) 22%, transparent); width: min(78.75vw, 49.5rem); }
-.introOrbitOuter i { background: color-mix(in srgb, var(--integration) 65%, var(--surface)); left: calc(50% - .275rem); top: -.275rem; }
-.introOrbitCentral { border-color: color-mix(in srgb, var(--integration) 54%, transparent); width: min(57vw, 34.5rem); }
-.introOrbitCentral i { background: var(--integration); left: calc(88.42% - .275rem); top: calc(82% - .275rem); }
-
-@media (prefers-reduced-motion: no-preference) {
-  .introOrbitOuter { animation: introOrbitClockwise 52s linear infinite; }
-  .introOrbitCentral { animation: introOrbitCounterclockwise 78s linear infinite; }
-}
-
-@keyframes introOrbitClockwise { to { transform: translate(-50%, -50%) rotate(343deg); } }
-@keyframes introOrbitCounterclockwise { to { transform: translate(-50%, -50%) rotate(-377deg); } }
+.introOrbits { z-index: -1; }
 
 .carouselScene { align-items: center; display: grid; margin: 0 auto; max-width: 96rem; padding: 7rem 0 8rem; }
 
@@ -105,11 +91,23 @@
   padding: clamp(2rem, 5vw, 4rem);
 }
 .scopeExamples { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem; }
-.scopeExample { background: var(--surface); border: 1px solid var(--line); display: flex; flex: 1 1 13rem; flex-direction: column; justify-content: space-between; min-height: 6rem; padding: 1.125rem; }
-.scopeExample strong { color: var(--integration-deep); display: block; font-size: .85rem; margin-bottom: .9rem; }
-.scopeExample span { display: flex; gap: .4rem; }
-.scopeExample i { background: var(--line); border-radius: 50%; display: block; height: .6rem; width: .6rem; }
-.scopeExample .activeScopeNode { background: var(--integration); }
+.scopeExample { background: var(--surface); border: 1px solid var(--line); display: flex; flex: 1 1 13rem; flex-direction: column; justify-content: space-between; min-height: 7.25rem; padding: 1.125rem; }
+.scopeExample strong { color: var(--integration-deep); display: block; font-size: .85rem; margin-bottom: 1.25rem; }
+.scopeExample span { align-items: center; display: flex; justify-content: space-between; position: relative; }
+.scopeExample span::before { background: var(--line); content: ""; height: 1px; left: .3rem; position: absolute; right: .3rem; }
+.scopeExample i { background: var(--surface); border: 1px solid var(--line); border-radius: 50%; display: block; height: .65rem; position: relative; width: .65rem; z-index: 1; }
+.scopeExample .activeScopeNode { background: var(--integration); border-color: var(--integration); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .scopeExample:first-child .activeScopeNode { animation: scopeNodePulse 2.8s ease-out infinite; }
+  .scopeExample:last-child .activeScopeNode { animation: scopeNodeActivate 1.6s ease-out both; }
+  .scopeExample:last-child .activeScopeNode:nth-child(3) { animation-delay: .16s; }
+  .scopeExample:last-child .activeScopeNode:nth-child(4) { animation-delay: .32s; }
+  .scopeExample:last-child .activeScopeNode:nth-child(7) { animation-delay: .48s; }
+}
+
+@keyframes scopeNodePulse { 50% { outline: 4px solid color-mix(in srgb, var(--integration) 18%, transparent); outline-offset: 3px; } }
+@keyframes scopeNodeActivate { from { background: var(--surface); border-color: var(--line); transform: scale(.72); } to { transform: scale(1); } }
 .projectConversationLink { margin-top: clamp(2rem, 4vw, 3rem); }
 
 .solutionHero { min-height: min(42rem, calc(100vh - 6rem)); padding-top: clamp(2rem, 8vw, 7rem); }

@@ -15,16 +15,6 @@
 .partnerTitle { font-size: .69rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 @keyframes openingResolve { from { opacity: 0; transform: translateY(.75rem); } to { opacity: 1; transform: none; } }
 .orbits, .worldOrbits { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-.orbit { position: absolute; left: 50%; top: 50%; border: 1px solid; border-radius: 50%; transform: translate(-50%, -50%) rotate(-17deg); }
-.orbitOuter { width: min(78.75vw, 49.5rem); aspect-ratio: 1.2; border-color: color-mix(in srgb, var(--ecosat-deep) 16%, transparent); }
-.orbitInner { width: min(57vw, 34.5rem); aspect-ratio: 1.2; border-color: color-mix(in srgb, var(--ecosat) 22%, transparent); }
-.orbitOuter { animation: orbitClockwise 52s linear infinite; }
-.orbitInner { animation: orbitCounterclockwise 78s linear infinite; }
-@keyframes orbitClockwise { to { transform: translate(-50%, -50%) rotate(343deg); } }
-@keyframes orbitCounterclockwise { to { transform: translate(-50%, -50%) rotate(-377deg); } }
-.orbitNode { position: absolute; width: .5rem; aspect-ratio: 1; border-radius: 50%; background: var(--ecosat); opacity: .6; }
-.outerNode { top: -0.25rem; left: calc(50% - .25rem); background: var(--sidon); }
-.innerNode { left: calc(88.42% - .25rem); top: calc(82% - .25rem); background: var(--integration); }
 .mapScene { height: 340svh; position: relative; background: var(--surface-alt); }
 .mapSticky { position: sticky; top: 0; height: 100svh; display: grid; place-items: center; padding: clamp(5rem, 13svh, 7rem) 1.25rem 1rem; overflow: hidden; }
 .mapSticky::before { content: ""; position: absolute; left: 50%; top: 52%; width: min(45rem, 90vw); aspect-ratio: 1; border-radius: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle, color-mix(in srgb, var(--ecosat) 10%, transparent), transparent 65%); pointer-events: none; }
@@ -60,7 +50,7 @@
 .worldsScene { background: var(--surface-alt); text-align: center; }.worldsScene::before { content: ""; position: absolute; left: 50%; top: 52%; width: min(45rem, 90vw); aspect-ratio: 1; border-radius: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle, color-mix(in srgb, var(--ecosat) 10%, transparent), transparent 65%); pointer-events: none; }.worldsScene h2 { color: var(--ecosat-deep); font-size: clamp(1.7rem, 2.2vw, 2rem); font-weight: 800; letter-spacing: -.025em; text-wrap: balance; }.worldsLead { margin-top: .75rem; }.worldOrbits div { position: absolute; left: 50%; top: 52%; width: min(84vw, 55rem); aspect-ratio: 1.9; border: 1px solid color-mix(in srgb, var(--ecosat) 14%, transparent); border-radius: 50%; transform: translate(-50%, -50%) rotate(-14deg); }.worldOrbits div:last-child { width: min(61vw, 39rem); border-color: color-mix(in srgb, var(--sidon) 17%, transparent); }
 @media (max-width: 900px) { .industryGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); }.industry { min-height: 4.5rem; padding: .6rem .7rem; }.industry h3 { flex-direction: row; font-size: .77rem; } }@media (max-width: 700px) { .scene { padding-top: 6.5rem; }.mapSticky { padding-top: 5.5rem; }.mapGraphic { max-height: 46svh; }.industryGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .4rem; }.proofColumns { grid-template-columns: 1fr; gap: 2.5rem; margin-top: 2.5rem; }.partnerLayer { border-top: 0; padding-top: 0; }.logoTile { width: 8.5rem; min-height: 4rem; } }
 @media (min-width: 1001px) and (prefers-reduced-motion: no-preference) { :global(html):has(.home) { scroll-snap-type: y mandatory; }.openingScene, .scene, .mapScene { scroll-snap-align: start; scroll-snap-stop: always; } }
-@media (prefers-reduced-motion: reduce) { .orbit, .mapGraphic :global(.hq .halo), .mapGraphic :global(.ring), .logoTrack { animation: none; }.mapGraphic :global(.dm), .mapGraphic :global(.city), .mapGraphic :global(.hq), .startButton { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .mapGraphic :global(.hq .halo), .mapGraphic :global(.ring), .logoTrack { animation: none; }.mapGraphic :global(.dm), .mapGraphic :global(.city), .mapGraphic :global(.hq), .startButton { transition: none; } }
 .worldsScene { padding-top: 5.25rem; padding-bottom: 4rem; }
 .worldCircuit { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(10rem, 12rem) minmax(0, 1fr); grid-template-areas: "integration ecosat sidon" "close close close"; align-items: center; gap: 2rem clamp(1.5rem, 4vw, 4rem); margin: 1.5rem auto 0; }
 .circuitLines { position: absolute; z-index: -1; inset: 0; width: 100%; height: 100%; overflow: visible; fill: none; stroke-width: 2; stroke-linecap: round; }
