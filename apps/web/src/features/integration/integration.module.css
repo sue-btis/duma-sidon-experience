@@ -7,7 +7,6 @@
 .scene { min-height: 100svh; position: relative; }
 
 .intro,
-.solutionHero,
 .conversation {
   margin: 0 auto;
   max-width: 76rem;
@@ -20,7 +19,6 @@
   margin: 0 0 1rem;
 }
 
-.solutionHero h1,
 .conversation h1 {
   color: var(--integration-deep);
   font-size: clamp(2.8rem, 6.2vw, 6rem);
@@ -61,15 +59,8 @@
 
 .carouselScene { align-items: center; display: grid; margin: 0 auto; max-width: 96rem; padding: 7rem 0 8rem; }
 
-.orbitShell { isolation: isolate; position: relative; }
-.solutionOrbit { height: auto; left: 50%; opacity: .28; overflow: visible; pointer-events: none; position: absolute; top: 51%; transform: translate(-50%, -50%); width: min(76rem, 96vw); z-index: -1; }
-.solutionOrbit ellipse { fill: none; stroke: var(--integration); stroke-width: .45; }
-.solutionOrbit circle { fill: var(--surface); stroke: var(--integration); stroke-width: .7; }
-.solutionOrbit .activeOrbitNode { fill: var(--integration-deep); r: 4; }
-
-
 .projectBand { margin-left: auto; margin-right: auto; max-width: 76rem; }
-.projectBand h2, .siblings h2 { color: var(--integration-deep); font-size: clamp(1.6rem, 3vw, 2.5rem); margin: 0; }
+.projectBand h2 { color: var(--integration-deep); font-size: clamp(1.6rem, 3vw, 2.5rem); margin: 0; }
 
 .projectBand {
   align-items: start;
@@ -85,23 +76,6 @@
 .projectContent { max-width: 42rem; }
 .projectContent > p { margin-top: 0; }
 .projectConversationLink { margin-top: clamp(2rem, 4vw, 3rem); }
-
-.solutionHero { min-height: min(42rem, calc(100vh - 6rem)); padding-top: clamp(2rem, 8vw, 7rem); }
-.solutionHero .backLink { margin: 0 0 3rem; }
-.solutionIcon { height: auto; margin-bottom: 2rem; width: clamp(7rem, 18vw, 11rem); }
-
-.siblings { border-top: 1px solid var(--line); margin-top: 3rem; padding-top: 2rem; }
-.siblings ul { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; list-style: none; margin: 1.25rem 0 0; padding: 0; }
-.siblings a { color: var(--integration-deep); display: inline-flex; min-height: 2.75rem; align-items: center; }
-.siblings a[aria-current="page"] { color: var(--ink); font-weight: 700; }
-
-.details { display: grid; gap: clamp(2rem, 5vw, 4rem); margin-top: 2rem; max-width: 72rem; }
-.details section { border-top: 1px solid var(--line); padding-top: 1.25rem; }
-.details h2 { color: var(--integration-deep); font-size: clamp(1.35rem, 2.5vw, 2rem); margin: 0; }
-.details p { color: var(--ink-soft); line-height: 1.65; margin: .75rem 0 0; max-width: 68ch; }
-.details ul { color: var(--ink-soft); display: grid; gap: .45rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); line-height: 1.45; margin: 1rem 0 0; padding-left: 1.25rem; }
-.details .pills { list-style: none; padding: 0; }
-.details .pills li { border: 1px solid color-mix(in srgb, var(--integration) 42%, var(--surface)); color: var(--integration-deep); min-height: 2.75rem; padding: .65rem .8rem; }
 
 ::view-transition-old(root) { animation: integration-out 180ms ease-out both; }
 ::view-transition-new(root) { animation: integration-in 320ms ease-out both; }

@@ -28,7 +28,7 @@ export function SidonCategories({ categories, exploreLabel, instructions, locale
         return {
           action: exploreLabel,
           decorativeColor: category.decorativeColor,
-          href: `/${locale}/${category.slug}/`,
+          href: `/${locale}/sidon/${category.slug}/`,
           icon: category.icon,
           id: category.slug,
           modules: category.modules.map((module) => ({ icon: module.icon, name: content.modules[module.key].name })),
