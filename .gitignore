@@ -4,6 +4,7 @@ docs/superpowers/
 docs/superpowers/*
 docs/legacy
 .impeccable/
+docs/specs
 
 # Node.js / pnpm
 node_modules/
@@ -24,3 +25,4 @@ apps/*/coverage/
 *.log
 .DS_Store
 
+generate-ai-report.js
