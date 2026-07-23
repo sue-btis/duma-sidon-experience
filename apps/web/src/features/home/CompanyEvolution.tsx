@@ -8,11 +8,11 @@ import styles from "./company-evolution.module.css";
 
 const phases = [
   {
-    fills: ["Minimalist telecom tower in 3D.png", "Minimalist telecom station in isometric view.png", "Telecom towers with wireless link.png"],
+    fills: ["Minimalist telecom tower in 3D.png", "Minimalist telecom station in isometric view.png", "Telecom towers with wireless link.png", "Minimalist telecom equipment installation model.png"],
     image: "/home/company-evolution/phase-1.jpg", height: 940, width: 1672,
   },
   {
-    fills: ["Minimalist telecom tower in 3D illustration.png", "Monochrome network server rack setup.png", "Minimal white utility structure rendered 3D.png"],
+    fills: ["Minimalist telecom tower in 3D illustration.png", "Monochrome network server rack setup.png", "Minimal white utility structure rendered 3D.png", "Industrial utility equipment diorama in 3D.png"],
     image: "/home/company-evolution/phase-2.png", height: 941, width: 1672,
   },
   {

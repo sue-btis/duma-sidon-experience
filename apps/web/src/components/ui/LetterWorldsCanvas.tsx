@@ -62,9 +62,6 @@ export function LetterWorldsCanvas() {
     if (!canvas || !context) return;
 
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const pointerMedia = window.matchMedia("(hover: hover) and (pointer: fine)");
-    const stage = canvas.parentElement;
-    const pointer = { x: 0, targetX: 0, targetY: 0, y: 0 };
     const worlds: readonly World[] = [
       { color: "96, 175, 232", opacity: 0.93, points: sphere(1050, "ECOSAT0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", palettes.core, 3), rotation: 0.065, scale: 1.12, tilt: -0.12, x: 0.5, y: 0.43 },
       { color: "126, 92, 221", opacity: 0.68, points: sphere(560, "CCTVAVBMSRFIDHVACFIREACCESSDATA", palettes.physical, 7), rotation: -0.04, scale: 0.62, tilt: 0.18, x: 0.05, y: 0.76 },
@@ -78,7 +75,6 @@ export function LetterWorldsCanvas() {
     let width = 0;
 
     const shouldAnimate = () => !media.matches && isIntersecting && isVisible;
-
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       width = canvas.clientWidth;
@@ -97,7 +93,6 @@ export function LetterWorldsCanvas() {
       context.beginPath();
       context.ellipse(0, 0, radius * 1.17, radius * 0.34, 0, 0, Math.PI * 2);
       context.stroke();
-
       const nodeX = Math.cos(nodeAngle) * radius * 1.17;
       const nodeY = Math.sin(nodeAngle) * radius * 0.34;
       context.fillStyle = `rgba(${color}, ${Math.min(alpha * 4, 0.95)})`;
@@ -113,11 +108,10 @@ export function LetterWorldsCanvas() {
       const radius = Math.min(width, height) * (width < 700 ? 0.33 : 0.34) * world.scale;
       const centerX = width * world.x;
       const centerY = height * world.y;
-      const rotationY = time * world.rotation + pointer.x * 0.18;
-      const rotationX = world.tilt + pointer.y * 0.09;
+      const rotationY = time * world.rotation;
+      const rotationX = world.tilt;
       const cosineX = Math.cos(rotationX);
       const sineX = Math.sin(rotationX);
-
       const glow = context.createRadialGradient(centerX - radius * 0.25, centerY - radius * 0.28, 0, centerX, centerY, radius * 1.05);
       glow.addColorStop(0, `rgba(${world.color}, .10)`);
       glow.addColorStop(0.72, `rgba(${world.color}, .035)`);
@@ -126,7 +120,6 @@ export function LetterWorldsCanvas() {
       context.beginPath();
       context.arc(centerX, centerY, radius * 1.06, 0, Math.PI * 2);
       context.fill();
-
       drawOrbit(centerX, centerY, radius, -0.22, world.color, world.opacity * 0.28, time * world.rotation * 2.2);
       drawOrbit(centerX, centerY, radius * 1.05, 0.56, world.color, world.opacity * 0.18, -time * world.rotation * 1.6 + 2.3);
 
@@ -142,18 +135,9 @@ export function LetterWorldsCanvas() {
         const y = point.y * cosineX - z * sineX;
         const rotatedZ = point.y * sineX + z * cosineX;
         const perspective = 1 / (1.55 - rotatedZ * 0.48);
-        projected.push({
-          alpha: Math.min(1, Math.max(0.12, 0.38 + (rotatedZ + 1) * 0.32)),
-          char: point.char,
-          color: point.color,
-          size: point.size * radius * 0.032 * perspective,
-          x: centerX + x * radius * perspective,
-          y: centerY + y * radius * perspective,
-          z: rotatedZ,
-        });
+        projected.push({ alpha: Math.min(1, Math.max(0.12, 0.38 + (rotatedZ + 1) * 0.32)), char: point.char, color: point.color, size: point.size * radius * 0.032 * perspective, x: centerX + x * radius * perspective, y: centerY + y * radius * perspective, z: rotatedZ });
       }
       projected.sort((first, second) => first.z - second.z);
-
       context.textAlign = "center";
       context.textBaseline = "middle";
       for (const point of projected) {
@@ -162,7 +146,6 @@ export function LetterWorldsCanvas() {
         context.font = `${Math.max(5.5, point.size)}px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`;
         context.fillText(point.char, point.x, point.y);
       }
-
       context.globalAlpha = world.opacity * 0.48;
       context.strokeStyle = `rgba(${world.color}, .32)`;
       context.lineWidth = 1;
@@ -173,8 +156,6 @@ export function LetterWorldsCanvas() {
     };
 
     const render = (now: number) => {
-      pointer.x += (pointer.targetX - pointer.x) * 0.13;
-      pointer.y += (pointer.targetY - pointer.y) * 0.13;
       context.clearRect(0, 0, width, height);
       const time = media.matches ? 0 : now / 1000;
       if (width >= 700) {
@@ -183,7 +164,6 @@ export function LetterWorldsCanvas() {
       }
       drawWorld(worlds[0]!, time);
     };
-
     const frame = (now: number) => {
       if (!shouldAnimate()) {
         animationFrame = undefined;
@@ -195,7 +175,6 @@ export function LetterWorldsCanvas() {
       }
       animationFrame = window.requestAnimationFrame(frame);
     };
-
     const updateAnimation = () => {
       if (shouldAnimate()) {
         if (animationFrame === undefined) animationFrame = window.requestAnimationFrame(frame);
@@ -205,41 +184,30 @@ export function LetterWorldsCanvas() {
         render(0);
       }
     };
-
-    const move = (event: PointerEvent) => {
-      if (!stage) return;
-      const bounds = stage.getBoundingClientRect();
-      pointer.targetX = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
-      pointer.targetY = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
-    };
-    const leave = () => { pointer.targetX = 0; pointer.targetY = 0; };
     const motionChange = () => { lastFrame = 0; updateAnimation(); };
     const visibilityChange = () => { isVisible = document.visibilityState === "visible"; updateAnimation(); };
     const observer = new IntersectionObserver(([entry]) => {
       isIntersecting = entry?.isIntersecting ?? false;
       updateAnimation();
     });
+    const resizeObserver = new ResizeObserver(() => {
+      resize();
+      render(0);
+    });
 
     resize();
     render(0);
     observer.observe(canvas);
+    resizeObserver.observe(canvas);
     updateAnimation();
     window.addEventListener("resize", resize, { passive: true });
-    if (pointerMedia.matches && stage) {
-      stage.addEventListener("pointermove", move, { passive: true });
-      stage.addEventListener("pointerleave", leave, { passive: true });
-    }
     media.addEventListener("change", motionChange);
     document.addEventListener("visibilitychange", visibilityChange);
-
     return () => {
       if (animationFrame !== undefined) window.cancelAnimationFrame(animationFrame);
       observer.disconnect();
+      resizeObserver.disconnect();
       window.removeEventListener("resize", resize);
-      if (pointerMedia.matches && stage) {
-        stage.removeEventListener("pointermove", move);
-        stage.removeEventListener("pointerleave", leave);
-      }
       media.removeEventListener("change", motionChange);
       document.removeEventListener("visibilitychange", visibilityChange);
     };

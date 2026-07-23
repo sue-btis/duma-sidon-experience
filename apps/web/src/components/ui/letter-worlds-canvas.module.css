@@ -1,1 +1,1 @@
-.canvas { display: block; height: 100%; inset: 0; pointer-events: none; position: absolute; width: 100%; }
+.canvas { display: block; height: 100%; inset: 0; pointer-events: none; position: absolute; width: 100%; z-index: 1; }
