@@ -64,14 +64,14 @@ export function LetterWorldsCanvas({ variant = "all" }: Props) {
 
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     const homeWorlds: readonly World[] = [
-      { color: "96, 175, 232", opacity: 0.93, points: sphere(1500, "ECOSAT0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ······", palettes.core, 3), rotation: 0.065, scale: 1.12, tilt: -0.12, x: 0.5, y: 0.43 },
-      { color: "126, 92, 221", opacity: 0.68, points: sphere(800, "CCTVAVBMSRFIDHVACFIREACCESSDATA······", palettes.physical, 7), rotation: -0.04, scale: 0.62, tilt: 0.18, x: 0.05, y: 0.76 },
-      { color: "47, 173, 132", opacity: 0.68, points: sphere(800, "01<>/{}[]APIJSONSQLAIOTDATAFLOW······", palettes.digital, 11), rotation: 0.046, scale: 0.62, tilt: -0.2, x: 0.95, y: 0.76 },
+      { color: "96, 175, 232", opacity: 0.93, points: sphere(2250, "ECOSAT0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ······", palettes.core, 3), rotation: 0.065, scale: 1.12, tilt: -0.12, x: 0.5, y: 0.43 },
+      { color: "126, 92, 221", opacity: 0.68, points: sphere(1200, "CCTVAVBMSRFIDHVACFIREACCESSDATA······", palettes.physical, 7), rotation: -0.04, scale: 0.62, tilt: 0.18, x: 0.05, y: 0.76 },
+      { color: "47, 173, 132", opacity: 0.68, points: sphere(1200, "01<>/{}[]APIJSONSQLAIOTDATAFLOW······", palettes.digital, 11), rotation: 0.046, scale: 0.62, tilt: -0.2, x: 0.95, y: 0.76 },
     ];
     const worlds: readonly World[] = variant === "all" ? homeWorlds : [
       variant === "physical"
-        ? { color: "118, 92, 164", opacity: 0.76, points: sphere(1500, "CCTVAVBMSRFIDHVACFIREACCESSDATA······", palettes.physical, 7), rotation: -0.04, scale: 1.05, tilt: 0.18, x: 0.5, y: 0.5 }
-        : { color: "0, 168, 135", opacity: 0.76, points: sphere(1500, "01<>/{}[]APIJSONSQLAIOTDATAFLOW······", palettes.digital, 11), rotation: 0.046, scale: 1.05, tilt: -0.2, x: 0.5, y: 0.5 },
+        ? { color: "118, 92, 164", opacity: 0.76, points: sphere(2250, "CCTVAVBMSRFIDHVACFIREACCESSDATA······", palettes.physical, 7), rotation: -0.04, scale: 1.05, tilt: 0.18, x: 0.5, y: 0.5 }
+        : { color: "0, 168, 135", opacity: 0.76, points: sphere(2250, "01<>/{}[]APIJSONSQLAIOTDATAFLOW······", palettes.digital, 11), rotation: 0.046, scale: 1.05, tilt: -0.2, x: 0.5, y: 0.5 },
     ];
     let animationFrame: number | undefined;
     let height = 0;
@@ -160,12 +160,6 @@ export function LetterWorldsCanvas({ variant = "all" }: Props) {
           context.fillText(point.char, projectedX, projectedY);
         }
       }
-      context.globalAlpha = world.opacity * 0.48;
-      context.strokeStyle = `rgba(${world.color}, .32)`;
-      context.lineWidth = 1;
-      context.beginPath();
-      context.arc(centerX, centerY, radius, 0, Math.PI * 2);
-      context.stroke();
       context.globalAlpha = 1;
     };
 

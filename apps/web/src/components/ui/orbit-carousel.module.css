@@ -9,9 +9,9 @@
 .cardNumber { align-items: center; block-size: clamp(2.5rem, 3.3vw, 3.1rem); border: 1.5px solid var(--orbit-accent); border-radius: 50%; color: var(--orbit-deep); display: inline-flex; font-size: clamp(.8rem, 1.1vw, 1rem); font-weight: 750; inline-size: clamp(2.5rem, 3.3vw, 3.1rem); justify-content: center; letter-spacing: .08em; }
 .cardBody { align-items: center; display: grid; gap: .45rem; justify-items: center; margin-top: clamp(.5rem, .7vw, .75rem); position: relative; text-align: center; z-index: 1; }
 .cardIcon { align-items: center; display: flex; height: clamp(5.25rem, 7vw, 6.25rem); justify-content: center; position: relative; width: clamp(5.25rem, 7vw, 6.25rem); }
-.cardIcon img { height: 100%; object-fit: contain; transform: scale(var(--card-icon-scale)); width: 100%; }
+.cardIcon img { height: 100%; object-fit: contain; transform: translateY(40%) scale(calc(var(--card-icon-scale) * 2)); width: 100%; }
 .card strong { color: var(--orbit-deep); display: block; font-size: clamp(1.35rem, 1.9vw, 1.8rem); letter-spacing: -.025em; line-height: 1.1; text-wrap: balance; }
-.cardFooter { border-top: 1px solid color-mix(in srgb, var(--orbit-accent) 42%, var(--line)); display: grid; gap: .7rem; margin-top: auto; padding-top: .75rem; position: relative; z-index: 1; }
+.cardFooter { display: grid; gap: .7rem; margin-top: auto; padding-top: .75rem; position: relative; z-index: 1; }
 .description { -webkit-box-orient: vertical; -webkit-line-clamp: 2; color: var(--ink-soft); display: -webkit-box; font-size: clamp(.82rem, .95vw, .94rem); line-height: 1.4; overflow: hidden; }
 .modules { display: grid; gap: .35rem; }
 .modulesLabel { color: var(--ink-soft); font-size: .58rem; font-weight: 750; letter-spacing: .1em; }
