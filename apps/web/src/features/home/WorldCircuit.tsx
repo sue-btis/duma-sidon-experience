@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ShieldCheck } from "lucide-react";
 
+import { LetterWorldsCanvas } from "@/components/ui/LetterWorldsCanvas";
+
 import styles from "./home-experience.module.css";
 
 type Props = Readonly<{
@@ -19,40 +21,31 @@ export function WorldCircuit({ close, integration, lead, locale, sidon, title }:
       <h2>{title}</h2>
       <p className={styles.worldsLead}>{lead}</p>
       <div className={styles.worldCircuit}>
-        <svg aria-hidden="true" className={styles.circuitLines} preserveAspectRatio="none" viewBox="0 0 1000 600">
-          <defs>
-            <mask id="circuitLineGaps" maskUnits="userSpaceOnUse">
-              <rect fill="white" height="600" width="1000" />
-              <circle cx="167" cy="140" fill="black" r="86" />
-              <circle cx="500" cy="330" fill="black" r="102" />
-              <circle cx="833" cy="140" fill="black" r="86" />
-            </mask>
-          </defs>
-          <g mask="url(#circuitLineGaps)">
-            <path className={styles.integrationLine} d="M398 330 C310 330 290 180 253 140" />
-            <path className={styles.sidonLine} d="M602 330 C690 330 710 180 747 140" />
-          </g>
-          <circle className={styles.flowDot} r="7">
-            <animateMotion dur="3s" path="M398 330 C310 330 290 180 253 140" repeatCount="indefinite" />
-          </circle>
-          <circle className={styles.flowDot} r="7">
-            <animateMotion dur="3s" path="M602 330 C690 330 710 180 747 140" repeatCount="indefinite" />
-          </circle>
+        <svg aria-hidden="true" className={styles.circuitLines} preserveAspectRatio="none" viewBox="0 0 1000 260">
+          <path className={`${styles.convergenceLine} ${styles.integrationLine}`} d="M175 130 C300 130 365 130 430 130" pathLength="1" />
+          <path className={`${styles.convergenceLine} ${styles.sidonLine}`} d="M825 130 C700 130 635 130 570 130" pathLength="1" />
         </svg>
 
         <Link className={`${styles.worldNode} ${styles.integrationNode}`} href={`/${locale}/integracion/`}>
-          <div className={styles.worldMark}><Image alt="" height={104} src="/home/worlds/integracion.png" unoptimized width={104} /></div>
+          <div className={styles.worldMark}>
+            <LetterWorldsCanvas variant="physical" />
+            <Image alt="" className={styles.worldLogo} height={632} src="/home/worlds/integracion.png" unoptimized width={708} />
+          </div>
           <span className={styles.worldLabel}>{integration.label}</span>
           <span className={styles.worldDescription}>{integration.description}</span>
           <span className={styles.worldAction}>{integration.action}</span>
         </Link>
 
-        <div className={styles.ecosatNode}>
-          <Image alt="Ecosat" height={174} src="/home/worlds/ecosat.png" unoptimized width={174} />
+        <div className={styles.ecosatNode} data-home-animation>
+          <div aria-hidden="true" className={styles.ecosatParticles} />
+          <Image alt="Ecosat" className={styles.ecosatResolvedLogo} height={1261} src="/brand/ecosat-horizontal.png" unoptimized width={1504} />
         </div>
 
         <Link className={`${styles.worldNode} ${styles.sidonNode}`} href={`/${locale}/sidon/`}>
-          <div className={styles.worldMark}><Image alt="" height={104} src="/home/worlds/sidon.png" unoptimized width={104} /></div>
+          <div className={styles.worldMark}>
+            <LetterWorldsCanvas variant="digital" />
+            <Image alt="" className={styles.worldLogo} height={148} src="/home/worlds/sidon.png" unoptimized width={147} />
+          </div>
           <span className={styles.worldLabel}>{sidon.label}</span>
           <span className={styles.worldDescription}>{sidon.description}</span>
           <span className={styles.worldAction}>{sidon.action}</span>

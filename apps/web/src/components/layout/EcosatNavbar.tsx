@@ -18,12 +18,12 @@ export async function EcosatNavbar({ locale, page = "home", path }: Props) {
       <Link aria-label={common("brand")} href={`/${locale}/`}>
         <Image
           alt=""
-          className="h-auto w-[118px] sm:w-[150px]"
-          height={218}
+          className="h-12 w-auto"
+          height={145}
           priority
           src="/brand/ecosat-horizontal.png"
           unoptimized
-          width={403}
+          width={149}
         />
       </Link>
       <span aria-hidden="true" className="h-5 w-px bg-border" />

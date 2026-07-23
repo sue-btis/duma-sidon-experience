@@ -33,7 +33,7 @@ export function CoreOpening({ attributes, scrollPrompt, statement, title }: Prop
         <div aria-hidden="true" className={styles.openingHalo} />
         <div className={styles.coverContent}>
           <h1 className={styles.visuallyHidden}>{title}</h1>
-          <Image alt="Ecosat" className={styles.ecosatLogo} height={218} priority src="/brand/ecosat-horizontal.png" unoptimized width={403} />
+          <Image alt="Ecosat" className={styles.ecosatLogo} height={1261} priority src="/brand/ecosat-horizontal.png" unoptimized width={1504} />
           <p className={styles.lead}>{statement}</p>
         </div>
         <ol className={styles.pillars}>

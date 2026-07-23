@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 export function HomeSceneController() {
   useEffect(() => {
-    const scenes = [...document.querySelectorAll<HTMLElement>("[data-home-scene]")];
+    const scenes = [...document.querySelectorAll<HTMLElement>("[data-home-scene], [data-home-animation]")];
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {

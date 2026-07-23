@@ -41,9 +41,11 @@ export async function IntegrationExperience({ locale, solution }: Props) {
     <main className={`${styles.page} ${styles.integrationLanding}`}>
       <section aria-labelledby="integration-title" className={`${styles.scene} ${styles.intro}`}>
         <LetterWorldsCanvas variant="physical" />
-        <div className={styles.introCopy}>
+        <div className={styles.introIdentity}>
           <Image alt="" className={styles.introLabel} height={104} src="/home/worlds/integracion.png" unoptimized width={104} />
           <h1 id="integration-title">{t("headline")}</h1>
+        </div>
+        <div className={styles.introDescription}>
           <p className={styles.lead}>{t("lead")}</p>
           <p className={styles.introMeta}>{t("introMeta")}</p>
         </div>

@@ -1,11 +1,11 @@
-.page { overflow: clip; padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 3rem) 5rem; }
+.page { background: #fbfdff; overflow: clip; padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 3rem) 5rem; }
 .scene { align-items: center; display: grid; isolation: isolate; min-height: 100svh; padding: 7rem 1.25rem 4rem; position: relative; }
-.intro { background: #fbfdff; }.intro > div:last-child { margin: 0 auto; max-width: 58rem; position: relative; text-align: center; z-index: 2; }.duma > div:last-child { margin: 0 auto; max-width: 44rem; position: relative; text-align: center; }
+.introIdentity { margin: 0 auto; max-width: 58rem; position: relative; text-align: center; z-index: 2; }.introDescription { left: 50%; position: absolute; text-align: center; top: min(76svh, 45.5rem); transform: translateX(-50%); width: min(42rem, 88vw); z-index: 0; }.duma > div:last-child { margin: 0 auto; max-width: 44rem; position: relative; text-align: center; }
 .categoriesScene header > p, .duma p, .conversation p { color: var(--sidon-deep); font-size: .78rem; font-weight: 800; letter-spacing: .08em; margin: 0 0 1rem; text-transform: uppercase; }
 .intro h1, .categoriesScene h2, .duma h2, .conversation h2 { color: var(--sidon-deep); letter-spacing: -.035em; line-height: .98; margin: 0; }
-.intro h1 { font-size: clamp(2.6rem, 4.5vw, 4rem); margin-left: auto; margin-right: auto; max-width: 24ch; }.categoriesScene h2, .duma h2, .conversation h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
+.intro h1 { font-size: clamp(1.1rem, 2.2vw, 1.6rem); font-weight: 600; line-height: 1.2; margin-left: auto; margin-right: auto; max-width: 36ch; }.categoriesScene h2, .duma h2, .conversation h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
 .intro span, .categoriesScene header > span, .duma span, .conversation span { color: var(--ink-soft); display: block; font-size: clamp(1rem, 1.65vw, 1.2rem); line-height: 1.65; margin-top: 1.35rem; }
-.intro img { display: block; height: auto; margin: 0 auto 1rem; width: min(8rem, 38vw); }
+.introDescription span { margin-top: 0; }.intro img { display: block; height: auto; margin: 0 auto 1rem; width: min(10rem, 44vw); }
 .introMeta { color: var(--sidon-deep); font-size: .9rem; font-weight: 650; margin: 1.25rem 0 0; }
 .orbits, .dumaOrbit { inset: 0; overflow: hidden; pointer-events: none; position: absolute; z-index: -1; }.dumaOrbit i { aspect-ratio: 1.45; border: 1px solid color-mix(in srgb, var(--sidon) 25%, transparent); border-radius: 50%; left: 50%; position: absolute; top: 50%; transform: translate(-50%, -50%) rotate(-16deg); width: min(84vw, 58rem); }.dumaOrbit i:last-child { border-color: color-mix(in srgb, var(--sidon) 48%, transparent); width: min(60vw, 40rem); }
 @media (prefers-reduced-motion: no-preference) { .dumaOrbit i:first-child { animation: sidonOrbit 56s linear infinite; }.dumaOrbit i:last-child { animation: sidonOrbitReverse 74s linear infinite; } } @keyframes sidonOrbit { to { transform: translate(-50%, -50%) rotate(344deg); } } @keyframes sidonOrbitReverse { to { transform: translate(-50%, -50%) rotate(-376deg); } }

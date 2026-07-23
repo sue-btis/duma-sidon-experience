@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
+import { getFrontAlpha } from "./letterWorldMath";
 import styles from "./letter-worlds-canvas.module.css";
 
 type World = {
@@ -18,7 +19,6 @@ type World = {
 type Point = {
   char: string;
   color: string;
-  phase: number;
   size: number;
   x: number;
   y: number;
@@ -42,7 +42,6 @@ function sphere(count: number, characters: string, colors: readonly string[], se
     points.push({
       char: characters[(index * 7 + seed * 13) % characters.length] ?? "·",
       color: colors[(index * 5 + seed) % colors.length] ?? colors[0]!,
-      phase: (index * 0.37 + seed) % (Math.PI * 2),
       size: 0.72 + ((index * 17) % 100) / 180,
       x: Math.cos(theta) * radius,
       y,
@@ -65,14 +64,14 @@ export function LetterWorldsCanvas({ variant = "all" }: Props) {
 
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     const homeWorlds: readonly World[] = [
-      { color: "96, 175, 232", opacity: 0.93, points: sphere(1050, "ECOSAT0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", palettes.core, 3), rotation: 0.065, scale: 1.12, tilt: -0.12, x: 0.5, y: 0.43 },
-      { color: "126, 92, 221", opacity: 0.68, points: sphere(560, "CCTVAVBMSRFIDHVACFIREACCESSDATA", palettes.physical, 7), rotation: -0.04, scale: 0.62, tilt: 0.18, x: 0.05, y: 0.76 },
-      { color: "47, 173, 132", opacity: 0.68, points: sphere(560, "01<>/{}[]APIJSONSQLAIOTDATAFLOW", palettes.digital, 11), rotation: 0.046, scale: 0.62, tilt: -0.2, x: 0.95, y: 0.76 },
+      { color: "96, 175, 232", opacity: 0.93, points: sphere(1500, "ECOSAT0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ······", palettes.core, 3), rotation: 0.065, scale: 1.12, tilt: -0.12, x: 0.5, y: 0.43 },
+      { color: "126, 92, 221", opacity: 0.68, points: sphere(800, "CCTVAVBMSRFIDHVACFIREACCESSDATA······", palettes.physical, 7), rotation: -0.04, scale: 0.62, tilt: 0.18, x: 0.05, y: 0.76 },
+      { color: "47, 173, 132", opacity: 0.68, points: sphere(800, "01<>/{}[]APIJSONSQLAIOTDATAFLOW······", palettes.digital, 11), rotation: 0.046, scale: 0.62, tilt: -0.2, x: 0.95, y: 0.76 },
     ];
     const worlds: readonly World[] = variant === "all" ? homeWorlds : [
       variant === "physical"
-        ? { color: "118, 92, 164", opacity: 0.76, points: sphere(1050, "CCTVAVBMSRFIDHVACFIREACCESSDATA", palettes.physical, 7), rotation: -0.04, scale: 1.05, tilt: 0.18, x: 0.5, y: 0.5 }
-        : { color: "0, 168, 135", opacity: 0.76, points: sphere(1050, "01<>/{}[]APIJSONSQLAIOTDATAFLOW", palettes.digital, 11), rotation: 0.046, scale: 1.05, tilt: -0.2, x: 0.5, y: 0.5 },
+        ? { color: "118, 92, 164", opacity: 0.76, points: sphere(1500, "CCTVAVBMSRFIDHVACFIREACCESSDATA······", palettes.physical, 7), rotation: -0.04, scale: 1.05, tilt: 0.18, x: 0.5, y: 0.5 }
+        : { color: "0, 168, 135", opacity: 0.76, points: sphere(1500, "01<>/{}[]APIJSONSQLAIOTDATAFLOW······", palettes.digital, 11), rotation: 0.046, scale: 1.05, tilt: -0.2, x: 0.5, y: 0.5 },
     ];
     let animationFrame: number | undefined;
     let height = 0;
@@ -84,11 +83,15 @@ export function LetterWorldsCanvas({ variant = "all" }: Props) {
     const shouldAnimate = () => !media.matches && isIntersecting && isVisible;
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = canvas.clientWidth;
-      height = canvas.clientHeight;
+      const nextWidth = canvas.clientWidth;
+      const nextHeight = canvas.clientHeight;
+      if (width === nextWidth && height === nextHeight) return false;
+      width = nextWidth;
+      height = nextHeight;
       canvas.width = Math.round(width * dpr);
       canvas.height = Math.round(height * dpr);
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
+      return true;
     };
 
     const drawOrbit = (x: number, y: number, radius: number, rotation: number, color: string, alpha: number, nodeAngle: number) => {
@@ -119,6 +122,8 @@ export function LetterWorldsCanvas({ variant = "all" }: Props) {
       const rotationX = world.tilt;
       const cosineX = Math.cos(rotationX);
       const sineX = Math.sin(rotationX);
+      const cosineY = Math.cos(rotationY);
+      const sineY = Math.sin(rotationY);
       const glow = context.createRadialGradient(centerX - radius * 0.25, centerY - radius * 0.28, 0, centerX, centerY, radius * 1.05);
       glow.addColorStop(0, `rgba(${world.color}, .10)`);
       glow.addColorStop(0.72, `rgba(${world.color}, .035)`);
@@ -130,28 +135,30 @@ export function LetterWorldsCanvas({ variant = "all" }: Props) {
       drawOrbit(centerX, centerY, radius, -0.22, world.color, world.opacity * 0.28, time * world.rotation * 2.2);
       drawOrbit(centerX, centerY, radius * 1.05, 0.56, world.color, world.opacity * 0.18, -time * world.rotation * 1.6 + 2.3);
 
-      const pointCount = width < 1000 && world.scale < 1 ? 320 : world.points.length;
-      const projected = [] as { alpha: number; char: string; color: string; size: number; x: number; y: number; z: number }[];
+      const pointCount = width < 1000 && world.scale < 1 ? 480 : world.points.length;
+      context.textAlign = "center";
+      context.textBaseline = "middle";
+      context.font = `${Math.max(5.5, radius * 0.022)}px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`;
       for (let index = 0; index < pointCount; index += 1) {
         const point = world.points[index]!;
-        const yAngle = rotationY + Math.sin(time * 0.12 + point.phase) * 0.006;
-        const cosineY = Math.cos(yAngle);
-        const sineY = Math.sin(yAngle);
         const x = point.x * cosineY - point.z * sineY;
         const z = point.x * sineY + point.z * cosineY;
         const y = point.y * cosineX - z * sineX;
         const rotatedZ = point.y * sineX + z * cosineX;
+        const frontAlpha = getFrontAlpha(rotatedZ);
+        if (frontAlpha === 0) continue;
         const perspective = 1 / (1.55 - rotatedZ * 0.48);
-        projected.push({ alpha: Math.min(1, Math.max(0.12, 0.38 + (rotatedZ + 1) * 0.32)), char: point.char, color: point.color, size: point.size * radius * 0.032 * perspective, x: centerX + x * radius * perspective, y: centerY + y * radius * perspective, z: rotatedZ });
-      }
-      projected.sort((first, second) => first.z - second.z);
-      context.textAlign = "center";
-      context.textBaseline = "middle";
-      for (const point of projected) {
-        context.globalAlpha = world.opacity * point.alpha;
+        const size = point.size * radius * 0.032 * perspective;
+        const projectedX = centerX + x * radius * perspective;
+        const projectedY = centerY + y * radius * perspective;
+        context.globalAlpha = world.opacity * frontAlpha * Math.min(1, 0.7 + rotatedZ * 0.3);
         context.fillStyle = point.color;
-        context.font = `${Math.max(5.5, point.size)}px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`;
-        context.fillText(point.char, point.x, point.y);
+        if (point.char === "·") {
+          const dotSize = Math.max(1, size * 0.16);
+          context.fillRect(projectedX - dotSize / 2, projectedY - dotSize / 2, dotSize, dotSize);
+        } else {
+          context.fillText(point.char, projectedX, projectedY);
+        }
       }
       context.globalAlpha = world.opacity * 0.48;
       context.strokeStyle = `rgba(${world.color}, .32)`;
@@ -176,45 +183,52 @@ export function LetterWorldsCanvas({ variant = "all" }: Props) {
         animationFrame = undefined;
         return;
       }
-      if (now - lastFrame >= 1000 / 60) {
+      if (now - lastFrame >= 1000 / 30) {
         lastFrame = now;
         render(now);
       }
       animationFrame = window.requestAnimationFrame(frame);
     };
-    const updateAnimation = () => {
+    const updateAnimation = (renderStatic = true) => {
       if (shouldAnimate()) {
         if (animationFrame === undefined) animationFrame = window.requestAnimationFrame(frame);
       } else {
         if (animationFrame !== undefined) window.cancelAnimationFrame(animationFrame);
         animationFrame = undefined;
-        render(0);
+        if (renderStatic) render(0);
       }
     };
     const motionChange = () => { lastFrame = 0; updateAnimation(); };
-    const visibilityChange = () => { isVisible = document.visibilityState === "visible"; updateAnimation(); };
+    const visibilityChange = () => {
+      const nextVisible = document.visibilityState === "visible";
+      if (nextVisible === isVisible) return;
+      isVisible = nextVisible;
+      updateAnimation();
+    };
     const observer = new IntersectionObserver(([entry]) => {
-      isIntersecting = entry?.isIntersecting ?? false;
+      const nextIntersecting = entry?.isIntersecting ?? false;
+      if (nextIntersecting === isIntersecting) return;
+      isIntersecting = nextIntersecting;
       updateAnimation();
     });
     const resizeObserver = new ResizeObserver(() => {
-      resize();
-      render(0);
+      if (resize()) render(0);
     });
+    const resizeWindow = () => { if (resize()) render(0); };
 
     resize();
     render(0);
     observer.observe(canvas);
     resizeObserver.observe(canvas);
-    updateAnimation();
-    window.addEventListener("resize", resize, { passive: true });
+    updateAnimation(false);
+    window.addEventListener("resize", resizeWindow, { passive: true });
     media.addEventListener("change", motionChange);
     document.addEventListener("visibilitychange", visibilityChange);
     return () => {
       if (animationFrame !== undefined) window.cancelAnimationFrame(animationFrame);
       observer.disconnect();
       resizeObserver.disconnect();
-      window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", resizeWindow);
       media.removeEventListener("change", motionChange);
       document.removeEventListener("visibilitychange", visibilityChange);
     };
