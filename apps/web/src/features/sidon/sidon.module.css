@@ -1,4 +1,4 @@
-.page { background: #fbfdff; overflow: clip; padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 3rem) 5rem; }
+.page { background: var(--surface); overflow: clip; padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 3rem) 5rem; }
 .scene { align-items: center; display: grid; isolation: isolate; min-height: 100svh; padding: 7rem 1.25rem 4rem; position: relative; }
 .duma > div:last-child { margin: 0 auto; max-width: 44rem; position: relative; text-align: center; }
 .categoriesScene header > p, .duma p, .conversation p { color: var(--sidon-deep); font-size: .78rem; font-weight: 800; letter-spacing: .08em; margin: 0 0 1rem; text-transform: uppercase; }
