@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { GeoJSONSource, Map as MapLibreMap, Marker } from "maplibre-gl";
 
 import styles from "./company-evolution.module.css";
@@ -118,6 +118,8 @@ export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ prog
   const mapRef = useRef<MapLibreMap>(null);
   const markersRef = useRef<Marker[]>([]);
   const showLocationsRef = useRef(showLocations);
+  const [isMapReady, setIsMapReady] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     showLocationsRef.current = showLocations;
@@ -126,6 +128,20 @@ export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ prog
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry?.isIntersecting) return;
+      setIsVisible(true);
+      observer.disconnect();
+    });
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || !isVisible) return;
 
     let disposed = false;
     let map: MapLibreMap | undefined;
@@ -153,6 +169,7 @@ export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ prog
       map.once("load", () => {
         const loadedMap = map;
         if (!loadedMap || disposed) return;
+        setIsMapReady(true);
         loadedMap.setLight({ anchor: "viewport", color: "#ffffff", intensity: 0.48, position: [1.2, 210, 35] });
         loadedMap.addSource("countries", { type: "geojson", data: "/home/company-evolution/map-data/americas.geojson" });
         void fetch("/home/company-evolution/map-data/americas.geojson")
@@ -224,11 +241,11 @@ export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ prog
       map?.remove();
       mapRef.current = null;
     };
-  }, []);
+  }, [isVisible]);
 
   useEffect(() => {
     const map = mapRef.current;
-    if (!map || !map.isStyleLoaded()) return;
+    if (!isMapReady || !map || !map.isStyleLoaded()) return;
     const { camera, stateOpacity } = cameraFor(progress);
     map.jumpTo(camera);
     map.setPaintProperty("chihuahua-highlight", "fill-opacity", stateOpacity * 0.82);
@@ -237,7 +254,7 @@ export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ prog
       const shouldShow = Boolean(LOCATIONS[index].label) || showLocations;
       marker.getElement().style.opacity = shouldShow ? String(Math.max(0.75, stateOpacity)) : "0";
     });
-  }, [progress, showLocations]);
+  }, [isMapReady, progress, showLocations]);
 
   return (
     <div aria-hidden="true" className={`${styles.mapCanvas} ${showLocations ? styles.mapLocationsVisible : ""}`} ref={containerRef}>

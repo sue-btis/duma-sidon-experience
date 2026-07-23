@@ -11,13 +11,19 @@
 .cityMarker span::after { content: ""; position: absolute; inset: .28rem; border-radius: 50%; background: var(--ecosat); }
 .coverageMarker { display: block; width: .72rem; height: .72rem; border: 2px solid var(--surface); border-radius: .2rem; background: var(--ecosat-deep); box-shadow: 0 0 0 .18rem color-mix(in srgb, var(--ecosat) 18%, transparent); transform: rotate(45deg); }
 .coverageMarker span { display: none; }
-.world { position: absolute; left: 0; top: 0; width: 4200px; height: 2200px; transform: translate3d(calc(50vw - var(--x)), calc(50svh - var(--y)), 0) scale(var(--zoom)); transform-origin: 0 0; transition: transform .65s cubic-bezier(.22, 1, .36, 1); }
+.world { position: absolute; left: 0; top: 0; width: 6500px; height: 3000px; transform: translate3d(calc(50vw - var(--x)), calc(50svh - var(--y)), 0) scale(var(--zoom)); transform-origin: 0 0; transition: transform .65s cubic-bezier(.22, 1, .36, 1); }
 .route { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; fill: none; stroke: color-mix(in srgb, var(--ecosat-deep) 22%, transparent); stroke-width: 7; stroke-linecap: round; stroke-dasharray: 2 18; }
 .routeProgress { stroke: var(--ecosat); stroke-width: 12; stroke-dasharray: var(--progress) 1; transition: stroke-dasharray .45s ease; }
 .station { position: absolute; z-index: 2; width: 1100px; padding: 0; border: 0; background: transparent; color: var(--ecosat-deep); cursor: pointer; text-align: left; transform: translate(-50%, -50%); }
-.station img { display: block; width: 100%; mask-image: radial-gradient(ellipse 48% 44% at 50% 54%, #000 0 58%, rgb(0 0 0 / .95) 69%, rgb(0 0 0 / .38) 84%, transparent 100%); transition: filter .22s linear, opacity .22s linear, transform .22s linear; filter: saturate(.65) contrast(.94); opacity: .56; }
-.station.active img { filter: saturate(1) contrast(1); opacity: 1; transform: scale(1.03); }
-.station1 { left: 720px; top: 1580px; width: 1080px; }.station2 { left: 2050px; top: 780px; width: 1160px; }.station3 { left: 3350px; top: 1450px; width: 1280px; }.station4 { left: 3960px; top: 610px; width: 980px; }
+.fillAssets { position: absolute; inset: -8%; pointer-events: none; }
+.fillAsset { position: absolute; display: block; width: 20%; height: auto; opacity: .34; filter: saturate(.38) contrast(.88); mix-blend-mode: multiply; }
+.station > img { display: block; width: 100%; mask-image: radial-gradient(ellipse 48% 44% at 50% 54%, #000 0 58%, rgb(0 0 0 / .95) 69%, rgb(0 0 0 / .38) 84%, transparent 100%); transition: filter .22s linear, opacity .22s linear, transform .22s linear; filter: saturate(.65) contrast(.94); opacity: .56; }
+.station.active > img { filter: saturate(1) contrast(1); opacity: 1; transform: scale(1.03); }
+.station1 { left: 900px; top: 1900px; width: 1080px; }.station2 { left: 2500px; top: 650px; width: 1160px; }.station3 { left: 4400px; top: 1900px; width: 1280px; }.station4 { left: 6050px; top: 600px; width: 1656px; }
+.fill11 { left: 2%; top: 56%; width: 17%; }.fill12 { left: 28%; top: 67%; width: 18%; }.fill13 { left: 59%; top: 8%; width: 19%; }
+.fill21 { left: 5%; top: 61%; width: 18%; }.fill22 { left: 68%; top: 13%; width: 18%; }.fill23 { left: 46%; top: 69%; width: 16%; }
+.fill31 { left: 3%; top: 18%; width: 17%; }.fill32 { left: 71%; top: 54%; width: 17%; }.fill33 { left: 19%; top: 72%; width: 20%; }.fill34 { left: 57%; top: 9%; width: 19%; }
+.fill41 { left: 3%; top: 13%; width: 19%; }.fill42 { left: 76%; top: 26%; width: 15%; }.fill43 { left: 17%; top: 73%; width: 18%; }.fill44 { left: 59%; top: 72%; width: 19%; }
 .dot { position: absolute; left: 50%; top: 54%; width: 58px; height: 58px; border: 1px solid color-mix(in srgb, var(--ecosat) 45%, var(--surface)); border-radius: 50%; background: var(--surface); transform: translate(-50%, -50%); }.dot::after { content: ""; position: absolute; inset: 21px; border-radius: 50%; background: var(--ecosat); }
 .hud { position: absolute; inset: 0; z-index: 10; pointer-events: none; }
 .story { position: absolute; right: clamp(22px, 5vw, 76px); top: 50%; width: min(470px, calc(100vw - 44px)); min-height: 330px; padding: 30px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); color: var(--ecosat-deep); transform: translateY(-50%); }.story h2 { max-width: 12ch; margin: 0; font: 620 clamp(40px, 4.5vw, 68px)/.98 var(--font-brand); letter-spacing: -.035em; text-wrap: balance; }.storyLabel, .location, .storyBody { margin: 0; }.storyLabel { margin-bottom: 13px; color: var(--ecosat-deep); font-size: 14px; font-weight: 750; }.location { margin-top: 14px; color: var(--ecosat-deep); font-size: 16px; font-weight: 750; }.storyBody { margin-top: 18px; color: var(--ink-soft); font-size: 16px; line-height: 1.62; text-wrap: pretty; }
