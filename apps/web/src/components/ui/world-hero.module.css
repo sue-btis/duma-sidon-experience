@@ -1,0 +1,9 @@
+.hero { --world-center: 43%; --world-radius: min(33cqw, 33svh); container-type: inline-size; inset: 0; position: absolute; text-align: center; }
+.identity { align-items: center; display: flex; flex-direction: column; left: 50%; position: absolute; top: var(--world-center); transform: translate(-50%, -50%); width: min(100%, 44rem); z-index: 2; }
+.logo { height: auto; margin-bottom: 1rem; width: min(17.5rem, 57.4vw); }
+.title { color: var(--ink); font-family: var(--font-brand); font-size: clamp(1.1rem, 2.2vw, 1.6rem); font-weight: 600; line-height: 1.2; margin: 0; max-width: 36ch; }
+.description { left: 50%; position: absolute; top: calc(var(--world-center) + var(--world-radius) + .35rem); transform: translateX(-50%); width: min(42rem, 88vw); z-index: 2; }
+.description p { color: var(--ink); font-size: clamp(1rem, 1.65vw, 1.2rem); line-height: 1.65; margin: 0; }
+.description .meta { color: var(--ink); font-size: .9rem; font-weight: 650; margin-top: 1.25rem; }
+.srOnly { clip: rect(0, 0, 0, 0); clip-path: inset(50%); height: 1px; overflow: hidden; position: absolute; white-space: nowrap; width: 1px; }
+@media (max-width: 40rem) { .description { top: calc(var(--world-center) + var(--world-radius) + 1.1625rem); }.description p { font-size: 1rem; line-height: 1.55; max-width: 34ch; margin-inline: auto; } }

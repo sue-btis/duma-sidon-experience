@@ -20,7 +20,6 @@
   margin: 0 0 1rem;
 }
 
-.intro h1,
 .solutionHero h1,
 .conversation h1 {
   color: var(--integration-deep);
@@ -59,14 +58,6 @@
 }
 
 .primaryLink:hover { background: var(--integration-deep); }
-
-.intro { align-items: center; display: grid; isolation: isolate; justify-items: center; margin-left: auto; margin-right: auto; max-width: 96rem; padding: 7rem 1.25rem 4rem; position: relative; }
-.introIdentity { align-items: center; display: flex; flex-direction: column; max-width: 44rem; position: relative; text-align: center; z-index: 2; }
-.introDescription { left: 50%; position: absolute; text-align: center; top: min(76svh, 45.5rem); transform: translateX(-50%); width: min(42rem, 88vw); z-index: 0; }
-.introLabel { height: auto; margin-bottom: 1rem; width: min(14rem, 56vw); }
-.intro h1 { font-size: clamp(1.1rem, 2.2vw, 1.6rem); font-weight: 600; line-height: 1.2; max-width: 36ch; }
-.intro .lead { margin: 0 auto; max-width: 37rem; }
-.introMeta { color: var(--integration-deep); font-size: .9rem; font-weight: 650; margin: 1.5rem 0 0; }
 
 .carouselScene { align-items: center; display: grid; margin: 0 auto; max-width: 96rem; padding: 7rem 0 8rem; }
 
@@ -121,10 +112,7 @@
 
 @media (max-width: 40rem) {
   .scene { min-height: auto; }
-  .intro { min-height: 100svh; padding-top: 3.5rem; }
-  .introIdentity { max-width: 100%; }
-  .intro h1 { max-width: 28ch; }
-  .intro .lead { font-size: 1rem; line-height: 1.55; max-width: 34ch; }
+  .intro { min-height: 100svh; }
   .carouselScene { padding-bottom: 6.5rem; }
   .projectBand { grid-template-columns: 1fr; }
 }

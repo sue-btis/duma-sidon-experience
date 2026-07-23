@@ -70,8 +70,8 @@ export function LetterWorldsCanvas({ variant = "all" }: Props) {
     ];
     const worlds: readonly World[] = variant === "all" ? homeWorlds : [
       variant === "physical"
-        ? { color: "118, 92, 164", opacity: 0.76, points: sphere(2250, "CCTVAVBMSRFIDHVACFIREACCESSDATA······", palettes.physical, 7), rotation: -0.04, scale: 1.05, tilt: 0.18, x: 0.5, y: 0.5 }
-        : { color: "0, 168, 135", opacity: 0.76, points: sphere(2250, "01<>/{}[]APIJSONSQLAIOTDATAFLOW······", palettes.digital, 11), rotation: 0.046, scale: 1.05, tilt: -0.2, x: 0.5, y: 0.5 },
+        ? { color: "118, 92, 164", opacity: 0.76, points: sphere(2250, "CCTVAVBMSRFIDHVACFIREACCESSDATA······", palettes.physical, 7), rotation: -0.04, scale: 1.05, tilt: 0.18, x: 0.5, y: 0.43 }
+        : { color: "0, 168, 135", opacity: 0.76, points: sphere(2250, "01<>/{}[]APIJSONSQLAIOTDATAFLOW······", palettes.digital, 11), rotation: 0.046, scale: 1.05, tilt: -0.2, x: 0.5, y: 0.43 },
     ];
     let animationFrame: number | undefined;
     let height = 0;

@@ -67,7 +67,6 @@ export async function HomeExperience({ locale }: Props) {
       <CoreOpening
         attributes={[t("attributeInfrastructure"), t("attributeTechnology"), t("attributeConnectivity"), t("attributeIntelligence"), t("attributeTrust")]}
         scrollPrompt={t("scrollPrompt")}
-        statement={t("coverLead")}
         title={t("coverTitle")}
       />
 

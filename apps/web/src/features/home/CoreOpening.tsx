@@ -1,21 +1,18 @@
-import Image from "next/image";
-
-import { LetterWorldsCanvas } from "@/components/ui/LetterWorldsCanvas";
+import { WorldHero } from "@/components/ui/WorldHero";
 
 import styles from "./home-experience.module.css";
 
 type Props = Readonly<{
   attributes: readonly string[];
   scrollPrompt: string;
-  statement: string;
   title: string;
 }>;
 
-export function CoreOpening({ attributes, scrollPrompt, statement, title }: Props) {
+export function CoreOpening({ attributes, scrollPrompt, title }: Props) {
   return (
     <section className={styles.openingScene} data-home-scene id="portada">
       <div className={styles.openingSticky}>
-        <LetterWorldsCanvas />
+        <WorldHero logo="/brand/ecosat-horizontal.png" logoAlt="Ecosat" logoHeight={1261} logoWidth={1504} priority title={title} />
         <svg aria-hidden="true" className={styles.openingConnections} preserveAspectRatio="none" viewBox="0 0 1600 900">
           <defs>
             <filter height="300%" id="opening-soft-glow" width="300%" x="-100%" y="-100%">
@@ -30,12 +27,6 @@ export function CoreOpening({ attributes, scrollPrompt, statement, title }: Prop
           <circle className={`${styles.connectionDot} ${styles.digitalDot}`} filter="url(#opening-soft-glow)" r="3.5"><animateMotion dur="6.3s" repeatCount="indefinite"><mpath href="#opening-digital-path" /></animateMotion></circle>
           <circle className={`${styles.connectionDot} ${styles.digitalDot} ${styles.secondaryConnectionDot}`} r="2.2"><animateMotion begin="-4s" dur="8.1s" repeatCount="indefinite"><mpath href="#opening-digital-path" /></animateMotion></circle>
         </svg>
-        <div aria-hidden="true" className={styles.openingHalo} />
-        <div className={styles.coverContent}>
-          <h1 className={styles.visuallyHidden}>{title}</h1>
-          <Image alt="Ecosat" className={styles.ecosatLogo} height={1261} priority src="/brand/ecosat-horizontal.png" unoptimized width={1504} />
-          <p className={styles.lead}>{statement}</p>
-        </div>
         <ol className={styles.pillars}>
           {attributes.map((attribute) => (
             <li className={styles.pillar} key={attribute}>{attribute}</li>

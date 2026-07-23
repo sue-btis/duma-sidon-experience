@@ -4,7 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { type ReactNode } from "react";
 
 import { OrbitCarousel } from "@/components/ui/OrbitCarousel";
-import { LetterWorldsCanvas } from "@/components/ui/LetterWorldsCanvas";
+import { WorldHero } from "@/components/ui/WorldHero";
 
 import { OrbitLink } from "./OrbitLink";
 import { solutions, type SolutionSlug } from "./solutions";
@@ -40,15 +40,7 @@ export async function IntegrationExperience({ locale, solution }: Props) {
   return (
     <main className={`${styles.page} ${styles.integrationLanding}`}>
       <section aria-labelledby="integration-title" className={`${styles.scene} ${styles.intro}`}>
-        <LetterWorldsCanvas variant="physical" />
-        <div className={styles.introIdentity}>
-          <Image alt="" className={styles.introLabel} height={104} src="/home/worlds/integracion.png" unoptimized width={104} />
-          <h1 id="integration-title">{t("headline")}</h1>
-        </div>
-        <div className={styles.introDescription}>
-          <p className={styles.lead}>{t("lead")}</p>
-          <p className={styles.introMeta}>{t("introMeta")}</p>
-        </div>
+        <WorldHero description={t("lead")} logo="/home/worlds/integracion.png" logoAlt="" logoHeight={104} logoWidth={104} meta={t("introMeta")} title={t("headline")} titleId="integration-title" variant="physical" />
       </section>
       <section aria-label={t("solutions")} className={`${styles.scene} ${styles.carouselScene}`}>
         <OrbitCarousel
