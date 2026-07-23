@@ -1,4 +1,4 @@
-.hero { --world-center: 43%; --world-radius: min(33cqw, 33svh); container-type: inline-size; inset: 0; position: absolute; text-align: center; }
+.hero { --world-center: 43%; --world-radius: max(20rem, min(33cqw, 33svh)); container-type: inline-size; inset: 0; position: absolute; text-align: center; }
 .identity { align-items: center; display: flex; flex-direction: column; left: 50%; position: absolute; top: var(--world-center); transform: translate(-50%, -50%); width: min(100%, 44rem); z-index: 2; }
 .logo { height: auto; margin-bottom: 1rem; width: min(17.5rem, 57.4vw); }
 .title { color: var(--ink); font-family: var(--font-brand); font-size: clamp(1.1rem, 2.2vw, 1.6rem); font-weight: 600; line-height: 1.2; margin: 0; max-width: 36ch; }

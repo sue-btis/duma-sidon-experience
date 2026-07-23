@@ -20,7 +20,7 @@ type Props = Readonly<{
 export function WorldHero({ description, logo, logoAlt, logoHeight, logoWidth, meta, priority = false, screenReaderTitle, title, titleId, variant = "all" }: Props) {
   return (
     <div className={styles.hero}>
-      <LetterWorldsCanvas variant={variant} />
+      <LetterWorldsCanvas radiusRem={20} variant={variant} />
       {screenReaderTitle ? <h1 className={styles.srOnly}>{screenReaderTitle}</h1> : null}
       <div className={styles.identity}>
         <Image alt={logoAlt} className={styles.logo} height={logoHeight} priority={priority} src={logo} unoptimized width={logoWidth} />

@@ -52,9 +52,9 @@ function sphere(count: number, characters: string, colors: readonly string[], se
   return points;
 }
 
-type Props = Readonly<{ variant?: "all" | "digital" | "physical" }>;
+type Props = Readonly<{ radiusRem?: number; variant?: "all" | "digital" | "physical" }>;
 
-export function LetterWorldsCanvas({ variant = "all" }: Props) {
+export function LetterWorldsCanvas({ radiusRem = 0, variant = "all" }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -79,6 +79,7 @@ export function LetterWorldsCanvas({ variant = "all" }: Props) {
     let isVisible = document.visibilityState === "visible";
     let lastFrame = 0;
     let width = 0;
+    const radius = radiusRem * Number.parseFloat(getComputedStyle(document.documentElement).fontSize);
 
     const shouldAnimate = () => !media.matches && isIntersecting && isVisible;
     const resize = () => {
@@ -115,7 +116,7 @@ export function LetterWorldsCanvas({ variant = "all" }: Props) {
     };
 
     const drawWorld = (world: World, time: number) => {
-      const radius = Math.min(width, height) * (width < 700 ? 0.33 : 0.34) * world.scale;
+      const worldRadius = (radius || Math.min(width, height) * (width < 700 ? 0.33 : 0.34)) * world.scale;
       const centerX = width * world.x;
       const centerY = height * world.y;
       const rotationY = time * world.rotation;
@@ -124,21 +125,21 @@ export function LetterWorldsCanvas({ variant = "all" }: Props) {
       const sineX = Math.sin(rotationX);
       const cosineY = Math.cos(rotationY);
       const sineY = Math.sin(rotationY);
-      const glow = context.createRadialGradient(centerX - radius * 0.25, centerY - radius * 0.28, 0, centerX, centerY, radius * 1.05);
+      const glow = context.createRadialGradient(centerX - worldRadius * 0.25, centerY - worldRadius * 0.28, 0, centerX, centerY, worldRadius * 1.05);
       glow.addColorStop(0, `rgba(${world.color}, .10)`);
       glow.addColorStop(0.72, `rgba(${world.color}, .035)`);
       glow.addColorStop(1, `rgba(${world.color}, 0)`);
       context.fillStyle = glow;
       context.beginPath();
-      context.arc(centerX, centerY, radius * 1.06, 0, Math.PI * 2);
+      context.arc(centerX, centerY, worldRadius * 1.06, 0, Math.PI * 2);
       context.fill();
-      drawOrbit(centerX, centerY, radius, -0.22, world.color, world.opacity * 0.28, time * world.rotation * 2.2);
-      drawOrbit(centerX, centerY, radius * 1.05, 0.56, world.color, world.opacity * 0.18, -time * world.rotation * 1.6 + 2.3);
+      drawOrbit(centerX, centerY, worldRadius, -0.22, world.color, world.opacity * 0.28, time * world.rotation * 2.2);
+      drawOrbit(centerX, centerY, worldRadius * 1.05, 0.56, world.color, world.opacity * 0.18, -time * world.rotation * 1.6 + 2.3);
 
       const pointCount = width < 1000 && world.scale < 1 ? 480 : world.points.length;
       context.textAlign = "center";
       context.textBaseline = "middle";
-      context.font = `${Math.max(5.5, radius * 0.022)}px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`;
+      context.font = `${Math.max(5.5, worldRadius * 0.022)}px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`;
       for (let index = 0; index < pointCount; index += 1) {
         const point = world.points[index]!;
         const x = point.x * cosineY - point.z * sineY;
@@ -148,9 +149,9 @@ export function LetterWorldsCanvas({ variant = "all" }: Props) {
         const frontAlpha = getFrontAlpha(rotatedZ);
         if (frontAlpha === 0) continue;
         const perspective = 1 / (1.55 - rotatedZ * 0.48);
-        const size = point.size * radius * 0.032 * perspective;
-        const projectedX = centerX + x * radius * perspective;
-        const projectedY = centerY + y * radius * perspective;
+        const size = point.size * worldRadius * 0.032 * perspective;
+        const projectedX = centerX + x * worldRadius * perspective;
+        const projectedY = centerY + y * worldRadius * perspective;
         context.globalAlpha = world.opacity * frontAlpha * Math.min(1, 0.7 + rotatedZ * 0.3);
         context.fillStyle = point.color;
         if (point.char === "·") {
@@ -226,7 +227,7 @@ export function LetterWorldsCanvas({ variant = "all" }: Props) {
       media.removeEventListener("change", motionChange);
       document.removeEventListener("visibilitychange", visibilityChange);
     };
-  }, [variant]);
+  }, [radiusRem, variant]);
 
   return <canvas aria-hidden="true" className={styles.canvas} ref={canvasRef} />;
 }
