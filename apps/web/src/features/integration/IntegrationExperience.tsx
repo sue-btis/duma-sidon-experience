@@ -4,7 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { type ReactNode } from "react";
 
 import { OrbitCarousel } from "@/components/ui/OrbitCarousel";
-import { TwoOrbitFigure } from "@/components/ui/TwoOrbitFigure";
+import { LetterWorldsCanvas } from "@/components/ui/LetterWorldsCanvas";
 
 import { OrbitLink } from "./OrbitLink";
 import { solutions, type SolutionSlug } from "./solutions";
@@ -40,7 +40,7 @@ export async function IntegrationExperience({ locale, solution }: Props) {
   return (
     <main className={`${styles.page} ${styles.integrationLanding}`}>
       <section aria-labelledby="integration-title" className={`${styles.scene} ${styles.intro}`}>
-        <TwoOrbitFigure className={styles.introOrbits} nodeColors={["var(--integration)", "var(--integration)"]} orbitColors={["var(--integration)", "var(--integration)"]} />
+        <LetterWorldsCanvas variant="physical" />
         <div className={styles.introCopy}>
           <Image alt="" className={styles.introLabel} height={104} src="/home/worlds/integracion.png" unoptimized width={104} />
           <h1 id="integration-title">{t("headline")}</h1>

@@ -53,7 +53,9 @@ function sphere(count: number, characters: string, colors: readonly string[], se
   return points;
 }
 
-export function LetterWorldsCanvas() {
+type Props = Readonly<{ variant?: "all" | "digital" | "physical" }>;
+
+export function LetterWorldsCanvas({ variant = "all" }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -62,10 +64,15 @@ export function LetterWorldsCanvas() {
     if (!canvas || !context) return;
 
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const worlds: readonly World[] = [
+    const homeWorlds: readonly World[] = [
       { color: "96, 175, 232", opacity: 0.93, points: sphere(1050, "ECOSAT0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", palettes.core, 3), rotation: 0.065, scale: 1.12, tilt: -0.12, x: 0.5, y: 0.43 },
       { color: "126, 92, 221", opacity: 0.68, points: sphere(560, "CCTVAVBMSRFIDHVACFIREACCESSDATA", palettes.physical, 7), rotation: -0.04, scale: 0.62, tilt: 0.18, x: 0.05, y: 0.76 },
       { color: "47, 173, 132", opacity: 0.68, points: sphere(560, "01<>/{}[]APIJSONSQLAIOTDATAFLOW", palettes.digital, 11), rotation: 0.046, scale: 0.62, tilt: -0.2, x: 0.95, y: 0.76 },
+    ];
+    const worlds: readonly World[] = variant === "all" ? homeWorlds : [
+      variant === "physical"
+        ? { color: "118, 92, 164", opacity: 0.76, points: sphere(1050, "CCTVAVBMSRFIDHVACFIREACCESSDATA", palettes.physical, 7), rotation: -0.04, scale: 1.05, tilt: 0.18, x: 0.5, y: 0.5 }
+        : { color: "0, 168, 135", opacity: 0.76, points: sphere(1050, "01<>/{}[]APIJSONSQLAIOTDATAFLOW", palettes.digital, 11), rotation: 0.046, scale: 1.05, tilt: -0.2, x: 0.5, y: 0.5 },
     ];
     let animationFrame: number | undefined;
     let height = 0;
@@ -158,7 +165,7 @@ export function LetterWorldsCanvas() {
     const render = (now: number) => {
       context.clearRect(0, 0, width, height);
       const time = media.matches ? 0 : now / 1000;
-      if (width >= 700) {
+      if (variant === "all" && width >= 700) {
         drawWorld(worlds[1]!, time);
         drawWorld(worlds[2]!, time);
       }
@@ -211,7 +218,7 @@ export function LetterWorldsCanvas() {
       media.removeEventListener("change", motionChange);
       document.removeEventListener("visibilitychange", visibilityChange);
     };
-  }, []);
+  }, [variant]);
 
   return <canvas aria-hidden="true" className={styles.canvas} ref={canvasRef} />;
 }

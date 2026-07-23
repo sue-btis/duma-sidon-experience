@@ -59,14 +59,12 @@
 
 .primaryLink:hover { background: var(--integration-deep); }
 
-.intro { align-items: center; display: grid; isolation: isolate; justify-items: center; margin-left: auto; margin-right: auto; max-width: 96rem; padding: 7rem 1.25rem 4rem; position: relative; }
-.introCopy { align-items: center; display: flex; flex-direction: column; max-width: 44rem; position: relative; text-align: center; }
+.intro { align-items: center; background: #fbfdff; display: grid; isolation: isolate; justify-items: center; margin-left: auto; margin-right: auto; max-width: 96rem; padding: 7rem 1.25rem 4rem; position: relative; }
+.introCopy { align-items: center; display: flex; flex-direction: column; max-width: 44rem; position: relative; text-align: center; z-index: 2; }
 .introLabel { height: auto; margin-bottom: 1rem; width: min(8rem, 38vw); }
 .intro h1 { font-size: clamp(2.4rem, 3.8vw, 4rem); }
 .intro .lead { margin-left: auto; margin-right: auto; max-width: 37rem; }
 .introMeta { color: var(--integration-deep); font-size: .9rem; font-weight: 650; margin: 1.5rem 0 0; }
-
-.introOrbits { z-index: -1; }
 
 .carouselScene { align-items: center; display: grid; margin: 0 auto; max-width: 96rem; padding: 7rem 0 8rem; }
 

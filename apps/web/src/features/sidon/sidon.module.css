@@ -1,6 +1,6 @@
 .page { overflow: clip; padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 3rem) 5rem; }
 .scene { align-items: center; display: grid; isolation: isolate; min-height: 100svh; padding: 7rem 1.25rem 4rem; position: relative; }
-.intro > div:last-child { margin: 0 auto; max-width: 58rem; position: relative; text-align: center; }.duma > div:last-child { margin: 0 auto; max-width: 44rem; position: relative; text-align: center; }
+.intro { background: #fbfdff; }.intro > div:last-child { margin: 0 auto; max-width: 58rem; position: relative; text-align: center; z-index: 2; }.duma > div:last-child { margin: 0 auto; max-width: 44rem; position: relative; text-align: center; }
 .categoriesScene header > p, .duma p, .conversation p { color: var(--sidon-deep); font-size: .78rem; font-weight: 800; letter-spacing: .08em; margin: 0 0 1rem; text-transform: uppercase; }
 .intro h1, .categoriesScene h2, .duma h2, .conversation h2 { color: var(--sidon-deep); letter-spacing: -.035em; line-height: .98; margin: 0; }
 .intro h1 { font-size: clamp(2.6rem, 4.5vw, 4rem); margin-left: auto; margin-right: auto; max-width: 24ch; }.categoriesScene h2, .duma h2, .conversation h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
