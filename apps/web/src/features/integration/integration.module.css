@@ -66,16 +66,20 @@
   align-items: start;
   align-content: center;
   background: var(--surface-alt);
-  display: grid;
-  gap: clamp(2.5rem, 5vw, 4.5rem);
-  grid-template-columns: minmax(16rem, .75fr) minmax(0, 1.25fr);
   margin-top: clamp(2.5rem, 6vw, 4.5rem);
   padding: clamp(2rem, 5vw, 4rem);
 }
+.contactMotion { max-width: 42rem; }
+.projectCopy { align-content: center; display: grid; gap: clamp(2rem, 4vw, 3.5rem); }
 .projectTitle, .projectContent { position: relative; }
 .projectContent { max-width: 42rem; }
 .projectContent > p { margin-top: 0; }
 .projectConversationLink { margin-top: clamp(2rem, 4vw, 3rem); }
+.contactMotion::after { background: var(--integration); content: ""; display: block; height: 1px; margin-top: 1.25rem; transform: scaleX(1); transform-origin: left; width: min(8rem, 35%); }
+@media (prefers-reduced-motion: no-preference) { .contactMotion[data-active="false"] .projectTitle { clip-path: inset(0 0 100%); transform: translateY(1rem); }.contactMotion[data-active="false"] .projectContent { opacity: 0; transform: translateY(.75rem); }.contactMotion[data-active="false"]::after { transform: scaleX(0); }.contactMotion[data-active="true"] .projectTitle { animation: contact-title-in 360ms cubic-bezier(.16, 1, .3, 1) both; }.contactMotion[data-active="true"] .projectContent { animation: contact-content-in 360ms 100ms cubic-bezier(.16, 1, .3, 1) both; }.contactMotion[data-active="true"]::after { animation: contact-line-in 180ms 340ms cubic-bezier(.16, 1, .3, 1) both; } }
+@keyframes contact-title-in { to { clip-path: inset(0); transform: translateY(0); } }
+@keyframes contact-content-in { to { opacity: 1; transform: translateY(0); } }
+@keyframes contact-line-in { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
 ::view-transition-old(root) { animation: integration-out 180ms ease-out both; }
 ::view-transition-new(root) { animation: integration-in 320ms ease-out both; }
@@ -87,34 +91,26 @@
 .solutionPage { margin: 0 auto; max-width: 76rem; padding: clamp(6.5rem, 11vw, 8rem) clamp(1rem, 4vw, 3rem) 4rem; }
 .solutionSection { margin: 0 auto; padding: clamp(2.75rem, 6vw, 5rem) 0; }
 .solutionArrival { align-items: center; display: grid; gap: clamp(2.5rem, 6vw, 5rem); grid-template-columns: minmax(0, 1fr) minmax(18rem, .8fr); min-height: min(44rem, calc(100svh - 5rem)); padding-top: 0; }
-.solutionName { color: var(--integration); font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 700; margin: 0 0 .75rem; }
+.solutionReserve { min-height: 1px; }
+.solutionIntroCopy { grid-column: 1; }
+.solutionName { align-items: center; color: var(--integration); display: flex; font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 700; gap: .75rem; margin: 0 0 .75rem; }
 .solutionArrival h1 { color: var(--integration-deep); font-size: clamp(3rem, 6.5vw, 6rem); letter-spacing: -.04em; line-height: .98; margin: 0; max-width: 12ch; }
 .solutionDefinition { color: var(--ink-soft); font-size: clamp(1.1rem, 2vw, 1.3rem); line-height: 1.65; margin: 2rem 0 0; max-width: 59ch; }
-.solutionScene { align-items: center; aspect-ratio: 1; background: color-mix(in srgb, var(--integration) 8%, var(--surface)); display: grid; isolation: isolate; justify-items: center; overflow: hidden; position: relative; }
-.solutionScene::before, .solutionScene::after { border: 1px solid color-mix(in srgb, var(--integration) 45%, transparent); border-radius: 50%; content: ""; position: absolute; }
-.solutionScene::before { height: 145%; width: 145%; }.solutionScene::after { height: 92%; width: 92%; }
-.orbitOne, .orbitTwo { border: 1px solid color-mix(in srgb, var(--integration) 55%, transparent); border-radius: 50%; position: absolute; }.orbitOne { animation: orbit-drift 16s linear infinite; height: 60%; transform: rotate(-26deg); width: 118%; }.orbitTwo { animation: orbit-drift 24s linear infinite reverse; height: 118%; transform: rotate(38deg); width: 48%; }
-.sceneBeam { background: color-mix(in srgb, var(--integration) 45%, transparent); height: 1px; position: absolute; transform: rotate(-35deg); width: 126%; }.sceneNodeOne, .sceneNodeTwo, .sceneNodeThree { animation: node-pulse 3.4s ease-in-out infinite; background: var(--surface); border: 2px solid var(--integration); border-radius: 50%; height: .85rem; position: absolute; width: .85rem; }.sceneNodeOne { left: 20%; top: 29%; }.sceneNodeTwo { animation-delay: 1.1s; bottom: 21%; right: 20%; }.sceneNodeThree { animation-delay: 2.2s; right: 30%; top: 20%; }
-.solutionIcon { animation: icon-float 5s ease-in-out infinite; height: auto; max-width: 10rem; object-fit: contain; position: relative; width: 42%; z-index: 1; }.solutionScene p { bottom: 1.5rem; color: var(--integration-deep); font-size: .8rem; font-weight: 700; left: 1.5rem; margin: 0; position: absolute; z-index: 1; }
-.sceneRegulation .orbitOne { height: 74%; transform: none; width: 74%; }.sceneReadiness .orbitTwo { border-radius: 22%; height: 76%; transform: rotate(45deg); width: 76%; }.sceneCheckpoints .sceneNodeOne { left: 16%; top: 50%; }.sceneCheckpoints .sceneNodeTwo { bottom: auto; right: 16%; top: 50%; }.sceneBackbone .orbitOne { border-radius: 0; height: 1px; transform: none; width: 88%; }.sceneDistribution .orbitOne { border-radius: 0; height: 1px; transform: rotate(-34deg); width: 120%; }.sceneConnection .orbitTwo { height: 62%; width: 104%; }
-.sectionHeading { max-width: 47rem; }.sectionHeading h2, .operationSection h2, .closingSection h2 { color: var(--integration-deep); font-size: clamp(1.8rem, 3.6vw, 3rem); letter-spacing: -.03em; line-height: 1.08; margin: 0; }
-.valueSection { border-top: 1px solid var(--line); }.pillarNodes { display: flex; flex-wrap: wrap; gap: .75rem 2.5rem; list-style: none; margin: clamp(2.5rem, 6vw, 5rem) 0 0; padding: 0; }.pillarNodes li { align-items: center; color: var(--integration-deep); display: flex; font-size: clamp(1.15rem, 2.5vw, 1.65rem); font-weight: 700; gap: .75rem; }.pillarNodes li::before { background: var(--surface); border: 2px solid var(--integration); border-radius: 50%; content: ""; height: .8rem; width: .8rem; }.pillarNodes li:not(:last-child)::after { background: color-mix(in srgb, var(--integration) 50%, transparent); content: ""; height: 1px; margin-left: 1.75rem; width: clamp(1.5rem, 4vw, 5rem); }
+.solutionIcon { height: 2rem; object-fit: contain; width: 2rem; }
+.inlineOutcomes { margin-top: 2rem; }.inlineOutcomes ul { color: var(--integration-deep); display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin: .75rem 0 0; padding-left: 1.25rem; }.inlineOutcomes li { font-weight: 700; padding-left: .15rem; }
+.operationSection h2, .closingSection h2 { color: var(--integration-deep); font-size: clamp(1.8rem, 3.6vw, 3rem); letter-spacing: -.03em; line-height: 1.08; margin: 0; }
 .operationSection { background: var(--surface-alt); display: grid; gap: clamp(2.5rem, 6vw, 5rem); grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); margin-left: calc(clamp(1rem, 4vw, 3rem) * -1); margin-right: calc(clamp(1rem, 4vw, 3rem) * -1); padding-left: clamp(1rem, 4vw, 3rem); padding-right: clamp(1rem, 4vw, 3rem); }.applicationList { columns: 2 14rem; gap: 0 1.5rem; list-style: none; margin: 2rem 0 0; padding: 0; }.applicationList li { border-top: 1px solid var(--line); break-inside: avoid; color: var(--ink-soft); padding: .7rem 0; }.capabilityList { list-style: none; margin: 2rem 0 0; padding: 0; }.capabilityList li { align-items: baseline; border-top: 1px solid var(--line); color: var(--ink-soft); display: grid; gap: 1rem; grid-template-columns: 2.5rem 1fr; padding: .7rem 0; }.capabilityList span { color: var(--integration); font-size: .75rem; font-weight: 700; }
 .closingSection { background: color-mix(in srgb, var(--integration) 8%, var(--surface)); display: grid; gap: clamp(2.5rem, 6vw, 5rem); grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); margin-left: calc(clamp(1rem, 4vw, 3rem) * -1); margin-right: calc(clamp(1rem, 4vw, 3rem) * -1); padding-left: clamp(1rem, 4vw, 3rem); padding-right: clamp(1rem, 4vw, 3rem); }.closingSection p:not(.worldLabel) { color: var(--ink-soft); line-height: 1.65; margin: 1.25rem 0 0; }.scopeCopy { max-width: 57ch; }.closingSection .primaryLink { margin-top: 2rem; }
 .siblingNavigation { border-top: 1px solid var(--line); padding-top: clamp(2.5rem, 5vw, 4rem); }.siblingNavigation > div { display: flex; flex-wrap: wrap; gap: .75rem 2rem; }.siblingLink { align-items: center; color: var(--integration-deep); display: inline-flex; font-weight: 700; gap: .4rem; min-height: 2.75rem; text-decoration: none; }.siblingLink:hover { color: var(--integration); }
-@keyframes orbit-drift { to { transform: rotate(334deg); } }
-@keyframes node-pulse { 50% { background: var(--integration); transform: scale(1.35); } }
-@keyframes icon-float { 50% { translate: 0 -.7rem; } }
 
 @media (max-width: 40rem) {
   .scene { min-height: auto; }
   .intro { min-height: 100svh; }
   .carouselScene { padding-bottom: 6.5rem; }
-  .projectBand { grid-template-columns: 1fr; }
   .solutionArrival, .operationSection, .closingSection { grid-template-columns: 1fr; }
   .solutionArrival { min-height: auto; }
-  .solutionScene { margin: 0 auto; max-width: 29rem; width: 100%; }
-  .pillarNodes li:not(:last-child)::after { display: none; }
+  .solutionReserve { display: none; }
+  .solutionIntroCopy { grid-column: auto; }
 }
 
 @media (min-width: 1001px) and (prefers-reduced-motion: no-preference) {

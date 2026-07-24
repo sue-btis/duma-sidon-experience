@@ -29,21 +29,15 @@ export async function IntegrationSolutionExperience({ locale, solution: slug }: 
       <section aria-labelledby="solution-title" className={`${styles.solutionSection} ${styles.solutionArrival}`}>
         <div className={styles.solutionIntroCopy}>
           <p className={styles.worldLabel}>{t("label")}</p>
-          <p className={styles.solutionName}>{t(solution.key)}</p>
+          <p className={styles.solutionName}><Image alt="" className={styles.solutionIcon} height={48} src={solution.icon} style={{ transform: `scale(${solution.iconScale})` }} unoptimized width={48} />{t(solution.key)}</p>
           <h1 id="solution-title">{t(`headlines.${slug}`)}</h1>
           <p className={styles.solutionDefinition}>{content.definition}</p>
+          <div className={styles.inlineOutcomes}>
+            <p className={styles.worldLabel}>{t("outcomes")}</p>
+            <ul>{content.emphasis.map((item) => <li key={item}>{item}</li>)}</ul>
+          </div>
         </div>
-        <SolutionScene icon={solution.icon} iconScale={solution.iconScale} title={t(solution.key)} variant={solution.sceneVariant} />
-      </section>
-
-      <section aria-labelledby="value-title" className={`${styles.solutionSection} ${styles.valueSection}`}>
-        <div className={styles.sectionHeading}>
-          <p className={styles.worldLabel}>{t("outcomes")}</p>
-          <h2 id="value-title">{t(solution.key)}</h2>
-        </div>
-        <ol className={styles.pillarNodes}>
-          {content.emphasis.map((item) => <li key={item}>{item}</li>)}
-        </ol>
+        <div aria-hidden="true" className={styles.solutionReserve} />
       </section>
 
       <section className={`${styles.solutionSection} ${styles.operationSection}`}>
@@ -69,15 +63,5 @@ export async function IntegrationSolutionExperience({ locale, solution: slug }: 
         <div>{siblings.map((item) => <OrbitLink className={styles.siblingLink} href={`/${locale}/integracion/${item.slug}/`} key={item.slug}>{t(item.key)}<ArrowRight aria-hidden="true" size={16} /></OrbitLink>)}</div>
       </nav>
     </main>
-  );
-}
-
-function SolutionScene({ icon, iconScale, title, variant }: Readonly<{ icon: string; iconScale: number; title: string; variant: (typeof solutions)[number]["sceneVariant"] }>) {
-  return (
-    <div aria-hidden="true" className={`${styles.solutionScene} ${styles[`scene${variant[0].toUpperCase()}${variant.slice(1)}`]}`}>
-      <span className={styles.orbitOne} /><span className={styles.orbitTwo} /><span className={styles.sceneBeam} /><span className={styles.sceneNodeOne} /><span className={styles.sceneNodeTwo} /><span className={styles.sceneNodeThree} />
-      <Image alt="" className={styles.solutionIcon} height={160} src={icon} style={{ transform: `scale(${iconScale})` }} unoptimized width={160} />
-      <p>{title}</p>
-    </div>
   );
 }

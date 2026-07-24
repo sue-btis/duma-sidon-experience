@@ -16,6 +16,7 @@
   "conversationTitle": "Conversemos sobre tu operación",
   "conversationLead": "Podemos comenzar con un módulo, una categoría o una necesidad operativa que todavía no tenga nombre.",
   "conversationAction": "Conversemos sobre tu operación",
+  "returnToSidon": "Volver a Sidón",
   "categories": {
     "mantenimiento-seguridad": {
       "name": "Mantenimiento y Seguridad",

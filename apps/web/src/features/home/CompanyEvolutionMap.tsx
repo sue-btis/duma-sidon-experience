@@ -192,6 +192,12 @@ export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ prog
           },
         });
         loadedMap.addLayer({
+          id: "countries-fill",
+          source: "countries",
+          type: "fill",
+          paint: { "fill-color": "#fbfcfc", "fill-color-transition": { delay: 0, duration: 0 } },
+        });
+        loadedMap.addLayer({
           id: "countries-model",
           source: "countries",
           type: "fill-extrusion",
@@ -200,13 +206,10 @@ export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ prog
             "fill-extrusion-height": 90000,
             "fill-extrusion-opacity": 0.8,
             "fill-extrusion-vertical-gradient": true,
+            "fill-extrusion-color-transition": { delay: 0, duration: 0 },
           },
         });
         loadedMap.addLayer({ id: "countries-line", source: "countries", type: "line", paint: { "line-color": "#d1d9dd", "line-opacity": 0.9, "line-width": 0.85 } });
-        loadedMap.addSource("mexico-states", { type: "geojson", data: "/home/company-evolution/map-data/mexico-states.geojson" });
-        loadedMap.addLayer({ id: "mexico-states-line", source: "mexico-states", type: "line", paint: { "line-color": "#b8c4ca98", "line-opacity": 0.78, "line-width": 0.65 } });
-        loadedMap.addSource("us-states", { type: "geojson", data: "/home/company-evolution/map-data/us-states.geojson" });
-        loadedMap.addLayer({ id: "us-states-line", source: "us-states", type: "line", paint: { "line-color": "#b8c4ca98", "line-opacity": 0.78, "line-width": 0.65 } });
         loadedMap.addSource("chihuahua", { type: "geojson", data: "/home/company-evolution/map-data/chihuahua.geojson" });
         loadedMap.addLayer({
           id: "chihuahua-highlight",
@@ -247,9 +250,16 @@ export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ prog
     const map = mapRef.current;
     if (!isMapReady || !map || !map.isStyleLoaded()) return;
     const { camera, stateOpacity } = cameraFor(progress);
+    const chihuahuaOpacity = progress < CLOSING_START ? 1 : stateOpacity;
     map.jumpTo(camera);
-    map.setPaintProperty("chihuahua-highlight", "fill-opacity", stateOpacity * 0.82);
-    map.setPaintProperty("chihuahua-line", "line-opacity", stateOpacity);
+    map.setPaintProperty("countries-model", "fill-extrusion-color", progress >= CLOSING_START
+      ? ["match", ["get", "id"], "MEX", "#00adef", "USA", "#00adef", "#fbfcfc"]
+      : "#fbfcfc");
+    map.setPaintProperty("countries-fill", "fill-color", progress >= CLOSING_START
+      ? ["match", ["get", "id"], "MEX", "#00adef", "USA", "#00adef", "#fbfcfc"]
+      : "#fbfcfc");
+    map.setPaintProperty("chihuahua-highlight", "fill-opacity", chihuahuaOpacity * 0.82);
+    map.setPaintProperty("chihuahua-line", "line-opacity", chihuahuaOpacity);
     markersRef.current.forEach((marker, index) => {
       const shouldShow = Boolean(LOCATIONS[index].label) || showLocations;
       marker.getElement().style.opacity = shouldShow ? String(Math.max(0.75, stateOpacity)) : "0";

@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 
 import { OrbitCarousel } from "@/components/ui/OrbitCarousel";
 import { WorldHero } from "@/components/ui/WorldHero";
+import { ContactCloseMotion } from "@/features/conversation/ContactCloseMotion";
 
 import { OrbitLink } from "./OrbitLink";
 import { solutions } from "./solutions";
@@ -35,13 +36,17 @@ export async function IntegrationExperience({ locale }: Props) {
         />
       </section>
       <section aria-labelledby="integration-conversation" className={`${styles.scene} ${styles.projectBand}`}>
-        <div className={styles.projectTitle}><p className={styles.worldLabel}>{t("scopeLabel")}</p><h2 id="integration-conversation">{t("projectTitle")}</h2></div>
-        <div className={styles.projectContent}>
+        <ContactCloseMotion className={styles.contactMotion}>
+        <div className={styles.projectCopy}>
+          <div className={styles.projectTitle}><p className={styles.worldLabel}>{t("scopeLabel")}</p><h2 id="integration-conversation">{t("projectTitle")}</h2></div>
+          <div className={styles.projectContent}>
           <p>{t("projectCopy")}</p>
           <OrbitLink className={`${styles.primaryLink} ${styles.projectConversationLink}`} href={`/${locale}/integracion/conversemos/?source_path=%2Fintegracion&world=integracion&interest=proyecto-integracion`}>
             {t("conversation")}<ArrowRight aria-hidden="true" size={18} />
           </OrbitLink>
+          </div>
         </div>
+        </ContactCloseMotion>
       </section>
     </main>
   );
