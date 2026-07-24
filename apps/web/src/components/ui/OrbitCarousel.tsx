@@ -14,47 +14,40 @@ import {
 } from "react";
 
 import { getNearestFrontIndex, getOrbitCardLayout, getSnapRotation } from "./orbitCarouselMath";
+import { getLocalizedCarouselImage } from "./orbitCarouselImage";
 import styles from "./orbit-carousel.module.css";
 
 export type OrbitCarouselItem = Readonly<{
-  action: string;
-  decorativeColor?: string;
-  description?: string;
   href: string;
-  icon: string;
   id: string;
-  iconScale?: number;
-  modules?: readonly Readonly<{ icon: string; name: string }>[];
-  modulesLabel?: string;
+  image: string;
   title: string;
 }>;
 
 type Props = Readonly<{
   accentColor: string;
   ariaLabel: string;
-  brandIcon: string;
   deepColor: string;
   id: string;
   instructions: string;
   items: readonly OrbitCarouselItem[];
+  locale: "es" | "en";
   nextLabel: string;
-  onItemActivate?: (item: OrbitCarouselItem, trigger: HTMLAnchorElement) => void;
   previousLabel: string;
 }>;
 
 const AUTOPLAY_DELAY = 1100;
 
-function SupportingContent({ item }: Readonly<{ item: OrbitCarouselItem }>) {
-  if (item.modules?.length) {
-    return <span className={styles.modules}><span className={styles.modulesLabel}>{item.modulesLabel}</span><span className={styles.moduleList}>{item.modules.map((module) => <span className={styles.module} key={module.name}><Image alt="" height={32} src={module.icon} unoptimized width={32} /><span>{module.name}</span></span>)}</span></span>;
-  }
+function CarouselImage({ image, locale }: Readonly<{ image: string; locale: "es" | "en" }>) {
+  const localizedImage = getLocalizedCarouselImage(image, locale);
+  const [source, setSource] = useState(localizedImage);
 
-  return item.description ? <span className={styles.description}>{item.description}</span> : null;
+  return <Image alt="" className={styles.image} draggable={false} height={1261} onError={() => { if (source !== image) setSource(image); }} src={source} unoptimized width={1504} />;
 }
 
-export function OrbitCarousel({ accentColor, ariaLabel, brandIcon, deepColor, id, instructions, items, nextLabel, onItemActivate, previousLabel }: Props) {
+export function OrbitCarousel({ accentColor, ariaLabel, deepColor, id, instructions, items, locale, nextLabel, previousLabel }: Props) {
   const sceneRef = useRef<HTMLElement>(null);
-  const cardRefs = useRef<Array<HTMLAnchorElement | null>>([]);
+  const slideRefs = useRef<Array<HTMLAnchorElement | null>>([]);
   const clockRef = useRef(0);
   const currentRotationRef = useRef(0);
   const targetRotationRef = useRef(0);
@@ -123,7 +116,7 @@ export function OrbitCarousel({ accentColor, ariaLabel, brandIcon, deepColor, id
     velocityRef.current = Math.max(-0.08, Math.min(0.08, velocityRef.current + direction * 0.012));
   }
 
-  function handleCardClick(event: ReactMouseEvent<HTMLAnchorElement>, item: OrbitCarouselItem, index: number) {
+  function handleSlideClick(event: ReactMouseEvent<HTMLAnchorElement>, index: number) {
     if (pointerRef.current.moved) {
       event.preventDefault();
       pointerRef.current.moved = false;
@@ -131,9 +124,6 @@ export function OrbitCarousel({ accentColor, ariaLabel, brandIcon, deepColor, id
     } else if (index !== activeIndexRef.current) {
       event.preventDefault();
       rotateTo(index);
-    } else if (onItemActivate && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
-      event.preventDefault();
-      onItemActivate(item, event.currentTarget);
     }
   }
 
@@ -176,24 +166,24 @@ export function OrbitCarousel({ accentColor, ariaLabel, brandIcon, deepColor, id
       currentRotationRef.current += (targetRotationRef.current - currentRotationRef.current) * smoothing;
 
       for (let index = 0; index < items.length; index += 1) {
-        const card = cardRefs.current[index];
-        if (!card) continue;
+        const slide = slideRefs.current[index];
+        if (!slide) continue;
 
         const layout = getOrbitCardLayout(index, items.length, currentRotationRef.current, dimensions);
-        card.style.opacity = layout.opacity.toFixed(3);
-        card.style.zIndex = String(layout.zIndex);
-        card.style.filter = `blur(${layout.blur.toFixed(2)}px)`;
-        card.style.transform = `translate3d(${layout.x.toFixed(2)}px, ${layout.y}px, ${layout.z.toFixed(2)}px) rotateY(${layout.rotateY.toFixed(2)}deg) scale(${layout.scale.toFixed(3)}) translate(-50%, -50%)`;
+        slide.style.opacity = layout.opacity.toFixed(3);
+        slide.style.zIndex = String(layout.zIndex);
+        slide.style.filter = `blur(${layout.blur.toFixed(2)}px)`;
+        slide.style.transform = `translate3d(${layout.x.toFixed(2)}px, ${layout.y}px, ${layout.z.toFixed(2)}px) rotateY(${layout.rotateY.toFixed(2)}deg) scale(${layout.scale.toFixed(3)}) translate(-50%, -50%)`;
       }
 
       const nextActiveIndex = getNearestFrontIndex(currentRotationRef.current, items.length);
       if (nextActiveIndex !== activeIndexRef.current) {
-        const previousCard = cardRefs.current[activeIndexRef.current];
-        const activeCard = cardRefs.current[nextActiveIndex];
-        previousCard?.setAttribute("tabindex", "-1");
-        previousCard?.removeAttribute("data-active");
-        activeCard?.setAttribute("tabindex", "0");
-        activeCard?.setAttribute("data-active", "true");
+        const previousSlide = slideRefs.current[activeIndexRef.current];
+        const activeSlide = slideRefs.current[nextActiveIndex];
+        previousSlide?.setAttribute("tabindex", "-1");
+        previousSlide?.removeAttribute("data-active");
+        activeSlide?.setAttribute("tabindex", "0");
+        activeSlide?.setAttribute("data-active", "true");
         activeIndexRef.current = nextActiveIndex;
         setActiveIndex(nextActiveIndex);
       }
@@ -215,7 +205,7 @@ export function OrbitCarousel({ accentColor, ariaLabel, brandIcon, deepColor, id
     }
 
     measure();
-    cardRefs.current[0]?.setAttribute("data-active", "true");
+    slideRefs.current[0]?.setAttribute("data-active", "true");
     const resizeObserver = new ResizeObserver(measure);
     const intersectionObserver = new IntersectionObserver(([entry]) => {
       pauseRef.current.offscreen = !entry.isIntersecting;
@@ -259,7 +249,7 @@ export function OrbitCarousel({ accentColor, ariaLabel, brandIcon, deepColor, id
           event.preventDefault();
           rotateBy(1);
         } else if (event.key === "Enter" && event.target === event.currentTarget) {
-          cardRefs.current[activeIndexRef.current]?.click();
+          slideRefs.current[activeIndexRef.current]?.click();
         }
       }}
       onMouseEnter={() => { pauseRef.current.hover = true; }}
@@ -282,17 +272,15 @@ export function OrbitCarousel({ accentColor, ariaLabel, brandIcon, deepColor, id
         {items.map((item, index) => (
           <Link
             aria-current={index === activeIndex ? "true" : undefined}
-            className={styles.card}
+            aria-label={item.title}
+            className={styles.slide}
             href={item.href}
             key={item.id}
-            onClick={(event) => { handleCardClick(event, item, index); }}
-            ref={(element) => { cardRefs.current[index] = element; }}
-            style={{ "--card-decorative": item.decorativeColor ?? accentColor, "--card-icon-scale": item.iconScale ?? 1 } as CSSProperties}
+            onClick={(event) => { handleSlideClick(event, index); }}
+            ref={(element) => { slideRefs.current[index] = element; }}
             tabIndex={index === 0 ? 0 : -1}
           >
-            <span className={styles.cardTop}><Image alt="" className={styles.brandIcon} height={44} src={brandIcon} unoptimized width={44} /><span className={styles.cardNumber}>{String(index + 1).padStart(2, "0")}</span></span>
-            <span className={styles.cardBody}><strong>{item.title}</strong><span className={styles.cardIcon}><Image alt="" height={84} src={item.icon} unoptimized width={84} /></span></span>
-            <span className={styles.cardFooter}><SupportingContent item={item} /><span className={styles.action}>{item.action}<ArrowRight aria-hidden="true" size={16} /></span></span>
+            <CarouselImage image={item.image} key={locale} locale={locale} />
           </Link>
         ))}
       </div>
@@ -304,7 +292,7 @@ export function OrbitCarousel({ accentColor, ariaLabel, brandIcon, deepColor, id
         <p aria-atomic="true" aria-live="polite"><span>{String(activeIndex + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}</span>{activeItem.title}</p>
         <button aria-label={nextLabel} onClick={() => rotateBy(1)} type="button"><ArrowRight aria-hidden="true" size={18} /></button>
       </div>
-      <ul className={styles.reducedList}>{items.map((item) => <li key={item.id}><Link href={item.href} onClick={(event) => { if (onItemActivate && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); onItemActivate(item, event.currentTarget); } }}><Image alt="" height={48} src={item.icon} unoptimized width={48} /><span><strong>{item.title}</strong><SupportingContent item={item} /></span><ArrowRight aria-hidden="true" size={16} /></Link></li>)}</ul>
+      <ul className={styles.reducedList}>{items.map((item) => <li key={item.id}><Link aria-label={item.title} href={item.href}><CarouselImage image={item.image} key={locale} locale={locale} /></Link></li>)}</ul>
     </section>
   );
 }

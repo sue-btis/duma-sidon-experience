@@ -22,21 +22,18 @@ export async function IntegrationExperience({ locale }: Props) {
         <OrbitCarousel
           accentColor="var(--integration)"
           ariaLabel={t("solutions")}
-          brandIcon="/home/worlds/integracion.png"
           deepColor="var(--integration-deep)"
           id="integration-orbit"
           instructions={t("orbitInstructions")}
           nextLabel={t("orbitNext")}
           previousLabel={t("orbitPrevious")}
           items={solutions.map((item) => ({
-            action: t("solutionAction"),
-            description: t(`summary.${item.slug}`),
             href: `/${locale}/integracion/${item.slug}/`,
-            icon: item.icon,
-            iconScale: item.iconScale,
             id: item.slug,
+            image: item.carouselImage,
             title: t(item.key),
           }))}
+          locale={locale}
         />
       </section>
       <section aria-labelledby="integration-conversation" className={`${styles.scene} ${styles.projectBand}`}>
