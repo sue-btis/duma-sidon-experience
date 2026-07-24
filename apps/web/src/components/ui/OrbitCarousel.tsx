@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 import {
   type MouseEvent as ReactMouseEvent,
   type PointerEvent as ReactPointerEvent,
@@ -32,9 +31,7 @@ type Props = Readonly<{
   instructions: string;
   items: readonly OrbitCarouselItem[];
   locale: "es" | "en";
-  nextLabel: string;
   onItemActivate?: (item: OrbitCarouselItem, trigger: HTMLAnchorElement) => void;
-  previousLabel: string;
 }>;
 
 const AUTOPLAY_DELAY = 1100;
@@ -46,7 +43,7 @@ function CarouselImage({ image, locale }: Readonly<{ image: string; locale: "es"
   return <Image alt="" className={styles.image} draggable={false} height={1261} onError={() => { if (source !== image) setSource(image); }} src={source} unoptimized width={1504} />;
 }
 
-export function OrbitCarousel({ accentColor, ariaLabel, deepColor, id, instructions, items, locale, nextLabel, onItemActivate, previousLabel }: Props) {
+export function OrbitCarousel({ accentColor, ariaLabel, deepColor, id, instructions, items, locale, onItemActivate }: Props) {
   const sceneRef = useRef<HTMLElement>(null);
   const slideRefs = useRef<Array<HTMLAnchorElement | null>>([]);
   const clockRef = useRef(0);
@@ -230,8 +227,6 @@ export function OrbitCarousel({ accentColor, ariaLabel, deepColor, id, instructi
     };
   }, [items.length]);
 
-  const activeItem = items[activeIndex];
-
   return (
     <section
       aria-describedby={`${id}-instructions`}
@@ -293,11 +288,6 @@ export function OrbitCarousel({ accentColor, ariaLabel, deepColor, id, instructi
       <nav aria-label={ariaLabel} className={styles.navigator}>
         <ol>{items.map((item, index) => <li key={item.id}><button aria-current={index === activeIndex ? "true" : undefined} data-distance={Math.min(3, Math.abs(index - activeIndex))} onClick={() => rotateTo(index)} type="button">{item.title}</button></li>)}</ol>
       </nav>
-      <div className={styles.hud}>
-        <button aria-label={previousLabel} onClick={() => rotateBy(-1)} type="button"><ArrowLeft aria-hidden="true" size={18} /></button>
-        <p aria-atomic="true" aria-live="polite"><span>{String(activeIndex + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}</span>{activeItem.title}</p>
-        <button aria-label={nextLabel} onClick={() => rotateBy(1)} type="button"><ArrowRight aria-hidden="true" size={18} /></button>
-      </div>
       <ul className={styles.reducedList}>{items.map((item) => <li key={item.id}><Link aria-label={item.title} href={item.href} onClick={(event) => { if (onItemActivate && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); onItemActivate(item, event.currentTarget); } }}><CarouselImage image={item.image} key={locale} locale={locale} /></Link></li>)}</ul>
     </section>
   );

@@ -10,11 +10,6 @@
 .navigator button[data-distance="2"] { opacity: .42; }
 .navigator button[data-distance="3"] { opacity: .2; }
 .navigator button[aria-current="true"] { font-size: clamp(.95rem, 1.45vw, 1.25rem); font-weight: 750; opacity: 1; }
-.hud { align-items: center; bottom: clamp(-4.25rem, -4vw, -3.5rem); display: flex; gap: .55rem; position: absolute; right: clamp(1rem, 9vw, 8rem); z-index: 1300; }
-.hud button { align-items: center; background: var(--surface); border: 1px solid color-mix(in srgb, var(--orbit-accent) 42%, var(--line)); color: var(--orbit-deep); cursor: pointer; display: inline-flex; height: 2.75rem; justify-content: center; padding: 0; width: 2.75rem; }
-.hud button:hover { background: var(--surface-alt); border-color: var(--orbit-accent); }
-.hud p { align-items: center; background: var(--surface); border: 1px solid var(--line); color: var(--orbit-deep); display: flex; font-size: .82rem; font-weight: 750; gap: .65rem; margin: 0; min-height: 2.75rem; padding: .55rem .8rem; }
-.hud p span { color: var(--ink-soft); font-size: .7rem; letter-spacing: .08em; }
 .reducedList { display: none; }
 .srOnly { clip: rect(0, 0, 0, 0); clip-path: inset(50%); height: 1px; overflow: hidden; position: absolute; white-space: nowrap; width: 1px; }
 
@@ -26,13 +21,11 @@
   .navigator button { font-size: .7rem; padding: .1rem 0; }
   .navigator button[aria-current="true"] { font-size: .9rem; }
   .track { inset: 0; transform: none; }
-  .hud { bottom: -4rem; right: 1rem; }
-  .hud p { max-width: 11rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .carousel { block-size: auto; cursor: default; outline-offset: 3px; perspective: none; touch-action: auto; }
-  .track, .navigator, .hud { display: none; }
+  .track, .navigator { display: none; }
   .reducedList { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); list-style: none; margin: 0; padding: 0; }
   .reducedList a { display: block; }
   .reducedList .image { aspect-ratio: 1504 / 1261; }

@@ -29,10 +29,6 @@
   --color-integration-deep: var(--integration-deep);
   --color-sidon: var(--sidon);
   --color-sidon-deep: var(--sidon-deep);
-  --color-duma: var(--duma);
-  --color-duma-deep: var(--duma-deep);
-  --color-duma-soft: var(--duma-soft);
-  --color-duma-surface: var(--duma-surface);
   --font-sans: var(--font-ui);
   --font-heading: var(--font-brand);
   --font-mono: var(--font-data);
@@ -59,10 +55,6 @@
   --integration-deep: #3b2b50;
   --sidon: #00a887;
   --sidon-deep: #0d553f;
-  --duma: #2ecc71;
-  --duma-deep: #0d5c3a;
-  --duma-soft: #b8f0d8;
-  --duma-surface: #e5fff5;
 
   --background: var(--surface);
   --foreground: var(--ink);

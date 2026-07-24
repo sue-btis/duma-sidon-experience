@@ -25,8 +25,6 @@ export async function IntegrationExperience({ locale }: Props) {
           deepColor="var(--integration-deep)"
           id="integration-orbit"
           instructions={t("orbitInstructions")}
-          nextLabel={t("orbitNext")}
-          previousLabel={t("orbitPrevious")}
           items={solutions.map((item) => ({
             href: `/${locale}/integracion/${item.slug}/`,
             id: item.slug,
