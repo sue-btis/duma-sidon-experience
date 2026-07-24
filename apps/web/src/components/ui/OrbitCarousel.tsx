@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import {
+  type MouseEvent as ReactMouseEvent,
   type PointerEvent as ReactPointerEvent,
   type CSSProperties,
   type WheelEvent as ReactWheelEvent,
@@ -37,6 +38,7 @@ type Props = Readonly<{
   instructions: string;
   items: readonly OrbitCarouselItem[];
   nextLabel: string;
+  onItemActivate?: (item: OrbitCarouselItem, trigger: HTMLAnchorElement) => void;
   previousLabel: string;
 }>;
 
@@ -50,7 +52,7 @@ function SupportingContent({ item }: Readonly<{ item: OrbitCarouselItem }>) {
   return item.description ? <span className={styles.description}>{item.description}</span> : null;
 }
 
-export function OrbitCarousel({ accentColor, ariaLabel, brandIcon, deepColor, id, instructions, items, nextLabel, previousLabel }: Props) {
+export function OrbitCarousel({ accentColor, ariaLabel, brandIcon, deepColor, id, instructions, items, nextLabel, onItemActivate, previousLabel }: Props) {
   const sceneRef = useRef<HTMLElement>(null);
   const cardRefs = useRef<Array<HTMLAnchorElement | null>>([]);
   const clockRef = useRef(0);
@@ -119,6 +121,20 @@ export function OrbitCarousel({ accentColor, ariaLabel, brandIcon, deepColor, id
     noteInteraction();
     targetRotationRef.current += direction * 0.035;
     velocityRef.current = Math.max(-0.08, Math.min(0.08, velocityRef.current + direction * 0.012));
+  }
+
+  function handleCardClick(event: ReactMouseEvent<HTMLAnchorElement>, item: OrbitCarouselItem, index: number) {
+    if (pointerRef.current.moved) {
+      event.preventDefault();
+      pointerRef.current.moved = false;
+      lastInteractionRef.current = 0;
+    } else if (index !== activeIndexRef.current) {
+      event.preventDefault();
+      rotateTo(index);
+    } else if (onItemActivate && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+      event.preventDefault();
+      onItemActivate(item, event.currentTarget);
+    }
   }
 
   useEffect(() => {
@@ -269,16 +285,7 @@ export function OrbitCarousel({ accentColor, ariaLabel, brandIcon, deepColor, id
             className={styles.card}
             href={item.href}
             key={item.id}
-            onClick={(event) => {
-              if (pointerRef.current.moved) {
-                event.preventDefault();
-                pointerRef.current.moved = false;
-                lastInteractionRef.current = 0;
-              } else if (index !== activeIndexRef.current) {
-                event.preventDefault();
-                rotateTo(index);
-              }
-            }}
+            onClick={(event) => { handleCardClick(event, item, index); }}
             ref={(element) => { cardRefs.current[index] = element; }}
             style={{ "--card-decorative": item.decorativeColor ?? accentColor, "--card-icon-scale": item.iconScale ?? 1 } as CSSProperties}
             tabIndex={index === 0 ? 0 : -1}
@@ -297,7 +304,7 @@ export function OrbitCarousel({ accentColor, ariaLabel, brandIcon, deepColor, id
         <p aria-atomic="true" aria-live="polite"><span>{String(activeIndex + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}</span>{activeItem.title}</p>
         <button aria-label={nextLabel} onClick={() => rotateBy(1)} type="button"><ArrowRight aria-hidden="true" size={18} /></button>
       </div>
-      <ul className={styles.reducedList}>{items.map((item) => <li key={item.id}><Link href={item.href}><Image alt="" height={48} src={item.icon} unoptimized width={48} /><span><strong>{item.title}</strong><SupportingContent item={item} /></span><ArrowRight aria-hidden="true" size={16} /></Link></li>)}</ul>
+      <ul className={styles.reducedList}>{items.map((item) => <li key={item.id}><Link href={item.href} onClick={(event) => { if (onItemActivate && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); onItemActivate(item, event.currentTarget); } }}><Image alt="" height={48} src={item.icon} unoptimized width={48} /><span><strong>{item.title}</strong><SupportingContent item={item} /></span><ArrowRight aria-hidden="true" size={16} /></Link></li>)}</ul>
     </section>
   );
 }

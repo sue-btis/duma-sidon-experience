@@ -33,6 +33,15 @@
   "capabilities": "Capacidades",
   "scope": "Alcance",
   "projectCriteria": "Criterios del proyecto",
+  "headlines": {
+    "cctv": "Visibilidad para proteger lo que importa.",
+    "climatizacion-refrigeracion": "Condiciones diseñadas para que la operación siga funcionando.",
+    "incendios": "Preparar el espacio antes de que cada segundo importe.",
+    "accesos": "El acceso correcto, en el lugar correcto.",
+    "bms": "Mayor control sobre los sistemas que sostienen cada espacio.",
+    "voz-y-datos": "La infraestructura que mantiene comunicada la operación.",
+    "audio-y-video": "Espacios donde la comunicación se entiende y la colaboración sucede."
+  },
   "summary": {
     "cctv": "Visibilidad, evidencia y supervisión para proteger activos, personas y operación.",
     "climatizacion-refrigeracion": "Control térmico, confort y conservación para espacios y procesos críticos.",

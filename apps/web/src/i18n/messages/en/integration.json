@@ -33,6 +33,15 @@
   "capabilities": "Capabilities",
   "scope": "Scope",
   "projectCriteria": "Project criteria",
+  "headlines": {
+    "cctv": "Visibility to protect what matters.",
+    "climatizacion-refrigeracion": "Conditions designed to keep operations running.",
+    "incendios": "Prepare the space before every second matters.",
+    "accesos": "The right access, in the right place.",
+    "bms": "Greater control over the systems that support every space.",
+    "voz-y-datos": "The infrastructure that keeps operations connected.",
+    "audio-y-video": "Spaces where communication is clear and collaboration happens."
+  },
   "summary": {
     "cctv": "Visibility, evidence, and supervision to protect assets, people, and operations.",
     "climatizacion-refrigeracion": "Thermal control, comfort, and preservation for critical spaces and processes.",
