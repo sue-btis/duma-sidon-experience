@@ -61,6 +61,6 @@ export function SidonCategories({ categories, closeLabel, initialCategory, instr
   return <><OrbitCarousel accentColor="var(--sidon)" ariaLabel={instructions} deepColor="var(--sidon-deep)" id="sidon-categories" instructions={instructions} items={items} locale={locale} nextLabel={nextLabel} onItemActivate={(item, trigger) => { triggerRef.current = trigger; window.history.pushState(null, "", item.href); setSelectedSlug(item.id as SidonCategorySlug); }} previousLabel={previousLabel} />
     <dialog aria-label={selectedCategory ? categories[selectedCategory.slug].name : undefined} className={styles.categoryDialog} onCancel={(event) => { event.preventDefault(); closeCategory(); }} onClick={(event) => { if (event.target === event.currentTarget) closeCategory(); }} ref={dialogRef}>
       <button aria-label={closeLabel} className={styles.categoryClose} onClick={closeCategory} type="button"><X aria-hidden="true" size={20} /></button>
-      {selectedCategory ? <SidonCategoryPanel category={selectedCategory} content={categories[selectedCategory.slug]} modulesLabel={modulesLabel} solvesLabel={solvesLabel} /> : null}
+      {selectedCategory ? <SidonCategoryPanel category={selectedCategory} content={categories[selectedCategory.slug]} key={selectedCategory.slug} locale={locale} modulesLabel={modulesLabel} solvesLabel={solvesLabel} /> : null}
     </dialog></>;
 }
