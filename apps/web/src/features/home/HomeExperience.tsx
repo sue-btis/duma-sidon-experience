@@ -112,7 +112,6 @@ export async function HomeExperience({ locale }: Props) {
       </section>
 
       <section className={`${styles.scene} ${styles.worldsScene}`} data-home-scene id="mundos">
-        <div aria-hidden="true" className={styles.worldOrbits}><div /><div /></div>
         <div className={styles.sectionContent}>
           <WorldCircuit
             close={t("worldsClose")}

@@ -31,9 +31,11 @@ export function WorldCircuit({ close, integration, lead, locale, sidon, title }:
             <LetterWorldsCanvas variant="physical" />
             <Image alt="" className={styles.worldLogo} height={632} src="/home/worlds/integracion.png" unoptimized width={708} />
           </div>
-          <span className={styles.worldLabel}>{integration.label}</span>
-          <span className={styles.worldDescription}>{integration.description}</span>
-          <span className={styles.worldAction}>{integration.action}</span>
+          <span className={styles.worldCopy}>
+            <span className={styles.worldLabel}>{integration.label}</span>
+            <span className={styles.worldDescription}>{integration.description}</span>
+            <span className={styles.worldAction}>{integration.action}</span>
+          </span>
         </Link>
 
         <div className={styles.ecosatNode} data-home-animation>
@@ -46,9 +48,11 @@ export function WorldCircuit({ close, integration, lead, locale, sidon, title }:
             <LetterWorldsCanvas variant="digital" />
             <Image alt="" className={styles.worldLogo} height={148} src="/home/worlds/sidon.png" unoptimized width={147} />
           </div>
-          <span className={styles.worldLabel}>{sidon.label}</span>
-          <span className={styles.worldDescription}>{sidon.description}</span>
-          <span className={styles.worldAction}>{sidon.action}</span>
+          <span className={styles.worldCopy}>
+            <span className={styles.worldLabel}>{sidon.label}</span>
+            <span className={styles.worldDescription}>{sidon.description}</span>
+            <span className={styles.worldAction}>{sidon.action}</span>
+          </span>
         </Link>
         <p className={styles.circuitClose}><ShieldCheck aria-hidden="true" />{close}</p>
       </div>
