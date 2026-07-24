@@ -240,6 +240,7 @@ export function OrbitCarousel({ accentColor, ariaLabel, deepColor, id, instructi
           noteInteraction();
         }
       }}
+      onDragStart={(event) => { event.preventDefault(); }}
       onFocus={() => { pauseRef.current.focus = true; }}
       onKeyDown={(event) => {
         if (event.key === "ArrowLeft") {
