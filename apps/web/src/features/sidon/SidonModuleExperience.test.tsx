@@ -4,11 +4,10 @@ import { describe, expect, it } from "vitest";
 import { SidonModuleExperience, type SidonModuleNarrative } from "./SidonModuleExperience";
 
 const narrative: SidonModuleNarrative = {
-  continuity: { duma: { lead: "Duma lead", title: "Duma title" }, lead: "Continuity lead", title: "Continuity title" },
   headline: "Narrative headline",
   lead: "Narrative lead",
-  logic: { lead: "Logic lead", stages: ["Asset", "Need"], title: "Logic title" },
-  outcomes: [{ label: "Visibility", lead: "Outcome lead", title: "Outcome title" }],
+  moment: { lead: "Moment lead", title: "Moment title" },
+  role: { lead: "Role lead", title: "Role title" },
 };
 
 describe("Sidón module narratives", () => {
@@ -16,15 +15,16 @@ describe("Sidón module narratives", () => {
     const page = renderToStaticMarkup(<SidonModuleExperience categoryName="Maintenance" categorySlug="maintenance" contactAction="Talk" contactLead="Lead" contactTitle="Title" description="Generic description" locale="en" moduleIcon="/mantiz.png" moduleName="Mantiz" moduleSlug="mantiz" narrative={narrative} solves="Generic solve" />);
 
     expect(page).toContain("Narrative headline");
-    expect(page).toContain("Logic title");
-    expect(page).toContain("Outcome title");
+    expect(page).toContain("Moment title");
+    expect(page).toContain("Role title");
+    expect(page).toContain("prueba.png");
+    expect(page).not.toContain("/_next/image?");
     expect(page).not.toContain("Generic solve");
   });
 
-  it("omits Duma when the approved narrative does not include it", () => {
-    const withoutDuma: SidonModuleNarrative = { ...narrative, continuity: { lead: "Continuity lead", title: "Continuity title" } };
-    const page = renderToStaticMarkup(<SidonModuleExperience categoryName="Maintenance" categorySlug="maintenance" contactAction="Talk" contactLead="Lead" contactTitle="Title" description="Generic description" locale="en" moduleIcon="/mantiz.png" moduleName="Mantiz" moduleSlug="mantiz" narrative={withoutDuma} solves="Generic solve" />);
+  it("renders the generic module section when no narrative is approved", () => {
+    const page = renderToStaticMarkup(<SidonModuleExperience categoryName="Maintenance" categorySlug="maintenance" contactAction="Talk" contactLead="Lead" contactTitle="Title" description="Generic description" locale="en" moduleIcon="/mantiz.png" moduleName="Mantiz" moduleSlug="mantiz" solves="Generic solve" />);
 
-    expect(page).not.toContain("Duma title");
+    expect(page).toContain("Generic solve");
   });
 });

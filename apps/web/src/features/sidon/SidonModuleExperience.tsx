@@ -4,6 +4,9 @@ import { ArrowRight } from "lucide-react";
 
 import styles from "./sidon.module.css";
 
+// ponytail: shared mock hero image until approved module assets replace it.
+const temporaryHeroImage = "/home/worlds/sidon/modulos-imagenes/prueba.png";
+
 type Props = Readonly<{
   categoryName: string;
   categorySlug: string;
@@ -20,25 +23,21 @@ type Props = Readonly<{
 }>;
 
 export type SidonModuleNarrative = Readonly<{
-  continuity: Readonly<{ duma?: Readonly<{ lead: string; title: string }>; lead: string; title: string }>;
   headline: string;
   lead: string;
-  logic: Readonly<{ lead: string; stages: readonly string[]; title: string }>;
-  outcomes: readonly Readonly<{ label: string; lead: string; title: string }>[];
+  moment: Readonly<{ lead: string; title: string }>;
+  role: Readonly<{ lead: string; title: string }>;
 }>;
 
 function NarrativeSections({ narrative }: Readonly<{ narrative: SidonModuleNarrative }>) {
   return <>
     <section aria-labelledby="module-logic" className={styles.moduleNarrative}>
-      <div><p>Sidón</p><h2 id="module-logic">{narrative.logic.title}</h2></div>
-      <div><span>{narrative.logic.lead}</span><ol>{narrative.logic.stages.map((stage) => <li key={stage}>{stage}</li>)}</ol></div>
-    </section>
-    <section className={styles.moduleOutcomes}>
-      {narrative.outcomes.map((outcome) => <article key={outcome.title}><p>{outcome.label}</p><h2>{outcome.title}</h2><span>{outcome.lead}</span></article>)}
+      <div><p>Sidón</p><h2 id="module-logic">{narrative.moment.title}</h2></div>
+      <div><span>{narrative.moment.lead}</span></div>
     </section>
     <section aria-labelledby="module-continuity" className={styles.moduleContinuity}>
-      <div><p>Sidón</p><h2 id="module-continuity">{narrative.continuity.title}</h2></div>
-      <div><span>{narrative.continuity.lead}</span>{narrative.continuity.duma ? <article><p>Duma</p><h3>{narrative.continuity.duma.title}</h3><span>{narrative.continuity.duma.lead}</span></article> : null}</div>
+      <div><p>Sidón</p><h2 id="module-continuity">{narrative.role.title}</h2></div>
+      <div><span>{narrative.role.lead}</span></div>
     </section>
   </>;
 }
@@ -46,6 +45,9 @@ function NarrativeSections({ narrative }: Readonly<{ narrative: SidonModuleNarra
 export function SidonModuleExperience({ categoryName, categorySlug, contactAction, contactLead, contactTitle, description, locale, moduleIcon, moduleName, moduleSlug, narrative, solves }: Props) {
   return <main className={styles.modulePage}>
     <section aria-labelledby="module-title" className={styles.moduleHero}>
+      <div className={styles.moduleImage}>
+        <Image alt="" fill priority sizes="(max-width: 48rem) 100vw, 50vw" src={temporaryHeroImage} unoptimized />
+      </div>
       <div className={styles.moduleCopy}>
         <div className={styles.moduleIdentity}>
           <Image alt="Sidón" className={styles.moduleSidonBrand} height={104} src="/home/worlds/sidon.png" unoptimized width={104} />

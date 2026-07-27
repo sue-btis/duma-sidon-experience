@@ -46,6 +46,7 @@ const mexico = continent;
 const chihuahua: Camera = { bearing: 0, center: [-106.15, 28.65], pitch: 44, zoom: 5.45 };
 const city: Camera = { bearing: 0, center: CHIHUAHUA_CITY, pitch: 46, zoom: 7.1 };
 const MIN_LANDMASS_BOUNDS_AREA = 2;
+const COMPACT_MAP_MEDIA = "(max-width: 1050px)";
 
 function boundsArea(polygon: Polygon) {
   let maximumLatitude = -Infinity;
@@ -113,6 +114,10 @@ function cameraFor(progress: number) {
   return { camera: interpolate(chihuahua, city, (openingProgress - 0.75) / 0.25), stateOpacity: 1 };
 }
 
+function cameraForViewport(camera: Camera, isCompact: boolean): Camera {
+  return isCompact ? { ...camera, pitch: Math.min(camera.pitch, 32), zoom: camera.zoom - 1.15 } : camera;
+}
+
 export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ progress: number; showLocations: boolean }>) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapLibreMap>(null);
@@ -120,6 +125,15 @@ export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ prog
   const showLocationsRef = useRef(showLocations);
   const [isMapReady, setIsMapReady] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isCompact, setIsCompact] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(COMPACT_MAP_MEDIA);
+    const update = () => setIsCompact(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
 
   useEffect(() => {
     showLocationsRef.current = showLocations;
@@ -251,7 +265,10 @@ export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ prog
     if (!isMapReady || !map || !map.isStyleLoaded()) return;
     const { camera, stateOpacity } = cameraFor(progress);
     const chihuahuaOpacity = progress < CLOSING_START ? 1 : stateOpacity;
-    map.jumpTo(camera);
+    map.jumpTo({
+      ...cameraForViewport(camera, isCompact),
+      ...(isCompact ? { padding: { bottom: 0, left: 0, right: 0, top: Math.min(320, window.innerHeight * 0.45) } } : {}),
+    });
     map.setPaintProperty("countries-model", "fill-extrusion-color", progress >= CLOSING_START
       ? ["match", ["get", "id"], "MEX", "#00adef", "USA", "#00adef", "#fbfcfc"]
       : "#fbfcfc");
@@ -264,7 +281,7 @@ export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ prog
       const shouldShow = Boolean(LOCATIONS[index].label) || showLocations;
       marker.getElement().style.opacity = shouldShow ? String(Math.max(0.75, stateOpacity)) : "0";
     });
-  }, [isMapReady, progress, showLocations]);
+  }, [isCompact, isMapReady, progress, showLocations]);
 
   return (
     <div aria-hidden="true" className={`${styles.mapCanvas} ${showLocations ? styles.mapLocationsVisible : ""}`} ref={containerRef}>

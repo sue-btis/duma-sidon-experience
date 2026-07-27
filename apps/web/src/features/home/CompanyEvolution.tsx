@@ -97,7 +97,7 @@ export function CompanyEvolution({ ariaLabel, navigationLabel, steps }: Props) {
               <span aria-hidden="true" className={styles.fillAssets}>
                 {item.fills.map((fill, fillIndex) => <Image alt="" className={`${styles.fillAsset} ${styles[`fill${index + 1}${fillIndex + 1}`]}`} height={1254} key={fill} src={`/home/company-evolution/rellenos/${fill}`} unoptimized width={1254} />)}
               </span>
-              <Image alt="" height={item.height} sizes="(max-width: 850px) 100vw, 1100px" src={item.image} unoptimized width={item.width} />
+              <Image alt="" height={item.height} sizes="(max-width: 1050px) 100vw, 1100px" src={item.image} unoptimized width={item.width} />
               <span className={styles.dot} />
             </button>
           ))}

@@ -20,15 +20,10 @@
   "dumaLinkLabel": "Explorar Duma AI dentro de Sidón",
   "moduleNarratives": {
     "mantiz": {
-      "headline": "Cada activo tiene una historia. Mantiz la convierte en acción.",
-      "lead": "Explora una operación, entra al equipo y observa cómo una señal se convierte en trabajo trazable.",
-      "logic": { "title": "Una misma lógica acompaña cada intervención.", "lead": "Mantiz conecta el activo con la necesidad, la orden, la persona responsable y la evidencia. Cuando el trabajo concluye, el historial queda listo para la siguiente decisión.", "stages": ["Activo", "Necesidad", "Orden", "Ejecución", "Historial"] },
-      "outcomes": [
-        { "label": "Visibilidad", "title": "Trabajo trazable", "lead": "La operación sabe qué está abierto, quién lo atiende y qué sigue pendiente." },
-        { "label": "Responsabilidad", "title": "Propiedad clara", "lead": "Cada orden conserva una persona responsable y un estado visible." },
-        { "label": "Continuidad", "title": "Historia acumulada", "lead": "El activo conserva evidencia y contexto para futuras intervenciones." }
-      ],
-      "continuity": { "title": "Cada intervención mejora la siguiente.", "lead": "El valor no termina cuando el ticket se cierra. El activo conserva evidencia, recurrencias y contexto técnico para que el equipo no vuelva a comenzar desde cero.", "duma": { "title": "Existen dos incidencias similares en este activo.", "lead": "Antes de considerar reemplazo, Duma sugiere revisar alimentación, temperatura del domo y ventilación." } }
+      "headline": "El mantenimiento funciona mejor cuando cada intervención tiene contexto.",
+      "lead": "Mantiz conecta el activo, la solicitud, el responsable y la ejecución en campo. Así, el trabajo preventivo y correctivo conserva evidencia e historial para dar seguimiento a lo pendiente y planear la siguiente intervención.",
+      "moment": { "title": "Una solicitud no basta para resolver un mantenimiento.", "lead": "Hace falta saber qué activo requiere atención, quién se hará cargo, qué se realizó y cómo quedó documentado. Cuando esa información vive separada, el seguimiento pierde continuidad." },
+      "role": { "title": "Cada intervención mantiene el contexto que necesita.", "lead": "Mantiz vincula solicitudes, planes preventivos y órdenes de trabajo con el activo correspondiente. El equipo puede registrar responsables, avances, ejecución y evidencia; después, consultar lo atendido, lo pendiente y los trabajos que vuelven a requerir atención." }
     }
   },
   "categories": {
