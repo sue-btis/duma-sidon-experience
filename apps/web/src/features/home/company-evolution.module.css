@@ -20,11 +20,10 @@
 .station.active .fillAsset { opacity: .72; }
 .station > img { display: block; width: 100%; mask-image: radial-gradient(ellipse 48% 44% at 50% 54%, #000 0 58%, rgb(0 0 0 / .95) 69%, rgb(0 0 0 / .38) 84%, transparent 100%); transition: filter .22s linear, opacity .22s linear, transform .22s linear; filter: saturate(.65) contrast(.94); opacity: .56; }
 .station.active > img { filter: saturate(1) contrast(1); opacity: 1; transform: scale(1.03); }
-.station1 { left: 900px; top: 1900px; width: 1080px; }.station2 { left: 2500px; top: 650px; width: 1160px; }.station3 { left: 4400px; top: 1900px; width: 1280px; }.station4 { left: 6050px; top: 600px; width: 1656px; }
+.station1 { left: 900px; top: 1900px; width: 1080px; }.station2 { left: 2500px; top: 650px; width: 1160px; }.station3 { left: 4400px; top: 1900px; width: 1280px; }
 .fill11 { left: 3%; top: 46%; }.fill12 { left: 20%; top: 11%; }.fill13 { left: 47%; top: 82%; }.fill14 { left: 78%; top: 4%; }
 .fill21 { left: 6%; top: 39%; }.fill22 { left: 23%; top: 15%; }.fill23 { left: 51%; top: 84%; }.fill24 { left: 73%; top: 2%; }
 .fill31 { left: 4%; top: 35%; }.fill32 { left: 21%; top: 8%; }.fill33 { left: 45%; top: 81%; }.fill34 { left: 76%; top: 6%; }
-.fill41 { left: 2%; top: 43%; }.fill42 { left: 19%; top: 14%; }.fill43 { left: 49%; top: 83%; }.fill44 { left: 74%; top: 3%; }
 .dot { position: absolute; left: 50%; top: 54%; width: 58px; height: 58px; border: 1px solid color-mix(in srgb, var(--ecosat) 45%, var(--surface)); border-radius: 50%; background: var(--surface); transform: translate(-50%, -50%); }.dot::after { content: ""; position: absolute; inset: 21px; border-radius: 50%; background: var(--ecosat); }
 .hud { position: absolute; inset: 0; z-index: 10; pointer-events: none; }
 .story { position: absolute; right: clamp(22px, 5vw, 76px); top: 50%; width: min(470px, calc(100vw - 44px)); min-height: 330px; padding: 30px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); color: var(--ecosat-deep); transform: translateY(-50%); }.story h2 { max-width: 12ch; margin: 0; font: 620 clamp(40px, 4.5vw, 68px)/.98 var(--font-brand); letter-spacing: -.035em; text-wrap: balance; }.storyLabel, .location, .storyBody { margin: 0; }.storyLabel { margin-bottom: 13px; color: var(--ecosat-deep); font-size: 14px; font-weight: 750; }.location { margin-top: 14px; color: var(--ecosat-deep); font-size: 16px; font-weight: 750; }.storyBody { margin-top: 18px; color: var(--ink-soft); font-size: 16px; line-height: 1.62; text-wrap: pretty; }

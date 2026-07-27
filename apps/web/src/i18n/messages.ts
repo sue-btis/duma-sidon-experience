@@ -9,6 +9,7 @@ const modules: Record<Locale, Record<string, () => Promise<MessageModule>>> = {
   es: {
     agentPet: () => import("./messages/es/agent-pet.json"),
     common: () => import("./messages/es/common.json"),
+    duma: () => import("./messages/es/duma.json") as unknown as Promise<MessageModule>,
     home: () => import("./messages/es/home.json"),
     integration: () => import("./messages/es/integration.json") as unknown as Promise<MessageModule>,
     sidon: () => import("./messages/es/sidon.json") as unknown as Promise<MessageModule>,
@@ -19,6 +20,7 @@ const modules: Record<Locale, Record<string, () => Promise<MessageModule>>> = {
   en: {
     agentPet: () => import("./messages/en/agent-pet.json"),
     common: () => import("./messages/en/common.json"),
+    duma: () => import("./messages/en/duma.json") as unknown as Promise<MessageModule>,
     home: () => import("./messages/en/home.json"),
     integration: () => import("./messages/en/integration.json") as unknown as Promise<MessageModule>,
     sidon: () => import("./messages/en/sidon.json") as unknown as Promise<MessageModule>,

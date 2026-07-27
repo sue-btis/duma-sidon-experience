@@ -17,6 +17,7 @@
   "conversationLead": "Podemos comenzar con un módulo, una categoría o una necesidad operativa que todavía no tenga nombre.",
   "conversationAction": "Conversemos sobre tu operación",
   "returnToSidon": "Volver a Sidón",
+  "dumaLinkLabel": "Explorar Duma AI dentro de Sidón",
   "categories": {
     "mantenimiento-seguridad": {
       "name": "Mantenimiento y Seguridad",

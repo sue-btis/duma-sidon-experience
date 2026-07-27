@@ -77,7 +77,6 @@ export async function HomeExperience({ locale }: Props) {
           { body: t("evolution.origin.body"), headline: t("evolution.origin.headline"), kind: "map", label: t("evolution.origin.label"), location: t("evolution.origin.location") },
           { body: t("evolution.timeline.body"), headline: t("evolution.timeline.headline"), kind: "transition" },
           { body: t("evolution.radio.body"), headline: t("evolution.radio.headline"), kind: "phase", label: t("evolution.radio.label") },
-          { body: t("evolution.telecom.body"), headline: t("evolution.telecom.headline"), kind: "phase", label: t("evolution.telecom.label") },
           { body: t("evolution.integration.body"), headline: t("evolution.integration.headline"), kind: "phase", label: t("evolution.integration.label") },
           { body: t("evolution.solutions.body"), headline: t("evolution.solutions.headline"), kind: "phase", label: t("evolution.solutions.label") },
           { body: t("evolution.expansion.body"), headline: t("evolution.expansion.headline"), kind: "transition" },

@@ -1,0 +1,23 @@
+{
+  "back": "Return to Sidón",
+  "eyebrow": "INTELLIGENCE WITHIN SIDÓN",
+  "headline": "Duma AI understands what your operation is telling you.",
+  "lead": "Duma AI connects information across Sidón modules to explain what is happening, identify patterns, prioritize what matters, and recommend better decisions.",
+  "principle": "Sidón connects the operation. Duma AI understands it.",
+  "connectedTitle": "Each module knows its part. Duma AI understands the operation.",
+  "connectedLead": "Duma AI coordinates specialized agents that understand the context, rules, and information of each active module. Together, they create a connected understanding of the operation and present one clear response.",
+  "architecture": "Each agent is configured around its module and the project’s operational reality. Duma AI selects relevant information, connects findings, and removes the need to interpret each source separately.",
+  "experienceTitle": "Intelligence appears where it is most useful.",
+  "experienceLead": "Duma AI brings the operation into an experience designed to clarify priorities, answer questions, and keep important results visible.",
+  "expressions": [{"title":"Analysis and insights","copy":"Identifies patterns, explains changes, and directs attention toward conditions that require a decision."},{"title":"ICOS","copy":"Summarizes performance through clear, comparable indicators grounded in the project’s operational reality."},{"title":"Chat and voice","copy":"Lets people ask about the operation in natural language and receive answers grounded in project context."},{"title":"Briefs","copy":"Delivers information at the frequency each operation needs."}],
+  "embeddedTitle": "Duma AI also works inside the modules.",
+  "embeddedLead": "Its intelligence appears inside workflows where it can improve understanding, reduce noise, detect a condition, or support a decision.",
+  "embedded": ["Smart Audits validates evidence quality and analyzes images.","Argos identifies configured conditions and preserves evidence.","NOD-IA shows where product gaps need attention.","Sense and Mantiz reduce noise and direct relevant conditions to maintenance."],
+  "autonomyTitle": "Autonomy is earned through trust.",
+  "autonomyLead": "Duma AI begins by making conditions visible, explaining them, and recommending action. As the operation validates its results, configured actions can be enabled with greater autonomy.",
+  "control": "People remain in control. Each advance depends on project context, information quality, and confidence built through consistent results.",
+  "stages": ["Makes visible","Explains and recommends","Prepares an action","Executes configured actions"],
+  "ctaTitle": "Let’s discuss what Duma AI can help your operation understand.",
+  "ctaLead": "Tell us what information needs to be connected, which decisions need greater clarity, or which part of the operation remains difficult to interpret.",
+  "cta": "Talk to us about Duma AI"
+}

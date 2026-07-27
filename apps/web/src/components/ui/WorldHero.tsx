@@ -1,9 +1,11 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 
 import { LetterWorldsCanvas } from "./LetterWorldsCanvas";
 import styles from "./world-hero.module.css";
 
 type Props = Readonly<{
+  children?: ReactNode;
   description?: string;
   logo: string;
   logoAlt: string;
@@ -17,7 +19,7 @@ type Props = Readonly<{
   variant?: "all" | "digital" | "physical";
 }>;
 
-export function WorldHero({ description, logo, logoAlt, logoHeight, logoWidth, meta, priority = false, screenReaderTitle, title, titleId, variant = "all" }: Props) {
+export function WorldHero({ children, description, logo, logoAlt, logoHeight, logoWidth, meta, priority = false, screenReaderTitle, title, titleId, variant = "all" }: Props) {
   return (
     <div className={styles.hero}>
       <LetterWorldsCanvas radiusRem={20} variant={variant} />
@@ -26,6 +28,7 @@ export function WorldHero({ description, logo, logoAlt, logoHeight, logoWidth, m
         <Image alt={logoAlt} className={styles.logo} height={logoHeight} priority={priority} src={logo} unoptimized width={logoWidth} />
         {title ? <h1 className={styles.title} id={titleId}>{title}</h1> : null}
       </div>
+      {children}
       {description || meta ? <div className={styles.description}>
         {description ? <p>{description}</p> : null}
         {meta ? <p className={styles.meta}>{meta}</p> : null}

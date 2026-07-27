@@ -17,6 +17,7 @@
   "conversationLead": "We can begin with one module, one category, or an operational need that does not yet have a name.",
   "conversationAction": "Talk to us about your operation",
   "returnToSidon": "Return to Sidón",
+  "dumaLinkLabel": "Explore Duma AI within Sidón",
   "categories": {
     "mantenimiento-seguridad": {
       "name": "Maintenance and Safety",
