@@ -18,6 +18,19 @@
   "conversationAction": "Talk to us about your operation",
   "returnToSidon": "Return to Sidón",
   "dumaLinkLabel": "Explore Duma AI within Sidón",
+  "moduleNarratives": {
+    "mantiz": {
+      "headline": "Every asset has a history. Mantiz turns it into action.",
+      "lead": "Explore an operation, enter the team, and see how a signal becomes traceable work.",
+      "logic": { "title": "The same logic supports every intervention.", "lead": "Mantiz connects the asset to the need, the work order, the responsible person, and the evidence. When work concludes, the history is ready for the next decision.", "stages": ["Asset", "Need", "Work order", "Execution", "History"] },
+      "outcomes": [
+        { "label": "Visibility", "title": "Traceable work", "lead": "The operation knows what is open, who is addressing it, and what remains pending." },
+        { "label": "Responsibility", "title": "Clear ownership", "lead": "Each work order retains a responsible person and a visible status." },
+        { "label": "Continuity", "title": "Accumulated history", "lead": "The asset retains evidence and context for future interventions." }
+      ],
+      "continuity": { "title": "Every intervention improves the next.", "lead": "The value does not end when a ticket closes. The asset retains evidence, recurrence patterns, and technical context so the team does not start from zero again.", "duma": { "title": "There are two similar incidents on this asset.", "lead": "Before considering replacement, Duma suggests reviewing the power supply, dome temperature, and ventilation." } }
+    }
+  },
   "categories": {
     "mantenimiento-seguridad": {
       "name": "Maintenance and Safety",

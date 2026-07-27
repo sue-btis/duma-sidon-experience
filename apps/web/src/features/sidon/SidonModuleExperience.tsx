@@ -1,11 +1,7 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { useState } from "react";
 
-import { getSidonModuleImage, type SidonModuleContext } from "./sidonModuleImage";
 import styles from "./sidon.module.css";
 
 type Props = Readonly<{
@@ -19,19 +15,35 @@ type Props = Readonly<{
   moduleIcon: string;
   moduleName: string;
   moduleSlug: string;
+  narrative?: SidonModuleNarrative;
   solves: string;
 }>;
 
-export function SidonModuleExperience({ categoryName, categorySlug, contactAction, contactLead, contactTitle, description, locale, moduleIcon, moduleName, moduleSlug, solves }: Props) {
-  const [context, setContext] = useState<SidonModuleContext>("retail");
-  const [imageAvailable, setImageAvailable] = useState(true);
-  const imageSrc = getSidonModuleImage(moduleSlug, context);
+export type SidonModuleNarrative = Readonly<{
+  continuity: Readonly<{ duma?: Readonly<{ lead: string; title: string }>; lead: string; title: string }>;
+  headline: string;
+  lead: string;
+  logic: Readonly<{ lead: string; stages: readonly string[]; title: string }>;
+  outcomes: readonly Readonly<{ label: string; lead: string; title: string }>[];
+}>;
 
-  function selectContext(nextContext: SidonModuleContext) {
-    setContext(nextContext);
-    setImageAvailable(true);
-  }
+function NarrativeSections({ narrative }: Readonly<{ narrative: SidonModuleNarrative }>) {
+  return <>
+    <section aria-labelledby="module-logic" className={styles.moduleNarrative}>
+      <div><p>Sidón</p><h2 id="module-logic">{narrative.logic.title}</h2></div>
+      <div><span>{narrative.logic.lead}</span><ol>{narrative.logic.stages.map((stage) => <li key={stage}>{stage}</li>)}</ol></div>
+    </section>
+    <section className={styles.moduleOutcomes}>
+      {narrative.outcomes.map((outcome) => <article key={outcome.title}><p>{outcome.label}</p><h2>{outcome.title}</h2><span>{outcome.lead}</span></article>)}
+    </section>
+    <section aria-labelledby="module-continuity" className={styles.moduleContinuity}>
+      <div><p>Sidón</p><h2 id="module-continuity">{narrative.continuity.title}</h2></div>
+      <div><span>{narrative.continuity.lead}</span>{narrative.continuity.duma ? <article><p>Duma</p><h3>{narrative.continuity.duma.title}</h3><span>{narrative.continuity.duma.lead}</span></article> : null}</div>
+    </section>
+  </>;
+}
 
+export function SidonModuleExperience({ categoryName, categorySlug, contactAction, contactLead, contactTitle, description, locale, moduleIcon, moduleName, moduleSlug, narrative, solves }: Props) {
   return <main className={styles.modulePage}>
     <section aria-labelledby="module-title" className={styles.moduleHero}>
       <div className={styles.moduleCopy}>
@@ -41,22 +53,16 @@ export function SidonModuleExperience({ categoryName, categorySlug, contactActio
         </div>
         <div className={styles.moduleTitle}>
           <Image alt={moduleName} className={styles.moduleLogo} height={108} src={moduleIcon} unoptimized width={108} />
-          <h1 id="module-title">{moduleName}</h1>
+          <h1 id="module-title">{narrative?.headline ?? moduleName}</h1>
         </div>
-        <span>{description}</span>
-        <div aria-label={`${moduleName} context`} className={styles.moduleContext}>
-          {(["retail", "industrial"] as const).map((item) => <button aria-pressed={context === item} key={item} onClick={() => selectContext(item)} type="button">{item}</button>)}
-        </div>
-      </div>
-      <div aria-live="polite" className={styles.moduleImage}>
-        {imageAvailable ? <Image alt={`${moduleName} ${context}`} fill onError={() => setImageAvailable(false)} sizes="(max-width: 48rem) 100vw, 50vw" src={imageSrc} unoptimized /> : null}
+        <span>{narrative?.lead ?? description}</span>
       </div>
     </section>
-    <section className={styles.moduleSection}>
+    {narrative ? <NarrativeSections narrative={narrative} /> : <section className={styles.moduleSection}>
       <p>{categoryName}</p>
       <h2>{moduleName}</h2>
       <div><h3>{locale === "es" ? "Qué resuelve" : "What it solves"}</h3><span>{solves}</span></div>
-    </section>
+    </section>}
     <section aria-labelledby="module-conversation" className={styles.moduleConversation}>
       <div><p>{categoryName}</p><h2 id="module-conversation">{contactTitle}</h2></div>
       <div><span>{contactLead}</span><Link href={`/${locale}/sidon/conversemos/?source_path=%2Fsidon%2F${categorySlug}%2F${moduleSlug}&world=sidon&category=${categorySlug}&module=${moduleSlug}&interest=${moduleSlug}`}>{contactAction}<ArrowRight aria-hidden="true" size={17} /></Link></div>

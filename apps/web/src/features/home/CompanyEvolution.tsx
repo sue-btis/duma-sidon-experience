@@ -9,7 +9,7 @@ import styles from "./company-evolution.module.css";
 const phases = [
   {
     fills: ["Minimalist telecom tower in 3D.png", "Minimalist telecom station in isometric view.png", "Telecom towers with wireless link.png", "Minimalist telecom equipment installation model.png"],
-    image: "/home/company-evolution/phase-1.jpg", height: 940, width: 1672,
+    image: "/home/company-evolution/phase-1.png", height: 940, width: 1672,
   },
   {
     fills: ["Minimalist security camera installation diorama.png", "Minimalist sensor tower in isometric view.png", "White HVAC unit in 3D render.png", "Monochrome industrial substation diorama.png"],
