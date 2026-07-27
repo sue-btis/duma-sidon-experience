@@ -52,9 +52,9 @@ function sphere(count: number, characters: string, colors: readonly string[], se
   return points;
 }
 
-type Props = Readonly<{ radiusRem?: number; variant?: "all" | "digital" | "physical" }>;
+type Props = Readonly<{ mobileRadiusRem?: number; radiusRem?: number; variant?: "all" | "digital" | "physical" }>;
 
-export function LetterWorldsCanvas({ radiusRem = 0, variant = "all" }: Props) {
+export function LetterWorldsCanvas({ mobileRadiusRem, radiusRem = 0, variant = "all" }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -79,7 +79,7 @@ export function LetterWorldsCanvas({ radiusRem = 0, variant = "all" }: Props) {
     let isVisible = document.visibilityState === "visible";
     let lastFrame = 0;
     let width = 0;
-    const radius = radiusRem * Number.parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const rem = Number.parseFloat(getComputedStyle(document.documentElement).fontSize);
 
     const shouldAnimate = () => !media.matches && isIntersecting && isVisible;
     const resize = () => {
@@ -116,6 +116,7 @@ export function LetterWorldsCanvas({ radiusRem = 0, variant = "all" }: Props) {
     };
 
     const drawWorld = (world: World, time: number) => {
+      const radius = (width < 700 && mobileRadiusRem !== undefined ? mobileRadiusRem : radiusRem) * rem;
       const worldRadius = (radius || Math.min(width, height) * (width < 700 ? 0.33 : 0.34)) * world.scale;
       const centerX = width * world.x;
       const centerY = height * world.y;
@@ -136,12 +137,13 @@ export function LetterWorldsCanvas({ radiusRem = 0, variant = "all" }: Props) {
       drawOrbit(centerX, centerY, worldRadius, -0.22, world.color, world.opacity * 0.28, time * world.rotation * 2.2);
       drawOrbit(centerX, centerY, worldRadius * 1.05, 0.56, world.color, world.opacity * 0.18, -time * world.rotation * 1.6 + 2.3);
 
-      const pointCount = width < 1000 && world.scale < 1 ? 480 : world.points.length;
+      const pointCount = width < 1000 && world.scale < 0.8 ? 480 : world.points.length;
+      const pointStep = world.points.length / pointCount;
       context.textAlign = "center";
       context.textBaseline = "middle";
       context.font = `${Math.max(5.5, worldRadius * 0.022)}px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`;
       for (let index = 0; index < pointCount; index += 1) {
-        const point = world.points[index]!;
+        const point = world.points[Math.floor(index * pointStep)]!;
         const x = point.x * cosineY - point.z * sineY;
         const z = point.x * sineY + point.z * cosineY;
         const y = point.y * cosineX - z * sineX;
@@ -167,11 +169,18 @@ export function LetterWorldsCanvas({ radiusRem = 0, variant = "all" }: Props) {
     const render = (now: number) => {
       context.clearRect(0, 0, width, height);
       const time = media.matches ? 0 : now / 1000;
-      if (variant === "all" && width >= 700) {
-        drawWorld(worlds[1]!, time);
-        drawWorld(worlds[2]!, time);
+      const renderedWorlds = variant === "all" && width < 700
+        ? [
+            { ...worlds[0]!, scale: 0.92, y: 0.4 },
+            { ...worlds[1]!, scale: 0.4, x: 0.10, y: 0.90 },
+            { ...worlds[2]!, scale: 0.4, x: 0.90, y: 0.90 },
+          ]
+        : worlds;
+      if (variant === "all") {
+        drawWorld(renderedWorlds[1]!, time);
+        drawWorld(renderedWorlds[2]!, time);
       }
-      drawWorld(worlds[0]!, time);
+      drawWorld(renderedWorlds[0]!, time);
     };
     const frame = (now: number) => {
       if (!shouldAnimate()) {
@@ -227,7 +236,7 @@ export function LetterWorldsCanvas({ radiusRem = 0, variant = "all" }: Props) {
       media.removeEventListener("change", motionChange);
       document.removeEventListener("visibilitychange", visibilityChange);
     };
-  }, [radiusRem, variant]);
+  }, [mobileRadiusRem, radiusRem, variant]);
 
   return <canvas aria-hidden="true" className={styles.canvas} ref={canvasRef} />;
 }

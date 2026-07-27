@@ -15,6 +15,8 @@ describe("Sidón module narratives", () => {
     const page = renderToStaticMarkup(<SidonModuleExperience categoryName="Maintenance" categorySlug="maintenance" contactAction="Talk" contactLead="Lead" contactTitle="Title" description="Generic description" locale="en" moduleIcon="/mantiz.png" moduleName="Mantiz" moduleSlug="mantiz" narrative={narrative} solves="Generic solve" />);
 
     expect(page).toContain("Narrative headline");
+    expect(page).toContain("Mantiz");
+    expect(page).toContain("mantiz.png");
     expect(page).toContain("Moment title");
     expect(page).toContain("Role title");
     expect(page).toContain("prueba.png");

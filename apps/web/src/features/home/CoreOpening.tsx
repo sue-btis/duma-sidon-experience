@@ -12,7 +12,7 @@ export function CoreOpening({ attributes, scrollPrompt, title }: Props) {
   return (
     <section className={styles.openingScene} data-home-scene id="portada">
       <div className={styles.openingSticky}>
-        <WorldHero logo="/brand/ecosat-horizontal.png" logoAlt="Ecosat" logoHeight={1261} logoWidth={1504} priority title={title} />
+        <WorldHero logo="/brand/ecosat-horizontal.png" logoAlt="Ecosat" logoHeight={1261} logoWidth={1504} mobileRadiusRem={11} priority title={title} />
         <svg aria-hidden="true" className={styles.openingConnections} preserveAspectRatio="none" viewBox="0 0 1600 900">
           <defs>
             <filter height="300%" id="opening-soft-glow" width="300%" x="-100%" y="-100%">

@@ -32,11 +32,11 @@ export type SidonModuleNarrative = Readonly<{
 function NarrativeSections({ narrative }: Readonly<{ narrative: SidonModuleNarrative }>) {
   return <>
     <section aria-labelledby="module-logic" className={styles.moduleNarrative}>
-      <div><p>Sidón</p><h2 id="module-logic">{narrative.moment.title}</h2></div>
+      <div><h2 id="module-logic">{narrative.moment.title}</h2></div>
       <div><span>{narrative.moment.lead}</span></div>
     </section>
     <section aria-labelledby="module-continuity" className={styles.moduleContinuity}>
-      <div><p>Sidón</p><h2 id="module-continuity">{narrative.role.title}</h2></div>
+      <div><h2 id="module-continuity">{narrative.role.title}</h2></div>
       <div><span>{narrative.role.lead}</span></div>
     </section>
   </>;
@@ -53,10 +53,11 @@ export function SidonModuleExperience({ categoryName, categorySlug, contactActio
           <Image alt="Sidón" className={styles.moduleSidonBrand} height={104} src="/home/worlds/sidon.png" unoptimized width={104} />
           <p>{categoryName}</p>
         </div>
-        <div className={styles.moduleTitle}>
-          <Image alt={moduleName} className={styles.moduleLogo} height={108} src={moduleIcon} unoptimized width={108} />
-          <h1 id="module-title">{narrative?.headline ?? moduleName}</h1>
+        <div className={styles.moduleProduct}>
+          <Image alt="" className={styles.moduleLogo} height={72} src={moduleIcon} unoptimized width={72} />
+          <p className={styles.moduleName}>{moduleName}</p>
         </div>
+        <h1 id="module-title">{narrative?.headline ?? moduleName}</h1>
         <span>{narrative?.lead ?? description}</span>
       </div>
     </section>
