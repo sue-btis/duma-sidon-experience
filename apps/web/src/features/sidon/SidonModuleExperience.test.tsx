@@ -5,6 +5,7 @@ import { SidonModuleExperience, type SidonModuleNarrative } from "./SidonModuleE
 
 const narrative: SidonModuleNarrative = {
   headline: "Narrative headline",
+  ledger: { entries: [{ lead: "Request lead", title: "Request" }, { lead: "Execution lead", title: "Execution" }, { lead: "Evidence lead", title: "Evidence" }], title: "Intervention log" },
   lead: "Narrative lead",
   moment: { lead: "Moment lead", title: "Moment title" },
   role: { lead: "Role lead", title: "Role title" },
@@ -20,6 +21,8 @@ describe("Sidón module narratives", () => {
     expect(page).toContain("Moment title");
     expect(page).toContain("Role title");
     expect(page).toContain("prueba.png");
+    expect(page).toContain("Intervention log");
+    expect(page).toContain("Execution lead");
     expect(page).not.toContain("/_next/image?");
     expect(page).not.toContain("Generic solve");
   });

@@ -23,7 +23,8 @@
       "headline": "Maintenance works better when every intervention has context.",
       "lead": "Mantiz connects the asset, request, responsible person, and field execution. This lets preventive and corrective work retain the evidence and history needed to follow up on what remains and plan the next intervention.",
       "moment": { "title": "A request alone is not enough to resolve maintenance.", "lead": "The team needs to know which asset requires attention, who will take it on, what was done, and how it was documented. When that information is scattered, follow-through loses continuity." },
-      "role": { "title": "Every intervention retains the context it needs.", "lead": "Mantiz connects requests, preventive plans, and work orders to the relevant asset. The team can record ownership, progress, execution, and evidence, then review completed and pending work, along with interventions that require attention again." }
+      "role": { "title": "Every intervention retains the context it needs.", "lead": "Mantiz connects requests, preventive plans, and work orders to the relevant asset. The team can record ownership, progress, execution, and evidence, then review completed and pending work, along with interventions that require attention again." },
+      "ledger": { "title": "Intervention log", "entries": [{ "title": "Request", "lead": "The asset requiring attention and the outstanding work begin in the same record." }, { "title": "Execution", "lead": "The responsible person, progress, and completed work remain linked to that intervention." }, { "title": "Evidence", "lead": "The history retains the context needed to address what remains and plan what comes next." }] }
     }
   },
   "categories": {

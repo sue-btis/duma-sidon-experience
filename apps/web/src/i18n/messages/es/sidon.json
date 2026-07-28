@@ -23,7 +23,8 @@
       "headline": "El mantenimiento funciona mejor cuando cada intervención tiene contexto.",
       "lead": "Mantiz conecta el activo, la solicitud, el responsable y la ejecución en campo. Así, el trabajo preventivo y correctivo conserva evidencia e historial para dar seguimiento a lo pendiente y planear la siguiente intervención.",
       "moment": { "title": "Una solicitud no basta para resolver un mantenimiento.", "lead": "Hace falta saber qué activo requiere atención, quién se hará cargo, qué se realizó y cómo quedó documentado. Cuando esa información vive separada, el seguimiento pierde continuidad." },
-      "role": { "title": "Cada intervención mantiene el contexto que necesita.", "lead": "Mantiz vincula solicitudes, planes preventivos y órdenes de trabajo con el activo correspondiente. El equipo puede registrar responsables, avances, ejecución y evidencia; después, consultar lo atendido, lo pendiente y los trabajos que vuelven a requerir atención." }
+      "role": { "title": "Cada intervención mantiene el contexto que necesita.", "lead": "Mantiz vincula solicitudes, planes preventivos y órdenes de trabajo con el activo correspondiente. El equipo puede registrar responsables, avances, ejecución y evidencia; después, consultar lo atendido, lo pendiente y los trabajos que vuelven a requerir atención." },
+      "ledger": { "title": "Bitácora de una intervención", "entries": [{ "title": "Solicitud", "lead": "El activo que requiere atención y el trabajo pendiente comienzan en el mismo registro." }, { "title": "Ejecución", "lead": "El responsable, el avance y lo realizado permanecen vinculados a esa intervención." }, { "title": "Evidencia", "lead": "El historial conserva el contexto para atender lo pendiente y planear lo siguiente." }] }
     }
   },
   "categories": {

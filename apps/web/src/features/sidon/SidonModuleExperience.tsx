@@ -24,13 +24,22 @@ type Props = Readonly<{
 
 export type SidonModuleNarrative = Readonly<{
   headline: string;
+  ledger?: Readonly<{ entries: ReadonlyArray<Readonly<{ lead: string; title: string }>>; title: string }>;
   lead: string;
   moment: Readonly<{ lead: string; title: string }>;
   role: Readonly<{ lead: string; title: string }>;
 }>;
 
-function NarrativeSections({ narrative }: Readonly<{ narrative: SidonModuleNarrative }>) {
+function MantizLedger({ ledger }: Readonly<{ ledger: NonNullable<SidonModuleNarrative["ledger"]> }>) {
+  return <section aria-labelledby="module-ledger" className={styles.moduleLedger}>
+    <p id="module-ledger">{ledger.title}</p>
+    <ol>{ledger.entries.map((entry, index) => <li key={entry.title}><b>{String(index + 1).padStart(2, "0")}</b><div><h2>{entry.title}</h2><span>{entry.lead}</span></div></li>)}</ol>
+  </section>;
+}
+
+function NarrativeSections({ moduleSlug, narrative }: Readonly<{ moduleSlug: string; narrative: SidonModuleNarrative }>) {
   return <>
+    {moduleSlug === "mantiz" && narrative.ledger ? <MantizLedger ledger={narrative.ledger} /> : null}
     <section aria-labelledby="module-logic" className={styles.moduleNarrative}>
       <div><h2 id="module-logic">{narrative.moment.title}</h2></div>
       <div><span>{narrative.moment.lead}</span></div>
@@ -43,7 +52,7 @@ function NarrativeSections({ narrative }: Readonly<{ narrative: SidonModuleNarra
 }
 
 export function SidonModuleExperience({ categoryName, categorySlug, contactAction, contactLead, contactTitle, description, locale, moduleIcon, moduleName, moduleSlug, narrative, solves }: Props) {
-  return <main className={styles.modulePage}>
+  return <main className={`${styles.modulePage} ${moduleSlug === "mantiz" ? styles.moduleMantiz : ""}`}>
     <section aria-labelledby="module-title" className={styles.moduleHero}>
       <div className={styles.moduleImage}>
         <Image alt="" fill priority sizes="(max-width: 48rem) 100vw, 50vw" src={temporaryHeroImage} unoptimized />
@@ -61,7 +70,7 @@ export function SidonModuleExperience({ categoryName, categorySlug, contactActio
         <span>{narrative?.lead ?? description}</span>
       </div>
     </section>
-    {narrative ? <NarrativeSections narrative={narrative} /> : <section className={styles.moduleSection}>
+    {narrative ? <NarrativeSections moduleSlug={moduleSlug} narrative={narrative} /> : <section className={styles.moduleSection}>
       <p>{categoryName}</p>
       <h2>{moduleName}</h2>
       <div><h3>{locale === "es" ? "Qué resuelve" : "What it solves"}</h3><span>{solves}</span></div>
