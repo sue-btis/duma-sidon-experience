@@ -20,6 +20,7 @@ describe("Sidón module narratives", () => {
     expect(page).toContain("Scene title");
     expect(page).toContain("moduleVisual");
     expect(page).toContain("Conversemos");
+    expect(page).toContain("mantiz-industrial.png");
     expect(page).toContain("prueba.png");
     expect(page).not.toContain("/_next/image?");
     expect(page).not.toContain("Generic solve");

@@ -5,8 +5,23 @@ import { ArrowRight } from "lucide-react";
 import styles from "./sidon.module.css";
 import { SidonModuleFlow, type SidonModuleFlow as SidonModuleFlowData } from "./SidonModuleFlow";
 
-// ponytail: shared mock hero image until approved module assets replace it.
-const temporaryHeroImage = "/home/worlds/sidon/modulos-imagenes/prueba.png";
+const moduleHeroImages: Record<string, string> = {
+  argos: "/home/worlds/sidon/modulos-imagenes/argos-industrial.png",
+  axessone: "/home/worlds/sidon/modulos-imagenes/axessone-industrial.png",
+  byblos: "/home/worlds/sidon/modulos-imagenes/byblos-industrial.png",
+  industrial: "/home/worlds/sidon/modulos-imagenes/industrial-industrial.png",
+  mantiz: "/home/worlds/sidon/modulos-imagenes/mantiz-industrial.png",
+  "nod-ia": "/home/worlds/sidon/modulos-imagenes/nod-ia-industrial.png",
+  polar: "/home/worlds/sidon/modulos-imagenes/polar-industrial.png",
+  rondines: "/home/worlds/sidon/modulos-imagenes/rondines-industrial.png",
+  sense: "/home/worlds/sidon/modulos-imagenes/sense-industrial.png",
+  "smart-audits": "/home/worlds/sidon/modulos-imagenes/smart-audits-industrial.png",
+  talos: "/home/worlds/sidon/modulos-imagenes/talos-industrial.png",
+  wellness: "/home/worlds/sidon/modulos-imagenes/wellness-industrial.png",
+};
+
+// ponytail: shared flow image until stage-specific assets are approved.
+const temporaryFlowImage = "/home/worlds/sidon/modulos-imagenes/prueba.png";
 
 type Props = Readonly<{
   categoryName: string;
@@ -32,6 +47,8 @@ export type SidonModuleNarrative = Readonly<{
 }>;
 
 export function SidonModuleExperience({ categoryName, categorySlug, contactAction, contactEyebrow, contactLead, contactTitle, description, locale, moduleIcon, moduleName, moduleSlug, narrative, solves }: Props) {
+  const heroImage = moduleHeroImages[moduleSlug] ?? temporaryFlowImage;
+
   return <main className={`${styles.modulePage} ${moduleSlug === "mantiz" ? styles.moduleMantiz : ""}`}>
     <section aria-labelledby="module-title" className={styles.moduleHero}>
       <div className={styles.moduleCopy}>
@@ -48,10 +65,10 @@ export function SidonModuleExperience({ categoryName, categorySlug, contactActio
         {narrative?.tags ? <ul className={styles.moduleTags}>{narrative.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul> : null}
       </div>
       <div className={styles.moduleVisual}>
-        <Image alt="" fill priority sizes="(max-width: 48rem) 100vw, 50vw" src={temporaryHeroImage} unoptimized />
+        <Image alt="" fill priority sizes="(max-width: 48rem) 100vw, 50vw" src={heroImage} unoptimized />
       </div>
     </section>
-    {narrative?.flow ? <SidonModuleFlow flow={narrative.flow} imageSrc={temporaryHeroImage} /> : <section className={styles.moduleSection}>
+    {narrative?.flow ? <SidonModuleFlow flow={narrative.flow} imageSrc={temporaryFlowImage} /> : <section className={styles.moduleSection}>
       <p>{categoryName}</p>
       <h2>{moduleName}</h2>
       <div><h3>{locale === "es" ? "Qué resuelve" : "What it solves"}</h3><span>{solves}</span></div>
