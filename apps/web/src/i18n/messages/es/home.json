@@ -23,6 +23,7 @@
   "evolution": {
     "ariaLabel": "Evolución de Ecosat",
     "navigationLabel": "Etapas de evolución de Ecosat",
+    "skipLabel": "Saltar animación",
     "origin": { "label": "Chihuahua Matriz", "headline": "Donde todo comenzó.", "location": "Chihuahua, México", "body": "Nuestra primera base marcó el inicio de una trayectoria construida alrededor de la conectividad, la tecnología y la confianza de nuestros clientes." },
     "timeline": { "headline": "Una historia de evolución constante.", "body": "Cada etapa refleja la capacidad de Ecosat para adaptarse, crecer e integrar nuevas tecnologías a las necesidades de operación." },
     "technologyLabel": "Tecnología adquirida",

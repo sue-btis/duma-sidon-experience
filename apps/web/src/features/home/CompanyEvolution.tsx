@@ -29,9 +29,9 @@ const cameras = [
 
 export type CompanyEvolutionStep = Readonly<{ label?: string; headline: string; body: string; technology?: string; technologyLabel?: string; location?: string; kind: "map" | "phase" | "transition" }>;
 
-type Props = Readonly<{ ariaLabel: string; navigationLabel: string; steps: readonly CompanyEvolutionStep[] }>;
+type Props = Readonly<{ ariaLabel: string; navigationLabel: string; skipLabel: string; steps: readonly CompanyEvolutionStep[] }>;
 
-export function CompanyEvolution({ ariaLabel, navigationLabel, steps }: Props) {
+export function CompanyEvolution({ ariaLabel, navigationLabel, skipLabel, steps }: Props) {
   const journeyRef = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -137,6 +137,7 @@ export function CompanyEvolution({ ariaLabel, navigationLabel, steps }: Props) {
             })}
           </ol>
         </nav>
+        <a className={styles.skipJourney} href="#industrias">{skipLabel}</a>
       </div>
     </section>
   );

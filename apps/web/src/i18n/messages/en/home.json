@@ -23,6 +23,7 @@
   "evolution": {
     "ariaLabel": "Ecosat evolution",
     "navigationLabel": "Ecosat evolution stages",
+    "skipLabel": "Skip animation",
     "origin": { "label": "Chihuahua Headquarters", "headline": "Where it all began.", "location": "Chihuahua, Mexico", "body": "Our first location marked the beginning of a journey built around connectivity, technology, and the trust of our customers." },
     "timeline": { "headline": "A story of continuous evolution.", "body": "Each stage reflects Ecosat’s ability to adapt, grow, and integrate new technologies around operational needs." },
     "technologyLabel": "Technology acquired",
