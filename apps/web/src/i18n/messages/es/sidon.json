@@ -16,15 +16,479 @@
   "conversationTitle": "Conversemos sobre tu operación",
   "conversationLead": "Podemos comenzar con un módulo, una categoría o una necesidad operativa que todavía no tenga nombre.",
   "conversationAction": "Conversemos sobre tu operación",
+  "moduleContactEyebrow": "Conversemos",
   "returnToSidon": "Volver a Sidón",
   "dumaLinkLabel": "Explorar Duma AI dentro de Sidón",
   "moduleNarratives": {
     "mantiz": {
-      "headline": "El mantenimiento funciona mejor cuando cada intervención tiene contexto.",
-      "lead": "Mantiz conecta el activo, la solicitud, el responsable y la ejecución en campo. Así, el trabajo preventivo y correctivo conserva evidencia e historial para dar seguimiento a lo pendiente y planear la siguiente intervención.",
-      "moment": { "title": "Una solicitud no basta para resolver un mantenimiento.", "lead": "Hace falta saber qué activo requiere atención, quién se hará cargo, qué se realizó y cómo quedó documentado. Cuando esa información vive separada, el seguimiento pierde continuidad." },
-      "role": { "title": "Cada intervención mantiene el contexto que necesita.", "lead": "Mantiz vincula solicitudes, planes preventivos y órdenes de trabajo con el activo correspondiente. El equipo puede registrar responsables, avances, ejecución y evidencia; después, consultar lo atendido, lo pendiente y los trabajos que vuelven a requerir atención." },
-      "ledger": { "title": "Bitácora de una intervención", "entries": [{ "title": "Solicitud", "lead": "El activo que requiere atención y el trabajo pendiente comienzan en el mismo registro." }, { "title": "Ejecución", "lead": "El responsable, el avance y lo realizado permanecen vinculados a esa intervención." }, { "title": "Evidencia", "lead": "El historial conserva el contexto para atender lo pendiente y planear lo siguiente." }] }
+      "headline": "El mantenimiento necesita orden antes de generar resultados.",
+      "lead": "Mantiz reúne activos, solicitudes, órdenes de trabajo y ejecución técnica dentro de un mismo proceso. Cada intervención conserva responsables, evidencia, costos e historial para mejorar el control y la planeación.",
+      "tags": [
+        "Activos",
+        "Órdenes",
+        "Responsables",
+        "Evidencia",
+        "Historial"
+      ],
+      "flow": {
+        "title": "Un activo, de la necesidad al historial.",
+        "intro": "El recorrido muestra cómo una necesidad preventiva o correctiva se convierte en trabajo ejecutado, revisado y trazable.",
+        "stages": [
+          {
+            "name": "Necesidad vinculada al activo",
+            "description": "Se registra un plan preventivo o una solicitud correctiva con el contexto del equipo.",
+            "sceneTitle": "El trabajo comienza desde el activo.",
+            "sceneCopy": "La necesidad queda conectada con la ubicación, la información y el historial del equipo desde el primer momento.",
+            "status": "REGISTRADA"
+          },
+          {
+            "name": "Orden y asignación",
+            "description": "La necesidad se convierte en una orden de trabajo y se asigna al responsable correspondiente.",
+            "sceneTitle": "Cada intervención tiene responsable.",
+            "sceneCopy": "La orden concentra alcance, prioridad, tiempos y recursos para que el trabajo pueda coordinarse sin perder contexto.",
+            "status": "ASIGNADA"
+          },
+          {
+            "name": "Ejecución en campo",
+            "description": "El equipo técnico realiza el trabajo y documenta tiempos, comentarios, fotografías y refacciones.",
+            "sceneTitle": "La ejecución deja evidencia.",
+            "sceneCopy": "Lo realizado queda respaldado por información de campo que permite comprobar la atención y entender su costo.",
+            "status": "EN EJECUCIÓN"
+          },
+          {
+            "name": "Revisión y cierre",
+            "description": "La intervención se revisa, se aprueba y actualiza el historial de servicio del activo.",
+            "sceneTitle": "El cierre fortalece la siguiente decisión.",
+            "sceneCopy": "La resolución, los costos y la evidencia permanecen disponibles para reconocer recurrencias y planear mejor.",
+            "status": "RESUELTA"
+          }
+        ]
+      }
+    },
+    "talos": {
+      "headline": "Cada incidente necesita un responsable y una respuesta clara.",
+      "lead": "Talos convierte cada reporte en un proceso visible que conecta evaluación, investigación, contención y evidencia. El caso permanece activo hasta completar las acciones requeridas y satisfacer los criterios de cierre.",
+      "tags": [
+        "Incidentes",
+        "Contención",
+        "Responsables",
+        "Evidencia",
+        "Resolución"
+      ],
+      "flow": {
+        "title": "Un incidente, hasta comprobar su resolución.",
+        "intro": "La secuencia sigue un caso desde el reporte inicial hasta un cierre controlado y documentado.",
+        "stages": [
+          {
+            "name": "Reporte y evaluación",
+            "description": "Se registra el incidente con descripción, fotografías y una evaluación inicial.",
+            "sceneTitle": "Reportar es el comienzo.",
+            "sceneCopy": "El caso nace con identidad, contexto y evidencia suficiente para iniciar una respuesta organizada.",
+            "status": "ABIERTO"
+          },
+          {
+            "name": "Investigación y severidad",
+            "description": "Se documenta lo ocurrido y se clasifica el caso según el flujo configurado para la operación.",
+            "sceneTitle": "El contexto define la respuesta.",
+            "sceneCopy": "La investigación reúne la información necesaria para comprender el incidente y determinar qué acciones deben realizarse.",
+            "status": "EN INVESTIGACIÓN"
+          },
+          {
+            "name": "Contención y acciones",
+            "description": "Las acciones se distribuyen entre responsables y cada avance se respalda con evidencia.",
+            "sceneTitle": "La responsabilidad se convierte en acción.",
+            "sceneCopy": "Cada persona documenta lo realizado; las acciones regresan al registro central sin fragmentar el seguimiento.",
+            "status": "EN CONTENCIÓN"
+          },
+          {
+            "name": "Validación y cierre",
+            "description": "El caso puede cerrarse únicamente cuando los requisitos y acciones pendientes han sido completados.",
+            "sceneTitle": "La resolución debe poder comprobarse.",
+            "sceneCopy": "El cierre conserva decisiones, responsables y evidencia para dejar una historia clara de la respuesta.",
+            "status": "CERRADO"
+          }
+        ]
+      }
+    },
+    "smartAudits": {
+      "headline": "Evidencia clara para auditorías más confiables.",
+      "lead": "Smart Audits organiza tareas programadas, protege la captura fotográfica y analiza la evidencia con Duma AI. El auditor conserva la decisión final y puede solicitar una nueva ejecución cuando el estándar no se cumple.",
+      "tags": [
+        "Tareas",
+        "Evidencia",
+        "Duma AI",
+        "Cumplimiento",
+        "Seguimiento"
+      ],
+      "flow": {
+        "title": "Una tarea, de la evidencia a la corrección.",
+        "intro": "El flujo concentra los cambios operativos reales: capturar evidencia válida, tomar una decisión controlada y completar o repetir la tarea.",
+        "stages": [
+          {
+            "name": "Captura protegida",
+            "description": "La persona recibe la tarea, toma las fotografías desde la app y Duma AI comprueba que la evidencia sea clara y utilizable.",
+            "sceneTitle": "La evidencia se protege desde el primer momento.",
+            "sceneCopy": "El estándar y la captura aparecen dentro de una misma composición. Cuando la imagen no es suficiente, se solicita una nueva toma antes del envío.",
+            "status": "EN CAPTURA"
+          },
+          {
+            "name": "Análisis y decisión",
+            "description": "Duma AI analiza la condición observada y presenta el resultado al auditor, quien conserva el veredicto final.",
+            "sceneTitle": "La inteligencia apoya; el auditor decide.",
+            "sceneCopy": "El análisis aporta consistencia sin aprobar ni rechazar automáticamente. La decisión de cumple o no cumple permanece visiblemente bajo control humano.",
+            "status": "EN REVISIÓN"
+          },
+          {
+            "name": "Finalización o reasignación",
+            "description": "La tarea se completa cuando cumple el estándar o se reasigna para corregirla y documentarla nuevamente.",
+            "sceneTitle": "El hallazgo permanece activo hasta atenderse.",
+            "sceneCopy": "La nueva ejecución regresa al mismo ciclo de evidencia y revisión, manteniendo trazabilidad sobre el resultado.",
+            "status": "COMPLETADA / REASIGNADA"
+          }
+        ]
+      }
+    },
+    "argos": {
+      "headline": "La operación también puede observarse mientras ocurre.",
+      "lead": "Argos analiza video conectado con Duma AI para detectar condiciones configuradas mientras suceden. Cada evento conserva evidencia, contexto y responsabilidad hasta convertirse en un caso resuelto y consultable.",
+      "tags": [
+        "Video",
+        "Detección",
+        "Evidencia",
+        "Casos",
+        "Resolución"
+      ],
+      "flow": {
+        "title": "Un evento, desde la detección hasta la resolución.",
+        "intro": "La secuencia comienza cuando aparece una condición relevante y sigue el caso hasta su cierre e incorporación al historial.",
+        "stages": [
+          {
+            "name": "Detección y evidencia",
+            "description": "Duma AI identifica una condición configurada y conserva una evidencia con fecha, hora, cámara y área.",
+            "sceneTitle": "El momento relevante queda identificado.",
+            "sceneCopy": "La comparación ocurre dentro de un campo de cámara estable, manteniendo el contexto operativo sin recurrir a una vista de vigilancia masiva.",
+            "status": "DETECTADO"
+          },
+          {
+            "name": "Caso y respuesta",
+            "description": "El evento se convierte en un caso, se notifica y se asigna a la persona responsable de atenderlo.",
+            "sceneTitle": "La evidencia activa una respuesta.",
+            "sceneCopy": "El registro conecta la condición observada con la responsabilidad, las acciones realizadas y el avance del seguimiento.",
+            "status": "EN ATENCIÓN"
+          },
+          {
+            "name": "Resolución e historial",
+            "description": "El caso se resuelve y permanece disponible como evidencia histórica para seguimiento, comparación o auditoría.",
+            "sceneTitle": "Cada evento deja una historia verificable.",
+            "sceneCopy": "La resolución conserva el contexto completo y permite reconocer condiciones recurrentes entre áreas o ubicaciones.",
+            "status": "RESUELTO"
+          }
+        ]
+      }
+    },
+    "nodIa": {
+      "headline": "Cada espacio de exhibición debe mostrar lo que la operación espera.",
+      "lead": "NOD-IA compara continuamente los espacios visibles con el planograma para detectar faltantes por SKU. Cuando existe contexto de inventario, ayuda a distinguir una necesidad de reposición de una condición de abasto.",
+      "tags": [
+        "Planograma",
+        "SKU",
+        "Disponibilidad",
+        "Reposición",
+        "Verificación"
+      ],
+      "flow": {
+        "title": "Un faltante, hasta recuperar la disponibilidad.",
+        "intro": "El recorrido compara lo esperado con lo observado, añade el contexto disponible y comprueba visualmente la recuperación del producto.",
+        "stages": [
+          {
+            "name": "Comparación y detección",
+            "description": "NOD-IA compara la exhibición con el planograma e identifica el SKU y la posición donde existe un faltante.",
+            "sceneTitle": "Lo esperado y lo visible dejan de coincidir.",
+            "sceneCopy": "Una sola composición muestra la posición esperada y el espacio observado, evitando separar dos momentos visualmente casi idénticos.",
+            "status": "FALTANTE"
+          },
+          {
+            "name": "Contexto y respuesta",
+            "description": "Cuando existe inventario conectado, el faltante se dirige hacia reposición local o seguimiento de abasto.",
+            "sceneTitle": "El contexto cambia la respuesta.",
+            "sceneCopy": "La disponibilidad registrada ayuda a distinguir un problema de ejecución de una condición más amplia de suministro.",
+            "status": "EN ATENCIÓN"
+          },
+          {
+            "name": "Reposición y verificación",
+            "description": "La persona confirma la acción y el monitoreo comprueba que el producto vuelve a estar visible.",
+            "sceneTitle": "La disponibilidad se confirma visualmente.",
+            "sceneCopy": "La posición restaurada cierra el ciclo y conserva el tiempo de recuperación para análisis posterior.",
+            "status": "RESTABLECIDO"
+          }
+        ]
+      }
+    },
+    "rondines": {
+      "headline": "Cada recorrido debe dejar evidencia de que ocurrió.",
+      "lead": "Rondines valida cada punto de un recorrido mediante código QR, ubicación y fotografía tomada desde la app. La operación conserva evidencia de cobertura incluso cuando parte de la ruta ocurre sin conexión.",
+      "tags": [
+        "Rutas",
+        "QR",
+        "Ubicación",
+        "Fotografías",
+        "Cobertura"
+      ],
+      "flow": {
+        "title": "Un recorrido, comprobado punto por punto.",
+        "intro": "La ruta se resume en validación, continuidad y cierre. La operación sin conexión se integra como una condición posible, no como un paso obligatorio.",
+        "stages": [
+          {
+            "name": "Inicio y validación de puntos",
+            "description": "La persona inicia la ruta y valida cada checkpoint mediante código QR, ubicación y fotografía tomada desde la app.",
+            "sceneTitle": "Cada punto demuestra que fue revisado.",
+            "sceneCopy": "El comienzo de la ruta y la primera validación se presentan juntos para establecer cómo se comprueba la presencia y la inspección.",
+            "status": "EN CURSO"
+          },
+          {
+            "name": "Continuidad del recorrido",
+            "description": "La ruta avanza punto por punto y conserva localmente la evidencia cuando atraviesa una zona sin conexión.",
+            "sceneTitle": "La comprobación continúa durante toda la ruta.",
+            "sceneCopy": "Los siguientes checkpoints muestran repetición controlada. Si la señal se pierde, la evidencia permanece protegida hasta poder sincronizarse.",
+            "status": "EN RECORRIDO"
+          },
+          {
+            "name": "Finalización y registro",
+            "description": "El recorrido concluye y deja disponibles los puntos completados, pendientes, duración, fotografías y observaciones.",
+            "sceneTitle": "La cobertura queda documentada.",
+            "sceneCopy": "La sincronización, cuando fue necesaria, forma parte del cierre y no requiere una etapa visual independiente.",
+            "status": "COMPLETADO"
+          }
+        ]
+      }
+    },
+    "wellness": {
+      "headline": "Atención organizada para cuidar mejor a cada persona.",
+      "lead": "Wellness conecta agenda, consultas y expediente médico laboral dentro de una misma historia de cuidado. Cada atención actualiza el contexto autorizado para dar continuidad sin exponer información clínica a perfiles no permitidos.",
+      "tags": [
+        "Citas",
+        "Consultas",
+        "Expediente",
+        "Tratamiento",
+        "Confidencialidad"
+      ],
+      "flow": {
+        "title": "Una atención, dentro de una historia continua.",
+        "intro": "El recorrido conserva el expediente como eje y agrupa los resultados opcionales de la consulta dentro del mismo momento de atención.",
+        "stages": [
+          {
+            "name": "Solicitud y programación",
+            "description": "Se solicita la atención y se define especialidad, profesional y horario, incluyendo autorización únicamente cuando el proceso la requiere.",
+            "sceneTitle": "La atención comienza con el contexto correcto.",
+            "sceneCopy": "La necesidad de la persona se conecta con la disponibilidad del servicio sin presentar la aprobación como una condición universal.",
+            "status": "PROGRAMADA"
+          },
+          {
+            "name": "Consulta y resultado de atención",
+            "description": "El profesional realiza la consulta y, cuando corresponde, registra tratamiento, receta, medicamento o incapacidad.",
+            "sceneTitle": "Cada consulta continúa la misma historia.",
+            "sceneCopy": "Los distintos resultados aparecen como ramas posibles de la atención, no como pasos que toda persona deba recorrer.",
+            "status": "ATENDIDA"
+          },
+          {
+            "name": "Seguimiento y expediente",
+            "description": "La evolución queda registrada y el expediente se actualiza para futuras atenciones autorizadas.",
+            "sceneTitle": "El seguimiento evita comenzar desde cero.",
+            "sceneCopy": "El equipo médico conserva continuidad, mientras otros perfiles reciben únicamente la información operativa que les corresponde.",
+            "status": "EN SEGUIMIENTO"
+          }
+        ]
+      }
+    },
+    "byblos": {
+      "headline": "Aprender mejor también significa estar mejor preparado.",
+      "lead": "Byblos organiza capacitación, práctica, evaluación y certificación mediante recorridos interactivos adaptados a cada rol. La operación puede comprobar avance, conocimiento y vigencia sin reducir el aprendizaje a contenido pasivo.",
+      "tags": [
+        "Rutas",
+        "Práctica",
+        "Evaluación",
+        "Certificación",
+        "Vigencia"
+      ],
+      "flow": {
+        "title": "Del contenido a una preparación demostrable.",
+        "intro": "El flujo distingue aprendizaje, comprobación y certificación, integrando la asignación de la ruta dentro del inicio de la experiencia.",
+        "stages": [
+          {
+            "name": "Ruta y aprendizaje interactivo",
+            "description": "La persona recibe una ruta relacionada con su rol, revisa el contenido, toma decisiones y practica.",
+            "sceneTitle": "Cada responsabilidad necesita una experiencia distinta.",
+            "sceneCopy": "La asignación y la primera actividad forman un mismo momento, centrado en el conocimiento que la persona necesita aplicar.",
+            "status": "EN PROGRESO"
+          },
+          {
+            "name": "Evaluación y retroalimentación",
+            "description": "Una actividad comprueba la comprensión mediante preguntas, decisiones o evidencia práctica y muestra qué debe reforzarse.",
+            "sceneTitle": "El avance debe poder demostrarse.",
+            "sceneCopy": "La retroalimentación conecta la práctica con un resultado verificable sin reducir la experiencia a una presentación pasiva.",
+            "status": "EVALUANDO"
+          },
+          {
+            "name": "Certificación y vigencia",
+            "description": "Al cumplir los requisitos se emite la certificación y comienza el periodo de vigencia y renovación definido.",
+            "sceneTitle": "La preparación permanece visible.",
+            "sceneCopy": "El resultado conserva persona, ruta, fecha, vigencia y próxima renovación como una capacidad que puede seguirse.",
+            "status": "CERTIFICADO"
+          }
+        ]
+      }
+    },
+    "axessOne": {
+      "headline": "El acceso correcto comienza con una identidad validada.",
+      "lead": "AxessOne conecta registro previo, identidad, documentos, permisos, acceso físico y presencia dentro de un mismo proceso. Cada movimiento conserva el contexto necesario para agilizar futuras visitas y mantener una historia revisable.",
+      "tags": [
+        "Identidad",
+        "Requisitos",
+        "Permisos",
+        "Acceso",
+        "Historial"
+      ],
+      "flow": {
+        "title": "Una identidad, del registro al acceso recurrente.",
+        "intro": "La historia central compara el primer ingreso con una visita posterior más ágil, manteniendo identidad, requisitos y autorización conectados.",
+        "stages": [
+          {
+            "name": "Registro y validación",
+            "description": "La identidad se registra y se revisan los datos, documentos y condiciones necesarias para el acceso.",
+            "sceneTitle": "El acceso comienza antes de la puerta.",
+            "sceneCopy": "La persona, el motivo y los requisitos se conectan para construir una decisión de acceso con contexto.",
+            "status": "EN VALIDACIÓN"
+          },
+          {
+            "name": "Llegada, autorización y acceso",
+            "description": "La persona presenta el medio de identificación definido y las reglas confirman el permiso antes de habilitar el acceso.",
+            "sceneTitle": "La puerta ejecuta una decisión previa.",
+            "sceneCopy": "La llegada, la notificación, la autorización y el movimiento físico forman un mismo momento operativo.",
+            "status": "AUTORIZADO"
+          },
+          {
+            "name": "Retorno con identidad reutilizada",
+            "description": "Una visita posterior utiliza la información autorizada que sigue vigente para validar el nuevo ingreso con mayor agilidad.",
+            "sceneTitle": "La siguiente entrada puede comenzar con el contexto anterior.",
+            "sceneCopy": "El contraste con el primer registro muestra el valor del perfil reutilizable sin prometer un tiempo universal de acceso.",
+            "status": "ACCESO VALIDADO"
+          }
+        ]
+      }
+    },
+    "sense": {
+      "headline": "Haz visible cada condición que puede afectar la operación.",
+      "lead": "Sense conecta activos, espacios y equipos para supervisar variables, reconocer cambios relevantes y coordinar una respuesta. Cuando la infraestructura lo permite, también gestiona equipos mediante acciones autorizadas, horarios y reglas configuradas.",
+      "tags": [
+        "Variables",
+        "Alertas",
+        "Contexto",
+        "Respuesta",
+        "Control"
+      ],
+      "flow": {
+        "title": "De una condición visible a una respuesta verificada.",
+        "intro": "El flujo relaciona señales, dirige la atención y comprueba el resultado. Las acciones conectadas aparecen únicamente cuando la infraestructura lo permite.",
+        "stages": [
+          {
+            "name": "Condición y contexto detectados",
+            "description": "Sense relaciona variables y estados para hacer visible una desviación y explicar mejor qué está ocurriendo.",
+            "sceneTitle": "Varias condiciones explican mejor el cambio.",
+            "sceneCopy": "El estado normal funciona como referencia dentro de la misma composición; no necesita convertirse en una etapa independiente.",
+            "status": "FUERA DE RANGO"
+          },
+          {
+            "name": "Alerta y coordinación",
+            "description": "La condición se comunica a la persona responsable y puede escalarse cuando permanece activa o requiere otro nivel de atención.",
+            "sceneTitle": "La señal correcta llega a la persona correcta.",
+            "sceneCopy": "La alerta conserva activo, ubicación, duración y contexto para coordinar una respuesta útil.",
+            "status": "EN ATENCIÓN"
+          },
+          {
+            "name": "Respuesta y verificación",
+            "description": "La operación atiende la condición y, cuando existe infraestructura compatible, puede aplicar una acción remota, un horario o una regla configurada.",
+            "sceneTitle": "La respuesta debe poder comprobarse.",
+            "sceneCopy": "Sense confirma el comportamiento posterior y conserva el historial para distinguir un evento aislado de una condición recurrente.",
+            "status": "RESTABLECIDO"
+          }
+        ]
+      }
+    },
+    "polar": {
+      "headline": "Cada viaje debe conservar las condiciones que la carga necesita.",
+      "lead": "Polar supervisa ubicación, temperatura, puerta y eventos relevantes durante el transporte. La operación puede responder mientras el viaje continúa y conservar un registro verificable de las condiciones desde la salida hasta la llegada.",
+      "tags": [
+        "Viaje",
+        "Ubicación",
+        "Temperatura",
+        "Alertas",
+        "Evidencia"
+      ],
+      "flow": {
+        "title": "Un viaje, con sus condiciones siempre visibles.",
+        "intro": "La configuración se integra en la salida y la historia se concentra en monitoreo, respuesta durante el trayecto y evidencia al llegar.",
+        "stages": [
+          {
+            "name": "Viaje activo y monitoreo",
+            "description": "Polar muestra origen, destino, unidad, avance, ubicación, temperatura y estado de puerta durante el trayecto.",
+            "sceneTitle": "La carga permanece visible mientras se mueve.",
+            "sceneCopy": "El contexto configurado aparece junto con la salida, evitando dedicar una escena completa a un formulario de preparación.",
+            "status": "EN TRÁNSITO"
+          },
+          {
+            "name": "Evento, alerta y respuesta",
+            "description": "Una desviación relevante conserva su lugar, momento y condiciones, y activa el seguimiento definido para el proyecto.",
+            "sceneTitle": "Responder durante el viaje cambia el resultado.",
+            "sceneCopy": "La temperatura, la puerta, las detenciones y el avance de ruta aportan el contexto necesario para atender el evento.",
+            "status": "EN ATENCIÓN"
+          },
+          {
+            "name": "Llegada y registro verificable",
+            "description": "Al finalizar, Polar consolida la ruta, las variables, los eventos y las respuestas dentro de un informe consultable.",
+            "sceneTitle": "El recorrido termina con una historia completa.",
+            "sceneCopy": "El registro respalda la revisión de las condiciones observadas sin presentarse como certificación externa ni garantía de calidad.",
+            "status": "FINALIZADO"
+          }
+        ]
+      }
+    },
+    "industrial": {
+      "headline": "Haz visible dónde se pierde capacidad productiva.",
+      "lead": "Industrial conecta señales de equipos, estados de producción y objetivos operativos para medir disponibilidad, rendimiento y calidad. La operación puede identificar qué pérdida reduce más la capacidad y dónde concentrar la mejora.",
+      "tags": [
+        "OEE",
+        "Estados",
+        "Paros",
+        "Ciclos",
+        "Calidad"
+      ],
+      "flow": {
+        "title": "De la producción en vivo a una pérdida priorizada.",
+        "intro": "La secuencia establece el objetivo, muestra cómo se pierde capacidad y hace converger el OEE con la oportunidad que merece mayor atención.",
+        "stages": [
+          {
+            "name": "Línea operando contra un objetivo",
+            "description": "La producción se observa dentro del contexto de línea, turno, producto, ritmo y objetivo esperado.",
+            "sceneTitle": "La producción tiene una referencia medible.",
+            "sceneCopy": "El estado en vivo y el avance contra el plan establecen la base para interpretar las pérdidas que aparecen durante el turno.",
+            "status": "EN PRODUCCIÓN"
+          },
+          {
+            "name": "Pérdidas observadas",
+            "description": "Los paros, microparos, ciclos lentos y rechazos muestran cómo disminuyen la disponibilidad, el rendimiento y la calidad.",
+            "sceneTitle": "Cada pérdida deja una consecuencia productiva.",
+            "sceneCopy": "Las tres dimensiones se revelan sobre la misma línea para mantener clara la relación entre causa, duración y efecto.",
+            "status": "CON DESVIACIONES"
+          },
+          {
+            "name": "OEE y pérdida prioritaria",
+            "description": "Industrial reúne las tres dimensiones y señala cuál está reduciendo más la capacidad del turno.",
+            "sceneTitle": "El resultado explica dónde concentrar la mejora.",
+            "sceneCopy": "El OEE y la pérdida de mayor impacto convergen en una misma escena final, evitando separar el indicador de su propósito operativo.",
+            "status": "PRIORIZADO"
+          }
+        ]
+      }
     }
   },
   "categories": {
@@ -33,35 +497,100 @@
       "headline": "Activos disponibles. Incidentes bajo control.",
       "intro": "Organiza el mantenimiento y la atención de incidentes con procesos claros, responsables definidos y seguimiento visible para toda la operación.",
       "solves": "Da estructura a dos responsabilidades esenciales de la operación: mantener los activos disponibles y asegurar que cada incidente reciba atención, seguimiento y una resolución documentada.",
-      "modules": { "mantiz": { "name": "Mantiz", "description": "Mantiene el trabajo preventivo y correctivo organizado para que los activos sigan disponibles.", "href": "/mantiz/" }, "talos": { "name": "Talos", "description": "Gestiona incidentes con reporte, contención, análisis de causa, acciones correctivas, evidencia y escalamiento según su severidad.", "href": "/talos/" } }
+      "modules": {
+        "mantiz": {
+          "name": "Mantiz",
+          "description": "Mantiene el trabajo preventivo y correctivo organizado para que los activos sigan disponibles.",
+          "href": "/mantiz/"
+        },
+        "talos": {
+          "name": "Talos",
+          "description": "Gestiona incidentes con reporte, contención, análisis de causa, acciones correctivas, evidencia y escalamiento según su severidad.",
+          "href": "/talos/"
+        }
+      }
     },
     "auditorias": {
       "name": "Auditorías",
       "headline": "Lo que se ejecuta debe poder comprobarse.",
       "intro": "Verifica estándares, detecta desviaciones y conserva evidencia confiable de la operación.",
       "solves": "Hace visible si una actividad, condición o recorrido se ejecutó correctamente y conserva evidencia para darle seguimiento.",
-      "modules": { "smartAudits": { "name": "Smart Audits", "description": "Auditorías fotográficas con validación de captura y análisis asistido por Duma.", "href": "/smart-audits/" }, "argos": { "name": "Argos", "description": "Duma analiza video en tiempo real para detectar condiciones configuradas y conservar evidencia.", "href": "/argos/" }, "nodIa": { "name": "NOD-IA", "description": "Usa IA para detectar faltantes de producto en anaqueles, vitrinas, refrigeradores y otros espacios de exhibición.", "href": "/nod-ia/" }, "rondines": { "name": "Rondines", "description": "Valida recorridos de seguridad con códigos QR, geolocalización y evidencia fotográfica.", "href": "/rondines/" } }
+      "modules": {
+        "smartAudits": {
+          "name": "Smart Audits",
+          "description": "Auditorías fotográficas con validación de captura y análisis asistido por Duma.",
+          "href": "/smart-audits/"
+        },
+        "argos": {
+          "name": "Argos",
+          "description": "Duma analiza video en tiempo real para detectar condiciones configuradas y conservar evidencia.",
+          "href": "/argos/"
+        },
+        "nodIa": {
+          "name": "NOD-IA",
+          "description": "Usa IA para detectar faltantes de producto en anaqueles, vitrinas, refrigeradores y otros espacios de exhibición.",
+          "href": "/nod-ia/"
+        },
+        "rondines": {
+          "name": "Rondines",
+          "description": "Valida recorridos de seguridad con códigos QR, geolocalización y evidencia fotográfica.",
+          "href": "/rondines/"
+        }
+      }
     },
     "personas": {
       "name": "Personas",
       "headline": "Personas cuidadas. Equipos preparados.",
       "intro": "Cuida el bienestar de cada persona y fortalece su preparación para participar con confianza en la operación.",
       "solves": "Las personas no pueden dar lo mejor de sí sin la atención que necesitan y la preparación que su rol exige.",
-      "modules": { "wellness": { "name": "Wellness", "description": "Organiza y gestiona citas y expedientes médicos laborales para acompañar el bienestar de cada persona con privacidad y continuidad.", "href": "/wellness/" }, "byblos": { "name": "Byblos", "description": "Ofrece capacitación y certificaciones mediante juegos y retos interactivos adaptados a cada rol.", "href": "/byblos/" } }
+      "modules": {
+        "wellness": {
+          "name": "Wellness",
+          "description": "Organiza y gestiona citas y expedientes médicos laborales para acompañar el bienestar de cada persona con privacidad y continuidad.",
+          "href": "/wellness/"
+        },
+        "byblos": {
+          "name": "Byblos",
+          "description": "Ofrece capacitación y certificaciones mediante juegos y retos interactivos adaptados a cada rol.",
+          "href": "/byblos/"
+        }
+      }
     },
     "acceso": {
       "name": "Acceso",
       "headline": "La persona correcta. El acceso correcto.",
       "intro": "Organiza y valida el ingreso de visitantes, colaboradores, contratistas, proveedores y vehículos.",
       "solves": "Una puerta no controla el acceso por sí sola. La operación necesita saber quién puede ingresar, comprobar que cumple las condiciones requeridas y conservar evidencia de cada entrada.",
-      "modules": { "axessOne": { "name": "AxessOne", "description": "Unifica registro previo, validación documental, permisos y control de acceso para personas y vehículos.", "href": "/axessone/" } }
+      "modules": {
+        "axessOne": {
+          "name": "AxessOne",
+          "description": "Unifica registro previo, validación documental, permisos y control de acceso para personas y vehículos.",
+          "href": "/axessone/"
+        }
+      }
     },
     "monitoreo": {
       "name": "Monitoreo",
       "headline": "Ve lo que importa. Actúa a tiempo.",
       "intro": "Supervisa activos, procesos y condiciones con datos continuos, alertas y acción conectada.",
       "solves": "Cuando una condición cambia y nadie la ve, la operación reacciona tarde.",
-      "modules": { "sense": { "name": "Sense", "description": "Monitorea variables, genera alertas y permite actuar sobre equipos conectados.", "href": "/sense/" }, "polar": { "name": "Polar", "description": "Supervisa y certifica las condiciones de transporte mediante temperatura, ubicación y estado de puertas.", "href": "/polar/" }, "industrial": { "name": "Industrial", "description": "Plataforma OEE que integra PLCs, medidores, equipos y variables de proceso para medir disponibilidad, rendimiento y calidad.", "href": "/industrial/" } }
+      "modules": {
+        "sense": {
+          "name": "Sense",
+          "description": "Monitorea variables, genera alertas y permite actuar sobre equipos conectados.",
+          "href": "/sense/"
+        },
+        "polar": {
+          "name": "Polar",
+          "description": "Supervisa y certifica las condiciones de transporte mediante temperatura, ubicación y estado de puertas.",
+          "href": "/polar/"
+        },
+        "industrial": {
+          "name": "Industrial",
+          "description": "Plataforma OEE que integra PLCs, medidores, equipos y variables de proceso para medir disponibilidad, rendimiento y calidad.",
+          "href": "/industrial/"
+        }
+      }
     }
   }
 }
