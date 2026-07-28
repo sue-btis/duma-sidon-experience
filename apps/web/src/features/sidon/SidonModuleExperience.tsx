@@ -68,7 +68,7 @@ export function SidonModuleExperience({ categoryName, categorySlug, contactActio
         <Image alt="" fill priority sizes="(max-width: 48rem) 100vw, 50vw" src={heroImage} unoptimized />
       </div>
     </section>
-    {narrative?.flow ? <SidonModuleFlow flow={narrative.flow} imageSrc={temporaryFlowImage} /> : <section className={styles.moduleSection}>
+    {narrative?.flow ? <SidonModuleFlow flow={narrative.flow} heroImage={heroImage} moduleSlug={moduleSlug} /> : <section className={styles.moduleSection}>
       <p>{categoryName}</p>
       <h2>{moduleName}</h2>
       <div><h3>{locale === "es" ? "Qué resuelve" : "What it solves"}</h3><span>{solves}</span></div>

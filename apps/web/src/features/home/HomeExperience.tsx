@@ -13,6 +13,7 @@ import {
 import { CoreOpening } from "./CoreOpening";
 import { CompanyEvolution } from "./CompanyEvolution";
 import { HomeSceneController } from "./HomeSceneController";
+import { HomeParticleJourney } from "./HomeParticleJourney";
 import { WorldCircuit } from "./WorldCircuit";
 import styles from "./home-experience.module.css";
 
@@ -63,6 +64,7 @@ export async function HomeExperience({ locale }: Props) {
   return (
     <main className={styles.home}>
       <HomeSceneController />
+      <HomeParticleJourney />
 
       <CoreOpening
         attributes={[t("attributeInfrastructure"), t("attributeTechnology"), t("attributeConnectivity"), t("attributeIntelligence"), t("attributeTrust")]}

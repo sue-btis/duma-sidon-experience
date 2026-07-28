@@ -17,16 +17,17 @@ type Props = Readonly<{
   screenReaderTitle?: string;
   title?: string;
   titleId?: string;
+  titlePosition?: "center" | "lower";
   variant?: "all" | "digital" | "physical";
 }>;
 
-export function WorldHero({ children, description, logo, logoAlt, logoHeight, logoWidth, meta, mobileRadiusRem, priority = false, screenReaderTitle, title, titleId, variant = "all" }: Props) {
+export function WorldHero({ children, description, logo, logoAlt, logoHeight, logoWidth, meta, mobileRadiusRem, priority = false, screenReaderTitle, title, titleId, titlePosition = "center", variant = "all" }: Props) {
   return (
     <div className={styles.hero}>
       <LetterWorldsCanvas mobileRadiusRem={mobileRadiusRem} radiusRem={20} variant={variant} />
       {screenReaderTitle ? <h1 className={styles.srOnly}>{screenReaderTitle}</h1> : null}
-      <div className={styles.identity}>
-        <Image alt={logoAlt} className={styles.logo} height={logoHeight} priority={priority} src={logo} unoptimized width={logoWidth} />
+      <div className={`${styles.identity} ${titlePosition === "lower" ? styles.identityLower : ""}`}>
+        <Image alt={logoAlt} className={styles.logo} data-home-particle-logo height={logoHeight} priority={priority} src={logo} unoptimized width={logoWidth} />
         {title ? <h1 className={styles.title} id={titleId}>{title}</h1> : null}
       </div>
       {children}

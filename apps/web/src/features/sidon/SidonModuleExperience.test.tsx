@@ -2,6 +2,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 
 import { SidonModuleExperience, type SidonModuleNarrative } from "./SidonModuleExperience";
+import { getPhaseImage } from "./SidonModuleFlow";
 
 const narrative: SidonModuleNarrative = {
   flow: { intro: "Flow intro", stages: [{ description: "Step detail", name: "Request", sceneCopy: "Scene detail", sceneTitle: "Scene title", status: "Open" }], title: "Flow title" },
@@ -10,6 +11,11 @@ const narrative: SidonModuleNarrative = {
 };
 
 describe("Sidón module narratives", () => {
+  it("uses the standard phase filename for every Mantiz stage", () => {
+    expect(getPhaseImage("mantiz", 1)).toContain("mantiz-fase-02.png");
+    expect(getPhaseImage("mantiz", 3)).toContain("mantiz-fase-04.png");
+  });
+
   it("renders the approved narrative instead of the generic module section", () => {
     const page = renderToStaticMarkup(<SidonModuleExperience categoryName="Maintenance" categorySlug="maintenance" contactAction="Talk" contactEyebrow="Conversemos" contactLead="Lead" contactTitle="Title" description="Generic description" locale="en" moduleIcon="/mantiz.png" moduleName="Mantiz" moduleSlug="mantiz" narrative={narrative} solves="Generic solve" />);
 
@@ -19,9 +25,10 @@ describe("Sidón module narratives", () => {
     expect(page).toContain("Flow title");
     expect(page).toContain("Scene title");
     expect(page).toContain("moduleVisual");
+    expect(page).toContain("moduleFlowImage");
     expect(page).toContain("Conversemos");
     expect(page).toContain("mantiz-industrial.png");
-    expect(page).toContain("prueba.png");
+    expect(page).toContain("mantiz-fase-01.png");
     expect(page).not.toContain("/_next/image?");
     expect(page).not.toContain("Generic solve");
   });

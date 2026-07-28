@@ -64,9 +64,9 @@ export function LetterWorldsCanvas({ mobileRadiusRem, radiusRem = 0, variant = "
 
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     const homeWorlds: readonly World[] = [
-      { color: "96, 175, 232", opacity: 0.93, points: sphere(2250, "ECOSAT0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ······", palettes.core, 3), rotation: 0.065, scale: 1.12, tilt: -0.12, x: 0.5, y: 0.43 },
-      { color: "126, 92, 221", opacity: 0.68, points: sphere(1200, "CCTVAVBMSRFIDHVACFIREACCESSDATA······", palettes.physical, 7), rotation: -0.04, scale: 0.62, tilt: 0.18, x: 0.05, y: 0.76 },
-      { color: "47, 173, 132", opacity: 0.68, points: sphere(1200, "01<>/{}[]APIJSONSQLAIOTDATAFLOW······", palettes.digital, 11), rotation: 0.046, scale: 0.62, tilt: -0.2, x: 0.95, y: 0.76 },
+      { color: "96, 175, 232", opacity: 0.93, points: sphere(2000, "ECOSAT0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ······", palettes.core, 3), rotation: 0.065, scale: 1.12, tilt: -0.12, x: 0.5, y: 0.43 },
+      { color: "126, 92, 221", opacity: 0.68, points: sphere(1000, "CCTVAVBMSRFIDHVACFIREACCESSDATA······", palettes.physical, 7), rotation: -0.04, scale: 0.62, tilt: 0.18, x: 0.05, y: 0.76 },
+      { color: "47, 173, 132", opacity: 0.68, points: sphere(1000, "01<>/{}[]APIJSONSQLAIOTDATAFLOW······", palettes.digital, 11), rotation: 0.046, scale: 0.62, tilt: -0.2, x: 0.95, y: 0.76 },
     ];
     const worlds: readonly World[] = variant === "all" ? homeWorlds : [
       variant === "physical"
@@ -137,7 +137,7 @@ export function LetterWorldsCanvas({ mobileRadiusRem, radiusRem = 0, variant = "
       drawOrbit(centerX, centerY, worldRadius, -0.22, world.color, world.opacity * 0.28, time * world.rotation * 2.2);
       drawOrbit(centerX, centerY, worldRadius * 1.05, 0.56, world.color, world.opacity * 0.18, -time * world.rotation * 1.6 + 2.3);
 
-      const pointCount = width < 1000 && world.scale < 0.8 ? 480 : world.points.length;
+      const pointCount = Math.min(world.points.length, width < 1000 && world.scale < 0.8 ? 480 : world.points.length);
       const pointStep = world.points.length / pointCount;
       context.textAlign = "center";
       context.textBaseline = "middle";

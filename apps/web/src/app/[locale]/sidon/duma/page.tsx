@@ -7,5 +7,5 @@ export default async function DumaPage({ params }: Readonly<{ params: Promise<{ 
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <div className="bg-background"><div className="fixed inset-x-0 top-0 z-10 px-4 pt-5 sm:px-6"><EcosatNavbar locale={locale} page="sidon" /></div><DumaExperience locale={locale} /></div>;
+  return <div className="bg-background"><div className="fixed inset-x-0 top-0 z-10 px-4 pt-5 sm:px-6"><EcosatNavbar locale={locale} page="sidon" path="/sidon/duma/" /></div><DumaExperience locale={locale} /></div>;
 }

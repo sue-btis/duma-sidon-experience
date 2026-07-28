@@ -38,9 +38,9 @@ export function WorldCircuit({ close, integration, lead, locale, sidon, title }:
           </span>
         </Link>
 
-        <div className={styles.ecosatNode} data-home-animation>
+        <div className={styles.ecosatNode} data-home-animation data-home-particle-final>
           <div aria-hidden="true" className={styles.ecosatParticles} />
-          <Image alt="Ecosat" className={styles.ecosatResolvedLogo} height={1261} src="/brand/ecosat-horizontal.png" unoptimized width={1504} />
+          <Image alt="Ecosat" className={styles.ecosatResolvedLogo} height={1261} src="/home/worlds/ecosat-horizontal.png" unoptimized width={1504} />
         </div>
 
         <Link className={`${styles.worldNode} ${styles.sidonNode}`} href={`/${locale}/sidon/`}>

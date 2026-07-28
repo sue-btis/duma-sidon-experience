@@ -4,7 +4,8 @@
   padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 3rem) 5rem;
 }
 
-.scene { min-height: 100svh; position: relative; }
+.scene { position: relative; }
+.intro { min-height: 100svh; }
 
 .intro,
 .conversation {
@@ -113,7 +114,3 @@
   .solutionIntroCopy { grid-column: auto; }
 }
 
-@media (min-width: 1001px) and (prefers-reduced-motion: no-preference) {
-  :global(html):has(.integrationLanding) { scroll-snap-type: y mandatory; }
-  .scene { scroll-snap-align: start; scroll-snap-stop: always; }
-}
