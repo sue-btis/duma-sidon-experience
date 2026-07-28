@@ -27,7 +27,7 @@ const cameras = [
   { x: 4400, y: 1900, zoom: 0.55 },
 ] as const;
 
-export type CompanyEvolutionStep = Readonly<{ label?: string; headline: string; body: string; location?: string; kind: "map" | "phase" | "transition" }>;
+export type CompanyEvolutionStep = Readonly<{ label?: string; headline: string; body: string; technology?: string; technologyLabel?: string; location?: string; kind: "map" | "phase" | "transition" }>;
 
 type Props = Readonly<{ ariaLabel: string; navigationLabel: string; steps: readonly CompanyEvolutionStep[] }>;
 
@@ -109,6 +109,9 @@ export function CompanyEvolution({ ariaLabel, navigationLabel, steps }: Props) {
             <h2>{current.headline}</h2>
             {current.location && <p className={styles.location}>{current.location}</p>}
             <p className={styles.storyBody}>{current.body}</p>
+            {current.technology && current.technologyLabel && (
+              <p className={styles.technology}><strong>{current.technologyLabel}</strong>{current.technology}</p>
+            )}
           </article>
         </div>
         <nav aria-label={navigationLabel} className={styles.journeyNavigation}>

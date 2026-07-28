@@ -76,9 +76,9 @@ export async function HomeExperience({ locale }: Props) {
         steps={[
           { body: t("evolution.origin.body"), headline: t("evolution.origin.headline"), kind: "map", label: t("evolution.origin.label"), location: t("evolution.origin.location") },
           { body: t("evolution.timeline.body"), headline: t("evolution.timeline.headline"), kind: "transition" },
-          { body: t("evolution.radio.body"), headline: t("evolution.radio.headline"), kind: "phase", label: t("evolution.radio.label") },
-          { body: t("evolution.integration.body"), headline: t("evolution.integration.headline"), kind: "phase", label: t("evolution.integration.label") },
-          { body: t("evolution.solutions.body"), headline: t("evolution.solutions.headline"), kind: "phase", label: t("evolution.solutions.label") },
+          { body: t("evolution.radio.body"), headline: t("evolution.radio.headline"), kind: "phase", label: t("evolution.radio.label"), technology: t("evolution.radio.technology"), technologyLabel: t("evolution.technologyLabel") },
+          { body: t("evolution.integration.body"), headline: t("evolution.integration.headline"), kind: "phase", label: t("evolution.integration.label"), technology: t("evolution.integration.technology"), technologyLabel: t("evolution.technologyLabel") },
+          { body: t("evolution.solutions.body"), headline: t("evolution.solutions.headline"), kind: "phase", label: t("evolution.solutions.label"), technology: t("evolution.solutions.technology"), technologyLabel: t("evolution.technologyLabel") },
           { body: t("evolution.expansion.body"), headline: t("evolution.expansion.headline"), kind: "transition" },
           { body: t("evolution.presence.body"), headline: t("evolution.presence.headline"), kind: "map", label: t("evolution.presence.label") },
         ]}
