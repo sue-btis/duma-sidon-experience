@@ -8,16 +8,16 @@ import styles from "./company-evolution.module.css";
 
 const phases = [
   {
-    fills: ["Minimalist telecom tower in 3D.png", "Minimalist telecom station in isometric view.png", "Telecom towers with wireless link.png", "Minimalist telecom equipment installation model.png"],
-    image: "/home/company-evolution/phase-1.png", height: 940, width: 1672,
+    fills: ["Minimalist telecom tower in 3D.webp", "Minimalist telecom station in isometric view.webp", "Telecom towers with wireless link.webp", "Minimalist telecom equipment installation model.webp"],
+    image: "/home/company-evolution/phase-1.webp", height: 940, width: 1672,
   },
   {
-    fills: ["Minimalist security camera installation diorama.png", "Minimalist sensor tower in isometric view.png", "White HVAC unit in 3D render.png", "Monochrome industrial substation diorama.png"],
-    image: "/home/company-evolution/phase-3.png", height: 941, width: 1672,
+    fills: ["Minimalist security camera installation diorama.webp", "Minimalist sensor tower in isometric view.webp", "White HVAC unit in 3D render.webp", "Monochrome industrial substation diorama.webp"],
+    image: "/home/company-evolution/phase-3.webp", height: 941, width: 1672,
   },
   {
-    fills: ["Futuristic monitoring station illustration.png", "Minimalist white drone on pedestal.png", "Monochrome rover on minimalist platform.png", "Minimalist white delivery truck mod.png"],
-    image: "/home/company-evolution/phase-4.png", height: 941, width: 1672,
+    fills: ["Futuristic monitoring station illustration.webp", "Minimalist white drone on pedestal.webp", "Monochrome rover on minimalist platform.webp", "Minimalist white delivery truck mod.webp"],
+    image: "/home/company-evolution/phase-4.webp", height: 941, width: 1672,
   },
 ] as const;
 

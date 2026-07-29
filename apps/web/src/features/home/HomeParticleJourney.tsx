@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
+import { advanceFinalJourney, getFinalJourneyProgress, initializeJourney, type FinalJourneyState } from "./homeParticleJourneyState";
 import styles from "./home-experience.module.css";
 
 type Particle = {
@@ -24,27 +25,31 @@ export function HomeParticleJourney() {
     const canvas = canvasRef.current;
     const context = canvas?.getContext("2d");
     const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
-    if (!canvas || !context || reducedMotion.matches) return;
+    if (!canvas || !context || reducedMotion.matches || navigator.hardwareConcurrency <= 4) return;
 
     const logo = new Image();
-    let animationFrame = 0;
-    let finalStartedAt = 0;
-    let startedAt = 0;
+    let animationFrame: number | undefined;
+    let finalState: FinalJourneyState = { completed: false, startedAt: null };
+    let startedAt: number | null = null;
     let width = 0;
     let height = 0;
     let logoHeight = 0;
     let logoWidth = 0;
     let particles: Particle[] = [];
 
+    const isFinalInView = (rect?: DOMRect) => Boolean(rect && rect.top < height * 0.78 && rect.bottom > height * 0.12);
+
     const createParticles = () => {
       const pixelRatio = Math.min(devicePixelRatio || 1, 2);
-      width = innerWidth;
-      height = innerHeight;
-      canvas.width = width * pixelRatio;
-      canvas.height = height * pixelRatio;
-      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+      const bounds = canvas.getBoundingClientRect();
+      width = bounds.width;
+      height = bounds.height;
+      canvas.width = Math.round(width * pixelRatio);
+      canvas.height = Math.round(height * pixelRatio);
+      context.setTransform(canvas.width / width, 0, 0, canvas.height / height, 0, 0);
 
-      logoWidth = Math.min(340, width * 0.58);
+      const openingLogo = document.querySelector<HTMLElement>("img[data-home-particle-logo]");
+      logoWidth = openingLogo?.getBoundingClientRect().width ?? Math.min(280, width * 0.574);
       logoHeight = logoWidth * (1261 / 1504);
       const sample = 1;
       const target = document.createElement("canvas");
@@ -73,6 +78,7 @@ export function HomeParticleJourney() {
     };
 
     const draw = (now: number) => {
+      animationFrame = undefined;
       context.clearRect(0, 0, width, height);
       const opening = document.querySelector<HTMLElement>("#portada");
       const industries = document.querySelector<HTMLElement>("#industrias");
@@ -83,21 +89,19 @@ export function HomeParticleJourney() {
       const finalCenter = finalRect
         ? { x: finalRect.left + finalRect.width / 2, y: finalRect.top + finalRect.height / 2 }
         : { x: width / 2, y: height / 2 };
-      const intro = easeOut(clamp((now - startedAt) / 1300));
+      const intro = easeOut(clamp((now - (startedAt ?? now)) / 1300));
       const dissolve = openingRect ? easeOut(clamp(-openingRect.top / (height * 0.35))) : 1;
       const industryPresence = industriesRect
         ? clamp((height * 0.92 - industriesRect.top) / (height * 0.35)) * clamp((industriesRect.bottom - height * 0.08) / (height * 0.35))
         : 0;
-      const finalInView = Boolean(finalRect && finalRect.top < height * 0.78 && finalRect.bottom > height * 0.12);
-      if (finalInView && !finalStartedAt) finalStartedAt = now;
-      if (!finalInView) finalStartedAt = 0;
-      const finalProgress = finalStartedAt && finalRect ? easeOut(clamp((now - finalStartedAt) / 1100)) : 0;
+      const finalInView = isFinalInView(finalRect);
+      finalState = advanceFinalJourney(finalState, finalInView, now);
+      const finalProgress = getFinalJourneyProgress(finalState, now);
       const time = now * 0.001;
-      const mode = finalProgress > 0 ? "final" : industryPresence > 0 ? "industry" : dissolve < 1 ? "opening" : "hidden";
-      const staticLogo = (mode === "opening" && intro === 1 && dissolve === 0) || (mode === "final" && finalProgress === 1);
+      const mode = finalState.startedAt !== null ? "final" : industryPresence > 0 ? "industry" : dissolve < 1 ? "opening" : "hidden";
+      const staticLogo = (mode === "opening" && intro === 1 && dissolve === 0) || finalState.completed;
       if (mode === "hidden" || staticLogo) {
         delete document.documentElement.dataset.homeParticles;
-        animationFrame = requestAnimationFrame(draw);
         return;
       }
       document.documentElement.dataset.homeParticles = "active";
@@ -127,26 +131,45 @@ export function HomeParticleJourney() {
         context.fill();
       }
       context.globalAlpha = 1;
-      animationFrame = requestAnimationFrame(draw);
+      if (intro < 1 || mode === "industry" || (mode === "final" && !finalState.completed)) {
+        animationFrame = requestAnimationFrame(draw);
+      }
     };
 
+    const scheduleDraw = () => {
+      if (animationFrame === undefined) animationFrame = requestAnimationFrame(draw);
+    };
+
+    const finalNode = document.querySelector<HTMLElement>("[data-home-particle-final]");
+    const finalObserver = new IntersectionObserver(([entry]) => {
+      if (entry?.isIntersecting || finalState.startedAt === null || finalState.completed) return;
+      finalState = advanceFinalJourney(finalState, false, performance.now());
+      delete document.documentElement.dataset.homeParticles;
+      scheduleDraw();
+    });
+    if (finalNode) finalObserver.observe(finalNode);
+
     const start = () => {
-      cancelAnimationFrame(animationFrame);
+      if (animationFrame !== undefined) cancelAnimationFrame(animationFrame);
+      animationFrame = undefined;
       createParticles();
-      startedAt = performance.now();
-      finalStartedAt = 0;
-      document.documentElement.dataset.homeParticles = "active";
-      animationFrame = requestAnimationFrame(draw);
+      const initialization = initializeJourney(startedAt, performance.now());
+      startedAt = initialization.startedAt;
+      if (initialization.shouldActivate) document.documentElement.dataset.homeParticles = "active";
+      scheduleDraw();
     };
 
     logo.addEventListener("load", start, { once: true });
     logo.src = "/home/worlds/ecosat-horizontal.png";
     addEventListener("resize", start);
+    addEventListener("scroll", scheduleDraw, { passive: true });
 
     return () => {
-      cancelAnimationFrame(animationFrame);
+      if (animationFrame !== undefined) cancelAnimationFrame(animationFrame);
+      finalObserver.disconnect();
       delete document.documentElement.dataset.homeParticles;
       removeEventListener("resize", start);
+      removeEventListener("scroll", scheduleDraw);
     };
   }, []);
 

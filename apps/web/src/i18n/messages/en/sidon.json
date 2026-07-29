@@ -19,77 +19,78 @@
   "moduleContactEyebrow": "Let's talk",
   "returnToSidon": "Return to Sidón",
   "dumaLinkLabel": "Explore Duma AI within Sidón",
+  "dumaGame": { "invitationTitle": "Want to play?", "invitationBody": "Spot anomalies before Duma connects them.", "invitationAction": "Play with Duma" },
   "moduleNarratives": {
     "mantiz": {
       "headline": "Maintenance needs order before it can produce results.",
-      "lead": "Mantiz brings assets, requests, work orders, and technical execution into one process. Every intervention retains ownership, evidence, costs, and history for better control and planning.",
-      "tags": ["Assets", "Work orders", "Ownership", "Evidence", "History"],
+      "lead": "Mantiz brings assets, requests, work orders, and technical execution into one process. Every intervention retains responsible parties, evidence, costs, and history for better control and planning.",
+      "tags": ["Assets", "Work orders", "Responsible parties", "Evidence", "History"],
       "flow": { "title": "One asset, from need to history.", "intro": "The journey shows how a preventive or corrective need becomes completed, reviewed, and traceable work.", "stages": [
         { "name": "Need linked to the asset", "description": "A preventive plan or corrective request is recorded with the equipment's context.", "sceneTitle": "Work starts with the asset.", "sceneCopy": "From the outset, the need is connected to the equipment's location, information, and history.", "status": "RECORDED" },
-        { "name": "Work order and assignment", "description": "The need becomes a work order and is assigned to the appropriate person.", "sceneTitle": "Every intervention has an owner.", "sceneCopy": "The order brings together scope, priority, timing, and resources so work stays coordinated.", "status": "ASSIGNED" },
+        { "name": "Work order and assignment", "description": "The need becomes a work order and is assigned to the appropriate person.", "sceneTitle": "Every intervention has a responsible party.", "sceneCopy": "The order brings together scope, priority, timing, and resources so work can be coordinated without losing context.", "status": "ASSIGNED" },
         { "name": "Field execution", "description": "The technical team carries out the work and documents time, comments, photographs, and spare parts.", "sceneTitle": "Execution leaves evidence.", "sceneCopy": "What was done is supported by field information that makes it possible to verify the work and understand its cost.", "status": "IN PROGRESS" },
-        { "name": "Review and close", "description": "The intervention is reviewed, approved, and updates the asset's service history.", "sceneTitle": "Closing strengthens the next decision.", "sceneCopy": "The resolution, costs, and evidence remain available to identify recurring patterns and plan better.", "status": "RESOLVED" }
+        { "name": "Review and closure", "description": "The intervention is reviewed, approved, and updates the asset's service history.", "sceneTitle": "Closing strengthens the next decision.", "sceneCopy": "The resolution, costs, and evidence remain available to identify recurring patterns and plan better.", "status": "RESOLVED" }
       ] }
     },
     "talos": {
-      "headline": "Every incident needs an owner and a clear response.",
-      "lead": "Talos turns each report into a visible process that connects assessment, investigation, containment, and evidence until all required actions meet the closing criteria.",
-      "tags": ["Incidents", "Containment", "Ownership", "Evidence", "Resolution"],
-      "flow": { "title": "One incident, until its resolution is verified.", "intro": "The sequence follows a case from the initial report to a controlled and documented close.", "stages": [
+      "headline": "Every incident needs a responsible party and a clear response.",
+      "lead": "Talos turns each report into a visible process that connects assessment, investigation, containment, and evidence. The case remains active until the required actions are completed and the closure criteria are met.",
+      "tags": ["Incidents", "Containment", "Responsible parties", "Evidence", "Resolution"],
+      "flow": { "title": "One incident, until its resolution is verified.", "intro": "The sequence follows a case from the initial report to a controlled and documented closure.", "stages": [
         { "name": "Report and assessment", "description": "The incident is recorded with a description, photographs, and an initial assessment.", "sceneTitle": "Reporting is the beginning.", "sceneCopy": "The case starts with identity, context, and sufficient evidence to begin an organized response.", "status": "OPEN" },
-        { "name": "Investigation and severity", "description": "What happened is documented and the case is classified under the operation's configured workflow.", "sceneTitle": "Context defines the response.", "sceneCopy": "The investigation gathers the information needed to determine the required actions.", "status": "UNDER INVESTIGATION" },
-        { "name": "Containment and actions", "description": "Actions are distributed among responsible people and each advance is supported by evidence.", "sceneTitle": "Responsibility becomes action.", "sceneCopy": "Each person documents what was done; actions return to the central record without fragmenting follow-up.", "status": "IN CONTAINMENT" },
-        { "name": "Validation and close", "description": "The case closes only after required actions and criteria have been completed.", "sceneTitle": "Resolution must be verifiable.", "sceneCopy": "The close retains decisions, ownership, and evidence as a clear response history.", "status": "CLOSED" }
+        { "name": "Investigation and severity", "description": "What happened is documented and the case is classified under the operation's configured workflow.", "sceneTitle": "Context defines the response.", "sceneCopy": "The investigation gathers the information needed to understand the incident and determine which actions must be taken.", "status": "UNDER INVESTIGATION" },
+        { "name": "Containment and actions", "description": "Actions are assigned to responsible people, and every progress update is supported by evidence.", "sceneTitle": "Responsibility becomes action.", "sceneCopy": "Each person documents what was done; actions return to the central record without fragmenting follow-up.", "status": "IN CONTAINMENT" },
+        { "name": "Validation and closure", "description": "The case can be closed only when the requirements and pending actions have been completed.", "sceneTitle": "Resolution must be verifiable.", "sceneCopy": "The closure preserves decisions, responsible parties, and evidence to leave a clear history of the response.", "status": "CLOSED" }
       ] }
     },
     "smartAudits": {
       "headline": "Clear evidence makes audits more reliable.",
-      "lead": "Smart Audits organizes scheduled tasks, protects photo capture, and analyzes evidence with Duma AI. The auditor retains the final decision and can request a new execution when the standard is not met.",
+      "lead": "Smart Audits organizes scheduled tasks, protects photo capture, and analyzes evidence with Duma AI. The auditor retains the final decision and can request that the task be performed again when the standard is not met.",
       "tags": ["Tasks", "Evidence", "Duma AI", "Compliance", "Follow-up"],
       "flow": { "title": "One task, from evidence to correction.", "intro": "The flow brings together real operational changes: capturing valid evidence, making a controlled decision, and completing or repeating the task.", "stages": [
         { "name": "Protected capture", "description": "The person receives the task, takes photographs in the app, and Duma AI checks that the evidence is clear and usable.", "sceneTitle": "Evidence is protected from the first moment.", "sceneCopy": "The standard and the capture appear within the same composition. When the image is not sufficient, a new capture is requested before submission.", "status": "IN CAPTURE" },
         { "name": "Analysis and decision", "description": "Duma AI analyzes the observed condition and presents the result to the auditor, who retains the final verdict.", "sceneTitle": "Intelligence supports; the auditor decides.", "sceneCopy": "The analysis adds consistency without approving or rejecting automatically. The decision of whether it complies remains visibly under human control.", "status": "UNDER REVIEW" },
-        { "name": "Completion or reassignment", "description": "The task is completed when it meets the standard or reassigned to correct it and document it again.", "sceneTitle": "The finding remains active until it is addressed.", "sceneCopy": "The new execution returns to the same evidence-and-review cycle, preserving traceability of the result.", "status": "COMPLETED / REASSIGNED" }
+        { "name": "Completion or reassignment", "description": "The task is completed when it meets the standard or reassigned to correct it and document it again.", "sceneTitle": "The finding remains active until it is addressed.", "sceneCopy": "The new task attempt returns to the same evidence-and-review cycle, preserving traceability of the result.", "status": "COMPLETED / REASSIGNED" }
       ] }
     },
     "argos": {
       "headline": "The operation can also be observed as it happens.",
-      "lead": "Argos uses Duma AI to analyze connected video and detect configured conditions as they occur. Each event retains evidence, context, and ownership until it becomes a resolved, searchable case.",
+      "lead": "Argos uses Duma AI to analyze connected video and detect configured conditions as they occur. Each event retains evidence, context, and responsibility until it becomes a resolved, searchable case.",
       "tags": ["Video", "Detection", "Evidence", "Cases", "Resolution"],
-      "flow": { "title": "One event, from detection to resolution.", "intro": "The sequence begins when a relevant condition appears and follows the case through its close and incorporation into history.", "stages": [
-        { "name": "Detection and evidence", "description": "Duma AI identifies a configured condition and preserves evidence with a date, time, camera, and area.", "sceneTitle": "The relevant moment is identified.", "sceneCopy": "The comparison takes place within a stable camera field, preserving operational context without resorting to a massive surveillance view.", "status": "DETECTED" },
-        { "name": "Case and response", "description": "The event becomes a case, is notified, and is assigned to the person responsible for addressing it.", "sceneTitle": "Evidence activates a response.", "sceneCopy": "The record connects the observed condition with responsibility, actions taken, and follow-up progress.", "status": "UNDER REVIEW" },
+      "flow": { "title": "One event, from detection to resolution.", "intro": "The sequence begins when a relevant condition appears and follows the case through closure and incorporation into the history.", "stages": [
+        { "name": "Detection and evidence", "description": "Duma AI identifies a configured condition and preserves evidence with a date, time, camera, and area.", "sceneTitle": "The relevant moment is identified.", "sceneCopy": "The comparison takes place within a stable camera view, preserving operational context without resorting to a large-scale surveillance view.", "status": "DETECTED" },
+        { "name": "Case and response", "description": "The event becomes a case, is notified, and is assigned to the person responsible for addressing it.", "sceneTitle": "Evidence activates a response.", "sceneCopy": "The record connects the observed condition with responsibility, actions taken, and follow-up progress.", "status": "BEING ADDRESSED" },
         { "name": "Resolution and history", "description": "The case is resolved and remains available as historical evidence for follow-up, comparison, or audit.", "sceneTitle": "Every event leaves a verifiable history.", "sceneCopy": "The resolution preserves the full context and makes it possible to recognize recurring conditions across areas or locations.", "status": "RESOLVED" }
       ] }
     },
     "nodIa": {
-      "headline": "Every display should show what the operation expects.",
-      "lead": "NOD-IA continually compares visible displays with the planogram to detect missing SKUs. When inventory context is available, it helps distinguish replenishment needs from supply conditions.",
+      "headline": "Every display must show what the operation expects.",
+      "lead": "NOD-IA continually compares visible displays with the planogram to detect display gaps by SKU. When inventory context is available, it helps distinguish a replenishment need from a supply condition.",
       "tags": ["Planogram", "SKU", "Availability", "Replenishment", "Verification"],
-      "flow": { "title": "One shortage, until availability is restored.", "intro": "The journey compares what is expected with what is observed, adds the available context, and visually verifies the product's recovery.", "stages": [
-        { "name": "Comparison and detection", "description": "NOD-IA compares the display with the planogram and identifies the SKU and position where there is a shortage.", "sceneTitle": "What is expected and what is visible no longer match.", "sceneCopy": "A single composition shows the expected position and the observed space, avoiding a separation of two visually almost identical moments.", "status": "SHORTAGE" },
-        { "name": "Context and response", "description": "When connected inventory is available, the shortage is directed to local replenishment or supply follow-up.", "sceneTitle": "Context changes the response.", "sceneCopy": "Recorded availability helps distinguish an execution issue from a broader supply condition.", "status": "UNDER REVIEW" },
+      "flow": { "title": "One display gap, until availability is restored.", "intro": "The journey compares what is expected with what is observed, adds the available context, and visually verifies that product availability has been restored.", "stages": [
+        { "name": "Comparison and detection", "description": "NOD-IA compares the display with the planogram and identifies the SKU and position where there is a display gap.", "sceneTitle": "What is expected and what is visible no longer match.", "sceneCopy": "A single composition shows the expected position and the observed space, avoiding a separation of two visually almost identical moments.", "status": "DISPLAY GAP" },
+        { "name": "Context and response", "description": "When connected inventory is available, the display gap is directed to local replenishment or supply follow-up.", "sceneTitle": "Context changes the response.", "sceneCopy": "Recorded availability helps distinguish an execution issue from a broader supply condition.", "status": "BEING ADDRESSED" },
         { "name": "Replenishment and verification", "description": "The person confirms the action and monitoring verifies that the product is visible again.", "sceneTitle": "Availability is confirmed visually.", "sceneCopy": "The restored position closes the cycle and preserves recovery time for later analysis.", "status": "RESTORED" }
       ] }
     },
     "rondines": {
-      "headline": "Every round should leave proof that it happened.",
+      "headline": "Every round must leave proof that it happened.",
       "lead": "Rondines validates every point on a route with QR codes, location, and photos taken in the app. The operation retains coverage evidence even when part of the route occurs offline.",
       "tags": ["Routes", "QR", "Location", "Photos", "Coverage"],
-      "flow": { "title": "One round, verified point by point.", "intro": "The route is summarized in validation, continuity, and close. Offline operation is included as a possible condition, not as a mandatory step.", "stages": [
+      "flow": { "title": "One round, verified point by point.", "intro": "The route is summarized in validation, continuity, and completion. Offline operation is included as a possible condition, not as a mandatory step.", "stages": [
         { "name": "Start and point validation", "description": "The person starts the route and validates each checkpoint with a QR code, location, and a photograph taken in the app.", "sceneTitle": "Each point proves that it was checked.", "sceneCopy": "The start of the route and the first validation are shown together to establish how presence and inspection are verified.", "status": "IN PROGRESS" },
-        { "name": "Route continuity", "description": "The route advances point by point and stores evidence locally when it crosses an area without connection.", "sceneTitle": "Verification continues throughout the route.", "sceneCopy": "The following checkpoints show controlled repetition. If the signal is lost, the evidence remains protected until it can be synchronized.", "status": "ON ROUND" },
+        { "name": "Route continuity", "description": "The route advances point by point and stores evidence locally when it crosses an area without connection.", "sceneTitle": "Verification continues throughout the route.", "sceneCopy": "The following checkpoints show controlled repetition. If the signal is lost, the evidence remains protected until it can be synchronized.", "status": "MAKING ROUNDS" },
         { "name": "Completion and record", "description": "The round ends with completed and pending points, duration, photographs, and observations available.", "sceneTitle": "Coverage is documented.", "sceneCopy": "Synchronization, when it was needed, is part of the close and does not require an independent visual stage.", "status": "COMPLETED" }
       ] }
     },
     "wellness": {
-      "headline": "Organized care to care better for every person.",
-      "lead": "Wellness connects scheduling, consultations, and occupational medical records within one care history. Every visit updates authorized context to provide continuity without exposing clinical information to unauthorized profiles.",
-      "tags": ["Appointments", "Consultations", "Records", "Treatment", "Privacy"],
-      "flow": { "title": "One appointment, within a continuous history.", "intro": "The journey keeps the record at its center and groups optional consultation outcomes within the same care moment.", "stages": [
+      "headline": "Organized care to provide better care for every person.",
+      "lead": "Wellness connects scheduling, consultations, and occupational medical records within one care history. Each care encounter updates the authorized context to provide continuity without exposing clinical information to unauthorized roles.",
+      "tags": ["Appointments", "Consultations", "Medical records", "Treatment", "Confidentiality"],
+      "flow": { "title": "One care encounter, within a continuous history.", "intro": "The journey keeps the record at its center and groups optional consultation outcomes within the same care moment.", "stages": [
         { "name": "Request and scheduling", "description": "Care is requested and the specialty, professional, and time are defined, including authorization only when the process requires it.", "sceneTitle": "Care begins with the right context.", "sceneCopy": "The person's need connects with service availability without presenting approval as a universal condition.", "status": "SCHEDULED" },
-        { "name": "Consultation and care outcome", "description": "The professional conducts the consultation and, when applicable, records treatment, a prescription, medication, or leave.", "sceneTitle": "Every consultation continues the same history.", "sceneCopy": "The different outcomes appear as possible branches of care, not as steps every person must follow.", "status": "ATTENDED" },
-        { "name": "Follow-up and record", "description": "Progress is recorded and the record is updated for future authorized care.", "sceneTitle": "Follow-up avoids starting from zero.", "sceneCopy": "The medical team retains continuity, while other profiles receive only the operational information that corresponds to them.", "status": "UNDER FOLLOW-UP" }
+        { "name": "Consultation and care outcome", "description": "The professional conducts the consultation and, when applicable, records treatment, a prescription, medication, or medical leave.", "sceneTitle": "Every consultation continues the same history.", "sceneCopy": "The different outcomes appear as possible branches of care, not as steps every person must follow.", "status": "ATTENDED" },
+        { "name": "Follow-up and record", "description": "Progress is recorded and the record is updated for future authorized care.", "sceneTitle": "Follow-up avoids starting from zero.", "sceneCopy": "The medical team maintains continuity, while other roles receive only the operational information available to them.", "status": "FOLLOW-UP ONGOING" }
       ] }
     },
     "byblos": {
@@ -99,47 +100,47 @@
       "flow": { "title": "From content to demonstrable readiness.", "intro": "The flow distinguishes learning, verification, and certification, integrating journey assignment into the start of the experience.", "stages": [
         { "name": "Journey and interactive learning", "description": "The person receives a journey related to their role, reviews the content, makes decisions, and practices.", "sceneTitle": "Every responsibility needs a different experience.", "sceneCopy": "Assignment and the first activity form one moment centered on the knowledge the person needs to apply.", "status": "IN PROGRESS" },
         { "name": "Evaluation and feedback", "description": "An activity checks understanding through questions, decisions, or practical evidence and shows what needs reinforcement.", "sceneTitle": "Progress must be demonstrable.", "sceneCopy": "Feedback connects practice with a verifiable outcome without reducing the experience to a passive presentation.", "status": "EVALUATING" },
-        { "name": "Certification and validity", "description": "When requirements are met, certification is issued and the defined validity and renewal period begins.", "sceneTitle": "Readiness remains visible.", "sceneCopy": "The outcome retains the person, journey, date, validity, and next renewal as a capability that can be followed.", "status": "CERTIFIED" }
+        { "name": "Certification and validity", "description": "When requirements are met, certification is issued and the defined validity and renewal period begins.", "sceneTitle": "Readiness remains visible.", "sceneCopy": "The outcome retains the person, journey, date, validity, and next renewal as a capability that can be tracked.", "status": "CERTIFIED" }
       ] }
     },
     "axessOne": {
-      "headline": "Access begins before someone reaches the door.",
-      "lead": "AxessOne connects preregistration, document validation, permissions, and access control for people and vehicles. Each entry retains the context needed to confirm that the right person enters under the right conditions.",
-      "tags": ["Preregistration", "Documents", "Permissions", "Access", "Records"],
-      "flow": { "title": "One entry, from invitation to verified access.", "intro": "The sequence prepares the visit, verifies requirements, and records entry and exit.", "stages": [
-        { "name": "Preregistration and invitation", "description": "The visit is created with its purpose, person or vehicle details, and the information required for access.", "sceneTitle": "Access begins before arrival.", "sceneCopy": "The operation can prepare the visit with the context it needs.", "status": "REGISTERED" },
-        { "name": "Validation and authorization", "description": "Documents, requirements, and permissions are reviewed according to the configured access process.", "sceneTitle": "Requirements are verified before entry.", "sceneCopy": "The process confirms whether the visit meets the conditions for access.", "status": "AUTHORIZED" },
-        { "name": "Entry, exit, and record", "description": "The access point records entry and exit, preserving the visit history.", "sceneTitle": "Every access leaves a record.", "sceneCopy": "The operation can verify who entered, when, and under which authorization.", "status": "RECORDED" }
+      "headline": "The right access begins with a validated identity.",
+      "lead": "AxessOne connects preregistration, identity, documents, permissions, physical access, and presence within one process. Every access event retains the context needed to streamline future visits and maintain a reviewable history.",
+      "tags": ["Identity", "Requirements", "Permissions", "Access", "History"],
+      "flow": { "title": "One identity, from registration to recurring access.", "intro": "The central story compares the first entry with a more streamlined later visit, keeping identity, requirements, and authorization connected.", "stages": [
+        { "name": "Registration and validation", "description": "The identity is registered, and the data, documents, and conditions required for access are reviewed.", "sceneTitle": "Access begins before the door.", "sceneCopy": "The person, purpose, and requirements are connected to make a contextual access decision.", "status": "VALIDATION IN PROGRESS" },
+        { "name": "Arrival, authorization, and access", "description": "The person presents the defined form of identification, and the rules confirm permission before access is enabled.", "sceneTitle": "The door executes a prior decision.", "sceneCopy": "Arrival, notification, authorization, and physical movement form a single operational moment.", "status": "AUTHORIZED" },
+        { "name": "Return using an existing identity", "description": "A later visit uses the authorized information that remains valid to validate the new entry more efficiently.", "sceneTitle": "The next entry can begin with the previous context.", "sceneCopy": "The contrast with the first registration shows the value of a reusable profile without promising a universal access time.", "status": "ACCESS VALIDATED" }
       ] }
     },
     "sense": {
-      "headline": "A changing condition needs a connected response.",
-      "lead": "Sense monitors variables from connected equipment, generates alerts, and helps the operation act before a condition becomes a larger problem.",
-      "tags": ["Variables", "Alerts", "Equipment", "Action", "History"],
-      "flow": { "title": "One condition, from signal to action.", "intro": "The flow connects detection, notification, and an operational response with a record of what happened.", "stages": [
-        { "name": "Connected signal", "description": "A connected device reports the variable or condition being monitored.", "sceneTitle": "The operation receives the signal.", "sceneCopy": "Continuous data makes relevant changes visible as they occur.", "status": "MONITORING" },
-        { "name": "Alert and context", "description": "When a configured threshold is reached, Sense generates an alert with the relevant context.", "sceneTitle": "The right change gets attention.", "sceneCopy": "The alert connects the condition with the equipment and its operational context.", "status": "ALERT" },
-        { "name": "Action and follow-up", "description": "The responsible team responds and retains the action and outcome for follow-up.", "sceneTitle": "A signal becomes an operational response.", "sceneCopy": "The history supports learning from recurring conditions.", "status": "ADDRESSED" }
+      "headline": "Make every condition that can affect the operation visible.",
+      "lead": "Sense connects assets, spaces, and equipment to monitor variables, recognize relevant changes, and coordinate a response. When infrastructure allows it, it also manages equipment through authorized actions, schedules, and configured rules.",
+      "tags": ["Variables", "Alerts", "Context", "Response", "Control"],
+      "flow": { "title": "From a visible condition to a verified response.", "intro": "The flow correlates signals, directs attention, and verifies the result. Connected actions appear only when the infrastructure allows them.", "stages": [
+        { "name": "Detected condition and context", "description": "Sense relates variables and states to make a deviation visible and better explain what is happening.", "sceneTitle": "Multiple conditions better explain the change.", "sceneCopy": "The normal state serves as a reference within the same composition; it does not need to become an independent stage.", "status": "OUT OF RANGE" },
+        { "name": "Alert and coordination", "description": "The condition is communicated to the responsible person and can be escalated when it remains active or requires another level of attention.", "sceneTitle": "The right signal reaches the right person.", "sceneCopy": "The alert retains the asset, location, duration, and context to coordinate a useful response.", "status": "BEING ADDRESSED" },
+        { "name": "Response and verification", "description": "The operation addresses the condition and, when compatible infrastructure exists, can apply a remote action, schedule, or configured rule.", "sceneTitle": "The response must be verifiable.", "sceneCopy": "Sense confirms subsequent behavior and retains the history to distinguish an isolated event from a recurring condition.", "status": "RESTORED" }
       ] }
     },
     "polar": {
-      "headline": "Transport conditions need to remain visible throughout the journey.",
-      "lead": "Polar records temperature, location, and door status to monitor and certify transport conditions from departure to delivery.",
-      "tags": ["Temperature", "Location", "Doors", "Transport", "Certification"],
-      "flow": { "title": "One journey, with conditions under control.", "intro": "The sequence observes the trip, identifies deviations, and preserves evidence for delivery and review.", "stages": [
-        { "name": "Departure and monitoring", "description": "The trip begins with the required transport conditions and connected monitoring.", "sceneTitle": "The journey begins with a reference.", "sceneCopy": "Temperature, location, and door status establish the expected operating context.", "status": "IN TRANSIT" },
-        { "name": "Condition and deviation", "description": "Polar detects changes that require attention and retains their time and location.", "sceneTitle": "A deviation has context.", "sceneCopy": "The operation can understand when and where a condition changed.", "status": "ALERT" },
-        { "name": "Delivery and certification", "description": "The journey closes with a record of the observed conditions and supporting evidence.", "sceneTitle": "Delivery retains its evidence.", "sceneCopy": "The complete history supports delivery review and certification.", "status": "DELIVERED" }
+      "headline": "Every journey must maintain the conditions the cargo requires.",
+      "lead": "Polar monitors location, temperature, door status, and relevant events during transport. The operation can respond while the journey continues and retain a verifiable record of conditions from departure to arrival.",
+      "tags": ["Journey", "Location", "Temperature", "Alerts", "Evidence"],
+      "flow": { "title": "One journey, with its conditions always visible.", "intro": "Configuration is integrated into departure, and the story focuses on monitoring, response during the journey, and evidence upon arrival.", "stages": [
+        { "name": "Active journey and monitoring", "description": "Polar shows origin, destination, unit, progress, location, temperature, and door status during the journey.", "sceneTitle": "The cargo remains visible while it moves.", "sceneCopy": "The configured context appears alongside departure, avoiding a full scene dedicated to a preparation form.", "status": "IN TRANSIT" },
+        { "name": "Event, alert, and response", "description": "A relevant deviation retains its location, time, and conditions, and activates the follow-up defined for the project.", "sceneTitle": "Responding during the journey changes the outcome.", "sceneCopy": "Temperature, door status, stops, and route progress provide the context needed to address the event.", "status": "BEING ADDRESSED" },
+        { "name": "Arrival and verifiable record", "description": "At the end, Polar consolidates the route, variables, events, and responses in a report that can be consulted.", "sceneTitle": "The journey ends with a complete history.", "sceneCopy": "The record supports review of the observed conditions without being presented as external certification or a quality guarantee.", "status": "COMPLETED" }
       ] }
     },
     "industrial": {
-      "headline": "Production improves when losses have a clear place to be seen.",
-      "lead": "Industrial connects production data, equipment states, stops, cycles, and quality to reveal availability, performance, and quality losses in real time.",
+      "headline": "Show where productive capacity is being lost.",
+      "lead": "Industrial connects equipment signals, production states, and operational targets to measure availability, performance, and quality. The operation can identify which loss reduces capacity the most and where to focus improvement.",
       "tags": ["OEE", "States", "Stops", "Cycles", "Quality"],
       "flow": { "title": "From live production to a prioritized loss.", "intro": "The sequence establishes the target, shows how capacity is lost, and brings OEE together with the opportunity that deserves attention.", "stages": [
-        { "name": "Production against a target", "description": "Production is viewed in the context of the line, shift, product, pace, and expected target.", "sceneTitle": "Production has a measurable reference.", "sceneCopy": "Live status and progress against plan make losses easier to interpret.", "status": "IN PRODUCTION" },
-        { "name": "Observed losses", "description": "Stops, micro-stops, slow cycles, and rejects show how availability, performance, and quality decrease.", "sceneTitle": "Every loss has a production impact.", "sceneCopy": "The three dimensions remain connected to their cause, duration, and effect.", "status": "WITH DEVIATIONS" },
-        { "name": "OEE and priority loss", "description": "Industrial brings together the three dimensions and highlights the one reducing shift capacity the most.", "sceneTitle": "The result shows where improvement should focus.", "sceneCopy": "OEE and the highest-impact loss converge in the final view.", "status": "PRIORITIZED" }
+        { "name": "Line operating against a target", "description": "Production is viewed in the context of the line, shift, product, pace, and expected target.", "sceneTitle": "Production has a measurable reference.", "sceneCopy": "Live status and progress against plan establish the basis for interpreting the losses that appear during the shift.", "status": "IN PRODUCTION" },
+        { "name": "Observed losses", "description": "Stops, micro-stops, slow cycles, and rejects show how availability, performance, and quality decrease.", "sceneTitle": "Every loss has a production impact.", "sceneCopy": "The three dimensions are revealed on the same line to keep the relationship between cause, duration, and effect clear.", "status": "WITH DEVIATIONS" },
+        { "name": "OEE and priority loss", "description": "Industrial brings together the three dimensions and highlights which one is reducing shift capacity the most.", "sceneTitle": "The result shows where improvement should focus.", "sceneCopy": "OEE and the highest-impact loss converge in the same final scene, avoiding separation of the indicator from its operational purpose.", "status": "PRIORITIZED" }
       ] }
     }
   },

@@ -19,6 +19,7 @@
   "moduleContactEyebrow": "Conversemos",
   "returnToSidon": "Volver a Sidón",
   "dumaLinkLabel": "Explorar Duma AI dentro de Sidón",
+  "dumaGame": { "invitationTitle": "¿Jugamos?", "invitationBody": "Detecta anomalías antes de que Duma las relacione.", "invitationAction": "Jugar con Duma" },
   "moduleNarratives": {
     "mantiz": {
       "headline": "El mantenimiento necesita orden antes de generar resultados.",
