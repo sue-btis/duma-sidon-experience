@@ -1789,6 +1789,83 @@
             { value: 4.9, label: "Corriente alta", severity: "critical" },
             { value: 0.4, label: "Consumo irregular", severity: "warning" }
           ]
+        },
+        {
+          id: "hvac-02",
+          name: "HVAC 02",
+          x: 13, y: 14,
+          normalValue: 23.1, unit: "°C",
+          normalText: "Normal",
+          anomalies: [
+            { value: 28.9, label: "Temperatura alta", severity: "critical" },
+            { value: 16.7, label: "Temperatura baja", severity: "warning" }
+          ]
+        },
+        {
+          id: "chiller-02",
+          name: "CHILLER 02",
+          x: 35, y: 14,
+          normalValue: 6.7, unit: "°C",
+          normalText: "Normal",
+          anomalies: [
+            { value: 2.1, label: "Temperatura baja", severity: "warning" },
+            { value: 10.4, label: "Temperatura alta", severity: "critical" }
+          ]
+        },
+        {
+          id: "tank-02",
+          name: "TANQUE 02",
+          x: 58, y: 14,
+          normalValue: 52, unit: "%",
+          normalText: "Nivel normal",
+          anomalies: [
+            { value: 19, label: "Nivel crítico", severity: "critical" },
+            { value: 88, label: "Nivel alto", severity: "warning" }
+          ]
+        },
+        {
+          id: "compressor-02",
+          name: "COMPRESOR 02",
+          x: 82, y: 14,
+          normalValue: 4.1, unit: "bar",
+          normalText: "Presión normal",
+          anomalies: [
+            { value: 4.9, label: "Presión alta", severity: "critical" },
+            { value: 2.4, label: "Presión baja", severity: "warning" }
+          ]
+        },
+        {
+          id: "pump-02",
+          name: "BOMBA 02",
+          x: 12, y: 46,
+          normalValue: 1.9, unit: "bar",
+          normalText: "Presión normal",
+          anomalies: [
+            { value: 0.7, label: "Presión baja", severity: "critical" },
+            { value: 3.2, label: "Presión alta", severity: "warning" }
+          ]
+        },
+        {
+          id: "panel-02",
+          name: "TABLERO 02",
+          x: 88, y: 46,
+          normalValue: 120, unit: "V",
+          normalText: "Voltaje estable",
+          anomalies: [
+            { value: 130, label: "Voltaje alto", severity: "warning" },
+            { value: 96, label: "Caída de voltaje", severity: "critical" }
+          ]
+        },
+        {
+          id: "motor-02",
+          name: "MOTOR 02",
+          x: 82, y: 82,
+          normalValue: 4.0, unit: "A",
+          normalText: "Normal",
+          anomalies: [
+            { value: 4.9, label: "Corriente alta", severity: "critical" },
+            { value: 0.4, label: "Consumo irregular", severity: "warning" }
+          ]
         }
       ];
 

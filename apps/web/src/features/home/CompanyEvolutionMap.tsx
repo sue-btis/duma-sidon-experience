@@ -5,7 +5,7 @@ import type { GeoJSONSource, Map as MapLibreMap, Marker } from "maplibre-gl";
 
 import styles from "./company-evolution.module.css";
 
-type Location = Readonly<{ coordinates: [number, number]; label?: string }>;
+type Location = Readonly<{ coordinates: [number, number]; label?: string; showInExpansion?: boolean }>;
 type Position = readonly [number, number];
 type Polygon = readonly (readonly Position[])[];
 type Countries = Readonly<{
@@ -33,6 +33,7 @@ const LOCATIONS: readonly Location[] = [
   { coordinates: [-112.07404, 33.44838] },
   { coordinates: [-117.16472, 32.71571] },
   { coordinates: [-106.48693, 31.75872] },
+  { coordinates: [-93.5268986, 44.7980186]},
 ] as const;
 
 const CHIHUAHUA_CITY = LOCATIONS[0].coordinates;
@@ -41,7 +42,7 @@ const CLOSING_START = 6 / 7;
 
 type Camera = Readonly<{ bearing: number; center: [number, number]; pitch: number; zoom: number }>;
 
-const continent: Camera = { bearing: 0, center: [-95, 18], pitch: 40, zoom: 4.3 };
+const continent: Camera = { bearing: 0, center: [-95, 18], pitch: 40, zoom: 4 };
 const mexico = continent;
 const chihuahua: Camera = { bearing: 0, center: [-106.15, 28.65], pitch: 44, zoom: 5.45 };
 const city: Camera = { bearing: 0, center: CHIHUAHUA_CITY, pitch: 46, zoom: 7.1 };
@@ -87,6 +88,10 @@ function clamp(value: number) {
   return Math.min(1, Math.max(0, value));
 }
 
+export function shouldShowLocation(location: Location, showLocations: boolean, showExpansionLocation: boolean) {
+  return Boolean(location.label) || (location.showInExpansion ? showExpansionLocation : showLocations);
+}
+
 function interpolate(from: Camera, to: Camera, progress: number): Camera {
   return {
     center: [
@@ -118,11 +123,12 @@ function cameraForViewport(camera: Camera, isCompact: boolean): Camera {
   return isCompact ? { ...camera, pitch: Math.min(camera.pitch, 32), zoom: camera.zoom - 1.15 } : camera;
 }
 
-export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ progress: number; showLocations: boolean }>) {
+export function CompanyEvolutionMap({ progress, showExpansionLocation, showLocations }: Readonly<{ progress: number; showExpansionLocation: boolean; showLocations: boolean }>) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapLibreMap>(null);
   const markersRef = useRef<Marker[]>([]);
   const showLocationsRef = useRef(showLocations);
+  const showExpansionLocationRef = useRef(showExpansionLocation);
   const [isMapReady, setIsMapReady] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isCompact, setIsCompact] = useState(false);
@@ -138,6 +144,10 @@ export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ prog
   useEffect(() => {
     showLocationsRef.current = showLocations;
   }, [showLocations]);
+
+  useEffect(() => {
+    showExpansionLocationRef.current = showExpansionLocation;
+  }, [showExpansionLocation]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -240,8 +250,9 @@ export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ prog
           const marker = document.createElement("div");
           marker.setAttribute("aria-hidden", "true");
           marker.className = `${styles.cityMarker} ${location.label ? "" : styles.coverageMarker}`;
-          if (!location.label) marker.dataset.coverage = "true";
-          marker.style.opacity = location.label || showLocationsRef.current ? "1" : "0";
+          if (location.showInExpansion) marker.dataset.expansionLocation = "true";
+          else if (!location.label) marker.dataset.coverage = "true";
+          marker.style.opacity = shouldShowLocation(location, showLocationsRef.current, showExpansionLocationRef.current) ? "1" : "0";
           marker.innerHTML = location.label ? `<span></span><b>${location.label}</b>` : "<span></span>";
           return new maplibregl.Marker({ anchor: "bottom", element: marker }).setLngLat(location.coordinates).addTo(loadedMap);
         });
@@ -264,27 +275,29 @@ export function CompanyEvolutionMap({ progress, showLocations }: Readonly<{ prog
     const map = mapRef.current;
     if (!isMapReady || !map || !map.isStyleLoaded()) return;
     const { camera, stateOpacity } = cameraFor(progress);
-    const chihuahuaOpacity = progress < CLOSING_START ? 1 : stateOpacity;
+    const targetCamera = showExpansionLocation ? continent : camera;
+    const targetOpacity = showExpansionLocation ? 1 : stateOpacity;
+    const chihuahuaOpacity = showExpansionLocation ? 0 : progress < CLOSING_START ? 1 : stateOpacity;
     map.jumpTo({
-      ...cameraForViewport(camera, isCompact),
+      ...cameraForViewport(targetCamera, isCompact),
       ...(isCompact ? { padding: { bottom: 0, left: 0, right: 0, top: Math.min(320, window.innerHeight * 0.45) } } : {}),
     });
-    map.setPaintProperty("countries-model", "fill-extrusion-color", progress >= CLOSING_START
+    map.setPaintProperty("countries-model", "fill-extrusion-color", showExpansionLocation || progress >= CLOSING_START
       ? ["match", ["get", "id"], "MEX", "#00adef", "USA", "#00adef", "#fbfcfc"]
       : "#fbfcfc");
-    map.setPaintProperty("countries-fill", "fill-color", progress >= CLOSING_START
+    map.setPaintProperty("countries-fill", "fill-color", showExpansionLocation || progress >= CLOSING_START
       ? ["match", ["get", "id"], "MEX", "#00adef", "USA", "#00adef", "#fbfcfc"]
       : "#fbfcfc");
     map.setPaintProperty("chihuahua-highlight", "fill-opacity", chihuahuaOpacity * 0.82);
     map.setPaintProperty("chihuahua-line", "line-opacity", chihuahuaOpacity);
     markersRef.current.forEach((marker, index) => {
-      const shouldShow = Boolean(LOCATIONS[index].label) || showLocations;
-      marker.getElement().style.opacity = shouldShow ? String(Math.max(0.75, stateOpacity)) : "0";
+      const shouldShow = shouldShowLocation(LOCATIONS[index], showLocations, showExpansionLocation);
+      marker.getElement().style.opacity = shouldShow ? String(Math.max(0.75, targetOpacity)) : "0";
     });
-  }, [isCompact, isMapReady, progress, showLocations]);
+  }, [isCompact, isMapReady, progress, showExpansionLocation, showLocations]);
 
   return (
-    <div aria-hidden="true" className={`${styles.mapCanvas} ${showLocations ? styles.mapLocationsVisible : ""}`} ref={containerRef}>
+    <div aria-hidden="true" className={`${styles.mapCanvas} ${showExpansionLocation ? styles.mapExpansionLocationVisible : ""} ${showLocations ? styles.mapLocationsVisible : ""}`} ref={containerRef}>
     </div>
   );
 }
