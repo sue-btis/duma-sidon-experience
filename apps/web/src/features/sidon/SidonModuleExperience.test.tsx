@@ -37,17 +37,28 @@ describe("Sidón module narratives", () => {
     expect(page).not.toContain("Generic solve");
   });
 
+  it("keeps the hero focused on Sidón and the module while offering the conversation action", () => {
+    const page = renderToStaticMarkup(<SidonModuleExperience categoryName="Maintenance" categorySlug="maintenance" contactAction="Talk" contactEyebrow="Conversemos" contactLead="Lead" contactTitle="Title" description="Generic description" dumaGame={{ invitationAction: "Play", invitationBody: "Find anomalies", invitationTitle: "Shall we play?" }} locale="en" moduleIcon="/mantiz.png" moduleName="Mantiz" moduleSlug="mantiz" narrative={narrative} solves="Generic solve" />);
+
+    expect(page).toContain("Sidón");
+    expect(page).toContain("Mantiz");
+    expect(page).not.toContain("Maintenance");
+    expect(page.match(/>Talk</g)).toHaveLength(2);
+  });
+
   it("renders the generic module section when no narrative is approved", () => {
     const page = renderToStaticMarkup(<SidonModuleExperience categoryName="Maintenance" categorySlug="maintenance" contactAction="Talk" contactEyebrow="Conversemos" contactLead="Lead" contactTitle="Title" description="Generic description" dumaGame={{ invitationAction: "Play", invitationBody: "Find anomalies", invitationTitle: "Shall we play?" }} locale="en" moduleIcon="/mantiz.png" moduleName="Mantiz" moduleSlug="mantiz" solves="Generic solve" />);
 
     expect(page).toContain("Generic solve");
   });
 
-  it("offers the game with Duma in the Sense header and phase image only", () => {
+  it("offers each module's game with Duma in its header and phase image only", () => {
     const props = { categoryName: "Monitoring", categorySlug: "monitoreo", contactAction: "Talk", contactEyebrow: "Let's talk", contactLead: "Lead", contactTitle: "Title", description: "Description", dumaGame: { invitationAction: "Play", invitationBody: "Find anomalies", invitationTitle: "Shall we play?" }, locale: "en" as const, moduleIcon: "/sense.png", moduleName: "Sense", solves: "Solve" };
     const sensePage = renderToStaticMarkup(<SidonModuleExperience {...props} moduleSlug="sense" narrative={narrative} />);
 
     expect(sensePage.match(/\/en\/sidon\/monitoreo\/sense\/juego/g)).toHaveLength(2);
+    const smartAuditsPage = renderToStaticMarkup(<SidonModuleExperience {...props} moduleSlug="smart-audits" narrative={narrative} />);
+    expect(smartAuditsPage.match(/\/en\/sidon\/auditorias\/smart-audits\/juego/g)).toHaveLength(2);
     expect(renderToStaticMarkup(<SidonModuleExperience {...props} moduleSlug="polar" />)).not.toContain("/en/sidon/monitoreo/sense/juego");
   });
 });

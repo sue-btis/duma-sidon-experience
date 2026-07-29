@@ -1,0 +1,78 @@
+{
+  "descripcion": "Zonas de toque del juego de auditoría. Coordenadas normalizadas (0–1) sobre la imagen assets/juego/cocina_base.jpg. cx,cy = centro de la elipse; rx,ry = semiejes. Extraídas por detección programática de los círculos de la imagen de referencia assets/juego/cocina_referencia_hallazgos.png.",
+  "imagen_base": "assets/juego/cocina_base.jpg",
+  "aspect_ratio": "4:3",
+  "total": 7,
+  "hallazgos": [
+    {
+      "id": "derrame",
+      "titulo": "Derrame en el piso",
+      "cx": 0.2230, "cy": 0.7820, "rx": 0.0501, "ry": 0.0598,
+      "falla": "Líquido derramado sobre el pasillo de trabajo: riesgo de resbalón o tropiezo.",
+      "estandar": "Pasillos limpios, secos y despejados",
+      "criterio": "Seguridad y orden en áreas de tránsito",
+      "tipo_riesgo": "Seguridad operacional"
+    },
+    {
+      "id": "basurero",
+      "titulo": "Basurero rebasado",
+      "cx": 0.8645, "cy": 0.5589, "rx": 0.0657, "ry": 0.1771,
+      "falla": "El basurero superó su capacidad y la bolsa ya no puede cerrarse correctamente.",
+      "estandar": "Residuos bajo control, bolsa cerrable",
+      "criterio": "Manejo adecuado de residuos",
+      "tipo_riesgo": "Higiene y orden"
+    },
+    {
+      "id": "caja",
+      "titulo": "Caja con producto en el piso",
+      "cx": 0.1193, "cy": 0.6693, "rx": 0.0778, "ry": 0.0989,
+      "falla": "Caja abierta con contenido directamente sobre el piso: contaminación y obstrucción.",
+      "estandar": "Insumos sin contacto directo con el piso",
+      "criterio": "Almacenamiento correcto de insumos",
+      "tipo_riesgo": "Inocuidad y orden"
+    },
+    {
+      "id": "pata",
+      "titulo": "Suciedad en la pata de la mesa",
+      "cx": 0.4547, "cy": 0.7774, "rx": 0.0328, "ry": 0.0506,
+      "falla": "Suciedad vieja acumulada en la parte baja de la mesa: falta limpieza a detalle.",
+      "estandar": "Limpieza profunda de equipo y mobiliario",
+      "criterio": "Limpieza profunda de equipo y mobiliario",
+      "tipo_riesgo": "Higiene y limpieza"
+    },
+    {
+      "id": "lavamanos",
+      "titulo": "Lavamanos obstruido",
+      "cx": 0.6414, "cy": 0.2553, "rx": 0.0432, "ry": 0.0667,
+      "falla": "El lavamanos está ocupado con utensilios y no está disponible para el lavado de manos.",
+      "estandar": "Lavamanos siempre despejado",
+      "criterio": "Disponibilidad del lavamanos para higiene de manos",
+      "tipo_riesgo": "Higiene personal"
+    },
+    {
+      "id": "quimico",
+      "titulo": "Químico en zona de preparación",
+      "cx": 0.4893, "cy": 0.3473, "rx": 0.0328, "ry": 0.0713,
+      "falla": "Producto químico colocado en la mesa de preparación: riesgo de contaminación química.",
+      "estandar": "Químicos separados de alimentos",
+      "criterio": "Separación entre químicos y alimentos/superficies de preparación",
+      "tipo_riesgo": "Inocuidad / contaminación química"
+    },
+    {
+      "id": "cubrebocas",
+      "titulo": "Empleado sin cubrebocas",
+      "cx": 0.8368, "cy": 0.1426, "rx": 0.0450, "ry": 0.0690,
+      "falla": "Un colaborador trabaja sin cubrebocas: incumple el estándar de higiene del personal.",
+      "estandar": "Uso de cubrebocas en preparación",
+      "criterio": "Cumplimiento de higiene personal y uso de equipo sanitario",
+      "tipo_riesgo": "Higiene operativa"
+    }
+  ],
+  "hit_test": {
+    "regla": "Distancia elíptica normalizada al centro: d = hypot((nx-cx)/(rx*tolX), (ny-cy)/(ry*tolY)). Registra si d <= 1. Si el toque cae dentro de varias zonas, gana la de menor d.",
+    "tolerancia_base": 1.15,
+    "radio_tactil_minimo_px": 24,
+    "tolerancia_dinamica": "tolX = clamp(1.15, 24 / (rx * anchoRenderPx), 2.4); análogo en Y. Garantiza objetivo táctil ≥ ~44px de diámetro en pantallas chicas sin engordar la precisión en desktop.",
+    "fallo": "Un toque fuera de toda zona muestra 'Sigue buscando' sin revelar posición ni total."
+  }
+}

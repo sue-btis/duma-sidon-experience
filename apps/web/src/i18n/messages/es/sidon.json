@@ -455,7 +455,7 @@
     },
     "industrial": {
       "headline": "Haz visible dónde se pierde capacidad productiva.",
-      "lead": "Industrial conecta señales de equipos, estados de producción y objetivos operativos para medir disponibilidad, rendimiento y calidad. La operación puede identificar qué pérdida reduce más la capacidad y dónde concentrar la mejora.",
+      "lead": "Industrial conecta señales de equipos, estados de producción y objetivos operativos para medir disponibilidad, rendimiento y calidad mediante OEE, un indicador de efectividad global de los equipos. La operación puede identificar qué pérdida reduce más la capacidad y dónde concentrar la mejora.",
       "tags": [
         "OEE",
         "Estados",

@@ -6,10 +6,10 @@ import styles from "./sidon.module.css";
 type Copy = Readonly<{ invitationAction: string; invitationBody: string; invitationTitle: string }>;
 
 export function DumaModulePrompt({ copy, locale, moduleSlug }: Readonly<{ copy: Copy; locale: "es" | "en"; moduleSlug: string }>) {
-  const canPlay = moduleSlug === "sense";
+  const gamePath = moduleSlug === "sense" ? "monitoreo/sense" : moduleSlug === "smart-audits" ? "auditorias/smart-audits" : null;
 
-  return <div className={styles.dumaPrompt} aria-label={canPlay ? copy.invitationTitle : undefined}>
+  return <div className={styles.dumaPrompt} aria-label={gamePath ? copy.invitationTitle : undefined}>
     <div className={styles.dumaOrbit} aria-hidden="true"><Image alt="" height={214} src="/pet/dumaHead.svg" unoptimized width={242} /></div>
-    {canPlay ? <div className={styles.dumaDialog}><strong>{copy.invitationTitle}</strong><span>{copy.invitationBody}</span><Link href={`/${locale}/sidon/monitoreo/sense/juego/`}>{copy.invitationAction}</Link></div> : null}
+    {gamePath ? <div className={styles.dumaDialog}><strong>{copy.invitationTitle}</strong><span>{copy.invitationBody}</span><Link href={`/${locale}/sidon/${gamePath}/juego/`}>{copy.invitationAction}</Link></div> : null}
   </div>;
 }

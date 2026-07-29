@@ -17,9 +17,10 @@ export function getPhaseImage(moduleSlug: string, index: number) {
   return `/home/worlds/sidon/modulos-imagenes/fases-modulos/${moduleSlug}-fase-${phase}.webp`;
 }
 
-export function SidonModuleFlow({ dumaGame, flow, heroImage, locale, moduleSlug }: Readonly<{ dumaGame: Readonly<{ invitationAction: string; invitationBody: string; invitationTitle: string }>; flow: SidonModuleFlow; heroImage: string; locale: "es" | "en"; moduleSlug: string }>) {
+export function SidonModuleFlow({ dumaGame, flow, locale, moduleSlug }: Readonly<{ dumaGame: Readonly<{ invitationAction: string; invitationBody: string; invitationTitle: string }>; flow: SidonModuleFlow; locale: "es" | "en"; moduleSlug: string }>) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [imageSrc, setImageSrc] = useState(() => getPhaseImage(moduleSlug, 0));
+  const [lastLoadedImageSrc, setLastLoadedImageSrc] = useState(imageSrc);
   const activeStage = flow.stages[activeIndex];
 
   return <section aria-labelledby="module-flow-title" className={styles.moduleFlow}>
@@ -31,7 +32,7 @@ export function SidonModuleFlow({ dumaGame, flow, heroImage, locale, moduleSlug 
       <div aria-live="polite" className={styles.moduleFlowScene}>
         <div className={styles.moduleFlowImage}>
           <DumaModulePrompt copy={dumaGame} locale={locale} moduleSlug={moduleSlug} />
-          <Image alt="" className={styles.moduleFlowImageForeground} height={941} onError={() => { setImageSrc(heroImage); }} src={imageSrc} unoptimized width={1672} />
+          <Image alt="" className={styles.moduleFlowImageForeground} height={941} onError={() => { if (imageSrc !== lastLoadedImageSrc) setImageSrc(lastLoadedImageSrc); }} onLoad={(event) => { setLastLoadedImageSrc(new URL(event.currentTarget.currentSrc).pathname); }} src={imageSrc} unoptimized width={1672} />
         </div>
         <div><p>{activeStage.status}</p><h3>{activeStage.sceneTitle}</h3><span>{activeStage.sceneCopy}</span></div>
       </div>

@@ -135,7 +135,7 @@
     },
     "industrial": {
       "headline": "Show where productive capacity is being lost.",
-      "lead": "Industrial connects equipment signals, production states, and operational targets to measure availability, performance, and quality. The operation can identify which loss reduces capacity the most and where to focus improvement.",
+      "lead": "Industrial connects equipment signals, production states, and operational targets to measure availability, performance, and quality through OEE, an overall equipment effectiveness indicator. The operation can identify which loss reduces capacity the most and where to focus improvement.",
       "tags": ["OEE", "States", "Stops", "Cycles", "Quality"],
       "flow": { "title": "From live production to a prioritized loss.", "intro": "The sequence establishes the target, shows how capacity is lost, and brings OEE together with the opportunity that deserves attention.", "stages": [
         { "name": "Line operating against a target", "description": "Production is viewed in the context of the line, shift, product, pace, and expected target.", "sceneTitle": "Production has a measurable reference.", "sceneCopy": "Live status and progress against plan establish the basis for interpreting the losses that appear during the shift.", "status": "IN PRODUCTION" },
