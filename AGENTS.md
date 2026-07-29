@@ -4,11 +4,11 @@
 
 - This is a public, static, TypeScript branding site. Do not add an API, database, authentication, CMS, analytics, contact form, or chart library without an approved requirement.
 - `apps/web` is the only active application. `apps/api` is reserved for a confirmed future backend.
-- Product-family routes, product content, contact actions, visual assets, charts, and motion preferences are pending. Never invent them or add placeholders that imply they exist.
+- Contact actions, charts, and any unapproved product content remain pending. Never invent them or add placeholders that imply they exist.
 
 ## Architecture
 
-- Use Next.js App Router with static export. Keep routes build-time known; the supported launch routes are `/es/` and `/en/`.
+- Use Next.js App Router with static export. Keep routes build-time known; the launch experience is localized under `experience.ecosat.com.mx`, including the exported home, Integración, Sidón, Duma, category, and module routes. Keep internal demos out of the public route tree.
 - Organize application code by feature under `apps/web/src/features/{feature}/`. Files under `apps/web/src/app/` define routes: they handle route parameters, locale setup, metadata, and feature composition, but do not own feature implementation.
 - Keep components server-rendered by default. Add `"use client"` only to the smallest interactive leaf.
 - `next-intl` uses locale-prefixed routes with `es` as default. Add messages by feature under `apps/web/src/i18n/messages/{locale}/` and register each module in `apps/web/src/i18n/messages.ts`.

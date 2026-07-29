@@ -82,10 +82,10 @@ export function CompanyEvolution({ ariaLabel, navigationLabel, skipLabel, steps 
   const isMap = active <= 1 || active >= steps.length - 2;
 
   return (
-    <section aria-label={ariaLabel} className={styles.journey} ref={journeyRef}>
-      <div className={styles.viewport}>
+    <section aria-label={ariaLabel} className={`${styles.journey} motion-reduce:!h-auto`} ref={journeyRef}>
+      <div className={`${styles.viewport} motion-reduce:!hidden`}>
         <div className={`${styles.mapStage} ${isMap ? styles.mapVisible : ""}`}>
-          <CompanyEvolutionMap progress={progress} showLocations={active === steps.length - 1} />
+          <CompanyEvolutionMap progress={progress} showExpansionLocation={false} showLocations={active === steps.length - 1} />
         </div>
         <div className={styles.world} style={{ "--x": `${camera.x * camera.zoom}px`, "--y": `${camera.y * camera.zoom}px`, "--zoom": camera.zoom } as CSSProperties}>
           <svg aria-hidden="true" className={styles.route} viewBox="0 0 6500 3000">
@@ -125,7 +125,7 @@ export function CompanyEvolution({ ariaLabel, navigationLabel, skipLabel, steps 
                   <button
                     aria-current={isActive ? "step" : undefined}
                     aria-label={label}
-                    className={isActive ? styles.journeyStepActive : undefined}
+                    className={`${isActive ? styles.journeyStepActive : ""} !min-h-11 !min-w-11`}
                     onClick={() => goTo(index)}
                     type="button"
                   >
@@ -139,6 +139,17 @@ export function CompanyEvolution({ ariaLabel, navigationLabel, skipLabel, steps 
         </nav>
         <a className={styles.skipJourney} href="#industrias">{skipLabel}</a>
       </div>
+      <ol className="hidden motion-reduce:!grid motion-reduce:gap-6 motion-reduce:mx-auto motion-reduce:max-w-[65ch] motion-reduce:px-4 motion-reduce:py-12 sm:motion-reduce:px-8">
+        {steps.map((step) => (
+          <li className="grid gap-3 border-t border-border pt-6" key={step.headline}>
+            {step.label ? <p className="m-0 font-bold text-ecosat-deep">{step.label}</p> : null}
+            <h2 className="m-0 text-3xl leading-none text-ecosat-deep sm:text-5xl">{step.headline}</h2>
+            {step.location ? <p className="m-0 font-bold text-ecosat-deep">{step.location}</p> : null}
+            <p className="m-0 text-ink-soft">{step.body}</p>
+            {step.technology && step.technologyLabel ? <p className="m-0 text-ink-soft"><strong className="block text-ecosat-deep">{step.technologyLabel}</strong>{step.technology}</p> : null}
+          </li>
+        ))}
+      </ol>
     </section>
   );
 }

@@ -286,7 +286,7 @@ export function OrbitCarousel({ accentColor, ariaLabel, deepColor, id, instructi
         ))}
       </div>
       <nav aria-label={ariaLabel} className={styles.navigator}>
-        <ol>{items.map((item, index) => <li key={item.id}><button aria-current={index === activeIndex ? "true" : undefined} data-distance={Math.min(3, Math.abs(index - activeIndex))} onClick={() => rotateTo(index)} type="button">{item.title}</button></li>)}</ol>
+        <ol>{items.map((item, index) => <li key={item.id}><button aria-current={index === activeIndex ? "true" : undefined} className="!min-h-11" data-distance={Math.min(3, Math.abs(index - activeIndex))} onClick={() => rotateTo(index)} type="button">{item.title}</button></li>)}</ol>
       </nav>
       <ul className={styles.reducedList}>{items.map((item) => <li key={item.id}><Link aria-label={item.title} href={item.href} onClick={(event) => { if (onItemActivate && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) { event.preventDefault(); onItemActivate(item, event.currentTarget); } }}><CarouselImage image={item.image} key={locale} locale={locale} /></Link></li>)}</ul>
     </section>

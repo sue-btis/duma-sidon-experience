@@ -11,9 +11,13 @@ const narrative: SidonModuleNarrative = {
 };
 
 describe("Sidón module narratives", () => {
-  it("uses the standard phase filename for every Mantiz stage", () => {
-    expect(getPhaseImage("mantiz", 1)).toContain("mantiz-fase-02.png");
-    expect(getPhaseImage("mantiz", 3)).toContain("mantiz-fase-04.png");
+  it("uses WebP phase images for every Mantiz stage", () => {
+    expect(getPhaseImage("mantiz", 1)).toContain("mantiz-fase-02.webp");
+    expect(getPhaseImage("mantiz", 3)).toContain("mantiz-fase-04.webp");
+  });
+
+  it("uses AxessOne's existing unpadded phase filenames", () => {
+    expect(getPhaseImage("axessone", 1)).toContain("axessone-fase-2.webp");
   });
 
   it("renders the approved narrative instead of the generic module section", () => {
@@ -27,8 +31,8 @@ describe("Sidón module narratives", () => {
     expect(page).toContain("moduleVisual");
     expect(page).toContain("moduleFlowImage");
     expect(page).toContain("Conversemos");
-    expect(page).toContain("mantiz-industrial.png");
-    expect(page).toContain("mantiz-fase-01.png");
+    expect(page).toContain("mantiz-industrial.webp");
+    expect(page).toContain("mantiz-fase-01.webp");
     expect(page).not.toContain("/_next/image?");
     expect(page).not.toContain("Generic solve");
   });

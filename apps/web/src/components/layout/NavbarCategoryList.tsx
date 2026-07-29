@@ -20,6 +20,8 @@ export function NavbarCategoryList({ hoverClass, items, locale }: Props) {
 
   return items.map((item) => {
     const isExpanded = expandedHref === item.href;
+    const panelId = `navbar-category-${item.href.replaceAll("/", "-")}`;
+    const action = locale === "es" ? (isExpanded ? "Contraer" : "Expandir") : (isExpanded ? "Collapse" : "Expand");
 
     return (
       <div className="border-t border-border py-1 first:border-t-0" key={item.href}>
@@ -29,6 +31,8 @@ export function NavbarCategoryList({ hoverClass, items, locale }: Props) {
           </Link>
           {item.children.length > 0 ? (
             <button
+              aria-controls={panelId}
+              aria-label={`${action} ${item.label}`}
               aria-expanded={isExpanded}
               className={`inline-flex size-11 shrink-0 items-center justify-center rounded-md ${hoverClass}`}
               onClick={() => setExpandedHref(isExpanded ? null : item.href)}
@@ -41,7 +45,7 @@ export function NavbarCategoryList({ hoverClass, items, locale }: Props) {
           ) : null}
         </div>
         {isExpanded ? (
-          <div className="border-t border-border py-1">
+          <div className="border-t border-border py-1" id={panelId}>
             {item.children.map((child) => (
               <Link className={`flex min-h-11 items-center rounded-md px-3 pl-9 text-sm ${hoverClass}`} href={`/${locale}${child.href}`} key={child.href}>
                 {child.label}

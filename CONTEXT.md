@@ -2,6 +2,10 @@
 
 The public brand presence for Ecosat. It introduces the company and its product families, then guides prospective customers to an eventual contact channel.
 
+## Delivery scope
+
+The localized public experience is delivered under `experience.ecosat.com.mx`. Its launch scope includes the exported home, Integración, Sidón, Duma, category, and module routes. Internal demos are not public routes.
+
 ## Language
 
 **Product showcase**:

@@ -13,7 +13,8 @@ export type SidonModuleFlow = Readonly<{
 }>;
 
 export function getPhaseImage(moduleSlug: string, index: number) {
-  return `/home/worlds/sidon/modulos-imagenes/fases-modulos/${moduleSlug}-fase-${String(index + 1).padStart(2, "0")}.png`;
+  const phase = moduleSlug === "axessone" ? String(index + 1) : String(index + 1).padStart(2, "0");
+  return `/home/worlds/sidon/modulos-imagenes/fases-modulos/${moduleSlug}-fase-${phase}.webp`;
 }
 
 export function SidonModuleFlow({ dumaGame, flow, heroImage, locale, moduleSlug }: Readonly<{ dumaGame: Readonly<{ invitationAction: string; invitationBody: string; invitationTitle: string }>; flow: SidonModuleFlow; heroImage: string; locale: "es" | "en"; moduleSlug: string }>) {

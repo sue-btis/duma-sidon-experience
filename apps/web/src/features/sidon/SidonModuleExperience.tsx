@@ -7,22 +7,22 @@ import { DumaModulePrompt } from "./DumaModulePrompt";
 import { SidonModuleFlow, type SidonModuleFlow as SidonModuleFlowData } from "./SidonModuleFlow";
 
 const moduleHeroImages: Record<string, string> = {
-  argos: "/home/worlds/sidon/modulos-imagenes/argos-industrial.png",
-  axessone: "/home/worlds/sidon/modulos-imagenes/axessone-industrial.png",
-  byblos: "/home/worlds/sidon/modulos-imagenes/byblos-industrial.png",
-  industrial: "/home/worlds/sidon/modulos-imagenes/industrial-industrial.png",
-  mantiz: "/home/worlds/sidon/modulos-imagenes/mantiz-industrial.png",
-  "nod-ia": "/home/worlds/sidon/modulos-imagenes/nod-ia-industrial.png",
-  polar: "/home/worlds/sidon/modulos-imagenes/polar-industrial.png",
-  rondines: "/home/worlds/sidon/modulos-imagenes/rondines-industrial.png",
-  sense: "/home/worlds/sidon/modulos-imagenes/sense-industrial.png",
-  "smart-audits": "/home/worlds/sidon/modulos-imagenes/smart-audits-industrial.png",
-  talos: "/home/worlds/sidon/modulos-imagenes/talos-industrial.png",
-  wellness: "/home/worlds/sidon/modulos-imagenes/wellness-industrial.png",
+  argos: "/home/worlds/sidon/modulos-imagenes/argos-industrial.webp",
+  axessone: "/home/worlds/sidon/modulos-imagenes/axessone-industrial.webp",
+  byblos: "/home/worlds/sidon/modulos-imagenes/byblos-industrial.webp",
+  industrial: "/home/worlds/sidon/modulos-imagenes/industrial-industrial.webp",
+  mantiz: "/home/worlds/sidon/modulos-imagenes/mantiz-industrial.webp",
+  "nod-ia": "/home/worlds/sidon/modulos-imagenes/nod-ia-industrial.webp",
+  polar: "/home/worlds/sidon/modulos-imagenes/polar-industrial.webp",
+  rondines: "/home/worlds/sidon/modulos-imagenes/rondines-industrial.webp",
+  sense: "/home/worlds/sidon/modulos-imagenes/sense-industrial.webp",
+  "smart-audits": "/home/worlds/sidon/modulos-imagenes/smart-audits-industrial.webp",
+  talos: "/home/worlds/sidon/modulos-imagenes/talos-industrial.webp",
+  wellness: "/home/worlds/sidon/modulos-imagenes/wellness-industrial.webp",
 };
 
 // ponytail: shared flow image until stage-specific assets are approved.
-const temporaryFlowImage = "/home/worlds/sidon/modulos-imagenes/prueba.png";
+const temporaryFlowImage = "/home/worlds/sidon/modulos-imagenes/prueba.webp";
 
 type Props = Readonly<{
   categoryName: string;
@@ -78,7 +78,7 @@ export function SidonModuleExperience({ categoryName, categorySlug, contactActio
     </section>}
     <section aria-labelledby="module-conversation" className={styles.moduleConversation}>
       <div><p className={styles.moduleContactEyebrow}>{contactEyebrow}</p><h2 id="module-conversation">{contactTitle}</h2></div>
-      <div><span>{contactLead}</span><Link href={`/${locale}/sidon/conversemos/?source_path=%2Fsidon%2F${categorySlug}%2F${moduleSlug}&world=sidon&category=${categorySlug}&module=${moduleSlug}&interest=${moduleSlug}`}>{contactAction}<ArrowRight aria-hidden="true" size={17} /></Link></div>
+      <div><span>{contactLead}</span><Link href={`/${locale}/sidon/conversemos/?source_path=%2Fsidon%2F${categorySlug}%2F${moduleSlug}&world=sidon&category=${categorySlug}&module=${moduleSlug}&interest=${moduleSlug}`} style={{ backgroundColor: "var(--sidon-deep)" }}>{contactAction}<ArrowRight aria-hidden="true" size={17} /></Link></div>
     </section>
   </main>;
 }

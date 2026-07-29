@@ -5,6 +5,7 @@ import { getTranslations } from "next-intl/server";
 import { OrbitLink } from "./OrbitLink";
 import { solutions, type SolutionSlug } from "./solutions";
 import styles from "./integration.module.css";
+import { getLocalizedCarouselImage } from "@/components/ui/orbitCarouselImage";
 
 type SolutionContent = Readonly<{
   definition: string;
@@ -23,13 +24,14 @@ export async function IntegrationSolutionExperience({ locale, solution: slug }: 
   const t = await getTranslations("integration");
   const content = t.raw(`solution.${slug}`) as SolutionContent;
   const siblings = solutions.filter((item) => item.slug !== slug);
+  const icon = getLocalizedCarouselImage(solution.icon, locale);
 
   return (
     <main className={styles.solutionPage}>
       <section aria-labelledby="solution-title" className={`${styles.solutionSection} ${styles.solutionArrival}`}>
         <div className={styles.solutionIntroCopy}>
           <p className={styles.worldLabel}>{t("label")}</p>
-          <p className={styles.solutionName}><Image alt="" className={styles.solutionIcon} height={48} src={solution.icon} style={{ transform: `scale(${solution.iconScale})` }} unoptimized width={48} />{t(solution.key)}</p>
+          <p className={styles.solutionName}><Image alt="" className={styles.solutionIcon} height={48} src={icon} style={{ transform: `scale(${solution.iconScale})` }} unoptimized width={48} />{t(solution.key)}</p>
           <h1 id="solution-title">{t(`headlines.${slug}`)}</h1>
           <p className={styles.solutionDefinition}>{content.definition}</p>
           <div className={styles.inlineOutcomes}>

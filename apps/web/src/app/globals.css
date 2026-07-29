@@ -55,6 +55,9 @@
   --integration-deep: #3b2b50;
   --sidon: #00a887;
   --sidon-deep: #0d553f;
+  --duma: #2ecc71;
+  --duma-deep: #0d5c3a;
+  --duma-wash: #e5fff5;
 
   --background: var(--surface);
   --foreground: var(--ink);
