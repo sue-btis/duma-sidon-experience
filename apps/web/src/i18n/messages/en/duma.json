@@ -23,14 +23,38 @@
   "chat": {
     "label": "Conversation with Duma AI",
     "historyLabel": "Recent chats",
-    "history": ["Operational priorities", "Sense signals summary", "Maintenance follow-up", "Evidence to review"],
     "title": "Ask what you need to understand about your operation.",
     "greeting": "I am Duma AI. I can help connect signals, evidence, and priorities across your operation.",
-    "suggestions": ["Which condition needs attention today?", "Summarize the Sense signals.", "Which evidence should I review first?", "Help me prioritize the next maintenance action."],
+    "categoryQuestion": "What is {name}?",
+    "categoryDumaReply": "{intro} Its modules are: {modules}.",
+    "categoryExamples": {
+      "mantenimiento-seguridad": { "question": "Show an example of asset availability across the operation this month.", "answer": "This illustrative category trend shows how asset availability can be reviewed across maintenance work.", "visual": { "type": "line", "label": "Illustrative asset availability", "metric": "92%", "description": "A monthly line shows whether the maintenance overview needs a closer review." } },
+      "auditorias": { "question": "Show an example of audit execution across the operation this month.", "answer": "This illustrative category reading compares audit execution to make follow-up needs easier to spot.", "visual": { "type": "bar", "label": "Illustrative audit execution", "metric": "86%", "description": "A bar view gives a concise comparison of completed audit work." } },
+      "monitoreo": { "question": "Show an example of monitored conditions during the last month.", "answer": "This illustrative category trend shows how monitored conditions can be reviewed over the month.", "visual": { "type": "line", "label": "Illustrative monitored conditions", "metric": "30 days", "description": "A line view makes variation in the monitored operation visible." } }
+    },
+    "categorySuggestions": ["Which operational need does it address?", "Which modules does it include?", "How does Duma AI help?"],
+    "categorySuggestionAnswers": ["{solves}", "{name} includes: {modules}.", "Duma AI connects the available information in {name} to explain conditions and guide the next review."],
+    "moduleQuestion": "What is {name}?",
+    "moduleExampleQuestion": "What information can I consult in {name}?",
+    "moduleExampleAnswer": "Duma AI can help interpret the information available in {name} according to the project context.",
+    "moduleExamples": {
+      "mantiz": { "question": "Show an example of asset availability this month.", "answer": "This illustrative reading highlights the availability of a refrigerated asset during the month.", "visual": { "type": "line", "label": "Illustrative availability", "metric": "92%", "description": "A monthly line shows whether maintenance follow-up needs attention." } },
+      "talos": { "question": "Show an example of incidents by severity this month.", "answer": "This illustrative distribution helps focus the next incident review on the most severe conditions.", "visual": { "type": "bar", "label": "Illustrative incident severity", "metric": "4 levels", "description": "A bar view compares the volume of recorded conditions by severity." } },
+      "smart-audits": { "question": "Show an example of audit completion by week.", "answer": "This illustrative reading makes it easier to compare audit execution across the month.", "visual": { "type": "bar", "label": "Illustrative audit completion", "metric": "86%", "description": "A weekly bar view shows where evidence collection needs follow-up." } },
+      "argos": { "question": "Show an example of configured conditions needing review.", "answer": "This illustrative reading shows the share of configured conditions closed during the review period.", "visual": { "type": "ring", "label": "Illustrative conditions closed", "metric": "72%", "description": "A circular view keeps the resolved share visible without replacing the underlying evidence." } },
+      "nod-ia": { "question": "Show an example of display gaps detected this week.", "answer": "This illustrative reading summarizes the proportion of displays that need replenishment follow-up.", "visual": { "type": "ring", "label": "Illustrative displays reviewed", "metric": "72%", "description": "A circular view quickly distinguishes reviewed displays from those requiring attention." } },
+      "rondines": { "question": "Show an example of verified rounds this week.", "answer": "This illustrative trend shows how completed route verification can be reviewed over time.", "visual": { "type": "line", "label": "Illustrative verified rounds", "metric": "94%", "description": "A line view makes changes in route completion easy to spot." } },
+      "sense": { "question": "Sense, show the temperature of refrigerator X during the last month.", "answer": "This is an illustrative temperature trend for refrigerator X across the last month, not live operational data.", "visual": { "type": "line", "label": "Illustrative temperature trend", "metric": "2–6 °C", "description": "A line view shows the monthly pattern and helps identify a condition worth reviewing." } },
+      "polar": { "question": "Show an example of transport temperature during the last journey.", "answer": "This illustrative temperature trend keeps the journey conditions clear from departure to arrival.", "visual": { "type": "line", "label": "Illustrative journey temperature", "metric": "2–6 °C", "description": "A line view supports review of changes during transport." } },
+      "industrial": { "question": "Show an example of this shift’s OEE reading.", "answer": "This illustrative indicator summarizes the current OEE reading and directs the next review toward the largest loss.", "visual": { "type": "ring", "label": "Illustrative OEE", "metric": "72%", "description": "A circular indicator gives a compact starting point for performance, availability, and quality review." } }
+    },
+    "moduleSuggestions": ["What does {name} solve?", "How does it relate to {category}?", "What should I review first?"],
+    "moduleSuggestionAnswers": ["{description}", "{name} contributes information within {category} to keep the operational context clear.", "Start with the information available in {name} and the conditions that require follow-up."],
     "placeholder": "Ask Duma AI a question",
     "attach": "Attach file",
     "attachedFile": "Attached file",
     "send": "Send message",
+    "thinking": "Duma is thinking",
     "reply": "This demo shows how Duma AI connects available context to guide the next operational review."
   },
   "capabilitiesShowcase": {

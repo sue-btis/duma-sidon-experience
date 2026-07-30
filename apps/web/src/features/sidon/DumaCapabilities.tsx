@@ -1,4 +1,4 @@
-import { ArrowUp, BarChart3, FileText, Lightbulb, Mic, Paperclip } from "lucide-react";
+import { ArrowUp, BarChart3, FileText, Lightbulb, Mic, Minus, Paperclip, Square, X } from "lucide-react";
 
 import styles from "./duma.module.css";
 
@@ -25,42 +25,40 @@ export function DumaCapabilities({ content }: Readonly<{ content: DumaCapabiliti
       <span>{content.lead}</span>
     </div>
     <div className={styles.capabilityGrid}>
-      <article className={`${styles.capabilityCard} ${styles.insightsCard}`}>
-        <div className={styles.capabilityHeading}><Lightbulb aria-hidden="true" size={18} /><span>{cards.insights.label}</span></div>
-        <div className={styles.chatPreview}>
-          <p className={styles.chatQuestion}>{cards.insights.prompt}</p>
-          <div className={styles.dumaResponse}><span aria-hidden="true">D</span><div><small>{cards.insights.signal}</small><strong>{cards.insights.finding}</strong><p>{cards.insights.action}</p></div></div>
-          <ChatComposer placeholder={content.composer.placeholder} />
-        </div>
-        <div className={styles.capabilityCopy}><h3>{cards.insights.title}</h3><p>{cards.insights.copy}</p></div>
-      </article>
-
-      <article className={`${styles.capabilityCard} ${styles.icosCard}`}>
-        <div className={styles.capabilityHeading}><BarChart3 aria-hidden="true" size={18} /><span>{cards.icos.label}</span></div>
-        <div className={styles.chatPreview}>
+      <div className={styles.capabilityCompactPair}>
+        <article className={`${styles.capabilityCard} ${styles.icosCard}`}>
+          <div className={styles.capabilityWindow}><div className={styles.capabilityHeading}><BarChart3 aria-hidden="true" size={18} /><span>{cards.icos.label}</span><WindowControls /></div><div className={styles.chatPreview}>
           <p className={styles.chatQuestion}>{cards.icos.prompt}</p>
           <div className={styles.dumaResponse}><span aria-hidden="true">D</span><div><div className={styles.icosScale}><span>{cards.icos.start}</span><b>68</b><span>{cards.icos.current}</span><b>86</b></div><div className={styles.icosBars}>{cards.icos.categories.map((category, index) => <div key={category}><span>{category}</span><i style={{ "--icos-value": `${[64, 81, 72][index]}%` } as React.CSSProperties} /></div>)}</div></div></div>
           <ChatComposer placeholder={content.composer.placeholder} />
-        </div>
-        <div className={styles.capabilityCopy}><h3>{cards.icos.title}</h3><p>{cards.icos.copy}</p></div>
-      </article>
+          </div></div>
+          <div className={styles.capabilityCopy}><h3>{cards.icos.title}</h3><p>{cards.icos.copy}</p></div>
+        </article>
 
-      <article className={`${styles.capabilityCard} ${styles.voiceCard}`}>
-        <div className={styles.capabilityHeading}><Mic aria-hidden="true" size={18} /><span>{cards.voice.label}</span></div>
-        <div className={styles.chatPreview}>
+        <article className={`${styles.capabilityCard} ${styles.voiceCard}`}>
+          <div className={styles.capabilityWindow}><div className={styles.capabilityHeading}><Mic aria-hidden="true" size={18} /><span>{cards.voice.label}</span><WindowControls /></div><div className={styles.chatPreview}>
           <div className={styles.dumaResponse}><span aria-hidden="true">D</span><div><div className={styles.voicePulse}><Mic aria-hidden="true" size={16} /><div aria-hidden="true">{[26, 48, 76, 52, 32, 68, 44, 25].map((height, index) => <i key={index} style={{ "--voice-height": `${height}%` } as React.CSSProperties} />)}</div></div><p>{cards.voice.reply}</p></div></div>
           <ChatComposer recording={content.composer.recording} />
-        </div>
-        <div className={styles.capabilityCopy}><h3>{cards.voice.title}</h3><p>{cards.voice.copy}</p></div>
+          </div></div>
+          <div className={styles.capabilityCopy}><h3>{cards.voice.title}</h3><p>{cards.voice.copy}</p></div>
+        </article>
+      </div>
+
+      <article className={`${styles.capabilityCard} ${styles.insightsCard} ${styles.capabilityScene}`}>
+        <div className={styles.capabilityCopy}><h3>{cards.insights.title}</h3><p>{cards.insights.copy}</p></div>
+        <div className={styles.capabilityWindow}><div className={styles.capabilityHeading}><Lightbulb aria-hidden="true" size={18} /><span>{cards.insights.label}</span><WindowControls /></div><div className={styles.chatPreview}>
+          <p className={styles.chatQuestion}>{cards.insights.prompt}</p>
+          <div className={styles.dumaResponse}><span aria-hidden="true">D</span><div><small>{cards.insights.signal}</small><strong>{cards.insights.finding}</strong><p>{cards.insights.action}</p></div></div>
+          <ChatComposer placeholder={content.composer.placeholder} />
+        </div></div>
       </article>
 
-      <article className={`${styles.capabilityCard} ${styles.reportCard}`}>
-        <div className={styles.capabilityHeading}><FileText aria-hidden="true" size={18} /><span>{cards.reports.label}</span></div>
-        <div className={styles.chatPreview}>
+      <article className={`${styles.capabilityCard} ${styles.reportCard} ${styles.capabilityScene}`}>
+        <div className={styles.capabilityWindow}><div className={styles.capabilityHeading}><FileText aria-hidden="true" size={18} /><span>{cards.reports.label}</span><WindowControls /></div><div className={styles.chatPreview}>
           <p className={styles.chatQuestion}>{cards.reports.prompt}</p>
           <div className={styles.dumaResponse}><span aria-hidden="true">D</span><div className={styles.reportPreview}><div><span>{cards.reports.status}</span><b>{cards.reports.summary}</b></div><div className={styles.reportText}>{cards.reports.summaryLines.map((line) => <p key={line}>{line}</p>)}</div><ReportChart label={cards.reports.chartLabel} /><div className={styles.reportText}>{cards.reports.followupLines.map((line) => <p key={line}>{line}</p>)}</div><ReportChart label={cards.reports.chartLabel} /></div></div>
           <ChatComposer placeholder={content.composer.placeholder} />
-        </div>
+        </div></div>
         <div className={styles.capabilityCopy}><h3>{cards.reports.title}</h3><p>{cards.reports.copy}</p></div>
       </article>
     </div>
@@ -71,6 +69,10 @@ function ChatComposer({ placeholder, recording }: Readonly<{ placeholder?: strin
   return <div className={`${styles.chatComposerPreview}${recording ? ` ${styles.chatComposerRecording}` : ""}`}>
     {recording ? <><span className={styles.recordingMic}><Mic aria-hidden="true" size={16} /></span><span>{recording}</span><i aria-hidden="true" /></> : <><span>{placeholder}</span><Paperclip aria-hidden="true" size={17} /><ArrowUp aria-hidden="true" size={17} /></>}
   </div>;
+}
+
+function WindowControls() {
+  return <span aria-hidden="true" className={styles.capabilityWindowControls}><Minus size={12} /><Square size={10} /><X size={12} /></span>;
 }
 
 function ReportChart({ label }: Readonly<{ label: string }>) {

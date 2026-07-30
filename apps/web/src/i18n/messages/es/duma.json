@@ -23,14 +23,38 @@
   "chat": {
     "label": "Conversación con Duma AI",
     "historyLabel": "Chats recientes",
-    "history": ["Prioridades operativas", "Resumen de señales de Sense", "Seguimiento de mantenimiento", "Evidencia por revisar"],
     "title": "Pregunta lo que necesitas entender de tu operación.",
     "greeting": "Soy Duma AI. Puedo ayudarte a conectar señales, evidencia y prioridades de tu operación.",
-    "suggestions": ["¿Qué condición requiere atención hoy?", "Resume las señales de Sense.", "¿Qué evidencia debo revisar primero?", "Ayúdame a priorizar el siguiente mantenimiento."],
+    "categoryQuestion": "¿Qué es {name}?",
+    "categoryDumaReply": "{intro} Sus módulos son: {modules}.",
+    "categoryExamples": {
+      "mantenimiento-seguridad": { "question": "Muéstrame un ejemplo de disponibilidad de activos en toda la operación durante este mes.", "answer": "Esta tendencia ilustrativa de categoría muestra cómo puede revisarse la disponibilidad de activos entre los trabajos de mantenimiento.", "visual": { "type": "line", "label": "Disponibilidad de activos ilustrativa", "metric": "92%", "description": "Una línea mensual indica si el panorama de mantenimiento requiere una revisión más cercana." } },
+      "auditorias": { "question": "Muéstrame un ejemplo de ejecución de auditorías en toda la operación durante este mes.", "answer": "Esta lectura ilustrativa de categoría compara la ejecución de auditorías para hacer más visibles las necesidades de seguimiento.", "visual": { "type": "bar", "label": "Ejecución de auditorías ilustrativa", "metric": "86%", "description": "Una gráfica de barras permite comparar de forma concisa el trabajo de auditoría completado." } },
+      "monitoreo": { "question": "Muéstrame un ejemplo de condiciones monitoreadas durante el último mes.", "answer": "Esta tendencia ilustrativa de categoría muestra cómo pueden revisarse las condiciones monitoreadas a lo largo del mes.", "visual": { "type": "line", "label": "Condiciones monitoreadas ilustrativas", "metric": "30 días", "description": "Una gráfica de línea hace visible la variación en la operación monitoreada." } }
+    },
+    "categorySuggestions": ["¿Qué necesidad operativa atiende?", "¿Qué módulos incluye?", "¿Cómo ayuda Duma AI?"],
+    "categorySuggestionAnswers": ["{solves}", "{name} incluye: {modules}.", "Duma AI conecta la información disponible de {name} para explicar condiciones y orientar la siguiente lectura."],
+    "moduleQuestion": "¿Qué es {name}?",
+    "moduleExampleQuestion": "¿Qué información puedo consultar en {name}?",
+    "moduleExampleAnswer": "Duma AI puede ayudarte a interpretar la información disponible de {name} según el contexto del proyecto.",
+    "moduleExamples": {
+      "mantiz": { "question": "Muéstrame un ejemplo de disponibilidad de activos durante este mes.", "answer": "Esta lectura ilustrativa destaca la disponibilidad de un activo refrigerado durante el mes.", "visual": { "type": "line", "label": "Disponibilidad ilustrativa", "metric": "92%", "description": "Una línea mensual muestra si el seguimiento de mantenimiento necesita atención." } },
+      "talos": { "question": "Muéstrame un ejemplo de incidentes por severidad durante este mes.", "answer": "Esta distribución ilustrativa ayuda a enfocar la siguiente revisión de incidentes en las condiciones más severas.", "visual": { "type": "bar", "label": "Severidad de incidentes ilustrativa", "metric": "4 niveles", "description": "Una gráfica de barras compara el volumen de condiciones registradas por severidad." } },
+      "smart-audits": { "question": "Muéstrame un ejemplo de cumplimiento de auditorías por semana.", "answer": "Esta lectura ilustrativa facilita comparar la ejecución de auditorías durante el mes.", "visual": { "type": "bar", "label": "Cumplimiento de auditorías ilustrativo", "metric": "86%", "description": "Una gráfica semanal muestra dónde la recolección de evidencia requiere seguimiento." } },
+      "argos": { "question": "Muéstrame un ejemplo de condiciones configuradas que requieren revisión.", "answer": "Esta lectura ilustrativa muestra la proporción de condiciones configuradas cerradas durante el periodo de revisión.", "visual": { "type": "ring", "label": "Condiciones cerradas ilustrativas", "metric": "72%", "description": "Una vista circular mantiene visible la proporción resuelta sin sustituir la evidencia." } },
+      "nod-ia": { "question": "Muéstrame un ejemplo de faltantes en exhibición detectados esta semana.", "answer": "Esta lectura ilustrativa resume la proporción de exhibiciones que requieren seguimiento de reposición.", "visual": { "type": "ring", "label": "Exhibiciones revisadas ilustrativas", "metric": "72%", "description": "Una vista circular distingue rápidamente las exhibiciones revisadas de las que requieren atención." } },
+      "rondines": { "question": "Muéstrame un ejemplo de rondines verificados esta semana.", "answer": "Esta tendencia ilustrativa muestra cómo puede revisarse la verificación de rutas a lo largo del tiempo.", "visual": { "type": "line", "label": "Rondines verificados ilustrativos", "metric": "94%", "description": "Una gráfica de línea hace visibles los cambios en la terminación de rutas." } },
+      "sense": { "question": "Sense, dime la temperatura del último mes del refrigerador X.", "answer": "Esta es una tendencia ilustrativa de temperatura del refrigerador X durante el último mes, no datos operativos en vivo.", "visual": { "type": "line", "label": "Tendencia de temperatura ilustrativa", "metric": "2–6 °C", "description": "Una gráfica de línea muestra el patrón mensual y ayuda a identificar una condición que conviene revisar." } },
+      "polar": { "question": "Muéstrame un ejemplo de temperatura de transporte durante el último trayecto.", "answer": "Esta tendencia ilustrativa de temperatura mantiene claras las condiciones del trayecto desde la salida hasta la llegada.", "visual": { "type": "line", "label": "Temperatura de trayecto ilustrativa", "metric": "2–6 °C", "description": "Una gráfica de línea apoya la revisión de cambios durante el transporte." } },
+      "industrial": { "question": "Muéstrame un ejemplo del OEE de este turno.", "answer": "Este indicador ilustrativo resume la lectura actual de OEE y dirige la siguiente revisión hacia la pérdida principal.", "visual": { "type": "ring", "label": "OEE ilustrativo", "metric": "72%", "description": "Un indicador circular da un punto de partida compacto para revisar desempeño, disponibilidad y calidad." } }
+    },
+    "moduleSuggestions": ["¿Qué resuelve {name}?", "¿Cómo se relaciona con {category}?", "¿Qué conviene revisar primero?"],
+    "moduleSuggestionAnswers": ["{description}", "{name} aporta información dentro de {category} para mantener claro el contexto operativo.", "Comienza por la información disponible de {name} y las condiciones que requieren seguimiento."],
     "placeholder": "Escribe una pregunta para Duma AI",
     "attach": "Adjuntar archivo",
     "attachedFile": "Archivo adjunto",
     "send": "Enviar mensaje",
+    "thinking": "Duma está pensando",
     "reply": "Esta es una demostración de cómo Duma AI conecta el contexto disponible para orientar la siguiente lectura operativa."
   },
   "capabilitiesShowcase": {
