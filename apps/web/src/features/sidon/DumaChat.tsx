@@ -10,6 +10,8 @@ export type DumaChatCopy = Readonly<{
   attach: string;
   attachedFile: string;
   greeting: string;
+  history: string[];
+  historyLabel: string;
   label: string;
   placeholder: string;
   reply: string;
@@ -18,9 +20,6 @@ export type DumaChatCopy = Readonly<{
   title: string;
 }>;
 
-type DumaChatModule = Readonly<{ icon: string; id: string; name: string }>;
-type DumaChatModuleGroup = Readonly<{ id: string; modules: readonly DumaChatModule[]; name: string }>;
-
 export function getDumaReply(reply: string) {
   return reply;
 }
@@ -28,6 +27,9 @@ export function getDumaReply(reply: string) {
 export function getDumaSelectorDistance(index: number, activeIndex: number) {
   return Math.min(3, Math.abs(index - activeIndex));
 }
+
+type DumaChatModule = Readonly<{ icon: string; id: string; name: string }>;
+type DumaChatModuleGroup = Readonly<{ id: string; modules: readonly DumaChatModule[]; name: string }>;
 
 export function DumaChat({ categoryNavigatorLabel, content, moduleGroups }: Readonly<{ categoryNavigatorLabel: string; content: DumaChatCopy; moduleGroups: readonly DumaChatModuleGroup[] }>) {
   const [messages, setMessages] = useState<ReadonlyArray<Readonly<{ author: "duma" | "user"; text: string }>>>([]);
@@ -63,7 +65,13 @@ export function DumaChat({ categoryNavigatorLabel, content, moduleGroups }: Read
         <ol>{moduleGroups.map((group, index) => <li key={group.id}><h3><button aria-controls={`duma-module-group-${group.id}`} aria-expanded={index === activeCategoryIndex} className={styles.chatCategoryToggle} data-distance={getDumaSelectorDistance(index, activeCategoryIndex)} onClick={() => setActiveCategoryIndex(index)} type="button">{group.name}<ChevronDown aria-hidden="true" size={16} /></button></h3><ol hidden={index !== activeCategoryIndex} id={`duma-module-group-${group.id}`}>{group.modules.map((module) => <li key={module.id}><span className={styles.chatModule}><Image alt="" height={32} src={module.icon} unoptimized width={32} /><span>{module.name}</span></span></li>)}</ol></li>)}</ol>
       </nav>
       <div className={styles.chatShell}>
-      <header className={styles.chatTopbar}><span aria-hidden="true" className={styles.chatStatus} /><b>Duma AI</b></header>
+      <div className={styles.chatWorkspace}>
+      <aside aria-label={content.historyLabel} className={styles.chatHistory}>
+        <header className={styles.chatHistoryBrand}><span aria-hidden="true" className={styles.chatStatus} /><b>Duma AI</b></header>
+        <p>{content.historyLabel}</p>
+        <ol>{content.history.map((historyItem, index) => <li aria-current={index === 0 ? "page" : undefined} key={historyItem}>{historyItem}</li>)}</ol>
+      </aside>
+      <div className={styles.chatConversation}>
       <div className={styles.chatContent}>
         {isEmpty && <div className={styles.chatWelcome}>
           <Image alt="" height={76} priority src="/pet/dumaHead.svg" style={{ filter: "none" }} unoptimized width={76} />
@@ -89,6 +97,8 @@ export function DumaChat({ categoryNavigatorLabel, content, moduleGroups }: Read
           <button aria-label={content.send} className={styles.chatSend} disabled={!query.trim()} type="submit"><ArrowUp aria-hidden="true" size={18} /></button>
         </div>
       </form>
+      </div>
+      </div>
       </div>
     </div>
   </section>;

@@ -22,6 +22,8 @@
   "cta": "Conversemos sobre Duma AI",
   "chat": {
     "label": "Conversación con Duma AI",
+    "historyLabel": "Chats recientes",
+    "history": ["Prioridades operativas", "Resumen de señales de Sense", "Seguimiento de mantenimiento", "Evidencia por revisar"],
     "title": "Pregunta lo que necesitas entender de tu operación.",
     "greeting": "Soy Duma AI. Puedo ayudarte a conectar señales, evidencia y prioridades de tu operación.",
     "suggestions": ["¿Qué condición requiere atención hoy?", "Resume las señales de Sense.", "¿Qué evidencia debo revisar primero?", "Ayúdame a priorizar el siguiente mantenimiento."],
@@ -35,11 +37,12 @@
     "eyebrow": "CUATRO FORMAS DE ENTENDER",
     "title": "Duma AI convierte la operación en decisiones claras.",
     "lead": "Cada lectura se presenta en el formato que ayuda a identificar qué ocurrió, por qué importa y qué conviene considerar.",
+    "composer": {"placeholder":"Pregunta a Duma AI","recording":"Grabando…"},
     "cards": {
-      "insights": {"label":"Insights","title":"Encuentra lo que merece atención.","copy":"Detecta patrones, cambios y condiciones relevantes en el momento oportuno.","signal":"Condición detectada","finding":"Las alertas de temperatura aumentaron durante tres turnos consecutivos.","action":"Conviene revisar el activo y confirmar el siguiente mantenimiento."},
-      "icos": {"label":"ICOS","title":"Sigue el desempeño de la operación.","copy":"Convierte indicadores y categorías del proyecto en una lectura comparable desde el punto de partida hasta hoy.","start":"Inicio","current":"Actual","categories":["Disponibilidad","Ejecución","Seguimiento"]},
+      "insights": {"label":"Insights","title":"Encuentra lo que merece atención.","copy":"Detecta patrones, cambios y condiciones relevantes en el momento oportuno.","prompt":"¿Qué cambió esta semana?","signal":"Condición detectada","finding":"Las alertas de temperatura aumentaron durante tres turnos consecutivos.","action":"Conviene revisar el activo y confirmar el siguiente mantenimiento."},
+      "icos": {"label":"ICOS","title":"Sigue el desempeño de la operación.","copy":"Convierte indicadores y categorías del proyecto en una lectura comparable desde el punto de partida hasta hoy.","prompt":"¿Cómo va el desempeño?","start":"Inicio","current":"Actual","categories":["Disponibilidad","Ejecución","Seguimiento"]},
       "voice": {"label":"Chat de voz","title":"Pregunta sin dejar tu operación.","copy":"Conversar con Duma permite consultar la información disponible con lenguaje natural.","transcript":"¿Qué condición requiere atención hoy?","reply":"Hay una condición de temperatura que conviene revisar antes del siguiente turno."},
-      "reports": {"label":"Informes","title":"Comparte una lectura lista para revisar.","copy":"Un resumen ejecutivo y una tendencia ayudan a mantener claro el estado de la operación.","summary":"Condiciones prioritarias reducidas esta semana","status":"Informe semanal","chartLabel":"Tendencia semanal de condiciones prioritarias"}
+      "reports": {"label":"Informes","title":"Comparte una lectura lista para revisar.","copy":"Un resumen ejecutivo y una tendencia ayudan a mantener claro el estado de la operación.","prompt":"Prepara el informe semanal.","summary":"Condiciones prioritarias reducidas esta semana","status":"Informe semanal","summaryLines":["Las condiciones prioritarias bajaron durante la semana.","La variación se concentró en activos ya atendidos.","No aparecen nuevas condiciones críticas.","La disponibilidad se mantuvo dentro del rango esperado.","El seguimiento pendiente está identificado."],"followupLines":["Conviene confirmar el cierre de los mantenimientos pendientes.","La siguiente revisión debe enfocarse en temperatura.","El informe queda listo para compartir."],"chartLabel":"Tendencia semanal de condiciones prioritarias"}
     }
   },
   "prototype": {

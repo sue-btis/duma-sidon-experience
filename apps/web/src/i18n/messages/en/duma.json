@@ -22,6 +22,8 @@
   "cta": "Talk to us about Duma AI",
   "chat": {
     "label": "Conversation with Duma AI",
+    "historyLabel": "Recent chats",
+    "history": ["Operational priorities", "Sense signals summary", "Maintenance follow-up", "Evidence to review"],
     "title": "Ask what you need to understand about your operation.",
     "greeting": "I am Duma AI. I can help connect signals, evidence, and priorities across your operation.",
     "suggestions": ["Which condition needs attention today?", "Summarize the Sense signals.", "Which evidence should I review first?", "Help me prioritize the next maintenance action."],
@@ -35,11 +37,12 @@
     "eyebrow": "FOUR WAYS TO UNDERSTAND",
     "title": "Duma AI turns operations into clear decisions.",
     "lead": "Each reading is presented in the format that helps identify what happened, why it matters, and what to consider next.",
+    "composer": {"placeholder":"Ask Duma AI a question","recording":"Recording…"},
     "cards": {
-      "insights": {"label":"Insights","title":"Find what deserves attention.","copy":"Detects relevant patterns, changes, and conditions at the right time.","signal":"Condition detected","finding":"Temperature alerts increased across three consecutive shifts.","action":"Review the asset and confirm the next maintenance action."},
-      "icos": {"label":"ICOS","title":"Follow operational performance.","copy":"Turns project indicators and categories into a comparable reading from the starting point to today.","start":"Start","current":"Current","categories":["Availability","Execution","Follow-up"]},
+      "insights": {"label":"Insights","title":"Find what deserves attention.","copy":"Detects relevant patterns, changes, and conditions at the right time.","prompt":"What changed this week?","signal":"Condition detected","finding":"Temperature alerts increased across three consecutive shifts.","action":"Review the asset and confirm the next maintenance action."},
+      "icos": {"label":"ICOS","title":"Follow operational performance.","copy":"Turns project indicators and categories into a comparable reading from the starting point to today.","prompt":"How is performance trending?","start":"Start","current":"Current","categories":["Availability","Execution","Follow-up"]},
       "voice": {"label":"Voice chat","title":"Ask without leaving the operation.","copy":"A conversation with Duma lets people consult available information in natural language.","transcript":"Which condition needs attention today?","reply":"A temperature condition should be reviewed before the next shift."},
-      "reports": {"label":"Reports","title":"Share a reading ready to review.","copy":"An executive summary and a trend keep the operational state clear.","summary":"Priority conditions reduced this week","status":"Weekly report","chartLabel":"Weekly trend of priority conditions"}
+      "reports": {"label":"Reports","title":"Share a reading ready to review.","copy":"An executive summary and a trend keep the operational state clear.","prompt":"Prepare the weekly report.","summary":"Priority conditions reduced this week","status":"Weekly report","summaryLines":["Priority conditions fell during the week.","The change was concentrated in serviced assets.","No new critical conditions appeared.","Availability remained within the expected range.","The remaining follow-up is identified."],"followupLines":["Confirm closure of pending maintenance actions.","Focus the next review on temperature conditions.","The report is ready to share."],"chartLabel":"Weekly trend of priority conditions"}
     }
   },
   "prototype": {
