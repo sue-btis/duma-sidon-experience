@@ -19,5 +19,53 @@
   "stages": ["Makes visible","Explains and recommends","Prepares an action","Executes configured actions"],
   "ctaTitle": "Let’s discuss what Duma AI can help your operation understand.",
   "ctaLead": "Tell us what information needs to be connected, which decisions need greater clarity, or which part of the operation remains difficult to interpret.",
-  "cta": "Talk to us about Duma AI"
+  "cta": "Talk to us about Duma AI",
+  "chat": {
+    "label": "Conversation with Duma AI",
+    "title": "Ask what you need to understand about your operation.",
+    "greeting": "I am Duma AI. I can help connect signals, evidence, and priorities across your operation.",
+    "suggestions": ["Which condition needs attention today?", "Summarize the Sense signals.", "Which evidence should I review first?", "Help me prioritize the next maintenance action."],
+    "placeholder": "Ask Duma AI a question",
+    "attach": "Attach file",
+    "attachedFile": "Attached file",
+    "send": "Send message",
+    "reply": "This demo shows how Duma AI connects available context to guide the next operational review."
+  },
+  "prototype": {
+    "readingLabel": "Connected reading",
+    "readingTitle": "A signal is clearer in context.",
+    "readingLead": "Select a module to see how Duma organizes available information and guides an operational conversation.",
+    "networkLabel": "Connected modules",
+    "outputLabel": "What Duma contributes",
+    "outputFinding": "Finding",
+    "outputExplanation": "Context",
+    "outputRecommendation": "Next reading",
+    "capabilityLabel": "Capabilities",
+    "capabilityTitle": "Duma appears in the form each decision needs.",
+    "gamesLabel": "Duma challenges in Sidón",
+    "gamesTitle": "Explore how Duma connects signals and evidence.",
+    "gamesLead": "Complete the available challenges to see how Duma supports operational understanding.",
+    "play": "Play",
+    "played": "Played",
+    "gameStatus": "Status in this browser",
+    "relationshipLabel": "Intelligence within Sidón",
+    "relationshipTitle": "Duma understands the operation while remaining part of Sidón.",
+    "relationshipLead": "Each module retains its workflow and context. Duma connects those readings when a decision needs to see beyond a single source.",
+    "modules": [
+      {"id":"sense","name":"Sense","finding":"Makes a condition that needs attention visible.","explanation":"Relates variables, alerts, and context to show what is changing.","recommendation":"Review the condition with responsible people and the available history."},
+      {"id":"mantiz","name":"Mantiz","finding":"Organizes work that protects availability.","explanation":"Connects tasks, assets, and follow-up to distinguish a priority from an isolated activity.","recommendation":"Confirm the next maintenance action and evidence that needs to be retained."},
+      {"id":"smart-audits","name":"Smart Audits","finding":"Turns an audit into reviewable evidence.","explanation":"Relates criteria, photographs, and findings to keep execution clear.","recommendation":"Verify the evidence and decide which condition needs follow-up."},
+      {"id":"argos","name":"Argos","finding":"Keeps a configured condition visible.","explanation":"Preserves the context needed to interpret a detection.","recommendation":"Review the condition within its location, moment, and corresponding protocol."}
+    ],
+    "capabilities": [
+      {"id":"insights","label":"Findings","title":"Find what deserves attention.","copy":"Duma brings together signals and context to make a condition worth reviewing visible."},
+      {"id":"context","label":"Context","title":"Explain why a condition matters.","copy":"It relates available information so the operation does not have to interpret each source separately."},
+      {"id":"questions","label":"Ask","title":"Ask with the right context.","copy":"Questions draw on the information, rules, and permissions available in the project."},
+      {"id":"followup","label":"Follow-up","title":"Keep what needs continuity visible.","copy":"Duma's reading can support operational and executive follow-up without replacing responsible people."}
+    ],
+    "games": [
+      {"id":"sense","name":"Sense","title":"Detect monitoring conditions","copy":"Identify the deviations Duma relates within a plant."},
+      {"id":"smart-audits","name":"Smart Audits","title":"Review audit evidence","copy":"Find the conditions that need attention within an audit."}
+    ]
+  }
 }

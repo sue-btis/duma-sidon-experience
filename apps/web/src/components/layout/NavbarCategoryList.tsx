@@ -15,9 +15,10 @@ type Props = Readonly<{
   hoverClass: string;
   items: readonly Item[];
   locale: "es" | "en";
+  supplement?: Readonly<{ href: string; icon: string; label: string }>;
 }>;
 
-export function NavbarCategoryList({ hoverClass, items, locale }: Props) {
+export function NavbarCategoryList({ hoverClass, items, locale, supplement }: Props) {
   const hasModuleExplorer = items.some((item) => item.children.some((child) => child.icon));
   const hasLogoList = items.some((item) => item.icon);
   const [activeHref, setActiveHref] = useState(items[0]?.href ?? "");
@@ -65,6 +66,15 @@ export function NavbarCategoryList({ hoverClass, items, locale }: Props) {
               ))}
             </div>
           </section>
+        ) : null}
+        {supplement ? (
+          <Link
+            className="col-span-full mt-1 flex min-h-16 items-center gap-3 rounded-md bg-[color-mix(in_srgb,var(--sidon)_8%,var(--surface))] p-3 text-foreground transition-colors hover:bg-[color-mix(in_srgb,var(--sidon)_14%,var(--surface))]"
+            href={`/${locale}${supplement.href}`}
+          >
+            <Image alt="" className="size-10 shrink-0 object-contain" height={40} src={supplement.icon} unoptimized width={40} />
+            <span className="text-sm font-semibold text-sidon-deep">{supplement.label}</span>
+          </Link>
         ) : null}
       </div>
     );

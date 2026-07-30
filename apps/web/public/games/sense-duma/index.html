@@ -2277,6 +2277,7 @@
 
         const resultTimer = window.setTimeout(() => {
           showView("results");
+          window.parent.postMessage({ type: "duma-game-completed", game: "sense" }, "*");
           announce(
             `Misión terminada. ${currentRound.playerHits} aciertos, ${currentRound.playerErrors} errores.`
           );

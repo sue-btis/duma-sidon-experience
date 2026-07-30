@@ -19,5 +19,53 @@
   "stages": ["Hace visible","Explica y recomienda","Prepara una acción","Ejecuta acciones configuradas"],
   "ctaTitle": "Conversemos sobre lo que Duma AI puede ayudarte a entender.",
   "ctaLead": "Cuéntanos qué información necesitas conectar, qué decisiones requieren mayor claridad o qué parte de la operación todavía resulta difícil de interpretar.",
-  "cta": "Conversemos sobre Duma AI"
+  "cta": "Conversemos sobre Duma AI",
+  "chat": {
+    "label": "Conversación con Duma AI",
+    "title": "Pregunta lo que necesitas entender de tu operación.",
+    "greeting": "Soy Duma AI. Puedo ayudarte a conectar señales, evidencia y prioridades de tu operación.",
+    "suggestions": ["¿Qué condición requiere atención hoy?", "Resume las señales de Sense.", "¿Qué evidencia debo revisar primero?", "Ayúdame a priorizar el siguiente mantenimiento."],
+    "placeholder": "Escribe una pregunta para Duma AI",
+    "attach": "Adjuntar archivo",
+    "attachedFile": "Archivo adjunto",
+    "send": "Enviar mensaje",
+    "reply": "Esta es una demostración de cómo Duma AI conecta el contexto disponible para orientar la siguiente lectura operativa."
+  },
+  "prototype": {
+    "readingLabel": "Lectura conectada",
+    "readingTitle": "Una señal se entiende mejor con su contexto.",
+    "readingLead": "Selecciona un módulo para ver cómo Duma organiza la información disponible y orienta una conversación operativa.",
+    "networkLabel": "Módulos conectados",
+    "outputLabel": "Lo que Duma aporta",
+    "outputFinding": "Hallazgo",
+    "outputExplanation": "Contexto",
+    "outputRecommendation": "Siguiente lectura",
+    "capabilityLabel": "Capacidades",
+    "capabilityTitle": "Duma aparece de la forma que cada decisión necesita.",
+    "gamesLabel": "Retos Duma en Sidón",
+    "gamesTitle": "Explora cómo Duma conecta señales y evidencia.",
+    "gamesLead": "Completa los retos disponibles para ver cómo Duma acompaña una lectura operativa.",
+    "play": "Jugar",
+    "played": "Jugado",
+    "gameStatus": "Estado en este navegador",
+    "relationshipLabel": "Inteligencia dentro de Sidón",
+    "relationshipTitle": "Duma entiende la operación sin dejar de pertenecer a Sidón.",
+    "relationshipLead": "Cada módulo conserva su proceso y su contexto. Duma conecta esas lecturas cuando una decisión necesita ver más allá de una sola fuente.",
+    "modules": [
+      {"id":"sense","name":"Sense","finding":"Hace visible una condición que merece atención.","explanation":"Relaciona variables, alertas y contexto para entender qué está cambiando.","recommendation":"Revisa la condición con las personas responsables y el historial disponible."},
+      {"id":"mantiz","name":"Mantiz","finding":"Organiza el trabajo que protege la disponibilidad.","explanation":"Conecta tareas, activos y seguimiento para distinguir una prioridad de una actividad aislada.","recommendation":"Confirma el siguiente mantenimiento y la evidencia que necesita conservarse."},
+      {"id":"smart-audits","name":"Smart Audits","finding":"Convierte una auditoría en evidencia que puede revisarse.","explanation":"Relaciona criterios, fotografías y hallazgos para mantener clara la ejecución.","recommendation":"Verifica la evidencia y decide qué condición requiere seguimiento."},
+      {"id":"argos","name":"Argos","finding":"Mantiene visible una condición configurada.","explanation":"Conserva el contexto necesario para que una detección pueda interpretarse.","recommendation":"Revisa la condición en su ubicación, momento y protocolo correspondiente."}
+    ],
+    "capabilities": [
+      {"id":"insights","label":"Hallazgos","title":"Encuentra lo que merece atención.","copy":"Duma reúne señales y contexto para hacer visible una condición que conviene revisar."},
+      {"id":"context","label":"Contexto","title":"Explica por qué una condición importa.","copy":"Relaciona información disponible para que la operación no tenga que interpretar cada fuente por separado."},
+      {"id":"questions","label":"Consulta","title":"Permite preguntar con el contexto correcto.","copy":"Las consultas se apoyan en la información, reglas y permisos disponibles en el proyecto."},
+      {"id":"followup","label":"Seguimiento","title":"Mantiene visible lo que necesita continuidad.","copy":"La lectura de Duma puede acompañar el seguimiento operativo y ejecutivo sin sustituir a las personas responsables."}
+    ],
+    "games": [
+      {"id":"sense","name":"Sense","title":"Detecta condiciones de monitoreo","copy":"Identifica las desviaciones que Duma relaciona dentro de una planta."},
+      {"id":"smart-audits","name":"Smart Audits","title":"Revisa evidencia de auditoría","copy":"Encuentra las condiciones que requieren atención dentro de una auditoría."}
+    ]
+  }
 }

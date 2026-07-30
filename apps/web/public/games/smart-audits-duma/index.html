@@ -1031,6 +1031,7 @@ function showSummary(){
     <div class="sumcol dm"><h4>Identificados por Duma (${dm.length})</h4>
       <ul>${ dm.length ? dm.map(f=>li(f,false)).join('') : '<li class="empty">Ninguno adicional: viste todo lo que Duma vio.</li>' }</ul></div>`;
   showScene('s-summary');
+  window.parent.postMessage({ type: 'duma-game-completed', game: 'smart-audits' }, '*');
 }
 $('btnSummary').onclick = () => showImpact();
 

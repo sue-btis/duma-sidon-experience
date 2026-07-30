@@ -52,8 +52,8 @@ export async function EcosatNavbar({ locale, page = "home", path }: Props) {
         </Link>
         {([
           { items: solutions.map((solution) => ({ children: [], href: `/integracion/${solution.slug}/`, icon: getLocalizedCarouselImage(solution.icon, locale), label: integration(solution.key) })), key: "integracion", label: navigation("integracion"), logo: "/home/worlds/integracion.png", menuClass: "left-1/2 -translate-x-1/2 sm:left-0 sm:translate-x-0" },
-          { items: sidonCategories.map((category) => ({ children: category.modules.map((module) => ({ href: `/sidon/${category.slug}/${module.slug}/`, icon: module.icon, label: sidon(`categories.${category.slug}.modules.${module.key}.name`) })), href: `/sidon/${category.slug}/`, label: sidon(`categories.${category.slug}.name`) })), key: "sidon", label: navigation("sidon"), logo: "/home/worlds/sidon.png", menuClass: "left-1/2 -translate-x-1/2" },
-        ] as const).map(({ items, key, label, logo, menuClass }) => (
+          { items: sidonCategories.map((category) => ({ children: category.modules.map((module) => ({ href: `/sidon/${category.slug}/${module.slug}/`, icon: module.icon, label: sidon(`categories.${category.slug}.modules.${module.key}.name`) })), href: `/sidon/${category.slug}/`, label: sidon(`categories.${category.slug}.name`) })), key: "sidon", label: navigation("sidon"), logo: "/home/worlds/sidon.png", menuClass: "left-1/2 -translate-x-1/2", supplement: { href: "/sidon/duma/", icon: "/home/worlds/dumaAiLetter.png", label: "Duma" } },
+        ] as const).map(({ items, key, label, logo, menuClass, ...menuProps }) => (
           <details className="group static" key={key} name="primary-navigation">
             <summary className={`${worldClass(key)} cursor-pointer list-none [&::-webkit-details-marker]:hidden`}>
               <span className="flex items-center gap-1">
@@ -68,7 +68,7 @@ export async function EcosatNavbar({ locale, page = "home", path }: Props) {
                 <Image alt="" className="size-9 object-contain" height={104} src={logo} unoptimized width={104} />
                 {label}
               </Link>
-              <NavbarCategoryList hoverClass={worldHoverClass(key)} items={items} locale={locale} />
+              <NavbarCategoryList hoverClass={worldHoverClass(key)} items={items} locale={locale} {...menuProps} />
             </div>
           </details>
         ))}
