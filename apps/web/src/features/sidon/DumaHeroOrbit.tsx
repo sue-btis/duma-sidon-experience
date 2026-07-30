@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 import { sidonCategories } from "./sidonCategoryData";
+import { mountRadialCardHover } from "./DumaHeroRadialHover";
 import styles from "./duma.module.css";
 
 type SidonModule = (typeof sidonCategories)[number]["modules"][number];
@@ -25,6 +26,7 @@ export function DumaHeroOrbit() {
     const travel = orbit.clientWidth * 1.2;
     const duration = 760;
     const stagger = 80;
+    let radialAnimation: ReturnType<typeof mountRadialCardHover> | undefined;
     const finalTransform = (angle: number) => `translate(-50%, -50%) rotate(${angle}deg) translateY(calc(var(--orbit-radius) * -1)) rotate(${-angle}deg)`;
     const animations = moduleRefs.current.flatMap((module, index) => {
       if (!module) return [];
@@ -44,13 +46,27 @@ export function DumaHeroOrbit() {
 
     orbit.dataset.animate = "true";
     Promise.all([...animations, coreAnimation].map((animation) => animation.finished)).then(() => {
+      animations.forEach((animation) => animation.cancel());
+      coreAnimation.cancel();
+      const orbitRect = orbit.getBoundingClientRect();
+      const firstModule = moduleRefs.current.find((module): module is HTMLLIElement => module !== null);
+      const firstModuleRect = firstModule?.getBoundingClientRect();
+      const moduleX = firstModuleRect ? firstModuleRect.left + firstModuleRect.width / 2 - (orbitRect.left + orbitRect.width / 2) : 0;
+      const moduleY = firstModuleRect ? firstModuleRect.top + firstModuleRect.height / 2 - (orbitRect.top + orbitRect.height / 2) : 0;
+      const orbitRadius = Math.hypot(moduleX, moduleY);
+      const radiusRatio = orbitRadius / Math.min(orbitRect.width, orbitRect.height);
+      const startAngle = Math.atan2(moduleY, moduleX);
       orbit.dataset.settled = "true";
+      orbit.dataset.radialHover = "true";
+      radialAnimation = mountRadialCardHover({ cardSelector: `.${styles.heroOrbitModule}`, container: orbit, radius: ({ height, width }) => Math.min(width, height) * radiusRatio, startAngle });
       delete orbit.dataset.animate;
     }).catch(() => undefined);
 
     return () => {
       animations.forEach((animation) => animation.cancel());
       coreAnimation.cancel();
+      radialAnimation?.destroy();
+      delete orbit.dataset.radialHover;
       delete orbit.dataset.animate;
     };
   }, []);
@@ -65,7 +81,10 @@ export function DumaHeroOrbit() {
           </li>
         ))}
       </ul>
-      <div className={styles.heroOrbitCore} ref={coreRef}><Image alt="Duma AI" height={166} src="/home/worlds/dumaAiLetter.png" unoptimized width={300} /></div>
+      <div className={styles.heroOrbitCore} ref={coreRef}>
+        <Image alt="Duma AI" className={`${styles.heroOrbitLogo} ${styles.heroOrbitDumaLogo}`} height={166} src="/home/worlds/dumaAiLetter.png" unoptimized width={300} />
+        <Image alt="Sidón" className={`${styles.heroOrbitLogo} ${styles.heroOrbitSidonLogo}`} height={104} src="/home/worlds/sidon.png" unoptimized width={104} />
+      </div>
     </div>
   );
 }

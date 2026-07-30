@@ -31,6 +31,17 @@
     "send": "Enviar mensaje",
     "reply": "Esta es una demostración de cómo Duma AI conecta el contexto disponible para orientar la siguiente lectura operativa."
   },
+  "capabilitiesShowcase": {
+    "eyebrow": "CUATRO FORMAS DE ENTENDER",
+    "title": "Duma AI convierte la operación en decisiones claras.",
+    "lead": "Cada lectura se presenta en el formato que ayuda a identificar qué ocurrió, por qué importa y qué conviene considerar.",
+    "cards": {
+      "insights": {"label":"Insights","title":"Encuentra lo que merece atención.","copy":"Detecta patrones, cambios y condiciones relevantes en el momento oportuno.","signal":"Condición detectada","finding":"Las alertas de temperatura aumentaron durante tres turnos consecutivos.","action":"Conviene revisar el activo y confirmar el siguiente mantenimiento."},
+      "icos": {"label":"ICOS","title":"Sigue el desempeño de la operación.","copy":"Convierte indicadores y categorías del proyecto en una lectura comparable desde el punto de partida hasta hoy.","start":"Inicio","current":"Actual","categories":["Disponibilidad","Ejecución","Seguimiento"]},
+      "voice": {"label":"Chat de voz","title":"Pregunta sin dejar tu operación.","copy":"Conversar con Duma permite consultar la información disponible con lenguaje natural.","transcript":"¿Qué condición requiere atención hoy?","reply":"Hay una condición de temperatura que conviene revisar antes del siguiente turno."},
+      "reports": {"label":"Informes","title":"Comparte una lectura lista para revisar.","copy":"Un resumen ejecutivo y una tendencia ayudan a mantener claro el estado de la operación.","summary":"Condiciones prioritarias reducidas esta semana","status":"Informe semanal","chartLabel":"Tendencia semanal de condiciones prioritarias"}
+    }
+  },
   "prototype": {
     "readingLabel": "Lectura conectada",
     "readingTitle": "Una señal se entiende mejor con su contexto.",

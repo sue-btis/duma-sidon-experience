@@ -116,7 +116,6 @@ export async function HomeExperience({ locale }: Props) {
       <section className={`${styles.scene} ${styles.worldsScene}`} data-home-scene id="mundos">
         <div className={styles.sectionContent}>
           <WorldCircuit
-            close={t("worldsClose")}
             integration={{
               action: t("integrationAction"),
               description: t("integrationDescription"),

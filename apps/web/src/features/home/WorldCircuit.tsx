@@ -1,13 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ShieldCheck } from "lucide-react";
 
 import { LetterWorldsCanvas } from "@/components/ui/LetterWorldsCanvas";
 
 import styles from "./home-experience.module.css";
 
 type Props = Readonly<{
-  close: string;
   integration: Readonly<{ action: string; description: string; label: string }>;
   lead: string;
   locale: "es" | "en";
@@ -15,7 +13,7 @@ type Props = Readonly<{
   title: string;
 }>;
 
-export function WorldCircuit({ close, integration, lead, locale, sidon, title }: Props) {
+export function WorldCircuit({ integration, lead, locale, sidon, title }: Props) {
   return (
     <>
       <h2>{title}</h2>
@@ -54,7 +52,6 @@ export function WorldCircuit({ close, integration, lead, locale, sidon, title }:
             <span className={styles.worldAction}>{sidon.action}</span>
           </span>
         </Link>
-        <p className={styles.circuitClose}><ShieldCheck aria-hidden="true" />{close}</p>
       </div>
     </>
   );

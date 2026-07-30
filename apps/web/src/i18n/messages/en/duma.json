@@ -31,6 +31,17 @@
     "send": "Send message",
     "reply": "This demo shows how Duma AI connects available context to guide the next operational review."
   },
+  "capabilitiesShowcase": {
+    "eyebrow": "FOUR WAYS TO UNDERSTAND",
+    "title": "Duma AI turns operations into clear decisions.",
+    "lead": "Each reading is presented in the format that helps identify what happened, why it matters, and what to consider next.",
+    "cards": {
+      "insights": {"label":"Insights","title":"Find what deserves attention.","copy":"Detects relevant patterns, changes, and conditions at the right time.","signal":"Condition detected","finding":"Temperature alerts increased across three consecutive shifts.","action":"Review the asset and confirm the next maintenance action."},
+      "icos": {"label":"ICOS","title":"Follow operational performance.","copy":"Turns project indicators and categories into a comparable reading from the starting point to today.","start":"Start","current":"Current","categories":["Availability","Execution","Follow-up"]},
+      "voice": {"label":"Voice chat","title":"Ask without leaving the operation.","copy":"A conversation with Duma lets people consult available information in natural language.","transcript":"Which condition needs attention today?","reply":"A temperature condition should be reviewed before the next shift."},
+      "reports": {"label":"Reports","title":"Share a reading ready to review.","copy":"An executive summary and a trend keep the operational state clear.","summary":"Priority conditions reduced this week","status":"Weekly report","chartLabel":"Weekly trend of priority conditions"}
+    }
+  },
   "prototype": {
     "readingLabel": "Connected reading",
     "readingTitle": "A signal is clearer in context.",

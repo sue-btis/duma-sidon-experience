@@ -15,4 +15,4 @@ FROM nginx:alpine
 COPY apps/web/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/apps/web/out /usr/share/nginx/html
 
-EXPOSE 8080
+EXPOSE 60000
