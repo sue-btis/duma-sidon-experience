@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
@@ -28,7 +28,6 @@ export async function DumaExperience({ locale }: Readonly<{ locale: "es" | "en" 
   });
   return <main className={styles.page}>
     <section className={styles.hero}>
-      <Link className={styles.back} href={`/${locale}/sidon/`}><ArrowLeft aria-hidden="true" size={16} />{t("back")}</Link>
       <div className={styles.heroCopy}><div><p>{t("eyebrow")}</p><h1>{t("headline")}</h1><span>{t("lead")}</span><strong>{t("principle")}</strong></div><DumaHeroOrbit /></div>
     </section>
     <DumaChat categoryNavigatorLabel={sidon("categoriesTitle")} content={t.raw("chat") as DumaChatCopy} moduleGroups={moduleGroups} />

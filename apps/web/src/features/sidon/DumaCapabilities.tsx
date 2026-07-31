@@ -1,4 +1,5 @@
 import { ArrowUp, BarChart3, FileText, Lightbulb, Mic, Minus, Paperclip, Square, X } from "lucide-react";
+import Image from "next/image";
 
 import styles from "./duma.module.css";
 
@@ -29,7 +30,7 @@ export function DumaCapabilities({ content }: Readonly<{ content: DumaCapabiliti
         <article className={`${styles.capabilityCard} ${styles.icosCard}`}>
           <div className={styles.capabilityWindow}><div className={styles.capabilityHeading}><BarChart3 aria-hidden="true" size={18} /><span>{cards.icos.label}</span><WindowControls /></div><div className={styles.chatPreview}>
           <p className={styles.chatQuestion}>{cards.icos.prompt}</p>
-          <div className={styles.dumaResponse}><span aria-hidden="true">D</span><div><div className={styles.icosScale}><span>{cards.icos.start}</span><b>68</b><span>{cards.icos.current}</span><b>86</b></div><div className={styles.icosBars}>{cards.icos.categories.map((category, index) => <div key={category}><span>{category}</span><i style={{ "--icos-value": `${[64, 81, 72][index]}%` } as React.CSSProperties} /></div>)}</div></div></div>
+          <div className={styles.dumaResponse}><span aria-hidden="true"><Image alt="" height={29} src="/pet/dumaHead.svg" unoptimized width={29} /></span><div><div className={styles.icosScale}><span>{cards.icos.start}</span><b>68</b><span>{cards.icos.current}</span><b>86</b></div><div className={styles.icosBars}>{cards.icos.categories.map((category, index) => <div key={category}><span>{category}</span><i style={{ "--icos-value": `${[64, 81, 72][index]}%` } as React.CSSProperties} /></div>)}</div></div></div>
           <ChatComposer placeholder={content.composer.placeholder} />
           </div></div>
           <div className={styles.capabilityCopy}><h3>{cards.icos.title}</h3><p>{cards.icos.copy}</p></div>
@@ -37,7 +38,7 @@ export function DumaCapabilities({ content }: Readonly<{ content: DumaCapabiliti
 
         <article className={`${styles.capabilityCard} ${styles.voiceCard}`}>
           <div className={styles.capabilityWindow}><div className={styles.capabilityHeading}><Mic aria-hidden="true" size={18} /><span>{cards.voice.label}</span><WindowControls /></div><div className={styles.chatPreview}>
-          <div className={styles.dumaResponse}><span aria-hidden="true">D</span><div><div className={styles.voicePulse}><Mic aria-hidden="true" size={16} /><div aria-hidden="true">{[26, 48, 76, 52, 32, 68, 44, 25].map((height, index) => <i key={index} style={{ "--voice-height": `${height}%` } as React.CSSProperties} />)}</div></div><p>{cards.voice.reply}</p></div></div>
+          <div className={styles.dumaResponse}><span aria-hidden="true"><Image alt="" height={29} src="/pet/dumaHead.svg" unoptimized width={29} /></span><div><div className={styles.voicePulse}><Mic aria-hidden="true" size={16} /><div aria-hidden="true">{[26, 48, 76, 52, 32, 68, 44, 25].map((height, index) => <i key={index} style={{ "--voice-height": `${height}%` } as React.CSSProperties} />)}</div></div><p>{cards.voice.reply}</p></div></div>
           <ChatComposer recording={content.composer.recording} />
           </div></div>
           <div className={styles.capabilityCopy}><h3>{cards.voice.title}</h3><p>{cards.voice.copy}</p></div>
@@ -48,7 +49,7 @@ export function DumaCapabilities({ content }: Readonly<{ content: DumaCapabiliti
         <div className={styles.capabilityCopy}><h3>{cards.insights.title}</h3><p>{cards.insights.copy}</p></div>
         <div className={styles.capabilityWindow}><div className={styles.capabilityHeading}><Lightbulb aria-hidden="true" size={18} /><span>{cards.insights.label}</span><WindowControls /></div><div className={styles.chatPreview}>
           <p className={styles.chatQuestion}>{cards.insights.prompt}</p>
-          <div className={styles.dumaResponse}><span aria-hidden="true">D</span><div><small>{cards.insights.signal}</small><strong>{cards.insights.finding}</strong><p>{cards.insights.action}</p></div></div>
+          <div className={styles.dumaResponse}><span aria-hidden="true"><Image alt="" height={29} src="/pet/dumaHead.svg" unoptimized width={29} /></span><div><small>{cards.insights.signal}</small><strong>{cards.insights.finding}</strong><p>{cards.insights.action}</p></div></div>
           <ChatComposer placeholder={content.composer.placeholder} />
         </div></div>
       </article>
@@ -56,7 +57,7 @@ export function DumaCapabilities({ content }: Readonly<{ content: DumaCapabiliti
       <article className={`${styles.capabilityCard} ${styles.reportCard} ${styles.capabilityScene}`}>
         <div className={styles.capabilityWindow}><div className={styles.capabilityHeading}><FileText aria-hidden="true" size={18} /><span>{cards.reports.label}</span><WindowControls /></div><div className={styles.chatPreview}>
           <p className={styles.chatQuestion}>{cards.reports.prompt}</p>
-          <div className={styles.dumaResponse}><span aria-hidden="true">D</span><div className={styles.reportPreview}><div><span>{cards.reports.status}</span><b>{cards.reports.summary}</b></div><div className={styles.reportText}>{cards.reports.summaryLines.map((line) => <p key={line}>{line}</p>)}</div><ReportChart label={cards.reports.chartLabel} /><div className={styles.reportText}>{cards.reports.followupLines.map((line) => <p key={line}>{line}</p>)}</div><ReportChart label={cards.reports.chartLabel} /></div></div>
+          <div className={styles.dumaResponse}><span aria-hidden="true"><Image alt="" height={29} src="/pet/dumaHead.svg" unoptimized width={29} /></span><div className={styles.reportPreview}><div><span>{cards.reports.status}</span><b>{cards.reports.summary}</b></div><div className={styles.reportText}>{cards.reports.summaryLines.map((line) => <p key={line}>{line}</p>)}</div><ReportChart label={cards.reports.chartLabel} /><div className={styles.reportText}>{cards.reports.followupLines.map((line) => <p key={line}>{line}</p>)}</div><ReportChart label={cards.reports.chartLabel} /></div></div>
           <ChatComposer placeholder={content.composer.placeholder} />
         </div></div>
         <div className={styles.capabilityCopy}><h3>{cards.reports.title}</h3><p>{cards.reports.copy}</p></div>

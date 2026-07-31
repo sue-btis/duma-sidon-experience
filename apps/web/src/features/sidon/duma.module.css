@@ -1,7 +1,6 @@
 .page { overflow: clip; padding: 6rem clamp(1rem, 4vw, 3rem) 4rem; }
 .hero, .close { margin: 0 auto; max-width: 76rem; }
 .hero { min-height: 76svh; display: grid; align-content: center; margin-bottom: clamp(2rem, 6vw, 5rem); }
-.back { align-items: center; color: var(--sidon-deep); display: inline-flex; font-size: .85rem; font-weight: 750; gap: .4rem; margin-bottom: clamp(3rem, 10vh, 7rem); text-decoration: none; width: fit-content; }
 .heroCopy { align-items: center; display: grid; gap: clamp(2rem, 8vw, 7rem); grid-template-columns: minmax(0, 1fr) minmax(11rem, .35fr); }
 .heroCopy p { color: var(--sidon-deep); font-size: .76rem; font-weight: 800; letter-spacing: .075em; margin: 0 0 1rem; text-transform: uppercase; }
 .hero h1, .close h2 { color: var(--sidon-deep); font-size: clamp(2.5rem, 5.6vw, 5.25rem); letter-spacing: -.035em; line-height: .98; margin: 0; max-width: 13ch; }
@@ -80,23 +79,23 @@
 /* Capability cards are cropped product canvases, not bordered content boxes. */
 .capabilityGrid { display: grid; gap: clamp(4rem, 10vw, 7rem); grid-template-columns: 1fr; }.capabilityGrid > * { grid-column: 1 / -1; }
 .capabilityCompactPair { display: grid; gap: clamp(1rem, 2vw, 1.5rem); grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.capabilityCard { background: var(--surface-alt); border: 0; min-width: 0; padding: 0; }
-.icosCard, .voiceCard { display: flex; flex-direction: column; grid-column: auto; height: 34rem; }
-.capabilityWindow { background: var(--surface-alt); border: 1px solid var(--line); border-radius: 1rem; display: flex; flex: 0 0 29.7rem; flex-direction: column; height: 29.7rem; margin: clamp(1.25rem, 2.5vw, 2rem) clamp(1.25rem, 2.5vw, 2rem) 0; overflow: hidden; }
-.capabilityHeading { background: var(--surface); border-bottom: 1px solid var(--line); padding: .85rem clamp(1rem, 2vw, 1.5rem); }
+.capabilityCard { background: var(--surface-alt); border: 0; min-width: 0; overflow: visible; padding: 0; }
+.icosCard, .voiceCard { display: flex; flex-direction: column; grid-column: auto; height: auto; }
+.capabilityWindow { background: var(--sidon-deep); border: 0; border-radius: 1.75rem; box-shadow: none; box-sizing: border-box; display: flex; flex: 0 0 29.7rem; flex-direction: column; height: 29.7rem; margin: clamp(1.25rem, 2.5vw, 2rem) clamp(1.25rem, 2.5vw, 2rem) 0; overflow: hidden; padding: .75rem; }
+.capabilityHeading { background: var(--surface); border-bottom: 1px solid var(--line); border-radius: 1rem 1rem 0 0; padding: .85rem clamp(1rem, 2vw, 1.5rem); }
 .capabilityWindowControls { align-self: stretch; align-items: center; color: var(--ink-soft); display: flex; gap: .85rem; margin: -.85rem calc(-1 * clamp(1rem, 2vw, 1.5rem)) -.85rem auto; padding-inline: 1rem; }
 .capabilityWindowControls svg { stroke-width: 1.5; }
 .capabilityCopy { background: var(--surface); margin: 0; padding: clamp(1.5rem, 3vw, 2.5rem); }
 .capabilityScene { align-items: center; background: transparent; display: grid; gap: clamp(1.5rem, 5vw, 4rem); grid-template-columns: minmax(11rem, .65fr) minmax(0, 1.25fr); min-height: 30rem; }
 .capabilityScene .capabilityWindow { margin: 0; }.capabilityScene .capabilityCopy { background: transparent; padding: 0; }.capabilityScene .capabilityWindow { flex-basis: 29.7rem; }.reportCard { grid-template-columns: minmax(0, 1.25fr) minmax(11rem, .65fr); }
-.chatPreview { border: 0; flex: 1; gap: clamp(1.25rem, 2vw, 2rem); margin-top: 0; min-height: 0; overflow: auto; padding: clamp(1.5rem, 3.5vw, 3rem); }
+.chatPreview { border: 0; border-radius: 0 0 1rem 1rem; flex: 1; gap: clamp(1.25rem, 2vw, 2rem); margin-top: 0; min-height: 0; overflow: auto; padding: clamp(1.5rem, 3.5vw, 3rem); }
 .chatQuestion { font-size: .9rem; padding: .8rem 1rem; }
 .dumaResponse { gap: .75rem; grid-template-columns: 1.8rem minmax(0, 1fr); }
 .dumaResponse > span { font-size: .72rem; height: 1.8rem; }
 .dumaResponse > div { gap: 1rem; padding: clamp(1rem, 2vw, 1.5rem); }
 .dumaResponse strong { font-size: clamp(1.1rem, 1.8vw, 1.45rem); }
 .dumaResponse p { font-size: .9rem; }
-.chatComposerPreview { align-self: end; bottom: 0; font-size: .82rem; min-height: 3.2rem; padding: .6rem .7rem .6rem .95rem; position: sticky; z-index: 1; }
+.chatComposerPreview { align-self: end; background: var(--surface); bottom: 0; box-shadow: 0 0 0 3rem var(--surface-alt); font-size: .82rem; min-height: 3.2rem; padding: .6rem .7rem .6rem .95rem; position: sticky; z-index: 1; }
 .reportCard .chatPreview { padding-block: clamp(1.5rem, 3vw, 2.5rem); }
 
 @media (max-width: 48rem) { .capabilityCompactPair, .capabilityScene, .reportCard { grid-template-columns: 1fr; }.icosCard, .voiceCard { height: auto; }.capabilityWindow, .capabilityScene .capabilityWindow { flex-basis: auto; height: auto; }.capabilityScene { gap: 1.5rem; min-height: auto; }.capabilityScene .capabilityCopy { padding: 0; }.chatPreview { min-height: 18rem; }.reportCard .chatPreview { min-height: auto; } }

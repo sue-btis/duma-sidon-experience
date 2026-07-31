@@ -13,7 +13,7 @@
    - It may supplement Ecosat and Sidón guidance, but it does not override the Identity Manual.
 
 3. **Approved Experience System PNGs**
-   - Primary visual reference for the experience itself: composition, hierarchy, orbital language, cards, nodes, interaction states, transitions, depth patterns, and brand-specific scene treatment.
+   - Primary visual reference for the experience itself: composition, hierarchy, cards, nodes, interaction states, transitions, depth patterns, and brand-specific scene treatment.
 
 4. **Structural prototype only:** `ecosat-brand-experience (1).html`
    - Reference for responsive behavior, sticky scenes, scroll progression, progressive reveals, and general interaction feasibility.
@@ -65,7 +65,7 @@ Duma’s palette complements Sidón but does not replace Sidón’s primary gree
 
 These neutral tokens are shared across the experience. Do not introduce arbitrary grays, background colors, or border colors at component level without first extending the system.
 
-The experience defaults to light surfaces. Brand colors carry identity through controlled accents, hierarchy, and orbital lines, not through dark-mode treatments, neon, or saturated gradient fields. Essential information never relies on color alone.
+The experience defaults to light surfaces. Brand colors carry identity through controlled accents and hierarchy, not through dark-mode treatments, neon, or saturated gradient fields. Essential information never relies on color alone.
 
 ### Typography
 
@@ -93,9 +93,6 @@ Remove any Google Fonts imports or other external font requests inherited from t
 
 The experience is light, spacious, precise, and controlled. Use thin lines, restrained rounded geometry, and soft depth to support clarity rather than decoration.
 
-- Opening scene: exactly two thin orbits, with two nodes per orbit.
-- Beyond the opening, orbital lines may adapt to the approved transition and depth patterns. They must preserve visual continuity without becoming decorative noise or a literal astronomy theme.
-- Orbital lines provide the primary transition language between scenes.
 - UI geometry follows the approved system: fine 1px lines, selective 1.5px structural lines, and 2px focus or active-state lines.
 - Radii stay restrained: 4px, 8px, 12px, and 16px for UI; avoid oversized rounded cards.
 - Depth is subtle and never paired decoratively with heavy borders.
@@ -116,4 +113,4 @@ The motion system must provide a complete `prefers-reduced-motion` alternative.
 
 Scroll may drive narrative progression, but no essential content or action may depend exclusively on an animation threshold, hover state, parallax effect, or precision gesture.
 
-Under `prefers-reduced-motion`, preserve the same content order, meaning, navigation, and interactions without orbital movement, automatic animation, pinned spatial transitions, or disorienting zoom effects. Reduced motion is an equivalent experience, not a removal of content.
+Under `prefers-reduced-motion`, preserve the same content order, meaning, navigation, and interactions without automatic animation, pinned spatial transitions, or disorienting zoom effects. Reduced motion is an equivalent experience, not a removal of content.

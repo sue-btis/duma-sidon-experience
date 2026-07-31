@@ -34,7 +34,7 @@ Clear, connected, and trustworthy. The experience should make complex physical a
 
 ## Anti-references
 
-Do not create a conventional corporate or marketing site, static brochure, sales deck, product launcher, SaaS dashboard, admin portal, card-grid catalogue, futuristic AI showcase, cyberpunk control room, gaming or metaverse interface, literal space or nautical theme, dense technology collage, spectacle-first agency portfolio, or traditional industrial site. Avoid hard shadows, gloss, saturated gradients, stock-style illustration, multicolored iconography, excessive copy, decorative motion, aggressive parallax, and motion that delays access. The intended direction is light, spacious, precise, controlled, and progressively explorable, with an abstract orbital language that connects scenes without depicting astronomy.
+Do not create a conventional corporate or marketing site, static brochure, sales deck, product launcher, SaaS dashboard, admin portal, card-grid catalogue, futuristic AI showcase, cyberpunk control room, gaming or metaverse interface, literal space or nautical theme, dense technology collage, spectacle-first agency portfolio, or traditional industrial site. Avoid hard shadows, gloss, saturated gradients, stock-style illustration, multicolored iconography, excessive copy, decorative motion, aggressive parallax, and motion that delays access. The intended direction is light, spacious, precise, controlled, and progressively explorable.
 
 ## Design Principles
 
@@ -42,7 +42,7 @@ Do not create a conventional corporate or marketing site, static brochure, sales
 2. **Build trust before commercial intent.** Establish operational credibility and relevance before inviting the visitor to request a conversation.
 3. **Let discovery remain self-directed.** Keep exploration meaningful for users who are not ready for a commercial action, with contextual depth once they enter Integración or Sidón.
 4. **Keep worlds distinct and legible.** Integración is the physical world; Sidón is the digital world; Duma exists only as Sidón's intelligence layer.
-5. **Make motion serve understanding.** Scroll, transitions, and orbital relationships may guide progression, but content and interaction must never depend on precise gestures, hover, or animation.
+5. **Make motion serve understanding.** Scroll and transitions may guide progression, but content and interaction must never depend on precise gestures, hover, or animation.
 
 ## Accessibility & Inclusion
 

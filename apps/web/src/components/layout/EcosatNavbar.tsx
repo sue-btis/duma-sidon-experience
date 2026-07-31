@@ -8,7 +8,7 @@ import { sidonCategories } from "@/features/sidon/sidonCategoryData";
 
 type Props = Readonly<{
   locale: "es" | "en";
-  page?: "home" | "integracion" | "sidon";
+  page?: "home" | "integracion" | "sidon" | "travesia";
   path?: string;
 }>;
 
@@ -25,7 +25,7 @@ export async function EcosatNavbar({ locale, page = "home", path }: Props) {
     const isActive = page === world;
     const activeColor = world === "integracion" ? "bg-integration-deep text-white" : world === "sidon" ? "bg-sidon-deep text-white" : "bg-ecosat-deep text-white";
 
-    return `relative z-10 flex min-h-10 items-center justify-center gap-1 rounded-lg px-4 text-sm font-semibold transition-colors ${isActive ? activeColor : `text-ecosat-deep ${worldHoverClass(world)}`}`;
+    return `relative z-10 flex min-h-10 items-center justify-center gap-1 rounded-lg px-2.5 text-[0.78rem] font-semibold transition-colors sm:px-4 sm:text-sm ${isActive ? activeColor : `text-ecosat-deep ${worldHoverClass(world)}`}`;
   };
 
   return (
@@ -72,6 +72,9 @@ export async function EcosatNavbar({ locale, page = "home", path }: Props) {
             </div>
           </details>
         ))}
+        <Link aria-current={page === "travesia" ? "page" : undefined} className={`relative z-10 flex min-h-10 items-center justify-center rounded-lg px-2.5 text-[0.78rem] font-semibold transition-colors sm:px-4 sm:text-sm ${page === "travesia" ? "bg-sidon-deep text-white" : "text-ecosat-deep hover:bg-[color-mix(in_srgb,var(--sidon)_12%,var(--surface))]"}`} href={`/${locale}/sidon/travesia/`}>
+          {navigation("travesia")}
+        </Link>
       </nav>
       <div className="min-w-0 flex-1" />
       <nav aria-label={navigation("language")} className="flex items-center gap-1 rounded-lg bg-card p-1 text-sm font-semibold text-ecosat-deep">
