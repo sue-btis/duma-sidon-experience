@@ -1,1 +1,6 @@
-{ "title": "La Travesía Sidón" }
+{
+  "title": "La Travesía Sidón",
+  "sectionLabel": "Contenido de la travesía",
+  "contentLabel": "Contenido",
+  "mapLabel": "Mapa"
+}

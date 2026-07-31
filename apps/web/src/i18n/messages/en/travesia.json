@@ -1,1 +1,6 @@
-{ "title": "The Sidón Journey" }
+{
+  "title": "The Sidón Journey",
+  "sectionLabel": "Journey content",
+  "contentLabel": "Content",
+  "mapLabel": "Map"
+}
